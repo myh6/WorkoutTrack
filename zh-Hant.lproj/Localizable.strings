@@ -1,0 +1,136 @@
+/* 
+  Localizable.strings
+  WorkoutTrack
+
+  Created by Min-Yang Huang on 2022/5/19.
+  
+*/
+
+"Legs" = "腿部";
+"Bulgarian Split Squat" = "保加利亞分腿蹲";
+"Back Squat" = "高背槓深蹲";
+"Barbell Good Morning" = "槓鈴早安";
+"Calf Raise" = "小腿提踵";
+"Dumbell Step Up" = "啞鈴登階";
+"Dumbell Good Morning" = "啞鈴早安";
+"Front Squat" = "前蹲";
+"Leg Press" = "坐式蹬腿";
+"Leg Extension" = "雙腿屈伸";
+"Pistol Squat" = "單腿深蹲";
+"Reverse Lunge" = "後跨步";
+"Sumo Deadlift" = "相撲硬舉";
+"Sumo Squat" = "相撲深蹲";
+"Side Leg Raise" = "側躺抬腿";
+"Traditional Deadlift" = "傳統硬舉";
+"Walking Lunge" = "弓步蹲";
+
+"Chest" = "胸部";
+"Barbell Bench Press" = "槓鈴臥推";
+"Barbell Incline Bench Press" = "槓鈴上斜臥推";
+"Barbell Decline Bench Press" = "槓鈴下斜臥推";
+"Cable Crossover" = "滑輪胸前交叉夾胸";
+"Cable Chest Press" = "滑輪推胸";
+"Dumbbell Bench Press" = "啞鈴臥推";
+"Dip" = "雙槓撐體";
+"Dumbbell Incline Bench Press" = "啞鈴上斜臥推";
+"Dumbbell Decline Bench Press" = "啞鈴下斜臥推";
+"Dumbbell Incline Fly" = "啞鈴上斜飛鳥";
+"Dumbbell Decline Fly" = "啞鈴下斜飛鳥";
+"Dumbbell Pullover" = "啞鈴仰臥屈臂上拉";
+"Low-Cable Crossover" = "下胸繩索飛鳥夾胸";
+"Machine Chest Press" = "機械式胸部推舉";
+"Pec Deck" = "蝴蝶機夾胸";
+"Push-Up" = "伏地挺身";
+"Single Arm Dumbbell Press" = "單臂啞鈴臥推";
+
+"Back" = "背部";
+"Barbell Row" = "槓鈴划船";
+"Back Extension" = "背部屈伸";
+"Barbell Shrug" = "槓鈴聳肩";
+"Cable Rope Pullover" = "滑輪直臂下拉";
+"Cable One Arm Lat Pull" = "單手滑輪下拉";
+"Close Grip Pull" = "窄握下拉";
+"Chin-up" = "反握引體向上";
+"Dumbbell Row" = "啞鈴划船";
+"Dumbbell Shrug" = "啞鈴聳肩";
+"Lat Pulldown" = "滑輪下拉";
+"Machine Row" = "機械式划船";
+"Pull-up" = "正握引體向上";
+"Reverse Grip Pull" = "反握滑輪下拉";
+"Single-Arm Row" = "單臂啞鈴划船";
+"Seated Cable Row" = "坐姿滑輪划船";
+"T-Bar Row" = "T槓地雷管划船";
+"Wide Grip Pull" = "寬握下拉";
+
+"Arms" = "手部";
+"Barbell Curl" = "槓鈴彎舉";
+"Barbell Skull Crusher" = "槓鈴頭顱壓碎者";
+"Bench Dip" = "板凳撐體";
+"Concentration Curl" = "單臀啞鈴彎舉";
+"Cable Curl" = "反握滑輪彎舉";
+"Cable Rop Pushdown" = "滑輪三頭肌下壓";
+"Cable Overhead Extension" = "滑輪過頭三頭屈伸";
+"Dumbbell Hammer Curl" = "啞鈴錘式彎舉";
+"Dumbbell Kickback" = "啞鈴俯身臂屈伸";
+"Dumbbell Overhead Extension" = "啞鈴過頭三頭屈伸";
+"Dumbbell Decline Curl" = "啞鈴斜托彎舉";
+"Dumbbell Incline Curl" = "傾斜啞鈴彎舉";
+"Dumbbell Skull Crusher" = "啞鈴頭顱壓碎者";
+"Decline Tricep Extension" = "下斜三頭屈伸";
+"Incline Triceps Extension" = "上斜三頭屈伸";
+"Lying Tricep Extension" = "平躺三頭屈伸";
+"Machine Bicep Curl" = "機械式彎舉";
+"Overhead Cable Extension" = "繩索過頭屈伸";
+"Preacher Curl" = "斜板屈臂彎舉";
+"Spider Curl" = "蜘蛛彎舉";
+
+"Shoulder" = "肩膀";
+"Arnold Press" = "阿諾推舉";
+"Barbell Upright Row" = "槓鈴直立上提";
+"Cable Face Pull" = "滑輪面拉";
+"Cable Shrug" = "滑輪聳肩";
+"Cable One Arm Lateral Raise" = "滑輪單臂側平舉";
+"Cable Rear Delt Fly" = "滑輪反向飛鳥";
+"Cable One Arm Pulldown" = "滑輪單臂下拉";
+"Cable Upright Row" = "滑輪直立上提";
+"Dumbell Front Raise" = "啞鈴前平舉";
+"Dumbell Lateral Raise" = "啞鈴側平舉";
+"Dumbell Shoulder Press" = "啞鈴肩推";
+"Dumbell Reverse Fly" = "啞鈴反向飛鳥";
+"Dumbell Upright Row" = "啞鈴直立上提";
+"Landmine Press" = "地雷管肩推";
+"Military Press" = "槓鈴肩推";
+"Machine Reverse Fly" = "機械式反向飛鳥";
+"Machine Lateral Raise" = "機械式側平舉";
+"Machine Lat Pulldown" = "機械式下拉";
+"Machine Shoulder Press" = "機械式肩推";
+"Plate Front Raise" = "槓片前平舉";
+
+"Abs" = "腹肌";
+"Basic Crunch" = "仰臥起坐";
+"Crunch Hands to Knees" = "仰臥起坐雙手碰膝";
+"Dead Bug" = "死蟲";
+"Elevated Heel Touch" = "抬膝左右摸腳踝";
+"Flutter Kick" = "仰臥踢腿";
+"Front Scissors" = "仰臥剪式";
+"Hollow Hold" = "空心支撐";
+"Knee-To-Elbow Sit-Up" = "抬膝仰臥起坐";
+"Leg Lowers" = "仰臥放腿";
+"Plank" = "平板撐";
+"Reverse Crunch" = "反向捲腹";
+"Raised Leg Circle" = "仰臥腳懸空畫圈";
+"Russian Twist" = "俄羅斯扭轉";
+"Straight Leg Raise" = "直腿伸起";
+"Side Plank" = "單手側撐體";
+"V-Sit" = "V字屈體";
+"Windshield Whiper" = "雨刷式";
+
+"Glutes" = "臀部";
+"Cable Donkey Kick" = "滑輪驢子踢腿";
+"Glute Bridge" = "曲膝橋式";
+"Hip Thrust" = "臀推";
+"Kettlebell Swing" = "壺鈴擺盪";
+"Lateral Lunge" = "側向弓步";
+"Machine Donkey Kick" = "機械式驢子踢腿";
+"Romanian Deadlift" = "羅馬尼亞硬舉";
+"Single-Leg RDL" = "單腳羅馬尼亞硬舉";

@@ -1,0 +1,48 @@
+//
+//  TabBarViewController.swift
+//  WorkoutTrack
+//
+//  Created by Min-Yang Huang on 2022/5/9.
+//
+
+import UIKit
+
+private let monthIdentifier = "CalendarView"
+private let chartIdentifier = "ChartsView"
+public let userDefault = UserDefaults.standard
+class TabBarViewController: UITabBarController {
+    
+    //MARK: - Properties
+    private let weekVC = WeeklyViewController()
+    private let monthVC = UIStoryboard(name: "MonthlyViewController", bundle: nil).instantiateViewController(withIdentifier: monthIdentifier) as! MonthlyViewController
+    private let chartVC = UIStoryboard(name: "ChartViewController", bundle: nil).instantiateViewController(withIdentifier: chartIdentifier) as! ChartViewController
+    
+    //MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //CoredataService.shared.addDummyDataToCoreData()
+//        userDefault.set("zh-Hant", forKey: "Language")
+        userDefault.set("en", forKey: "Language")
+        configureUI()
+    }
+    
+    //MARK: - Helpers
+    fileprivate func configureUI() {
+        view.backgroundColor = #colorLiteral(red: 0.9782040715, green: 0.9782040715, blue: 0.9782039523, alpha: 1)
+//        weekVC.title = "Home"
+//        monthVC.title = "Calendar"
+//        chartVC.title = "Chart"
+        viewControllers = [weekVC, monthVC, chartVC]
+        
+        guard let items = self.tabBar.items else { return }
+        let images = ["house", "calendar.circle", "chart.pie"]
+        let selectedImages = ["house.fill", "calendar.circle.fill", "chart.pie.fill"]
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium)
+        for i in 0 ... 2 {
+            items[i].image = UIImage(systemName: images[i])?.applyingSymbolConfiguration(config)
+            items[i].selectedImage = UIImage(systemName: selectedImages[i])
+        }
+        self.tabBar.tintColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
+        self.tabBar.layer.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+    }
+}

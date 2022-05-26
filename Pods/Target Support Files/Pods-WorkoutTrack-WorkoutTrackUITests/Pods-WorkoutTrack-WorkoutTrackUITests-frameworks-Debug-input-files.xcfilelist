@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-WorkoutTrack-WorkoutTrackUITests/Pods-WorkoutTrack-WorkoutTrackUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework

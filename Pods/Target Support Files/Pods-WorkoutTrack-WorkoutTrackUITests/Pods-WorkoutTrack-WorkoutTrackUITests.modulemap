@@ -1,0 +1,6 @@
+framework module Pods_WorkoutTrack_WorkoutTrackUITests {
+  umbrella header "Pods-WorkoutTrack-WorkoutTrackUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

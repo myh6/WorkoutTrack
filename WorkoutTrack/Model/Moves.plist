@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Legs</key>
+	<array>
+		<string>Bulgarian Split Squat</string>
+		<string>Back Squat</string>
+		<string>Barbell Good Morning</string>
+		<string>Calf Raise</string>
+		<string>Dumbell Step Up</string>
+		<string>Dumbell Good Morning</string>
+		<string>Front Squat</string>
+		<string>Leg Press</string>
+		<string>Leg Extension</string>
+		<string>Pistol Squat</string>
+		<string>Reverse Lunge</string>
+		<string>Sumo Deadlift</string>
+		<string>Sumo Squat</string>
+		<string>Side Leg Raise</string>
+		<string>Traditional Deadlift</string>
+		<string>Walking Lunge</string>
+	</array>
+	<key>Chest</key>
+	<array>
+		<string>Barbell Bench Press</string>
+		<string>Barbell Incline Bench Press</string>
+		<string>Barbell Decline Bench Press</string>
+		<string>Cable Crossover</string>
+		<string>Cable Chest Press</string>
+		<string>Dumbbell Bench Press</string>
+		<string>Dip</string>
+		<string>Dumbbell Incline Bench Press</string>
+		<string>Dumbbell Decline Bench Press</string>
+		<string>Dumbbell Incline Fly</string>
+		<string>Dumbbell Decline Fly</string>
+		<string>Dumbbell Pullover</string>
+		<string>Low-Cable Crossover</string>
+		<string>Machine Chest Press</string>
+		<string>Pec Deck</string>
+		<string>Push-Up</string>
+		<string>Single Arm Dumbbell Press</string>
+	</array>
+	<key>Back</key>
+	<array>
+		<string>Barbell Row</string>
+		<string>Back Extension</string>
+		<string>Barbell Shrug</string>
+		<string>Cable Rope Pullover</string>
+		<string>Cable One Arm Lat Pull</string>
+		<string>Close Grip Pull</string>
+		<string>Chin-up</string>
+		<string>Dumbbell Row</string>
+		<string>Dumbbell Shrug</string>
+		<string>Lat Pulldown</string>
+		<string>Machine Row</string>
+		<string>Pull-up</string>
+		<string>Reverse Grip Pull</string>
+		<string>Single-Arm Row</string>
+		<string>Seated Cable Row</string>
+		<string>T-Bar Row</string>
+		<string>Wide Grip Pull</string>
+	</array>
+	<key>Arms</key>
+	<array>
+		<string>Barbell Curl</string>
+		<string>Barbell Skull Crusher</string>
+		<string>Bench Dip</string>
+		<string>Concentration Curl</string>
+		<string>Cable Curl</string>
+		<string>Cable Rop Pushdown</string>
+		<string>Cable Overhead Extension</string>
+		<string>Dumbbell Hammer Curl</string>
+		<string>Dumbbell Kickback</string>
+		<string>Dumbbell Overhead Extension</string>
+		<string>Dumbbell Decline Curl</string>
+		<string>Dumbbell Incline Curl</string>
+		<string>Dumbbell Skull Crusher</string>
+		<string>Decline Tricep Extension</string>
+		<string>Incline Triceps Extension</string>
+		<string>Lying Tricep Extension</string>
+		<string>Machine Bicep Curl</string>
+		<string>Overhead Cable Extension</string>
+		<string>Preacher Curl</string>
+		<string>Spider Curl</string>
+	</array>
+	<key>Shoulder</key>
+	<array>
+		<string>Arnold Press</string>
+		<string>Barbell Upright Row</string>
+		<string>Cable Face Pull</string>
+		<string>Cable Shrug</string>
+		<string>Cable One Arm Lateral Raise</string>
+		<string>Cable Rear Delt Fly</string>
+		<string>Cable Upright Row</string>
+		<string>Cable One Arm Pulldown</string>
+		<string>Dumbell Front Raise</string>
+		<string>Dumbell Lateral Raise</string>
+		<string>Dumbell Shoulder Press</string>
+		<string>Dumbell Reverse Fly</string>
+		<string>Dumbell Upright Row</string>
+		<string>Landmine Press</string>
+		<string>Military Press</string>
+		<string>Machine Reverse Fly</string>
+		<string>Machine Lateral Raise</string>
+		<string>Machine Lat Pulldown</string>
+		<string>Machine Shoulder Press</string>
+		<string>Plate Front Raise</string>
+	</array>
+	<key>Abs</key>
+	<array>
+		<string>Basic Crunch</string>
+		<string>Crunch Hands to Knees</string>
+		<string>Dead Bug</string>
+		<string>Elevated Heel Touch</string>
+		<string>Flutter Kick</string>
+		<string>Front Scissors</string>
+		<string>Hollow Hold</string>
+		<string>Knee-To-Elbow Sit-Up</string>
+		<string>Leg Lowers</string>
+		<string>Plank</string>
+		<string>Reverse Crunch</string>
+		<string>Raised Leg Circle</string>
+		<string>Russian Twist</string>
+		<string>Straight Leg Raise</string>
+		<string>Side Plank</string>
+		<string>V-Sit</string>
+		<string>Windshield Whiper</string>
+	</array>
+	<key>Glutes</key>
+	<array>
+		<string>Cable Donkey Kick</string>
+		<string>Glute Bridge</string>
+		<string>Hip Thrust</string>
+		<string>Kettlebell Swing</string>
+		<string>Lateral Lunge</string>
+		<string>Machine Donkey Kick</string>
+		<string>Romanian Deadlift</string>
+		<string>Single-Leg RDL</string>
+	</array>
+</dict>
+</plist>

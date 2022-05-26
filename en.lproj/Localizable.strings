@@ -1,0 +1,136 @@
+/* 
+  Localizable.strings
+  WorkoutTrack
+
+  Created by Min-Yang Huang on 2022/5/19.
+  
+*/
+
+"Legs" = "Legs";
+"Bulgarian Split Squat" = "Bulgarian Split Squat";
+"Back Squat" = "Back Squat";
+"Barbell Good Morning" = "Barbell Good Morning";
+"Calf Raise" = "Calf Raise";
+"Dumbell Step Up" = "Dumbell Step Up";
+"Dumbell Good Morning" = "Dumbell Good Morning";
+"Front Squat" = "Front Squat";
+"Leg Press" = "Leg Press";
+"Leg Extension" = "Leg Extension";
+"Pistol Squat" = "Pistol Squat";
+"Reverse Lunge" = "Reverse Lunge";
+"Sumo Deadlift" = "Sumo Deadlift";
+"Sumo Squat" = "Sumo Squat";
+"Side Leg Raise" = "Side Leg Raise";
+"Traditional Deadlift" = "Traditional Deadlift";
+"Walking Lunge" = "Walking Lunge";
+
+"Chest" = "Chest";
+"Barbell Bench Press" = "Barbell Bench Press";
+"Barbell Incline Bench Press" = "Barbell Incline Bench Press";
+"Barbell Decline Bench Press" = "Barbell Decline Bench Press";
+"Cable Crossover" = "Cable Crossover";
+"Cable Chest Press" = "Cable Chest Press";
+"Dumbbell Bench Press" = "Dumbbell Bench Press";
+"Dip" = "Dip";
+"Dumbbell Incline Bench Press" = "Dumbbell Incline Bench Press";
+"Dumbbell Decline Bench Press" = "Dumbbell Decline Bench Press";
+"Dumbbell Incline Fly" = "Dumbbell Incline Fly";
+"Dumbbell Decline Fly" = "Dumbbell Decline Fly";
+"Dumbbell Pullover" = "Dumbbell Pullover";
+"Low-Cable Crossover" = "Low-Cable Crossover";
+"Machine Chest Press" = "Machine Chest Press";
+"Pec Deck" = "Pec Deck";
+"Push-Up" = "Push-Up";
+"Single Arm Dumbbell Press" = "Single Arm Dumbbell Press";
+
+"Back" = "Back";
+"Barbell Row" = "Barbell Row";
+"Back Extension" = "Back Extension";
+"Barbell Shrug" = "Barbell Shrug";
+"Cable Rope Pullover" = "Cable Rope Pullover";
+"Cable One Arm Lat Pull" = "Cable One Arm Lat Pulldown";
+"Close Grip Pull" = "Close Grip Pull";
+"Chin-up" = "Chin-up";
+"Dumbbell Row" = "Dumbbell Row";
+"Dumbbell Shrug" = "Dumbbell Shrug";
+"Lat Pulldown" = "Lat Pulldown";
+"Machine Row" = "Machine Row";
+"Pull-up" = "Pull-up";
+"Reverse Grip Pull" = "Reverse Grip Pulldown";
+"Single-Arm Row" = "Single-Arm Row";
+"Seated Cable Row" = "Seated Cable Row";
+"T-Bar Row" = "T-Bar Row";
+"Wide Grip Pull" = "Wide Grip Pull";
+
+"Arms" = "Arms";
+"Barbell Curl" = "Barbell Curl";
+"Barbell Skull Crusher" = "Barbell Skull Crusher";
+"Bench Dip" = "Bench Dip";
+"Concentration Curl" = "Concentration Curl";
+"Cable Curl" = "Cable Curl";
+"Cable Rop Pushdown" = "Cable Rop Pushdown";
+"Cable Overhead Extension" = "Cable Overhead Extension";
+"Dumbbell Hammer Curl" = "Dumbbell Hammer Curl";
+"Dumbbell Kickback" = "Dumbbell Kickback";
+"Dumbbell Overhead Extension" = "Dumbbell Overhead Extension";
+"Dumbbell Decline Curl" = "Dumbbell Decline Curl";
+"Dumbbell Incline Curl" = "Dumbbell Incline Curl";
+"Dumbbell Skull Crusher" = "Dumbbell Skull Crusher";
+"Decline Tricep Extension" = "Decline Tricep Extension";
+"Incline Triceps Extension" = "Incline Triceps Extension";
+"Lying Tricep Extension" = "Lying Tricep Extension";
+"Machine Bicep Curl" = "Machine Bicep Curl";
+"Overhead Cable Extension" = "Overhead Cable Extension";
+"Preacher Curl" = "Preacher Curl";
+"Spider Curl" = "Spider Curl";
+
+"Shoulder" = "Shoulder";
+"Arnold Press" = "Arnold Press";
+"Barbell Upright Row" = "Barbell Upright Row";
+"Cable Face Pull" = "Cable Face Pull";
+"Cable Shrug" = "Cable Shrug";
+"Cable One Arm Lateral Raise" = "Cable One Arm Lateral Raise";
+"Cable Rear Delt Fly" = "Cable Rear Delt Fly";
+"Cable Upright Row" = "Cable Upright Row";
+"Cable One Arm Pulldown" = "Cable One Arm Pulldown";
+"Dumbell Front Raise" = "Dumbell Front Raise";
+"Dumbell Lateral Raise" = "Dumbell Lateral Raise";
+"Dumbell Shoulder Press" = "Dumbell Shoulder Press";
+"Dumbell Reverse Fly" = "Dumbell Reverse Fly";
+"Dumbell Upright Row" = "Dumbell Upright Row";
+"Landmine Press" = "Landmine Press";
+"Military Press" = "Military Press";
+"Machine Reverse Fly" = "Machine Reverse Fly";
+"Machine Lateral Raise" = "Machine Lateral Raise";
+"Machine Lat Pulldown" = "Machine Lat Pulldown";
+"Machine Shoulder Press" = "Machine Shoulder Press";
+"Plate Front Raise" = "Plate Front Raise";
+
+"Abs" = "Abs";
+"Basic Crunch" = "Basic Crunch";
+"Crunch Hands to Knees" = "Crunch Hands to Knees";
+"Dead Bug" = "Dead Bug";
+"Elevated Heel Touch" = "Elevated Heel Touch";
+"Flutter Kick" = "Flutter Kick";
+"Front Scissors" = "Front Scissors";
+"Hollow Hold" = "Hollow Hold";
+"Knee-To-Elbow Sit-Up" = "Knee-To-Elbow Sit-Up";
+"Leg Lowers" = "Leg Lowers";
+"Plank" = "Plank";
+"Reverse Crunch" = "Reverse Crunch";
+"Raised Leg Circle" = "Raised Leg Circle";
+"Russian Twist" = "Russian Twist";
+"Straight Leg Raise" = "Straight Leg Raise";
+"Side Plank" = "Side Plank";
+"V-Sit" = "V-Sit";
+"Windshield Whiper" = "Windshield Whiper";
+
+"Glutes" = "Glutes";
+"Cable Donkey Kick" = "Cable Donkey Kick";
+"Glute Bridge" = "Glute Bridge";
+"Hip Thrust" = "Hip Thrust";
+"Kettlebell Swing" = "Kettlebell Swing";
+"Lateral Lunge" = "Lateral Lunge";
+"Machine Donkey Kick" = "Machine Donkey Kick";
+"Romanian Deadlift" = "Romanian Deadlift";
+"Single-Leg RDL" = "Single-Leg RDL";
