@@ -1,6 +1,0 @@
-framework module Pods_WorkoutTrack {
-  umbrella header "Pods-WorkoutTrack-umbrella.h"
-
-  export *
-  module * { export * }
-}

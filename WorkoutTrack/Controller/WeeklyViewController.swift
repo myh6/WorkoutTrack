@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-
+private let demoAdsUnitID = "ca-app-pub-3940256099942544/2934735716"
 class WeeklyViewController: UIViewController {
     
     //MARK: - Properties
@@ -77,6 +78,13 @@ class WeeklyViewController: UIViewController {
     private var todayDetails = [AddActionModel]()
     private var deleteDate: String?
     
+    private let banner: GADBannerView = {
+        let banner = GADBannerView()
+        banner.adUnitID = demoAdsUnitID
+        banner.backgroundColor = .secondarySystemBackground
+        banner.load(GADRequest())
+        return banner
+    }()
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         CoredataService.shared.getTodayActionFromCoredata { action, error in
@@ -211,6 +219,14 @@ class WeeklyViewController: UIViewController {
 
 //MARK: - Extension: UITableViewDelegate, UITableViewDataSource
 extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if indexPath.row != 0 {

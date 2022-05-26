@@ -1,0 +1,6 @@
+framework module Pods_GYMHack_GYMHackUITests {
+  umbrella header "Pods-GYMHack-GYMHackUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

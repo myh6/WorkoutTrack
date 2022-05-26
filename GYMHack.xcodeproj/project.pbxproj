@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07C293D2CAC68FE847CEE50C /* Pods_GYMHack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFAD302473903BA2BFA2AB4 /* Pods_GYMHack.framework */; };
 		0F0FD99528164C35001ACCDB /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99428164C35001ACCDB /* Sections.swift */; };
 		0F0FD99728166FCC001ACCDB /* SectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99628166FCC001ACCDB /* SectionsCell.swift */; };
 		0F0FD99928167440001ACCDB /* ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99828167440001ACCDB /* ExpandCell.swift */; };
@@ -69,9 +70,8 @@
 		0FEBB59B2839055E005AF29E /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBB59A2839055E005AF29E /* LanguageCell.swift */; };
 		0FEBB5D9283CBB94005AF29E /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0FEBB5D8283CBB94005AF29E /* launchScreen.gif */; };
 		0FEBB5DB283CBC39005AF29E /* GifHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBB5DA283CBC39005AF29E /* GifHelper.swift */; };
-		40083DBE8B7B4B955B2CC8AC /* Pods_WorkoutTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13F05E5EA2C1B28A4B93491 /* Pods_WorkoutTrackTests.framework */; };
-		8746F04E31F54986AA1C5D17 /* Pods_WorkoutTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124436CEB6251C2D9F9881A3 /* Pods_WorkoutTrack.framework */; };
-		AD031F7F8624E9BA7DBC4F39 /* Pods_WorkoutTrack_WorkoutTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFDBFB887382BDCB4EDC391C /* Pods_WorkoutTrack_WorkoutTrackUITests.framework */; };
+		2884642D57380F701319643D /* Pods_GYMHack_GYMHackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC09AE760C2D1671A009A8E1 /* Pods_GYMHack_GYMHackUITests.framework */; };
+		DD742885EFED5C5314E72CC2 /* Pods_GYMHackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155EDF464F1BF81997405987 /* Pods_GYMHackTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,15 +163,17 @@
 		0FEBB59A2839055E005AF29E /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
 		0FEBB5D8283CBB94005AF29E /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = launchScreen.gif; path = ../../../Downloads/launchScreen.gif; sourceTree = "<group>"; };
 		0FEBB5DA283CBC39005AF29E /* GifHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifHelper.swift; sourceTree = "<group>"; };
-		124436CEB6251C2D9F9881A3 /* Pods_WorkoutTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5795731FE84B5955B986FD4B /* Pods-WorkoutTrack-WorkoutTrackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrack-WorkoutTrackUITests.release.xcconfig"; path = "Target Support Files/Pods-WorkoutTrack-WorkoutTrackUITests/Pods-WorkoutTrack-WorkoutTrackUITests.release.xcconfig"; sourceTree = "<group>"; };
-		674AD3812374FDFB516943B6 /* Pods-WorkoutTrack-WorkoutTrackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrack-WorkoutTrackUITests.debug.xcconfig"; path = "Target Support Files/Pods-WorkoutTrack-WorkoutTrackUITests/Pods-WorkoutTrack-WorkoutTrackUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		155EDF464F1BF81997405987 /* Pods_GYMHackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GYMHackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F44A8279739F2037D277C98 /* Pods-GYMHack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYMHack.release.xcconfig"; path = "Target Support Files/Pods-GYMHack/Pods-GYMHack.release.xcconfig"; sourceTree = "<group>"; };
+		63FB740155788ADC43B5F06B /* Pods-GYMHackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYMHackTests.debug.xcconfig"; path = "Target Support Files/Pods-GYMHackTests/Pods-GYMHackTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6C78CFCB957A90D19C4353C6 /* Pods-GYMHack-GYMHackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYMHack-GYMHackUITests.debug.xcconfig"; path = "Target Support Files/Pods-GYMHack-GYMHackUITests/Pods-GYMHack-GYMHackUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6EB57CD564A0E6D8744EB44C /* Pods-GYMHack-GYMHackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYMHack-GYMHackUITests.release.xcconfig"; path = "Target Support Files/Pods-GYMHack-GYMHackUITests/Pods-GYMHack-GYMHackUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7C456BD40B3FFE0949B35991 /* Pods-WorkoutTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrack.release.xcconfig"; path = "Target Support Files/Pods-WorkoutTrack/Pods-WorkoutTrack.release.xcconfig"; sourceTree = "<group>"; };
 		7E78E625DD9470E5864511A9 /* Pods-WorkoutTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrack.debug.xcconfig"; path = "Target Support Files/Pods-WorkoutTrack/Pods-WorkoutTrack.debug.xcconfig"; sourceTree = "<group>"; };
-		A13F05E5EA2C1B28A4B93491 /* Pods_WorkoutTrackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutTrackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B699361F5C04C24E1D063D27 /* Pods-WorkoutTrackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrackTests.debug.xcconfig"; path = "Target Support Files/Pods-WorkoutTrackTests/Pods-WorkoutTrackTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EC07D49447851E93EE478C5F /* Pods-WorkoutTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutTrackTests.release.xcconfig"; path = "Target Support Files/Pods-WorkoutTrackTests/Pods-WorkoutTrackTests.release.xcconfig"; sourceTree = "<group>"; };
-		FFDBFB887382BDCB4EDC391C /* Pods_WorkoutTrack_WorkoutTrackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkoutTrack_WorkoutTrackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8921F136C22275771217C99 /* Pods-GYMHackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYMHackTests.release.xcconfig"; path = "Target Support Files/Pods-GYMHackTests/Pods-GYMHackTests.release.xcconfig"; sourceTree = "<group>"; };
+		CC09AE760C2D1671A009A8E1 /* Pods_GYMHack_GYMHackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GYMHack_GYMHackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFFAD302473903BA2BFA2AB4 /* Pods_GYMHack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GYMHack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D45DFA4C8706E9BD9C7D0D4B /* Pods-GYMHack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYMHack.debug.xcconfig"; path = "Target Support Files/Pods-GYMHack/Pods-GYMHack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8746F04E31F54986AA1C5D17 /* Pods_WorkoutTrack.framework in Frameworks */,
+				07C293D2CAC68FE847CEE50C /* Pods_GYMHack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40083DBE8B7B4B955B2CC8AC /* Pods_WorkoutTrackTests.framework in Frameworks */,
+				DD742885EFED5C5314E72CC2 /* Pods_GYMHackTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD031F7F8624E9BA7DBC4F39 /* Pods_WorkoutTrack_WorkoutTrackUITests.framework in Frameworks */,
+				2884642D57380F701319643D /* Pods_GYMHack_GYMHackUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +403,12 @@
 			children = (
 				7E78E625DD9470E5864511A9 /* Pods-WorkoutTrack.debug.xcconfig */,
 				7C456BD40B3FFE0949B35991 /* Pods-WorkoutTrack.release.xcconfig */,
-				674AD3812374FDFB516943B6 /* Pods-WorkoutTrack-WorkoutTrackUITests.debug.xcconfig */,
-				5795731FE84B5955B986FD4B /* Pods-WorkoutTrack-WorkoutTrackUITests.release.xcconfig */,
-				B699361F5C04C24E1D063D27 /* Pods-WorkoutTrackTests.debug.xcconfig */,
-				EC07D49447851E93EE478C5F /* Pods-WorkoutTrackTests.release.xcconfig */,
+				D45DFA4C8706E9BD9C7D0D4B /* Pods-GYMHack.debug.xcconfig */,
+				3F44A8279739F2037D277C98 /* Pods-GYMHack.release.xcconfig */,
+				6C78CFCB957A90D19C4353C6 /* Pods-GYMHack-GYMHackUITests.debug.xcconfig */,
+				6EB57CD564A0E6D8744EB44C /* Pods-GYMHack-GYMHackUITests.release.xcconfig */,
+				63FB740155788ADC43B5F06B /* Pods-GYMHackTests.debug.xcconfig */,
+				B8921F136C22275771217C99 /* Pods-GYMHackTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -412,9 +416,9 @@
 		AF01C82783888908B6314D4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				124436CEB6251C2D9F9881A3 /* Pods_WorkoutTrack.framework */,
-				FFDBFB887382BDCB4EDC391C /* Pods_WorkoutTrack_WorkoutTrackUITests.framework */,
-				A13F05E5EA2C1B28A4B93491 /* Pods_WorkoutTrackTests.framework */,
+				CFFAD302473903BA2BFA2AB4 /* Pods_GYMHack.framework */,
+				CC09AE760C2D1671A009A8E1 /* Pods_GYMHack_GYMHackUITests.framework */,
+				155EDF464F1BF81997405987 /* Pods_GYMHackTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -445,7 +449,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F99CC4A28144BAC00994329 /* Build configuration list for PBXNativeTarget "GYMHackTests" */;
 			buildPhases = (
-				258E33EE76E5449B391196A3 /* [CP] Check Pods Manifest.lock */,
+				78A7DBEEE8136A62D30B5FC6 /* [CP] Check Pods Manifest.lock */,
 				0F99CC2F28144BAC00994329 /* Sources */,
 				0F99CC3028144BAC00994329 /* Frameworks */,
 				0F99CC3128144BAC00994329 /* Resources */,
@@ -464,11 +468,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F99CC4D28144BAC00994329 /* Build configuration list for PBXNativeTarget "GYMHackUITests" */;
 			buildPhases = (
-				66F9F6D97FC15C696FB9E5F2 /* [CP] Check Pods Manifest.lock */,
+				8D6FD4944D7DF5A54ABC7BA3 /* [CP] Check Pods Manifest.lock */,
 				0F99CC3928144BAC00994329 /* Sources */,
 				0F99CC3A28144BAC00994329 /* Frameworks */,
 				0F99CC3B28144BAC00994329 /* Resources */,
-				BD03FBB4DB5E0F28081E9840 /* [CP] Embed Pods Frameworks */,
+				1CAFD76AF5817C5A75175A28 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -559,29 +563,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		258E33EE76E5449B391196A3 /* [CP] Check Pods Manifest.lock */ = {
+		1CAFD76AF5817C5A75175A28 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GYMHack-GYMHackUITests/Pods-GYMHack-GYMHackUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WorkoutTrackTests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-GYMHack-GYMHackUITests/Pods-GYMHack-GYMHackUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GYMHack-GYMHackUITests/Pods-GYMHack-GYMHackUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		66F9F6D97FC15C696FB9E5F2 /* [CP] Check Pods Manifest.lock */ = {
+		78A7DBEEE8136A62D30B5FC6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -596,7 +595,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WorkoutTrack-WorkoutTrackUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-GYMHackTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -618,7 +617,29 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WorkoutTrack-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-GYMHack-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D6FD4944D7DF5A54ABC7BA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GYMHack-GYMHackUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -631,32 +652,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WorkoutTrack/Pods-WorkoutTrack-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-GYMHack/Pods-GYMHack-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WorkoutTrack/Pods-WorkoutTrack-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-GYMHack/Pods-GYMHack-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WorkoutTrack/Pods-WorkoutTrack-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BD03FBB4DB5E0F28081E9840 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WorkoutTrack-WorkoutTrackUITests/Pods-WorkoutTrack-WorkoutTrackUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WorkoutTrack-WorkoutTrackUITests/Pods-WorkoutTrack-WorkoutTrackUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WorkoutTrack-WorkoutTrackUITests/Pods-WorkoutTrack-WorkoutTrackUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GYMHack/Pods-GYMHack-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -901,7 +905,7 @@
 		};
 		0F99CC4828144BAC00994329 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E78E625DD9470E5864511A9 /* Pods-WorkoutTrack.debug.xcconfig */;
+			baseConfigurationReference = D45DFA4C8706E9BD9C7D0D4B /* Pods-GYMHack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -932,7 +936,7 @@
 		};
 		0F99CC4928144BAC00994329 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C456BD40B3FFE0949B35991 /* Pods-WorkoutTrack.release.xcconfig */;
+			baseConfigurationReference = 3F44A8279739F2037D277C98 /* Pods-GYMHack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -963,7 +967,7 @@
 		};
 		0F99CC4B28144BAC00994329 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B699361F5C04C24E1D063D27 /* Pods-WorkoutTrackTests.debug.xcconfig */;
+			baseConfigurationReference = 63FB740155788ADC43B5F06B /* Pods-GYMHackTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -984,7 +988,7 @@
 		};
 		0F99CC4C28144BAC00994329 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC07D49447851E93EE478C5F /* Pods-WorkoutTrackTests.release.xcconfig */;
+			baseConfigurationReference = B8921F136C22275771217C99 /* Pods-GYMHackTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1005,7 +1009,7 @@
 		};
 		0F99CC4E28144BAC00994329 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 674AD3812374FDFB516943B6 /* Pods-WorkoutTrack-WorkoutTrackUITests.debug.xcconfig */;
+			baseConfigurationReference = 6C78CFCB957A90D19C4353C6 /* Pods-GYMHack-GYMHackUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1024,7 +1028,7 @@
 		};
 		0F99CC4F28144BAC00994329 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5795731FE84B5955B986FD4B /* Pods-WorkoutTrack-WorkoutTrackUITests.release.xcconfig */;
+			baseConfigurationReference = 6EB57CD564A0E6D8744EB44C /* Pods-GYMHack-GYMHackUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
