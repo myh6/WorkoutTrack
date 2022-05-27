@@ -80,6 +80,7 @@
 "Incline Triceps Extension" = "Incline Triceps Extension";
 "Lying Tricep Extension" = "Lying Tricep Extension";
 "Machine Bicep Curl" = "Machine Bicep Curl";
+"Machine Seated Dip" = "Machine Seated Dip";
 "Overhead Cable Extension" = "Overhead Cable Extension";
 "Preacher Curl" = "Preacher Curl";
 "Spider Curl" = "Spider Curl";
@@ -116,6 +117,7 @@
 "Hollow Hold" = "Hollow Hold";
 "Knee-To-Elbow Sit-Up" = "Knee-To-Elbow Sit-Up";
 "Leg Lowers" = "Leg Lowers";
+"Machine Crunch" = "Machine Crunch";
 "Plank" = "Plank";
 "Reverse Crunch" = "Reverse Crunch";
 "Raised Leg Circle" = "Raised Leg Circle";
@@ -127,6 +129,7 @@
 
 "Glutes" = "Glutes";
 "Cable Donkey Kick" = "Cable Donkey Kick";
+"Cable Lateral Leg Raise" = "Cable Lateral Leg Raise";
 "Glute Bridge" = "Glute Bridge";
 "Hip Thrust" = "Hip Thrust";
 "Kettlebell Swing" = "Kettlebell Swing";

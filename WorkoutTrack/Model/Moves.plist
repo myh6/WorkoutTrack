@@ -80,6 +80,7 @@
 		<string>Incline Triceps Extension</string>
 		<string>Lying Tricep Extension</string>
 		<string>Machine Bicep Curl</string>
+		<string>Machine Seated Dip</string>
 		<string>Overhead Cable Extension</string>
 		<string>Preacher Curl</string>
 		<string>Spider Curl</string>
@@ -118,6 +119,7 @@
 		<string>Hollow Hold</string>
 		<string>Knee-To-Elbow Sit-Up</string>
 		<string>Leg Lowers</string>
+		<string>Machine Crunch</string>
 		<string>Plank</string>
 		<string>Reverse Crunch</string>
 		<string>Raised Leg Circle</string>
@@ -130,6 +132,7 @@
 	<key>Glutes</key>
 	<array>
 		<string>Cable Donkey Kick</string>
+		<string>Cable Lateral Leg Raise</string>
 		<string>Glute Bridge</string>
 		<string>Hip Thrust</string>
 		<string>Kettlebell Swing</string>

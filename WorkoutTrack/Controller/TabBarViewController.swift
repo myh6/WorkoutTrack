@@ -22,7 +22,7 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         //CoredataService.shared.addDummyDataToCoreData()
 //        userDefault.set("zh-Hant", forKey: "Language")
-        userDefault.set("en", forKey: "Language")
+        //userDefault.set("en", forKey: "Language")
         configureUI()
     }
     

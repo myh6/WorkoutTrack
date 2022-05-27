@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-8149222044782182~4988351572</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,7 +23,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-8149222044782182~1746523834</string>
 </dict>
 </plist>

@@ -80,6 +80,7 @@
 "Incline Triceps Extension" = "上斜三頭屈伸";
 "Lying Tricep Extension" = "平躺三頭屈伸";
 "Machine Bicep Curl" = "機械式彎舉";
+"Machine Seated Dip" = "機械式撐體";
 "Overhead Cable Extension" = "繩索過頭屈伸";
 "Preacher Curl" = "斜板屈臂彎舉";
 "Spider Curl" = "蜘蛛彎舉";
@@ -116,6 +117,7 @@
 "Hollow Hold" = "空心支撐";
 "Knee-To-Elbow Sit-Up" = "抬膝仰臥起坐";
 "Leg Lowers" = "仰臥放腿";
+"Machine Crunch" = "機械式坐姿卷腹";
 "Plank" = "平板撐";
 "Reverse Crunch" = "反向捲腹";
 "Raised Leg Circle" = "仰臥腳懸空畫圈";
@@ -127,6 +129,7 @@
 
 "Glutes" = "臀部";
 "Cable Donkey Kick" = "滑輪驢子踢腿";
+"Cable Lateral Leg Raise" = "滑輪側抬腿";
 "Glute Bridge" = "曲膝橋式";
 "Hip Thrust" = "臀推";
 "Kettlebell Swing" = "壺鈴擺盪";

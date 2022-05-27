@@ -55,6 +55,7 @@
 		0FE107722827D9DA00D9D110 /* HistoryActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107712827D9DA00D9D110 /* HistoryActionModel.swift */; };
 		0FE107742828009400D9D110 /* NoHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107732828009400D9D110 /* NoHistoryCell.swift */; };
 		0FE107762828B78700D9D110 /* HistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107752828B78700D9D110 /* HistoryLabel.swift */; };
+		0FE401CF28409FAD006386CF /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0FE401CE28409FAD006386CF /* launchScreen.gif */; };
 		0FE98DCC28313DC5008EB8CD /* ChartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FE98DCB28313DC5008EB8CD /* ChartViewController.storyboard */; };
 		0FE98DCE283150E2008EB8CD /* DropDownTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE98DCD283150E2008EB8CD /* DropDownTextField.swift */; };
 		0FE98DD02831DDD8008EB8CD /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE98DCF2831DDD8008EB8CD /* LaunchScreenViewController.swift */; };
@@ -68,7 +69,6 @@
 		0FE98E492838EED2008EB8CD /* LanguageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE98E482838EED2008EB8CD /* LanguageOverlayView.swift */; };
 		0FE98E4B2838EF05008EB8CD /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE98E4A2838EF05008EB8CD /* PresentationController.swift */; };
 		0FEBB59B2839055E005AF29E /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBB59A2839055E005AF29E /* LanguageCell.swift */; };
-		0FEBB5D9283CBB94005AF29E /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0FEBB5D8283CBB94005AF29E /* launchScreen.gif */; };
 		0FEBB5DB283CBC39005AF29E /* GifHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBB5DA283CBC39005AF29E /* GifHelper.swift */; };
 		2884642D57380F701319643D /* Pods_GYMHack_GYMHackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC09AE760C2D1671A009A8E1 /* Pods_GYMHack_GYMHackUITests.framework */; };
 		DD742885EFED5C5314E72CC2 /* Pods_GYMHackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155EDF464F1BF81997405987 /* Pods_GYMHackTests.framework */; };
@@ -146,6 +146,7 @@
 		0FE107712827D9DA00D9D110 /* HistoryActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryActionModel.swift; sourceTree = "<group>"; };
 		0FE107732828009400D9D110 /* NoHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHistoryCell.swift; sourceTree = "<group>"; };
 		0FE107752828B78700D9D110 /* HistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLabel.swift; sourceTree = "<group>"; };
+		0FE401CE28409FAD006386CF /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = launchScreen.gif; path = ../../Downloads/launchScreen.gif; sourceTree = "<group>"; };
 		0FE98DCB28313DC5008EB8CD /* ChartViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChartViewController.storyboard; sourceTree = "<group>"; };
 		0FE98DCD283150E2008EB8CD /* DropDownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextField.swift; sourceTree = "<group>"; };
 		0FE98DCF2831DDD8008EB8CD /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +162,6 @@
 		0FE98E482838EED2008EB8CD /* LanguageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageOverlayView.swift; sourceTree = "<group>"; };
 		0FE98E4A2838EF05008EB8CD /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		0FEBB59A2839055E005AF29E /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
-		0FEBB5D8283CBB94005AF29E /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = launchScreen.gif; path = ../../../Downloads/launchScreen.gif; sourceTree = "<group>"; };
 		0FEBB5DA283CBC39005AF29E /* GifHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifHelper.swift; sourceTree = "<group>"; };
 		155EDF464F1BF81997405987 /* Pods_GYMHackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GYMHackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F44A8279739F2037D277C98 /* Pods-GYMHack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GYMHack.release.xcconfig"; path = "Target Support Files/Pods-GYMHack/Pods-GYMHack.release.xcconfig"; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 				0F99CC5328144F0100994329 /* Utility */,
 				0F99CC2328144BAB00994329 /* Main.storyboard */,
 				0F99CC2928144BAB00994329 /* Assets.xcassets */,
-				0FEBB5D8283CBB94005AF29E /* launchScreen.gif */,
+				0FE401CE28409FAD006386CF /* launchScreen.gif */,
 				0F62EC56282D03D5004952F4 /* AppIcon.appiconset */,
 				0F99CC2B28144BAB00994329 /* LaunchScreen.storyboard */,
 				0F99CC2E28144BAB00994329 /* Info.plist */,
@@ -534,9 +534,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F99CC2D28144BAB00994329 /* LaunchScreen.storyboard in Resources */,
+				0FE401CF28409FAD006386CF /* launchScreen.gif in Resources */,
 				0FE98DCC28313DC5008EB8CD /* ChartViewController.storyboard in Resources */,
 				0F99CC2A28144BAB00994329 /* Assets.xcassets in Resources */,
-				0FEBB5D9283CBB94005AF29E /* launchScreen.gif in Resources */,
 				0F99CC2528144BAB00994329 /* Main.storyboard in Resources */,
 				0F99CC59281457D900994329 /* Moves.plist in Resources */,
 				0FE98E3628362AC9008EB8CD /* Localizable.strings in Resources */,
@@ -921,12 +921,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.WorkoutTrack;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MYH.GYMHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -952,12 +953,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.WorkoutTrack;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MYH.GYMHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

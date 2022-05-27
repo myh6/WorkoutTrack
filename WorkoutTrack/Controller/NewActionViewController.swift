@@ -119,27 +119,27 @@ class NewActionViewController: UIViewController {
     
     @objc func handleNoType() {
         self.showAlert(title: "Please choose a body part.")
-        return
+        
     }
     
     @objc func handleNoAction() {
         self.showAlert(title: "Please choose an exercise.")
-        return
+        
     }
     
     @objc func handleNoDate() {
         self.showAlert(title: "Please choose a date")
-        return
+        
     }
     
     @objc func handleNoReps() {
         self.showAlert(title: "Please set your reps to a nonzero value")
-        return
+        
     }
     
     @objc func handleNoSetData() {
         self.showAlert(title: "You need at least one set to save.")
-        return
+        
     }
     
     @objc func handleSave() {

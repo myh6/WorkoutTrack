@@ -22,8 +22,8 @@ class LanguageOverlayView: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
-        view.addGestureRecognizer(panGesture)
+//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
+//        view.addGestureRecognizer(panGesture)
         tableView.register(LanguageCell.self, forCellReuseIdentifier: identifier)
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,7 +37,7 @@ class LanguageOverlayView: UIViewController {
         
         // Not allowing the user to drag the view upward
         guard translation.y >= 0 else { return }
-        
+        // Not allowing the user to drag the view downward
         // setting x as 0 because we don't want users to move the frame side ways!! Only want straight up or down
         view.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
         
