@@ -130,7 +130,7 @@ class WeeklyViewController: UIViewController {
     
     @objc func updateLanguage() {
         if (userDefault.value(forKey: "Language") as! String) == "en" {
-            var tempDate = self.titleLabel.text
+            var tempDate = self.todayLabel.text
             if self.titleLabel.text == "TODAY" {
                 tempDate = dateFormatter.string(from: Date())
             }
@@ -153,6 +153,7 @@ class WeeklyViewController: UIViewController {
                  "Glutes".localizeString(string: userDefault.value(forKey: "Language") as! String)]
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.checkActionStatus()
         }
 
     }
