@@ -138,6 +138,10 @@
 		<string>Kettlebell Swing</string>
 		<string>Lateral Lunge</string>
 		<string>Machine Donkey Kick</string>
+		<string>Machine Seated Abduction</string>
+		<string>Machine Seated Adduction</string>
+		<string>Machine Standing Abduction</string>
+		<string>Machine Standing Adduction</string>
 		<string>Romanian Deadlift</string>
 		<string>Single-Leg RDL</string>
 	</array>

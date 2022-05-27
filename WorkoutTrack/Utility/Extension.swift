@@ -140,6 +140,10 @@ public func translation(_ zh: String) -> String? {
         case "壺鈴擺盪": return "Kettlebell Swing"
         case "側向弓步": return "Lateral Lunge"
         case "機械式驢子踢腿": return "Machine Donkey Kick"
+        case "機械式坐式外收肌": return "Machine Seated Abduction"
+        case "機械式坐式內收肌": return "Machine Seated Adduction"
+        case "機械式站式外收肌": return "Machine Standing Abduction"
+        case "機械式站式內收肌": return "Machine Standing Adduction"
         case "羅馬尼亞硬舉": return "Romanian Deadlift"
         case "單腳羅馬尼亞硬舉": return "Single-Leg RDL"
         default:

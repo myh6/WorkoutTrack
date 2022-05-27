@@ -15,6 +15,7 @@ struct NewExercise {
     static var reps: Int?
     static var actionName: String?
     static var ofType: String?
+    static var statusCheck = false
     
     static func clearData() {
         time = nil
@@ -23,6 +24,7 @@ struct NewExercise {
         reps = nil
         actionName = nil
         ofType = nil
+        statusCheck = false
     }
 
     

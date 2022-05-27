@@ -156,6 +156,12 @@ class NewActionViewController: UIViewController {
             return
         }
         NotificationCenter.default.post(name: .saveData, object: nil)
+        
+        if !NewExercise.statusCheck {
+            handleNoReps()
+            return
+        }
+        
         self.dismiss(animated: true)
 
     }
@@ -189,7 +195,7 @@ class NewActionViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleNoType), name: .noType, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNoAction), name: .noAction, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNoDate), name: .noDate, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleNoReps), name: .noReps, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(handleNoReps), name: .noReps, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNoSetData), name: .noDataForSet, object: nil)
     }
     

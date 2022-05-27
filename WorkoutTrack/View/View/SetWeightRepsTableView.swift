@@ -47,13 +47,14 @@ class SetWeightRepsTableView: UITableView {
             print("DEBUG: Before saving new data: \(i):\(tempStoredModel[i])")
             guard tempStoredModel[i].reps != 0  else {
                 outputData.removeAll()
-                tempStoredModel.removeAll()
-                NotificationCenter.default.post(name: .noReps, object: nil)
+                //NotificationCenter.default.post(name: .noReps, object: nil)
+                NewExercise.statusCheck = false
                 return
             }
             outputData.append(tempStoredModel[i])
             print("DEBUG: Saving tempStoredModel to outputData \(outputData)")
         }
+        NewExercise.statusCheck = true
         setDelegate?.sendSaveDataToVC(outputData)
     }
     //MARK: - Helpers
