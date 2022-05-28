@@ -610,5 +610,14 @@ final class CoredataService {
         
     }
     
+    //MARK: - Delete uncheck expired exercise to save disk space
+    /**Delete**/
+    func deletExpiredData() {
+        print("DEBUG: delete epired data")
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+//        let context = appDelegate.persistentContainer.viewContext
+//        let request: NSFetchRequest<Detail> = Detail.fetchRequest()
+    }
+    
     
 }

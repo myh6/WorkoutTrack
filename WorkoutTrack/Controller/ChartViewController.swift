@@ -8,6 +8,7 @@
 import UIKit
 import DropDown
 import Charts
+import GoogleMobileAds
 
 enum DDTid: Int {
     case body = 0
@@ -17,6 +18,8 @@ enum DDTid: Int {
 private let chart1ID = "chart1ID"
 private let chart2ID = "chart2ID"
 private let chart3ID = "chart3ID"
+private let demoAdsUnitID = "ca-app-pub-3940256099942544/2934735716"
+private let productionID = "ca-app-pub-8149222044782182/4117891526"
 class ChartViewController: UIViewController {
     
     //MARK: - Properties
@@ -43,6 +46,13 @@ class ChartViewController: UIViewController {
         let df = DateFormatter()
         df.dateFormat = "yyyy/MM/dd"
         return df
+    }()
+    private let banner: GADBannerView = {
+        let banner = GADBannerView()
+        banner.adUnitID = demoAdsUnitID
+        banner.backgroundColor = .secondarySystemBackground
+        banner.load(GADRequest())
+        return banner
     }()
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -78,10 +88,14 @@ class ChartViewController: UIViewController {
         ddtBody.placeholder = "body"
         ddtExercise.placeholder = "exercise"
         ddtReps.placeholder = "rep"
+        view.addSubview(banner)
+        banner.anchor(left: view.leftAnchor,
+                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                      right: view.rightAnchor, height: 50)
         view.addSubview(tableView)
         tableView.anchor(top: ddtStackView.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                         bottom: banner.topAnchor,
                          right: view.rightAnchor, paddingTop: 10)
         tableView.delegate = self
         tableView.dataSource = self

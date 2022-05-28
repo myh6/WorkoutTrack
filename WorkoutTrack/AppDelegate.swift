@@ -13,11 +13,12 @@ import GoogleMobileAds
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         userDefault.register(defaults: ["Language": "en"])
         userDefault.register(defaults: ["noAds": false])
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [GADSimulatorID]
+//        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        CoredataService.shared.deletExpiredData()
         return true
     }
     

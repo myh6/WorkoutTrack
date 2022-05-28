@@ -7,7 +7,10 @@
 
 import UIKit
 import FSCalendar
+import GoogleMobileAds
 
+private let demoAdsUnitID = "ca-app-pub-3940256099942544/2934735716"
+private let productinoID = "ca-app-pub-8149222044782182/2502353685"
 class MonthlyViewController: UIViewController {
     
     //MARK: - Properties
@@ -44,7 +47,13 @@ class MonthlyViewController: UIViewController {
         return tv
     }()
     private var action = [AddActionModel]()
-
+    private let banner: GADBannerView = {
+        let banner = GADBannerView()
+        banner.adUnitID = demoAdsUnitID
+        banner.backgroundColor = .secondarySystemBackground
+        banner.load(GADRequest())
+        return banner
+    }()
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         self.haveDataDate = CoredataService.shared.allDateHaveData()
@@ -66,18 +75,23 @@ class MonthlyViewController: UIViewController {
         fsCalendarView.appearance.eventDefaultColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
         fsCalendarView.appearance.eventSelectionColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 0.8470588235)
         view.addSubview(todayLabel)
-        todayLabel.anchor(top: fsCalendarView.bottomAnchor, left: view.leftAnchor, paddingTop: 10, paddingLeft: 20)
+        todayLabel.anchor(top: fsCalendarView.bottomAnchor,
+                          left: view.leftAnchor, paddingTop: 10, paddingLeft: 20)
         
+        view.addSubview(banner)
+        banner.anchor(left: view.leftAnchor,
+                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                      right: view.rightAnchor, height: 50)
         view.addSubview(noDataView)
         noDataView.anchor(top: todayLabel.bottomAnchor,
                           left: view.leftAnchor,
-                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          bottom: banner.topAnchor,
                           right: view.rightAnchor, paddingTop: 10)
         
         view.addSubview(tableView)
         tableView.anchor(top: todayLabel.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                         bottom: banner.topAnchor,
                          right: view.rightAnchor, paddingTop: 10)
         tableView.delegate = self
         tableView.dataSource = self
