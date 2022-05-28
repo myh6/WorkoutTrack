@@ -56,7 +56,6 @@
 		0FE107742828009400D9D110 /* NoHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107732828009400D9D110 /* NoHistoryCell.swift */; };
 		0FE107762828B78700D9D110 /* HistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107752828B78700D9D110 /* HistoryLabel.swift */; };
 		0FE401CF28409FAD006386CF /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0FE401CE28409FAD006386CF /* launchScreen.gif */; };
-		0FE401D128424448006386CF /* AddCustomActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE401D028424448006386CF /* AddCustomActionCell.swift */; };
 		0FE401D32842532E006386CF /* CustomActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE401D22842532E006386CF /* CustomActionModel.swift */; };
 		0FE401D52842637C006386CF /* ChooseCustomExerciseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE401D42842637C006386CF /* ChooseCustomExerciseTableView.swift */; };
 		0FE98DCC28313DC5008EB8CD /* ChartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FE98DCB28313DC5008EB8CD /* ChartViewController.storyboard */; };
@@ -150,7 +149,6 @@
 		0FE107732828009400D9D110 /* NoHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHistoryCell.swift; sourceTree = "<group>"; };
 		0FE107752828B78700D9D110 /* HistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLabel.swift; sourceTree = "<group>"; };
 		0FE401CE28409FAD006386CF /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = launchScreen.gif; path = ../../Downloads/launchScreen.gif; sourceTree = "<group>"; };
-		0FE401D028424448006386CF /* AddCustomActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomActionCell.swift; sourceTree = "<group>"; };
 		0FE401D22842532E006386CF /* CustomActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionModel.swift; sourceTree = "<group>"; };
 		0FE401D42842637C006386CF /* ChooseCustomExerciseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCustomExerciseTableView.swift; sourceTree = "<group>"; };
 		0FE98DCB28313DC5008EB8CD /* ChartViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChartViewController.storyboard; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 				0F0FD99628166FCC001ACCDB /* SectionsCell.swift */,
 				0F0FD99828167440001ACCDB /* ExpandCell.swift */,
 				0FE1075B2820D0AA00D9D110 /* ChooseCell.swift */,
-				0FE401D028424448006386CF /* AddCustomActionCell.swift */,
 				0FE1076728221F0000D9D110 /* SetWeightRepsCell.swift */,
 				0FE1076D28224BF100D9D110 /* AddCell.swift */,
 				0FE1076528211F5100D9D110 /* HistoryCell.swift */,
@@ -694,7 +691,6 @@
 				0F99CC5F2815730500994329 /* WeekdayButton.swift in Sources */,
 				0FE107702823CD6C00D9D110 /* HistoryTableView.swift in Sources */,
 				0FE98DDF28322232008EB8CD /* Chart2Cell.swift in Sources */,
-				0FE401D128424448006386CF /* AddCustomActionCell.swift in Sources */,
 				0FE1076A282221DB00D9D110 /* SetWeightRepsTableView.swift in Sources */,
 				0FE1075C2820D0AA00D9D110 /* ChooseCell.swift in Sources */,
 				0FE1075A2820CB0A00D9D110 /* WeekDateChooseTableView.swift in Sources */,

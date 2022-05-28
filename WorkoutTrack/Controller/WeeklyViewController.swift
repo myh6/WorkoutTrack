@@ -36,8 +36,10 @@ class WeeklyViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "GYMHACK"
-        label.textColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
+        let first = NSMutableAttributedString(string: "GYM", attributes: [.foregroundColor: UIColor.black])
+        let second = NSMutableAttributedString(string: "HACK", attributes: [.foregroundColor: #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)])
+        first.append(second)
+        label.attributedText = first
         label.adjustsFontSizeToFitWidth = true
         label.font = .init(name: "Futura-Bold", size: 40)
         return label
