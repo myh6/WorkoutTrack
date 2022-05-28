@@ -167,6 +167,7 @@ class ChartViewController: UIViewController {
 extension ChartViewController: DropDownTextFieldDelegate {
     func dropDownTextDidChange(_ dropDownTextField: DropDownTextField, text: String) {
         print("DEBUG: ChartVC dropDownTextDidChange")
+        var outputArray = [String]()
         switch dropDownTextField.tag {
         case DDTid.body.rawValue:
             self.tempType = text
@@ -175,23 +176,31 @@ extension ChartViewController: DropDownTextFieldDelegate {
                 guard moves != nil else {return}
                 switch translation(text) {
                 case "Chest":
-                    self.ddtExercise.setArray(array: moves!.Chest)
+                    outputArray = moves!.Chest
                 case "Back":
-                    self.ddtExercise.setArray(array: moves!.Back)
+                    outputArray = moves!.Back
                 case "Shoulder":
-                    self.ddtExercise.setArray(array: moves!.Shoulder)
+                    outputArray = moves!.Shoulder
                 case "Arms":
-                    self.ddtExercise.setArray(array: moves!.Arms)
+                    outputArray = moves!.Arms
                 case "Abs":
-                    self.ddtExercise.setArray(array: moves!.Abs)
+                    outputArray = moves!.Abs
                 case "Legs":
-                    self.ddtExercise.setArray(array: moves!.Legs)
+                    outputArray = moves!.Legs
                 case "Glutes":
-                    self.ddtExercise.setArray(array: moves!.Glutes)
+                    outputArray = moves!.Glutes
                 default:
                     break
                 }
             }
+            CoredataService.shared.getCustomActionFromCoredata(ofType: translation(text) ?? "") { custom, error in
+                guard error == nil else {
+                    self.showAlert(title: "Error retriving custom action")
+                    return
+                }
+                outputArray.append(contentsOf: custom ?? [])
+            }
+            self.ddtExercise.setArray(array: outputArray)
         case DDTid.exercise.rawValue:
             self.ddtReps.setArray(array: ["1","2","3","4","5","6",
                                     "7", "8", "9", "10","11","12"])

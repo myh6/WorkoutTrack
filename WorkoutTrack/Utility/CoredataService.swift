@@ -78,6 +78,23 @@ final class CoredataService {
         }
     }
     
+    //MARK: - Create Custom Action
+    func addCustomAction(todatabase action: String, completion: ((Error?) -> Void)) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let customAction = CustomAction(context: context)
+        customAction.ofType = NewExercise.ofType
+        customAction.actionName = action
+        do {
+            try context.save()
+            print("DEBUG: Successfully save custom action to Core Data")
+            completion(nil)
+        } catch {
+            print("DEBUG: Error saving custom action")
+            completion(error)
+        }
+    }
+    
     //MARK: - Get all data from CoreData
     /**Read**/
     func getAllDataFromCoredata(completion: @escaping ([Detail]?, Error?) -> Void) {
@@ -91,6 +108,26 @@ final class CoredataService {
             completion(details, nil)
         } catch {
             print("DEBUG: Error fetching data from Coredata \(error.localizedDescription)")
+            completion(nil, error)
+        }
+    }
+    
+    //MARK: - Get custom action from CoreData
+    func getCustomActionFromCoredata(ofType: String, completion: @escaping ([String]?, Error?) -> Void) {
+        var fetchData = [CustomAction]()
+        var output = [String]()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let request: NSFetchRequest<CustomAction> = CustomAction.fetchRequest()
+        request.predicate = NSPredicate(format: "ofType LIKE %@", ofType)
+        do {
+            fetchData = try context.fetch(request)
+            for data in fetchData {
+                guard data.actionName != nil else {return}
+                output.append(data.actionName!)
+            }
+            completion(output, nil)
+        } catch {
             completion(nil, error)
         }
     }

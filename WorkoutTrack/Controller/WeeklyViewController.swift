@@ -227,61 +227,6 @@ class WeeklyViewController: UIViewController {
 //MARK: - Extension: UITableViewDelegate, UITableViewDataSource
 extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
-//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        if indexPath.row != 0 {
-//            let edit = UIContextualAction(style: .normal, title: "Edit") { _, view, completionHandler in
-//                //Update Data
-//                let editAlert = UIAlertController(title: "Edit your Set", message: "", preferredStyle: .alert)
-//                //Add TextField To alertController
-//                editAlert.addTextField { wtf in
-//                    wtf.placeholder = "Weight"
-//                    wtf.text = String(self.action[indexPath.section].detail[indexPath.row - 1].weight)
-//                    wtf.font = .init(name: "Futura", size: 20)
-//                    wtf.keyboardType = .decimalPad
-//                }
-//                editAlert.addTextField { rtf in
-//                    rtf.placeholder = "Reps"
-//                    rtf.text = String(self.action[indexPath.section].detail[indexPath.row - 1].reps)
-//                    rtf.font = .init(name: "Futura", size: 20)
-//                    rtf.keyboardType = .numberPad
-//                }
-//                let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-//                let update = UIAlertAction(title: "Update", style: .default) { _ in
-//                    print("Update weight reps for set")
-//                    //Update Data
-//                    guard editAlert.textFields![0].hasText else {return}
-//                    guard editAlert.textFields![1].hasText else {return}
-//                    CoredataService.shared.updateSetData(id: self.action[indexPath.section].detail[indexPath.row - 1].id,
-//                                                         weight: editAlert.textFields![0].text!,
-//                                                         Reps: editAlert.textFields![1].text!)
-//                    var nowDate = self.todayLabel.text
-//                    if self.todayLabel.text == "TODAY" {
-//                        nowDate = self.dateFormatter.string(from: self.date)
-//                    }
-//                    CoredataService.shared.getDataInSpecificDateFromCoredata(date: nowDate!) { actions, error in
-//                        guard error == nil else {return}
-//                        guard let safeActions = actions else {return}
-//                        self.action = safeActions
-//                        DispatchQueue.main.async {
-//                            self.tableView.reloadData()
-//                        }
-//                    }
-//                }
-//                editAlert.addAction(cancel)
-//                editAlert.addAction(update)
-//                self.present(editAlert, animated: true)
-//                completionHandler(true)
-//            }
-//            edit.backgroundColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 0.8470588235)
-//            edit.image = UIImage(systemName: "pencil")?.withTintColor(.white)
-//            let swipe = UISwipeActionsConfiguration(actions: [edit])
-//            swipe.performsFirstActionWithFullSwipe = false
-//            return swipe
-//        }
-//        return nil
-//    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         if indexPath.row == 0 {

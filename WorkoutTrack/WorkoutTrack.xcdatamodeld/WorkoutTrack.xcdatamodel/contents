@@ -6,6 +6,10 @@
         <attribute name="ofType" optional="YES" attributeType="String"/>
         <relationship name="details" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Detail" inverseName="ofAction" inverseEntity="Detail"/>
     </entity>
+    <entity name="CustomAction" representedClassName="CustomAction" syncable="YES" codeGenerationType="class">
+        <attribute name="actionName" attributeType="String"/>
+        <attribute name="ofType" attributeType="String"/>
+    </entity>
     <entity name="Detail" representedClassName="Detail" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="String"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -18,5 +22,6 @@
     <elements>
         <element name="Action" positionX="138.46875" positionY="-7.1796875" width="122.390625" height="89"/>
         <element name="Detail" positionX="-45" positionY="0" width="128" height="134"/>
+        <element name="CustomAction" positionX="45" positionY="54" width="128" height="59"/>
     </elements>
 </model>

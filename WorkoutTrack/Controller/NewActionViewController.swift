@@ -61,6 +61,26 @@ class NewActionViewController: UIViewController {
         label.textColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
         return label
     }()
+    private let chooseCustomLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Custom Exercise"
+        label.font = .init(name: "Futura", size: 20)
+        label.textColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
+        return label
+    }()
+    private lazy var addCustomButton: UIButton = {
+        let button = UIButton()
+        var config = UIButton.Configuration.plain()
+        var text = AttributedString(" Custom Action")
+        text.font = UIFont(name: "Futura", size: 10)
+        text.foregroundColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 1)
+        config.attributedTitle = text
+        config.image = UIImage(systemName: "plus.circle")?.withTintColor( #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 1), renderingMode: .alwaysOriginal)
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 15, weight: .regular)
+        button.configuration = config
+        button.addTarget(self, action: #selector(handleAddCustomAction), for: .touchUpInside)
+        return button
+    }()
     private let chooseSetLabel: UILabel = {
         let label = UILabel()
         label.text = "Set & Weight & Reps"
@@ -79,6 +99,7 @@ class NewActionViewController: UIViewController {
     private let dateTableView = WeekDateChooseTableView()
     private let bodyTableView = ChooseBodyTableView()
     private let exerciseTableView = ChooseExerciseTableView()
+    private let customExerciseTableView = ChooseCustomExerciseTableView()
     private var setWeightRepsTableView = SetWeightRepsTableView()
     private let histroyTableView = HistoryTableView()
     //MARK: - Lifecycle
@@ -140,6 +161,34 @@ class NewActionViewController: UIViewController {
     @objc func handleNoSetData() {
         self.showAlert(title: "You need at least one set to save.")
         
+    }
+    
+    @objc func handleAddCustomAction() {
+        guard NewExercise.ofType != nil else {
+            self.showAlert(title: "Please choose a body type first.")
+            return
+        }
+        print("DEBUG: NewActionVC show add custom action alert")
+        let customActionAlert = UIAlertController(title: "Add Custom Action", message: "Once you add a custom action, it can not be removed from your database", preferredStyle: .alert)
+        customActionAlert.addTextField { actiontf in
+            actiontf.placeholder = "Input Custom Action"
+            actiontf.font = .init(name: "Futura", size: 20)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let add = UIAlertAction(title: "Add", style: .default) { _ in
+            guard customActionAlert.textFields![0].hasText else {return}
+            CoredataService.shared.addCustomAction(todatabase: customActionAlert.textFields![0].text!,
+                                                   completion: { error in
+                guard error != nil else {return}
+                self.showAlert(title: "Error adding custom action \(error!)")
+            })
+            DispatchQueue.main.async {
+                self.customExerciseTableView.reloadData()
+            }
+        }
+        customActionAlert.addAction(cancel)
+        customActionAlert.addAction(add)
+        self.present(customActionAlert, animated: true)
     }
     
     @objc func handleSave() {
@@ -261,10 +310,23 @@ class NewActionViewController: UIViewController {
         page.addSubview(exerciseTableView)
         exerciseTableView.anchor(top: chooseExerciseLabel.bottomAnchor,
                                  left: page.leftAnchor,
-                                 bottom: page.bottomAnchor,
                                  right: page.rightAnchor,
-                                 paddingTop: 20)
+                                 paddingTop: 20, height: page.frame.size.height / 2)
         exerciseTableView.chooseDelegate = self
+        page.addSubview(chooseCustomLabel)
+        chooseCustomLabel.anchor(top: exerciseTableView.bottomAnchor,
+                                 left: page.leftAnchor,
+                                 paddingTop: 20, paddingLeft: 30)
+        page.addSubview(addCustomButton)
+        addCustomButton.anchor(top: chooseCustomLabel.topAnchor,
+                               bottom: chooseCustomLabel.bottomAnchor,
+                               right: page.rightAnchor, paddingRight: 5)
+        page.addSubview(customExerciseTableView)
+        customExerciseTableView.anchor(top: chooseCustomLabel.bottomAnchor,
+                                       left: page.leftAnchor,
+                                       bottom: page.bottomAnchor,
+                                       right: page.rightAnchor)
+        customExerciseTableView.chooseCustomDelegate = self
     }
     
     /**Fourth Page in ScrollView Choose Set & Weight & Reps**/
@@ -325,6 +387,10 @@ extension NewActionViewController: WeekDateChoseTableViewDelegate {
 //MARK: - Extension: ChooseBodyTableViewDelegate
 extension NewActionViewController: ChooseBodyTableViewDelegate {
     func chooseBody(_ body: String) {
+        guard NewExercise.ofType != nil else {
+            self.showAlert(title: "Please choose a body type first.")
+            return
+        }
         print("DEBUG: Choose body \(body)")
         Moves.shared.getDBMenu { moves in
             guard moves != nil else {return}
@@ -344,11 +410,34 @@ extension NewActionViewController: ChooseBodyTableViewDelegate {
             }
             DispatchQueue.main.async {
                 self.exerciseTableView.reloadData()
-                self.chooseExerciseLabel.text = body
-                self.scrollView.setContentOffset(CGPoint(x: 2 * self.containerView.frame.size.width,
-                                                         y: 0), animated: true)
             }
         }
+        CoredataService.shared.getCustomActionFromCoredata(ofType: NewExercise.ofType!) { output, error in
+            guard error == nil else {
+                self.showAlert(title: "Error getting custom action from coredata \(error!)")
+                return
+            }
+            ChooseCustomExerciseTableView.data = output ?? []
+            DispatchQueue.main.async {
+                self.customExerciseTableView.reloadData()
+            }
+        }
+
+        DispatchQueue.main.async {
+            self.chooseExerciseLabel.text = body
+            self.scrollView.setContentOffset(CGPoint(x: 2 * self.containerView.frame.size.width,
+                                                     y: 0), animated: true)
+        }
+    }
+}
+
+//MARK: - Extension: ChooseCustomExerciseTableViewDelegate
+extension NewActionViewController: ChooseCustomExerciseTableViewDelegate {
+    func chooseCustomExercise(exercise: String) {
+        print("DEBUG: exercise choose \(exercise)")
+        self.chooseSetLabel.text = exercise
+        self.scrollView.setContentOffset(CGPoint(x: 3 * self.containerView.frame.size.width,
+                                                 y: 0), animated: true)
     }
 }
 
