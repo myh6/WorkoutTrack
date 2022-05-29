@@ -48,7 +48,7 @@
 "Back Extension" = "背部屈伸";
 "Barbell Shrug" = "槓鈴聳肩";
 "Cable Rope Pullover" = "滑輪直臂下拉";
-"Cable One Arm Lat Pull" = "單手滑輪下拉";
+"Cable One Arm Lat Pulldown" = "單手滑輪下拉";
 "Close Grip Pull" = "窄握下拉";
 "Chin-up" = "反握引體向上";
 "Dumbbell Row" = "啞鈴划船";
@@ -92,7 +92,7 @@
 "Cable Shrug" = "滑輪聳肩";
 "Cable One Arm Lateral Raise" = "滑輪單臂側平舉";
 "Cable Rear Delt Fly" = "滑輪反向飛鳥";
-"Cable One Arm Pulldown" = "滑輪單臂下拉";
+"Cable One Arm Pull" = "滑輪單臂下拉";
 "Cable Upright Row" = "滑輪直立上提";
 "Dumbell Front Raise" = "啞鈴前平舉";
 "Dumbell Lateral Raise" = "啞鈴側平舉";

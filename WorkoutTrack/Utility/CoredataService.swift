@@ -151,7 +151,7 @@ final class CoredataService {
             
             for detail in details {
                 
-                print("DEBUG: getTodayActionFromCoredata - \(detail)")
+                //print("DEBUG: getTodayActionFromCoredata - \(detail)")
                 
                 /***/
                 if output.isEmpty {

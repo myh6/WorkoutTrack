@@ -94,7 +94,7 @@ class WeeklyViewController: UIViewController {
             guard error == nil else { return }
             guard let safeActions = action else { return }
             self.action = safeActions
-            print("DEBUG: Today data from Coredata \(self.action)")
+            //print("DEBUG: Today data from Coredata \(self.action)")
             DispatchQueue.main.async {
                 self.todayLabel.text = "TODAY"
                 self.tableView.reloadData()
@@ -109,7 +109,7 @@ class WeeklyViewController: UIViewController {
             guard error == nil else { return }
             guard let safeActions = action else { return }
             self.action = safeActions
-            print("DEBUG: Today data from Coredata \(self.action)")
+            //print("DEBUG: Today data from Coredata \(self.action)")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -189,18 +189,18 @@ class WeeklyViewController: UIViewController {
                           left: view.leftAnchor,
                           right: view.rightAnchor, paddingTop: 10, paddingLeft: 20)
         
-        view.addSubview(blankView)
-        blankView.anchor(top: todayLabel.bottomAnchor,
-                         left: view.leftAnchor,
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         right: view.rightAnchor)
-        blankView.addSubview(noDataLabel)
-        noDataLabel.centerInSuperview()
-        
         view.addSubview(banner)
         banner.anchor(left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                      right: view.rightAnchor, height: 50)
+                      right: view.rightAnchor, width: view.frame.size.width, height: 50)
+        
+        view.addSubview(blankView)
+        blankView.anchor(top: todayLabel.bottomAnchor,
+                         left: view.leftAnchor,
+                         bottom: banner.topAnchor,
+                         right: view.rightAnchor)
+        blankView.addSubview(noDataLabel)
+        noDataLabel.centerInSuperview()
         
         view.addSubview(tableView)
         tableView.delegate = self

@@ -113,7 +113,18 @@ class NewActionViewController: UIViewController {
                 ChooseExerciseTableView.data[i] = ChooseExerciseTableView.data[i].localizeString(string: userDefault.value(forKey: "Language") as! String)
             }
         }
-        self.exerciseTableView.reloadData()
+        CoredataService.shared.getCustomActionFromCoredata(ofType: NewExercise.ofType ?? "Chest") { custom, error in
+            guard error == nil else {
+                self.showAlert(title: "Error getting custom exercise \(error!)")
+                return
+            }
+            guard custom != nil else {return}
+            ChooseCustomExerciseTableView.data = custom ?? []
+        }
+        DispatchQueue.main.async {
+            self.customExerciseTableView.reloadData()
+            self.exerciseTableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -169,9 +180,9 @@ class NewActionViewController: UIViewController {
             return
         }
         print("DEBUG: NewActionVC show add custom action alert")
-        let customActionAlert = UIAlertController(title: "Add Custom Action", message: "Once you add a custom action, it can not be removed from your database", preferredStyle: .alert)
+        let customActionAlert = UIAlertController(title: "Add Custom Exercise", message: "Once you add a custom exercise, it can not be removed from your database", preferredStyle: .alert)
         customActionAlert.addTextField { actiontf in
-            actiontf.placeholder = "Input Custom Action"
+            actiontf.placeholder = "Add Custom Exercise"
             actiontf.font = .init(name: "Futura", size: 20)
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -182,6 +193,14 @@ class NewActionViewController: UIViewController {
                 guard error != nil else {return}
                 self.showAlert(title: "Error adding custom action \(error!)")
             })
+            CoredataService.shared.getCustomActionFromCoredata(ofType: NewExercise.ofType!) { customs, error in
+                guard error == nil else {
+                    self.showAlert(title: "Error getting custom exercise \(error!)")
+                    return
+                }
+                guard customs != nil else {return}
+                ChooseCustomExerciseTableView.data = customs ?? []
+            }
             DispatchQueue.main.async {
                 self.customExerciseTableView.reloadData()
             }

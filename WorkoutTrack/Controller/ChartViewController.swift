@@ -88,20 +88,19 @@ class ChartViewController: UIViewController {
         ddtBody.placeholder = "body"
         ddtExercise.placeholder = "exercise"
         ddtReps.placeholder = "rep"
-        view.addSubview(banner)
-        banner.anchor(left: view.leftAnchor,
-                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                      right: view.rightAnchor, height: 50)
+//        view.addSubview(banner)
+//        banner.anchor(left: view.leftAnchor,
+//                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
+//                      right: view.rightAnchor, height: 50)
         view.addSubview(tableView)
         tableView.anchor(top: ddtStackView.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: banner.topAnchor,
+                         bottom: view.bottomAnchor,
                          right: view.rightAnchor, paddingTop: 10)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
-        tableView.isScrollEnabled = false
     }
     
     /**Converting line data to data set to pass in to charts**/

@@ -78,20 +78,20 @@ class MonthlyViewController: UIViewController {
         todayLabel.anchor(top: fsCalendarView.bottomAnchor,
                           left: view.leftAnchor, paddingTop: 10, paddingLeft: 20)
         
-        view.addSubview(banner)
-        banner.anchor(left: view.leftAnchor,
-                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                      right: view.rightAnchor, height: 50)
+//        view.addSubview(banner)
+//        banner.anchor(left: view.leftAnchor,
+//                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
+//                      right: view.rightAnchor, height: 50)
         view.addSubview(noDataView)
         noDataView.anchor(top: todayLabel.bottomAnchor,
                           left: view.leftAnchor,
-                          bottom: banner.topAnchor,
+                          bottom: view.bottomAnchor,
                           right: view.rightAnchor, paddingTop: 10)
         
         view.addSubview(tableView)
         tableView.anchor(top: todayLabel.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: banner.topAnchor,
+                         bottom: view.bottomAnchor,
                          right: view.rightAnchor, paddingTop: 10)
         tableView.delegate = self
         tableView.dataSource = self
@@ -191,11 +191,6 @@ extension MonthlyViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             action[indexPath.section].isOpen = !action[indexPath.section].isOpen
             tableView.reloadSections([indexPath.section], with: .none)
-        } else {
-            print("DEBUG: Expand Cell got tapped")
-            let cell = tableView.cellForRow(at: indexPath) as! ExpandCell
-            action[indexPath.section].detail[indexPath.row - 1].isDone = !action[indexPath.section].detail[indexPath.row - 1].isDone
-            cell.checkButton.configuration?.image = action[indexPath.section].detail[indexPath.row - 1].isDone ? UIImage(systemName: checkMark)?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
         }
     }
     
