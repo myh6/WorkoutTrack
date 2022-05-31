@@ -49,7 +49,7 @@ class ChartViewController: UIViewController {
     }()
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = productionID
+        banner.adUnitID = demoAdsUnitID
         banner.backgroundColor = .secondarySystemBackground
         banner.load(GADRequest())
         return banner

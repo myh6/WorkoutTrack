@@ -83,7 +83,7 @@ class WeeklyViewController: UIViewController {
     
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = productinoID
+        banner.adUnitID = demoAdsUnitID
         banner.backgroundColor = .secondarySystemBackground
         banner.load(GADRequest())
         return banner
