@@ -49,7 +49,7 @@ class ChartViewController: UIViewController {
     }()
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = demoAdsUnitID
+        banner.adUnitID = productionID
         banner.backgroundColor = .secondarySystemBackground
         banner.load(GADRequest())
         return banner
@@ -195,7 +195,7 @@ extension ChartViewController: DropDownTextFieldDelegate {
             }
             CoredataService.shared.getCustomActionFromCoredata(ofType: translation(text) ?? "") { custom, error in
                 guard error == nil else {
-                    self.showAlert(title: "Error retriving custom action")
+                    self.showAlert(title: "Error retriving custom exercises")
                     return
                 }
                 outputArray.append(contentsOf: custom ?? [])

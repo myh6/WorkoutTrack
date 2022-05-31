@@ -141,3 +141,9 @@
 "Machine Standing Adduction" = "機械式站式內收肌";
 "Romanian Deadlift" = "羅馬尼亞硬舉";
 "Single-Leg RDL" = "單腳羅馬尼亞硬舉";
+
+//system
+"Add Custom Exercise" = "新增客製動作";
+"Can't find your exercise? Create your custom one." = "找不到想要的運動嗎？新增你專屬的運動吧";
+"Delete Custom Exercise" = "Delete Custom Exercise";
+"Edit your Set" = "修改你這組的資料";

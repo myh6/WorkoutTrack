@@ -141,3 +141,9 @@
 "Machine Standing Adduction" = "Machine Standing Adduction";
 "Romanian Deadlift" = "Romanian Deadlift";
 "Single-Leg RDL" = "Single-Leg RDL";
+
+//system
+"Add Custom Exercise" = "Add Custom Exercise";
+"Can't find your exercise? Create your custom one." = "Can't find your exercise? Create your custom one.";
+"Delete Custom Exercise" = "Delete Custom Exercise";
+"Edit your Set" = "Edit your Set";

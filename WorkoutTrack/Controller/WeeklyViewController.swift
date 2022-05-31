@@ -83,7 +83,7 @@ class WeeklyViewController: UIViewController {
     
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = demoAdsUnitID
+        banner.adUnitID = productinoID
         banner.backgroundColor = .secondarySystemBackground
         banner.load(GADRequest())
         return banner
@@ -277,7 +277,7 @@ extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let edit = UIContextualAction(style: .normal, title: "Edit") { _, view, completionHandler in
                 //Update Data
-                let editAlert = UIAlertController(title: "Edit your Set", message: "", preferredStyle: .alert)
+                let editAlert = UIAlertController(title: "Edit your Set".localizeString(string: userDefault.value(forKey: "Language") as! String), message: "", preferredStyle: .alert)
                 //Add TextField To alertController
                 editAlert.addTextField { wtf in
                     wtf.placeholder = "Weight"

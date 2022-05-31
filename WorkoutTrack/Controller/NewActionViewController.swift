@@ -180,7 +180,7 @@ class NewActionViewController: UIViewController {
             return
         }
         print("DEBUG: NewActionVC show add custom action alert")
-        let customActionAlert = UIAlertController(title: "Add Custom Exercise", message: "Once you add a custom exercise, it can not be removed from your database", preferredStyle: .alert)
+        let customActionAlert = UIAlertController(title: "Add Custom Exercise".localizeString(string: userDefault.value(forKey: "Language") as! String), message: "Can't find your exercise? Create your custom one.".localizeString(string: userDefault.value(forKey: "Language") as! String), preferredStyle: .alert)
         customActionAlert.addTextField { actiontf in
             actiontf.placeholder = "Add Custom Exercise"
             actiontf.font = .init(name: "Futura", size: 20)
@@ -453,7 +453,7 @@ extension NewActionViewController: ChooseBodyTableViewDelegate {
 //MARK: - Extension: ChooseCustomExerciseTableViewDelegate
 extension NewActionViewController: ChooseCustomExerciseTableViewDelegate {
     func showDeleteCustomAlert(exercise: String) {
-        let deleteAlert = UIAlertController(title: "Delete Custom Exercise", message: "If you delete \(exercise), all the associated data would be deleted as well. Are you sure to proceed?", preferredStyle: .alert)
+        let deleteAlert = UIAlertController(title: "Delete Custom Exercise".localizeString(string: userDefault.value(forKey: "Language") as! String), message: "If you delete \(exercise), all the associated data would be deleted as well. Are you sure to proceed?", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         let confirm = UIAlertAction(title: "Confirm", style: .default) { _ in
             CoredataService.shared.deleteCustomExercise(exercise: exercise, completion: { error in
