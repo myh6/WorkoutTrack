@@ -88,14 +88,15 @@ class ChartViewController: UIViewController {
         ddtBody.placeholder = "body"
         ddtExercise.placeholder = "exercise"
         ddtReps.placeholder = "rep"
-//        view.addSubview(banner)
-//        banner.anchor(left: view.leftAnchor,
-//                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
-//                      right: view.rightAnchor, height: 50)
+        view.addSubview(banner)
+        banner.anchor(left: view.leftAnchor,
+                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                      right: view.rightAnchor, width: view.frame.size.width, height: 50)
+        
         view.addSubview(tableView)
         tableView.anchor(top: ddtStackView.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: view.bottomAnchor,
+                         bottom: banner.topAnchor,
                          right: view.rightAnchor, paddingTop: 10)
         tableView.delegate = self
         tableView.dataSource = self

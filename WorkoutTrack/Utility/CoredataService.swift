@@ -656,5 +656,37 @@ final class CoredataService {
 //        let request: NSFetchRequest<Detail> = Detail.fetchRequest()
     }
     
+    //MARK: - Delete custom exercise and relative data
+    /**Delete**/
+    func deleteCustomExercise(exercise: String, completion: @escaping ((Error?)->Void)) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let request: NSFetchRequest<CustomAction> = CustomAction.fetchRequest()
+        let request2: NSFetchRequest<Action> = Action.fetchRequest()
+        request.fetchLimit = 1
+        request.predicate = NSPredicate(format: "actionName LIKE %@", exercise)
+        request2.predicate = NSPredicate(format: "actionName LIKE %@", exercise)
+        do {
+            let data = try context.fetch(request)
+            let history = try context.fetch(request2)
+            for datum in data {
+                context.delete(datum)
+            }
+            for data in history {
+                context.delete(data)
+            }
+            do {
+                try context.save()
+                completion(nil)
+            } catch {
+                print("DEBUG: Error saving data after delete \(error)")
+                completion(error)
+            }
+        } catch {
+            print("DEBUG: Error fetching data \(error)")
+            completion(error)
+        }
+        
+    }
     
 }

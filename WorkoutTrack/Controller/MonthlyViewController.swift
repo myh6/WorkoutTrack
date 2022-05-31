@@ -78,20 +78,21 @@ class MonthlyViewController: UIViewController {
         todayLabel.anchor(top: fsCalendarView.bottomAnchor,
                           left: view.leftAnchor, paddingTop: 10, paddingLeft: 20)
         
-//        view.addSubview(banner)
-//        banner.anchor(left: view.leftAnchor,
-//                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
-//                      right: view.rightAnchor, height: 50)
+        view.addSubview(banner)
+        banner.anchor(left: view.leftAnchor,
+                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                      right: view.rightAnchor, width: view.frame.size.width, height: 50)
+        
         view.addSubview(noDataView)
         noDataView.anchor(top: todayLabel.bottomAnchor,
                           left: view.leftAnchor,
-                          bottom: view.bottomAnchor,
+                          bottom: banner.topAnchor,
                           right: view.rightAnchor, paddingTop: 10)
         
         view.addSubview(tableView)
         tableView.anchor(top: todayLabel.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: view.bottomAnchor,
+                         bottom: banner.topAnchor,
                          right: view.rightAnchor, paddingTop: 10)
         tableView.delegate = self
         tableView.dataSource = self

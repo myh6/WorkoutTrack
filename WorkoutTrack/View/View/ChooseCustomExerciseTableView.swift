@@ -9,6 +9,7 @@ import UIKit
 
 protocol ChooseCustomExerciseTableViewDelegate: AnyObject {
     func chooseCustomExercise(exercise: String)
+    func showDeleteCustomAlert(exercise: String)
 }
 private let identifier = "tableView"
 class ChooseCustomExerciseTableView: UITableView {
@@ -19,7 +20,7 @@ class ChooseCustomExerciseTableView: UITableView {
     //MARK: - Lifecycle
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        register(CustomExerciseCell.self, forCellReuseIdentifier: identifier)
         configureUI()
         backgroundColor = #colorLiteral(red: 0.9782040715, green: 0.9782040715, blue: 0.9782039523, alpha: 1)
         separatorStyle = .none
@@ -57,15 +58,14 @@ extension ChooseCustomExerciseTableView: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.backgroundColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CustomExerciseCell
         let backgroundView = UIView()
         backgroundView.backgroundColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
         cell.selectedBackgroundView = backgroundView
-        var config = cell.defaultContentConfiguration()
-        config.attributedText = NSMutableAttributedString(string: (ChooseCustomExerciseTableView.data[indexPath.row]),
-                                                          attributes: [.font: UIFont(name: "Futura", size: 20)!])
-        cell.contentConfiguration = config
+        cell.title.text = ChooseCustomExerciseTableView.data[indexPath.row]
+        cell.title.font = UIFont.init(name: "Futura", size: 20)
+        cell.deleteButton.tag = indexPath.row
+        cell.cellDelegate = self
         return cell
         
     }
@@ -74,6 +74,13 @@ extension ChooseCustomExerciseTableView: UITableViewDelegate, UITableViewDataSou
             NewExercise.actionName = ChooseCustomExerciseTableView.data[indexPath.row]
             NotificationCenter.default.post(name: .changeExercise, object: nil)
             chooseCustomDelegate?.chooseCustomExercise(exercise: ChooseCustomExerciseTableView.data[indexPath.row])
+    }
+    
+}
+
+extension ChooseCustomExerciseTableView: CustomExerciseCellDelegate {
+    func deleteCustomCell(tag: Int) {
+        chooseCustomDelegate?.showDeleteCustomAlert(exercise: ChooseCustomExerciseTableView.data[tag])
     }
     
 }

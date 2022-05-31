@@ -452,6 +452,32 @@ extension NewActionViewController: ChooseBodyTableViewDelegate {
 
 //MARK: - Extension: ChooseCustomExerciseTableViewDelegate
 extension NewActionViewController: ChooseCustomExerciseTableViewDelegate {
+    func showDeleteCustomAlert(exercise: String) {
+        let deleteAlert = UIAlertController(title: "Delete Custom Exercise", message: "If you delete \(exercise), all the associated data would be deleted as well. Are you sure to proceed?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let confirm = UIAlertAction(title: "Confirm", style: .default) { _ in
+            CoredataService.shared.deleteCustomExercise(exercise: exercise, completion: { error in
+                guard error == nil else {
+                    self.showAlert(title: "Error in operation \(error!)")
+                    return
+                }
+            })
+            CoredataService.shared.getCustomActionFromCoredata(ofType: NewExercise.ofType ?? "") { customs, error in
+                guard error == nil else {
+                    self.showAlert(title: "Error getting custom exercises \(error!)")
+                    return
+                }
+                ChooseCustomExerciseTableView.data = customs ?? []
+                DispatchQueue.main.async {
+                    self.customExerciseTableView.reloadData()
+                }
+            }
+        }
+        deleteAlert.addAction(cancel)
+        deleteAlert.addAction(confirm)
+        self.present(deleteAlert, animated: true)
+    }
+    
     func chooseCustomExercise(exercise: String) {
         print("DEBUG: exercise choose \(exercise)")
         self.chooseSetLabel.text = exercise

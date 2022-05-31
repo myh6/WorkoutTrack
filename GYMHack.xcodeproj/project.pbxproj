@@ -55,9 +55,10 @@
 		0FE107722827D9DA00D9D110 /* HistoryActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107712827D9DA00D9D110 /* HistoryActionModel.swift */; };
 		0FE107742828009400D9D110 /* NoHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107732828009400D9D110 /* NoHistoryCell.swift */; };
 		0FE107762828B78700D9D110 /* HistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107752828B78700D9D110 /* HistoryLabel.swift */; };
-		0FE401CF28409FAD006386CF /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0FE401CE28409FAD006386CF /* launchScreen.gif */; };
 		0FE401D32842532E006386CF /* CustomActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE401D22842532E006386CF /* CustomActionModel.swift */; };
 		0FE401D52842637C006386CF /* ChooseCustomExerciseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE401D42842637C006386CF /* ChooseCustomExerciseTableView.swift */; };
+		0FE4021728453AF3006386CF /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0FE4021628453AF3006386CF /* launchScreen.gif */; };
+		0FE402192845A87B006386CF /* CustomExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE402182845A87B006386CF /* CustomExerciseCell.swift */; };
 		0FE98DCC28313DC5008EB8CD /* ChartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FE98DCB28313DC5008EB8CD /* ChartViewController.storyboard */; };
 		0FE98DCE283150E2008EB8CD /* DropDownTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE98DCD283150E2008EB8CD /* DropDownTextField.swift */; };
 		0FE98DD02831DDD8008EB8CD /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE98DCF2831DDD8008EB8CD /* LaunchScreenViewController.swift */; };
@@ -148,9 +149,10 @@
 		0FE107712827D9DA00D9D110 /* HistoryActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryActionModel.swift; sourceTree = "<group>"; };
 		0FE107732828009400D9D110 /* NoHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHistoryCell.swift; sourceTree = "<group>"; };
 		0FE107752828B78700D9D110 /* HistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLabel.swift; sourceTree = "<group>"; };
-		0FE401CE28409FAD006386CF /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = launchScreen.gif; path = ../../Downloads/launchScreen.gif; sourceTree = "<group>"; };
 		0FE401D22842532E006386CF /* CustomActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionModel.swift; sourceTree = "<group>"; };
 		0FE401D42842637C006386CF /* ChooseCustomExerciseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCustomExerciseTableView.swift; sourceTree = "<group>"; };
+		0FE4021628453AF3006386CF /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = launchScreen.gif; path = ../../Downloads/GYMHackMats/launchScreen.gif; sourceTree = "<group>"; };
+		0FE402182845A87B006386CF /* CustomExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExerciseCell.swift; sourceTree = "<group>"; };
 		0FE98DCB28313DC5008EB8CD /* ChartViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChartViewController.storyboard; sourceTree = "<group>"; };
 		0FE98DCD283150E2008EB8CD /* DropDownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextField.swift; sourceTree = "<group>"; };
 		0FE98DCF2831DDD8008EB8CD /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				0F0FD99628166FCC001ACCDB /* SectionsCell.swift */,
 				0F0FD99828167440001ACCDB /* ExpandCell.swift */,
 				0FE1075B2820D0AA00D9D110 /* ChooseCell.swift */,
+				0FE402182845A87B006386CF /* CustomExerciseCell.swift */,
 				0FE1076728221F0000D9D110 /* SetWeightRepsCell.swift */,
 				0FE1076D28224BF100D9D110 /* AddCell.swift */,
 				0FE1076528211F5100D9D110 /* HistoryCell.swift */,
@@ -260,7 +263,7 @@
 				0F99CC5328144F0100994329 /* Utility */,
 				0F99CC2328144BAB00994329 /* Main.storyboard */,
 				0F99CC2928144BAB00994329 /* Assets.xcassets */,
-				0FE401CE28409FAD006386CF /* launchScreen.gif */,
+				0FE4021628453AF3006386CF /* launchScreen.gif */,
 				0F62EC56282D03D5004952F4 /* AppIcon.appiconset */,
 				0F99CC2B28144BAB00994329 /* LaunchScreen.storyboard */,
 				0F99CC2E28144BAB00994329 /* Info.plist */,
@@ -540,7 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F99CC2D28144BAB00994329 /* LaunchScreen.storyboard in Resources */,
-				0FE401CF28409FAD006386CF /* launchScreen.gif in Resources */,
+				0FE4021728453AF3006386CF /* launchScreen.gif in Resources */,
 				0FE98DCC28313DC5008EB8CD /* ChartViewController.storyboard in Resources */,
 				0F99CC2A28144BAB00994329 /* Assets.xcassets in Resources */,
 				0F99CC2528144BAB00994329 /* Main.storyboard in Resources */,
@@ -718,6 +721,7 @@
 				0F368C582817BD660098667E /* CoredataService.swift in Sources */,
 				0FE98DDD2832203F008EB8CD /* Chart1Cell.swift in Sources */,
 				0FE98DE128322F39008EB8CD /* Chart3Cell.swift in Sources */,
+				0FE402192845A87B006386CF /* CustomExerciseCell.swift in Sources */,
 				0FE10716281ECD9D00D9D110 /* CollapsibleExerciseView.swift in Sources */,
 				0FE10718281ECDCB00D9D110 /* CollapsibleSetView.swift in Sources */,
 				0FEBB5DB283CBC39005AF29E /* GifHelper.swift in Sources */,
@@ -917,7 +921,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = R5599LYD4Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorkoutTrack/Info.plist;
@@ -949,7 +953,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = R5599LYD4Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorkoutTrack/Info.plist;
