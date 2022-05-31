@@ -49,7 +49,7 @@ class MonthlyViewController: UIViewController {
     private var action = [AddActionModel]()
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = demoAdsUnitID
+        banner.adUnitID = productinoID
         banner.backgroundColor = .secondarySystemBackground
         banner.load(GADRequest())
         return banner
