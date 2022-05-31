@@ -89,6 +89,7 @@ class ChartViewController: UIViewController {
         ddtExercise.placeholder = "exercise"
         ddtReps.placeholder = "rep"
         view.addSubview(banner)
+        banner.rootViewController = self
         banner.anchor(left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
                       right: view.rightAnchor, width: view.frame.size.width, height: 50)

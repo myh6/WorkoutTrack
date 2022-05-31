@@ -79,6 +79,7 @@ class MonthlyViewController: UIViewController {
                           left: view.leftAnchor, paddingTop: 10, paddingLeft: 20)
         
         view.addSubview(banner)
+        banner.rootViewController = self
         banner.anchor(left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
                       right: view.rightAnchor, width: view.frame.size.width, height: 50)
