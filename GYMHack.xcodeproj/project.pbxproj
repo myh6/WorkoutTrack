@@ -26,8 +26,6 @@
 		0F99CC2A28144BAB00994329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F99CC2928144BAB00994329 /* Assets.xcassets */; };
 		0F99CC2D28144BAB00994329 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F99CC2B28144BAB00994329 /* LaunchScreen.storyboard */; };
 		0F99CC3828144BAC00994329 /* WorkoutTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC3728144BAC00994329 /* WorkoutTrackTests.swift */; };
-		0F99CC4228144BAC00994329 /* WorkoutTrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC4128144BAC00994329 /* WorkoutTrackUITests.swift */; };
-		0F99CC4428144BAC00994329 /* WorkoutTrackUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC4328144BAC00994329 /* WorkoutTrackUITestsLaunchTests.swift */; };
 		0F99CC5128144BC000994329 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC5028144BC000994329 /* Extension.swift */; };
 		0F99CC56281450E200994329 /* SFSymbolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC55281450E200994329 /* SFSymbolButton.swift */; };
 		0F99CC59281457D900994329 /* Moves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F99CC58281457D900994329 /* Moves.plist */; };
@@ -73,19 +71,11 @@
 		0FE98E4B2838EF05008EB8CD /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE98E4A2838EF05008EB8CD /* PresentationController.swift */; };
 		0FEBB59B2839055E005AF29E /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBB59A2839055E005AF29E /* LanguageCell.swift */; };
 		0FEBB5DB283CBC39005AF29E /* GifHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBB5DA283CBC39005AF29E /* GifHelper.swift */; };
-		2884642D57380F701319643D /* Pods_GYMHack_GYMHackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC09AE760C2D1671A009A8E1 /* Pods_GYMHack_GYMHackUITests.framework */; };
 		DD742885EFED5C5314E72CC2 /* Pods_GYMHackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155EDF464F1BF81997405987 /* Pods_GYMHackTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		0F99CC3428144BAC00994329 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0F99CC1228144BAB00994329 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F99CC1928144BAB00994329;
-			remoteInfo = WorkoutTrack;
-		};
-		0F99CC3E28144BAC00994329 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F99CC1228144BAB00994329 /* Project object */;
 			proxyType = 1;
@@ -119,9 +109,6 @@
 		0F99CC2E28144BAB00994329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F99CC3328144BAC00994329 /* GYMHackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GYMHackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F99CC3728144BAC00994329 /* WorkoutTrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackTests.swift; sourceTree = "<group>"; };
-		0F99CC3D28144BAC00994329 /* GYMHackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GYMHackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F99CC4128144BAC00994329 /* WorkoutTrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackUITests.swift; sourceTree = "<group>"; };
-		0F99CC4328144BAC00994329 /* WorkoutTrackUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0F99CC5028144BC000994329 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0F99CC55281450E200994329 /* SFSymbolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolButton.swift; sourceTree = "<group>"; };
 		0F99CC58281457D900994329 /* Moves.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Moves.plist; sourceTree = "<group>"; };
@@ -199,14 +186,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F99CC3A28144BAC00994329 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2884642D57380F701319643D /* Pods_GYMHack_GYMHackUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -235,7 +214,6 @@
 				0FE98E3828362AC9008EB8CD /* Localizable.strings */,
 				0F99CC1C28144BAB00994329 /* WorkoutTrack */,
 				0F99CC3628144BAC00994329 /* WorkoutTrackTests */,
-				0F99CC4028144BAC00994329 /* WorkoutTrackUITests */,
 				0F99CC1B28144BAB00994329 /* Products */,
 				41542475E09B2CB74F2D517D /* Pods */,
 				AF01C82783888908B6314D4A /* Frameworks */,
@@ -247,7 +225,6 @@
 			children = (
 				0F99CC1A28144BAB00994329 /* GYMHack.app */,
 				0F99CC3328144BAC00994329 /* GYMHackTests.xctest */,
-				0F99CC3D28144BAC00994329 /* GYMHackUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,15 +255,6 @@
 				0F99CC3728144BAC00994329 /* WorkoutTrackTests.swift */,
 			);
 			path = WorkoutTrackTests;
-			sourceTree = "<group>";
-		};
-		0F99CC4028144BAC00994329 /* WorkoutTrackUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0F99CC4128144BAC00994329 /* WorkoutTrackUITests.swift */,
-				0F99CC4328144BAC00994329 /* WorkoutTrackUITestsLaunchTests.swift */,
-			);
-			path = WorkoutTrackUITests;
 			sourceTree = "<group>";
 		};
 		0F99CC5228144BF300994329 /* Controller */ = {
@@ -473,26 +441,6 @@
 			productReference = 0F99CC3328144BAC00994329 /* GYMHackTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0F99CC3C28144BAC00994329 /* GYMHackUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0F99CC4D28144BAC00994329 /* Build configuration list for PBXNativeTarget "GYMHackUITests" */;
-			buildPhases = (
-				8D6FD4944D7DF5A54ABC7BA3 /* [CP] Check Pods Manifest.lock */,
-				0F99CC3928144BAC00994329 /* Sources */,
-				0F99CC3A28144BAC00994329 /* Frameworks */,
-				0F99CC3B28144BAC00994329 /* Resources */,
-				1CAFD76AF5817C5A75175A28 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0F99CC3F28144BAC00994329 /* PBXTargetDependency */,
-			);
-			name = GYMHackUITests;
-			productName = WorkoutTrackUITests;
-			productReference = 0F99CC3D28144BAC00994329 /* GYMHackUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -507,10 +455,6 @@
 						CreatedOnToolsVersion = 13.3;
 					};
 					0F99CC3228144BAC00994329 = {
-						CreatedOnToolsVersion = 13.3;
-						TestTargetID = 0F99CC1928144BAB00994329;
-					};
-					0F99CC3C28144BAC00994329 = {
 						CreatedOnToolsVersion = 13.3;
 						TestTargetID = 0F99CC1928144BAB00994329;
 					};
@@ -532,7 +476,6 @@
 			targets = (
 				0F99CC1928144BAB00994329 /* GYMHack */,
 				0F99CC3228144BAC00994329 /* GYMHackTests */,
-				0F99CC3C28144BAC00994329 /* GYMHackUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -562,33 +505,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F99CC3B28144BAC00994329 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1CAFD76AF5817C5A75175A28 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GYMHack-GYMHackUITests/Pods-GYMHack-GYMHackUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GYMHack-GYMHackUITests/Pods-GYMHack-GYMHackUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GYMHack-GYMHackUITests/Pods-GYMHack-GYMHackUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		78A7DBEEE8136A62D30B5FC6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -627,28 +546,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-GYMHack-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D6FD4944D7DF5A54ABC7BA3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GYMHack-GYMHackUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -742,15 +639,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F99CC3928144BAC00994329 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F99CC4428144BAC00994329 /* WorkoutTrackUITestsLaunchTests.swift in Sources */,
-				0F99CC4228144BAC00994329 /* WorkoutTrackUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -758,11 +646,6 @@
 			isa = PBXTargetDependency;
 			target = 0F99CC1928144BAB00994329 /* GYMHack */;
 			targetProxy = 0F99CC3428144BAC00994329 /* PBXContainerItemProxy */;
-		};
-		0F99CC3F28144BAC00994329 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F99CC1928144BAB00994329 /* GYMHack */;
-			targetProxy = 0F99CC3E28144BAC00994329 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -921,7 +804,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = R5599LYD4Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorkoutTrack/Info.plist;
@@ -953,7 +836,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = R5599LYD4Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorkoutTrack/Info.plist;
@@ -1021,44 +904,6 @@
 			};
 			name = Release;
 		};
-		0F99CC4E28144BAC00994329 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C78CFCB957A90D19C4353C6 /* Pods-GYMHack-GYMHackUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R5599LYD4Y;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.WorkoutTrackUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = WorkoutTrack;
-			};
-			name = Debug;
-		};
-		0F99CC4F28144BAC00994329 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EB57CD564A0E6D8744EB44C /* Pods-GYMHack-GYMHackUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R5599LYD4Y;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.WorkoutTrackUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = WorkoutTrack;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1085,15 +930,6 @@
 			buildConfigurations = (
 				0F99CC4B28144BAC00994329 /* Debug */,
 				0F99CC4C28144BAC00994329 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0F99CC4D28144BAC00994329 /* Build configuration list for PBXNativeTarget "GYMHackUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0F99CC4E28144BAC00994329 /* Debug */,
-				0F99CC4F28144BAC00994329 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

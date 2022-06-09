@@ -35,6 +35,7 @@ public func translation(_ zh: String) -> String? {
         case "側躺抬腿": return "Side Leg Raise"
         case "傳統硬舉": return "Traditional Deadlift"
         case "弓步蹲": return "Walking Lunge"
+            
         case "胸部": return "Chest"
         case "槓鈴臥推": return "Barbell Bench Press"
         case "槓鈴上斜臥推": return "Barbell Incline Bench Press"
@@ -53,6 +54,7 @@ public func translation(_ zh: String) -> String? {
         case "蝴蝶機夾胸": return "Pec Deck"
         case "伏地挺身": return "Push-Up"
         case "單臂啞鈴臥推": return "Single Arm Dumbbell Press"
+            
         case "背部": return "Back"
         case "槓鈴划船": return "Barbell Row"
         case "背部屈伸": return "Back Extension"
@@ -71,6 +73,7 @@ public func translation(_ zh: String) -> String? {
         case "坐姿滑輪划船": return "Seated Cable Row"
         case "T槓地雷管划船": return "T-Bar Row"
         case "寬握下拉": return "Wide Grip Pull"
+            
         case "手部": return "Arms"
         case "槓鈴彎舉": return "Barbell Curl"
         case "槓鈴頭顱壓碎者": return "Barbell Skull Crusher"
@@ -93,6 +96,7 @@ public func translation(_ zh: String) -> String? {
         case "繩索過頭屈伸": return "Overhead Cable Extension"
         case "斜板屈臂彎舉": return "Preacher Curl"
         case "蜘蛛彎舉": return "Spider Curl"
+            
         case "肩膀": return "Shoulder"
         case "阿諾推舉": return "Arnold Press"
         case "槓鈴直立上提": return "Barbell Upright Row"
@@ -114,6 +118,7 @@ public func translation(_ zh: String) -> String? {
         case "機械式肩推": return "Machine Shoulder Press"
         case "機械式下拉": return "Machine Lat Pulldown"
         case "槓片前平舉": return "Plate Front Raise"
+            
         case "腹肌": return "Abs"
         case "仰臥起坐": return "Basic Crunch"
         case "仰臥起坐雙手碰膝": return "Crunch Hands to Knees"
@@ -124,6 +129,7 @@ public func translation(_ zh: String) -> String? {
         case "空心支撐": return "Hollow Hold"
         case "抬膝仰臥起坐": return "Knee-To-Elbow Sit-Up"
         case "仰臥放腿": return "Leg Lowers"
+        case "機械式坐姿卷腹": return "Machine Crunch"
         case "平板撐": return "Plank"
         case "反向捲腹": return "Reverse Crunch"
         case "仰臥腳懸空畫圈": return "Raised Leg Circle"
@@ -132,6 +138,7 @@ public func translation(_ zh: String) -> String? {
         case "單手側撐體": return "Side Plank"
         case "V字屈體": return "V-Sit"
         case "雨刷式": return "Windshield Whiper"
+            
         case "臀部": return "Glutes"
         case "滑輪驢子踢腿": return "Cable Donkey Kick"
         case "滑輪側抬腿": return "Cable Lateral Leg Raise"
