@@ -16,6 +16,9 @@ enum ErrorMessage: Error {
 final class CoredataService {
     
     static let shared = CoredataService()
+    fileprivate let now = Date()
+    fileprivate let calendar = NSCalendar.current
+    fileprivate let dateFormatter = DateFormatter()
     
     //MARK: - Add Dummy Data To CoreData
     /**Create**/
@@ -651,9 +654,40 @@ final class CoredataService {
     /**Delete**/
     func deletExpiredData() {
         print("DEBUG: delete epired data")
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-//        let context = appDelegate.persistentContainer.viewContext
-//        let request: NSFetchRequest<Detail> = Detail.fetchRequest()
+        let week = getThisWeekDate()
+        let donePredicate = NSPredicate(format: "isDone == %@", NSNumber(value: false))
+        var compoundPredicates: [NSPredicate] = [donePredicate]
+        for i in week.indices {
+            compoundPredicates.append(NSPredicate(format: "time != %@", week[i]))
+        }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.persistentContainer.viewContext
+        let request: NSFetchRequest<Detail> = Detail.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: compoundPredicates)
+        do {
+            let details = try context.fetch(request)
+            for detail in details {
+                context.delete(detail)
+                do {
+                    try context.save()
+                } catch {
+                    print("DEBUG: Error saving data")
+                }
+            }
+        } catch {
+            print("DEBUG: Error fetching data")
+        }
+        
+    }
+    
+    private func getThisWeekDate() -> [String] {
+        let thisWeek = calendar.daysWithSameWeekOfYear(as: now)
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        var thisWeekDate: [String] = []
+        for i in 0...thisWeek.count - 1 {
+            thisWeekDate.append(dateFormatter.string(from: thisWeek[i]))
+        }
+        return thisWeekDate
     }
     
     //MARK: - Delete custom exercise and relative data
