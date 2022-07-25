@@ -249,6 +249,10 @@ extension UITableViewCell {
             return self.selectedBackgroundView?.backgroundColor ?? UIColor.clear
         }
     }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
 }
 
 //MARK: - UIView

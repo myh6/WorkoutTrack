@@ -12,12 +12,16 @@
 		0F0FD99728166FCC001ACCDB /* SectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99628166FCC001ACCDB /* SectionsCell.swift */; };
 		0F0FD99928167440001ACCDB /* ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99828167440001ACCDB /* ExpandCell.swift */; };
 		0F0FD99C2816A84C001ACCDB /* AddActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99B2816A84C001ACCDB /* AddActionModel.swift */; };
+		0F361F33288A3474004B322E /* AdmobID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F32288A3474004B322E /* AdmobID.swift */; };
+		0F361F35288A3532004B322E /* DropDownTextFieldID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F34288A3532004B322E /* DropDownTextFieldID.swift */; };
+		0F361F46288E6706004B322E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F45288E6706004B322E /* Log.swift */; };
 		0F368C582817BD660098667E /* CoredataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F368C572817BD660098667E /* CoredataService.swift */; };
 		0F44BA4E2828F098001AD835 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4D2828F098001AD835 /* TabBarViewController.swift */; };
 		0F44BA502828F17B001AD835 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */; };
 		0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA512828F1A3001AD835 /* ChartViewController.swift */; };
 		0F44BA5428290D8D001AD835 /* MonthlyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F44BA5328290D8D001AD835 /* MonthlyViewController.storyboard */; };
 		0F62EC57282D03D5004952F4 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 0F62EC56282D03D5004952F4 /* AppIcon.appiconset */; };
+		0F910A852855B2C700461016 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F910A842855B2C700461016 /* AppConfig.swift */; };
 		0F99CC1E28144BAB00994329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC1D28144BAB00994329 /* AppDelegate.swift */; };
 		0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC1F28144BAB00994329 /* SceneDelegate.swift */; };
 		0F99CC2228144BAB00994329 /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC2128144BAB00994329 /* WeeklyViewController.swift */; };
@@ -89,6 +93,9 @@
 		0F0FD99628166FCC001ACCDB /* SectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCell.swift; sourceTree = "<group>"; };
 		0F0FD99828167440001ACCDB /* ExpandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCell.swift; sourceTree = "<group>"; };
 		0F0FD99B2816A84C001ACCDB /* AddActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionModel.swift; sourceTree = "<group>"; };
+		0F361F32288A3474004B322E /* AdmobID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobID.swift; sourceTree = "<group>"; };
+		0F361F34288A3532004B322E /* DropDownTextFieldID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextFieldID.swift; sourceTree = "<group>"; };
+		0F361F45288E6706004B322E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		0F368C512817BB1B0098667E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		0F368C522817BB1B0098667E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0F368C562817BB810098667E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -98,6 +105,7 @@
 		0F44BA512828F1A3001AD835 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		0F44BA5328290D8D001AD835 /* MonthlyViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MonthlyViewController.storyboard; sourceTree = "<group>"; };
 		0F62EC56282D03D5004952F4 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = Assets.xcassets/AppIcon.appiconset; sourceTree = "<group>"; };
+		0F910A842855B2C700461016 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		0F99CC1A28144BAB00994329 /* GYMHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYMHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F99CC1D28144BAB00994329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F99CC1F28144BAB00994329 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -283,6 +291,8 @@
 				0F99CC5028144BC000994329 /* Extension.swift */,
 				0FE98DE42835E9AF008EB8CD /* XAxisNameFormater.swift */,
 				0FEBB5DA283CBC39005AF29E /* GifHelper.swift */,
+				0F910A842855B2C700461016 /* AppConfig.swift */,
+				0F361F45288E6706004B322E /* Log.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -310,6 +320,8 @@
 				0FE10757281FD9DD00D9D110 /* NewExercise.swift */,
 				0FE98DE22833491E008EB8CD /* ChartsSelectionModel.swift */,
 				0FE401D22842532E006386CF /* CustomActionModel.swift */,
+				0F361F32288A3474004B322E /* AdmobID.swift */,
+				0F361F34288A3532004B322E /* DropDownTextFieldID.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -586,11 +598,14 @@
 				0FE107722827D9DA00D9D110 /* HistoryActionModel.swift in Sources */,
 				0FE98DE52835E9AF008EB8CD /* XAxisNameFormater.swift in Sources */,
 				0FE98DCE283150E2008EB8CD /* DropDownTextField.swift in Sources */,
+				0F361F33288A3474004B322E /* AdmobID.swift in Sources */,
 				0F99CC5128144BC000994329 /* Extension.swift in Sources */,
 				0FE401D32842532E006386CF /* CustomActionModel.swift in Sources */,
 				0F99CC5F2815730500994329 /* WeekdayButton.swift in Sources */,
 				0FE107702823CD6C00D9D110 /* HistoryTableView.swift in Sources */,
+				0F361F35288A3532004B322E /* DropDownTextFieldID.swift in Sources */,
 				0FE98DDF28322232008EB8CD /* Chart2Cell.swift in Sources */,
+				0F910A852855B2C700461016 /* AppConfig.swift in Sources */,
 				0FE1076A282221DB00D9D110 /* SetWeightRepsTableView.swift in Sources */,
 				0FE1075C2820D0AA00D9D110 /* ChooseCell.swift in Sources */,
 				0FE1075A2820CB0A00D9D110 /* WeekDateChooseTableView.swift in Sources */,
@@ -624,6 +639,7 @@
 				0FEBB5DB283CBC39005AF29E /* GifHelper.swift in Sources */,
 				0FE107622821038200D9D110 /* ChooseBodyTableView.swift in Sources */,
 				0F99CC1E28144BAB00994329 /* AppDelegate.swift in Sources */,
+				0F361F46288E6706004B322E /* Log.swift in Sources */,
 				0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */,
 				0FE98DE32833491E008EB8CD /* ChartsSelectionModel.swift in Sources */,
 				0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */,
@@ -821,7 +837,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MYH.GYMHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -853,7 +869,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MYH.GYMHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

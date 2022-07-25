@@ -22,8 +22,6 @@ class LanguageOverlayView: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
-//        view.addGestureRecognizer(panGesture)
         tableView.register(LanguageCell.self, forCellReuseIdentifier: identifier)
         tableView.delegate = self
         tableView.dataSource = self

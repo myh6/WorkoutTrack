@@ -9,8 +9,6 @@ import UIKit
 import FSCalendar
 import GoogleMobileAds
 
-private let demoAdsUnitID = "ca-app-pub-3940256099942544/2934735716"
-private let productinoID = "ca-app-pub-8149222044782182/2502353685"
 class MonthlyViewController: UIViewController {
     
     //MARK: - Properties
@@ -49,7 +47,7 @@ class MonthlyViewController: UIViewController {
     private var action = [AddActionModel]()
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = productinoID
+        banner.adUnitID = AdmobID.testID
         banner.backgroundColor = .secondarySystemBackground
         banner.load(GADRequest())
         return banner
@@ -82,7 +80,7 @@ class MonthlyViewController: UIViewController {
         banner.rootViewController = self
         banner.anchor(left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                      right: view.rightAnchor, width: view.frame.size.width, height: 50)
+                      right: view.rightAnchor, width: view.frame.size.width, height: 0)
         
         view.addSubview(noDataView)
         noDataView.anchor(top: todayLabel.bottomAnchor,

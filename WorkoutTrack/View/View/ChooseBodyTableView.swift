@@ -17,7 +17,6 @@ public var bodys = ["Chest".localizeString(string: userDefault.value(forKey: "La
                     "Abs".localizeString(string: userDefault.value(forKey: "Language") as! String),
                     "Legs".localizeString(string: userDefault.value(forKey: "Language") as! String),
                     "Glutes".localizeString(string: userDefault.value(forKey: "Language") as! String)]
-private let identifier = "chooseBody"
 private let bodysImage = ["Chest", "Back", "Shoulder", "Arms", "Abs", "Legs", "Glutes"]
 
 class ChooseBodyTableView: UITableView {
@@ -28,7 +27,7 @@ class ChooseBodyTableView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         backgroundColor = #colorLiteral(red: 0.9782040715, green: 0.9782040715, blue: 0.9782039523, alpha: 1)
-        register(ChooseCell.self, forCellReuseIdentifier: identifier)
+        register(ChooseCell.self, forCellReuseIdentifier: ChooseCell.identifier)
         delegate = self
         dataSource = self
         separatorStyle = .none
@@ -51,7 +50,7 @@ extension ChooseBodyTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ChooseCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ChooseCell.identifier, for: indexPath) as! ChooseCell
         cell.leftImage.image = UIImage(named: "\(bodysImage[indexPath.row])") ?? #imageLiteral(resourceName: "dumbbell").withRenderingMode(.alwaysTemplate)
         cell.leftImage.contentMode = .scaleAspectFit
         cell.leftImage.layer.cornerRadius = 10
@@ -68,4 +67,12 @@ extension ChooseBodyTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension ChooseCell {
+    func configureToBodyCell(indexPath: Int) {
+        leftImage.contentMode = .scaleAspectFit
+        leftImage.layer.cornerRadius = 10
+        
+    }
 }

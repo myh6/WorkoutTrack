@@ -12,7 +12,6 @@ protocol ChooseExerciseTableViewDelegate: AnyObject {
     func chooseExercise(_ exercise: String)
 }
 
-private let identifier = "tableViewCell"
 class ChooseExerciseTableView: UITableView {
     
     //MARK: - Properties
@@ -21,7 +20,7 @@ class ChooseExerciseTableView: UITableView {
     //MARK: - Lifecycle
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
         configureUI()
         backgroundColor = #colorLiteral(red: 0.9782040715, green: 0.9782040715, blue: 0.9782039523, alpha: 1)
         separatorStyle = .none
@@ -58,7 +57,7 @@ extension ChooseExerciseTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier, for: indexPath)
         cell.backgroundColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
         let backgroundView = UIView()
         backgroundView.backgroundColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)

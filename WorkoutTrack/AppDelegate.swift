@@ -22,6 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
+        if let responseInfo = bannerView.responseInfo {
+          print(responseInfo)
+          NSLog("DEBUG: adViewDidReceiveAd", responseInfo)
+        }
+    }
+
+    func adView(_ bannerView: GADBannerView,
+        didFailToReceiveAdWithError error: Error) {
+        print("DEBUG: didFailToReceiveAdWithError: \(error.localizedDescription)")
+        NSLog("DEBUG: didFailToReceiveAdWithError", error.localizedDescription)
+    }
+    
     // MARK: UISceneSession Lifecycle
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

@@ -10,6 +10,11 @@ import UIKit
 class ChooseCell: UITableViewCell {
     
     //MARK: - Properties
+    private let calendar = NSCalendar.current
+    private let date = Date()
+    private let dateFormatter = DateFormatter()
+    let dayImage = ["s.circle", "m.circle", "t.circle", "w.circle", "t.circle", "f.circle", "s.circle"]
+
     var leftImage: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -44,5 +49,15 @@ class ChooseCell: UITableViewCell {
         addSubview(title)
         title.anchor(left: leftImage.rightAnchor, paddingLeft: 20)
         title.centerY(inView: self)
+    }
+    
+    func getThisWeekDateToButton(i: Int) -> String {
+        let thisWeek = calendar.daysWithSameWeekOfYear(as: date)
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        var thisWeekDate: [String] = []
+        for i in 0...thisWeek.count - 1 {
+            thisWeekDate.append(dateFormatter.string(from: thisWeek[i]))
+        }
+        return thisWeekDate[i]
     }
 }

@@ -15,7 +15,6 @@ class DateLabel: UILabel {
     textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     textAlignment = .center
     font = .init(name: "Futura", size: 10)
-
   }
 
   required init?(coder: NSCoder) {

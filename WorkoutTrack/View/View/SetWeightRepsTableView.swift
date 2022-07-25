@@ -11,9 +11,6 @@ protocol SetWeightRepsTableViewDelegate: AnyObject {
     func sendSaveDataToVC(_ output: [Detailed])
 }
 
-private let identifier = "setWeightRepsCell"
-private let identifier2 = "addNewCell"
-
 class SetWeightRepsTableView: UITableView {
     
     //MARK: - Properties
@@ -64,8 +61,8 @@ class SetWeightRepsTableView: UITableView {
         NotificationCenter.default.addObserver(self, selector: #selector(handleSaveTextField), name: .saveData, object: nil)
         tempStoredModel.append(Detailed(setName: "", weight: 0, isDone: false, reps: 0, id: ""))
         print("DEBUG: viewDidLoad tempStoredModel \(tempStoredModel)")
-        register(SetWeightRepsCell.self, forCellReuseIdentifier: identifier)
-        register(AddCell.self, forCellReuseIdentifier: identifier2)
+        register(SetWeightRepsCell.self, forCellReuseIdentifier: SetWeightRepsCell.identifier)
+        register(AddCell.self, forCellReuseIdentifier: AddCell.identifier)
         separatorStyle = .none
         allowsSelection = false
         delegate = self
@@ -94,39 +91,18 @@ extension SetWeightRepsTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == tempStoredModel.count && tempStoredModel.count != 10 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier2, for: indexPath) as! AddCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: AddCell.identifier, for: indexPath) as! AddCell
             cell.contentView.isUserInteractionEnabled = true
             cell.delegate = self
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! SetWeightRepsCell
-            cell.contentView.isUserInteractionEnabled = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: SetWeightRepsCell.identifier, for: indexPath) as! SetWeightRepsCell
             cell.delegate = self
-            cell.setTextField.tag = indexPath.row
-            cell.weightTextField.tag = indexPath.row
-            cell.repsTextField.tag = indexPath.row
-            cell.setTextField.delegate = self
             cell.weightTextField.delegate = self
             cell.repsTextField.delegate = self
-            cell.numberLabel.text = "\(indexPath.row + 1)"
-            cell.deleteButton.tag = indexPath.row
-            if tempStoredModel[indexPath.row].setName == "" {
-                cell.setTextField.text = .none 
-            } else {
-                cell.setTextField.text = tempStoredModel[indexPath.row].setName
-            }
-            
-            if tempStoredModel[indexPath.row].weight == 0.0 {
-                cell.weightTextField.text = .none
-            } else {
-                cell.weightTextField.text = String(tempStoredModel[indexPath.row].weight)
-            }
-            
-            if tempStoredModel[indexPath.row].reps == 0 {
-                cell.repsTextField.text = .none
-            } else {
-                cell.repsTextField.text = String(tempStoredModel[indexPath.row].reps)
-            }
+            let weight = tempStoredModel[indexPath.row].weight
+            let reps = tempStoredModel[indexPath.row].reps
+            cell.configure(index: indexPath.row, weight: weight, reps: reps)
             return cell
         }
     }
@@ -154,10 +130,7 @@ extension SetWeightRepsTableView: UITextFieldDelegate {
                 tempStoredModel.append(Detailed(setName: "", weight: 0, isDone: false, reps: 0, id: ""))
                 return
             }
-            if textField == cell.setTextField {
-                tempStoredModel[textField.tag].setName = textField.text ?? ""
-                print("DEBUG: tag:\(textField.tag): \(tempStoredModel[textField.tag].setName)")
-            } else if textField == cell.weightTextField {
+            if textField == cell.weightTextField {
                 tempStoredModel[textField.tag].weight = Float(textField.text ?? "0") ?? 0
             } else if textField == cell.repsTextField {
                 tempStoredModel[textField.tag].reps = Int(textField.text ?? "0") ?? 0
@@ -181,12 +154,25 @@ extension SetWeightRepsTableView: AddCellDelegate {
 extension SetWeightRepsTableView: SetWeightRepsCellDelegate {
     func deleteCell(tag: Int) {
         self.resignFirstResponder()
-        print("DEBUG: want to delete the \(tag) cell")
+        //print("DEBUG: want to delete the \(tag) cell")
         self.tempStoredModel.remove(at: tag)
-        print("DEBUG: delete one cell \(tempStoredModel)")
+        //print("DEBUG: delete one cell \(tempStoredModel)")
         DispatchQueue.main.async {
             self.reloadData()
         }
+    }
+}
+
+extension SetWeightRepsCell {
+    func configure(index: Int, weight: Float, reps: Int) {
+        contentView.isUserInteractionEnabled = true
+        setTextField.tag = index
+        weightTextField.tag = index
+        repsTextField.tag = index
+        numberLabel.text = "\(index + 1)"
+        deleteButton.tag = index
+        weightTextField.text = weight == 0.0 ? .none : String(weight)
+        repsTextField.text = reps == 0 ? .none : String(reps)
     }
 }
 

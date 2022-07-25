@@ -10,16 +10,9 @@ import DropDown
 import Charts
 import GoogleMobileAds
 
-enum DDTid: Int {
-    case body = 0
-    case exercise = 1
-    case rep = 2
-}
 private let chart1ID = "chart1ID"
 private let chart2ID = "chart2ID"
 private let chart3ID = "chart3ID"
-private let demoAdsUnitID = "ca-app-pub-3940256099942544/2934735716"
-private let productionID = "ca-app-pub-8149222044782182/4117891526"
 class ChartViewController: UIViewController {
     
     //MARK: - Properties
@@ -49,7 +42,7 @@ class ChartViewController: UIViewController {
     }()
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = productionID
+        banner.adUnitID = AdmobID.testID
         banner.backgroundColor = .secondarySystemBackground
         banner.load(GADRequest())
         return banner
@@ -92,7 +85,7 @@ class ChartViewController: UIViewController {
         banner.rootViewController = self
         banner.anchor(left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                      right: view.rightAnchor, width: view.frame.size.width, height: 50)
+                      right: view.rightAnchor, width: view.frame.size.width, height: 0)
         
         view.addSubview(tableView)
         tableView.anchor(top: ddtStackView.bottomAnchor,

@@ -8,8 +8,6 @@
 import UIKit
 import GoogleMobileAds
 
-private let demoAdsUnitID = "ca-app-pub-3940256099942544/2934735716"
-private let productinoID = "ca-app-pub-8149222044782182/6824742074"
 class WeeklyViewController: UIViewController {
     
     //MARK: - Properties
@@ -71,8 +69,8 @@ class WeeklyViewController: UIViewController {
     }()
     private let tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
-        tv.register(ExpandCell.self, forCellReuseIdentifier: "expandCell")
-        tv.register(SectionsCell.self, forCellReuseIdentifier: "sectionCell")
+        tv.register(ExpandCell.self, forCellReuseIdentifier: ExpandCell.identifier)
+        tv.register(SectionsCell.self, forCellReuseIdentifier: SectionsCell.identifier)
         tv.separatorStyle = .singleLine
         //tv.separatorInset = .zero
         return tv
@@ -83,7 +81,7 @@ class WeeklyViewController: UIViewController {
     
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = productinoID
+        banner.adUnitID = AdmobID.testID
         banner.backgroundColor = .secondarySystemBackground
         banner.load(GADRequest())
         return banner
@@ -193,7 +191,7 @@ class WeeklyViewController: UIViewController {
         banner.rootViewController = self
         banner.anchor(left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                      right: view.rightAnchor, width: view.frame.size.width, height: 50)
+                      right: view.rightAnchor, width: view.frame.size.width, height: 0)
         
         view.addSubview(blankView)
         blankView.anchor(top: todayLabel.bottomAnchor,
@@ -384,7 +382,7 @@ extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             var isFinished = 0
-            let cell = tableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! SectionsCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SectionsCell.identifier, for: indexPath) as! SectionsCell
             cell.isOpen = action[indexPath.section].isOpen
             cell.title.text = action[indexPath.section].moveName.localizeString(string: userDefault.value(forKey: "Language") as! String)
             cell.backgroundColor = .white
@@ -398,7 +396,7 @@ extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
             cell.finishLabel.text = String(isFinished)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "expandCell", for: indexPath) as! ExpandCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ExpandCell.identifier, for: indexPath) as! ExpandCell
             cell.title.text = action[indexPath.section].detail[indexPath.row - 1].setName
             cell.checkButton.configuration?.image = action[indexPath.section].detail[indexPath.row - 1].isDone ? UIImage(systemName: checkMark)?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
             cell.textField.text = String(action[indexPath.section].detail[indexPath.row - 1].weight) + " kg"

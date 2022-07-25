@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let identifier = "historyCell"
-private let nodataID = "noDataCell"
 class HistoryTableView: UITableView {
     
     //MARK: - Properties
@@ -62,8 +60,8 @@ class HistoryTableView: UITableView {
         backgroundColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
         separatorStyle = .none
         allowsSelection = false
-        register(HistoryCell.self, forCellReuseIdentifier: identifier)
-        register(NoHistoryCell.self, forCellReuseIdentifier: nodataID)
+        register(HistoryCell.self, forCellReuseIdentifier: HistoryCell.identifier)
+        register(NoHistoryCell.self, forCellReuseIdentifier: NoHistoryCell.identifier)
         delegate = self
         dataSource = self
         NotificationCenter.default.addObserver(self, selector: #selector(handleExerciseChange), name: .changeExercise, object: nil)
@@ -92,7 +90,7 @@ extension HistoryTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         self.historyLabelGroup?.removeAll()
         if hasHistory {
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! HistoryCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as! HistoryCell
             dateFormmater.dateFormat = "yyyy/MM/dd"
             cell.dateLabel.text = data?[indexPath.row].time
             cell.setLabel.text = "Set x \(data?[indexPath.row].detail.count ?? 1)"
@@ -112,10 +110,18 @@ extension HistoryTableView: UITableViewDelegate, UITableViewDataSource {
                          paddingLeft: 2, paddingRight: 2)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: nodataID, for: indexPath) as! NoHistoryCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoHistoryCell.identifier, for: indexPath) as! NoHistoryCell
             return cell
         }
     }
     
-    
+}
+
+extension HistoryCell {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        historyFrame.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+    }
 }
