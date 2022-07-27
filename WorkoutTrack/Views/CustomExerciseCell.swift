@@ -55,4 +55,10 @@ class CustomExerciseCell: UITableViewCell {
         deleteButton.anchor(right: rightAnchor, paddingRight: 20)
         deleteButton.centerY(inView: self)
     }
+    
+    func configure(index: Int) {
+        title.text = ChooseCustomExerciseTableView.data[index]
+        title.font = UIFont.init(name: "Futura", size: 20)
+        deleteButton.tag = index
+    }
 }

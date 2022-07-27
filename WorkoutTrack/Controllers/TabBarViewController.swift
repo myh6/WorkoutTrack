@@ -7,21 +7,19 @@
 
 import UIKit
 
-private let monthIdentifier = "CalendarView"
-private let chartIdentifier = "ChartsView"
 public let userDefault = UserDefaults.standard
 class TabBarViewController: UITabBarController {
     
     //MARK: - Properties
     private let weekVC = WeeklyViewController()
-    private let monthVC = UIStoryboard(name: "MonthlyViewController", bundle: nil).instantiateViewController(withIdentifier: monthIdentifier) as! MonthlyViewController
-    private let chartVC = UIStoryboard(name: "ChartViewController", bundle: nil).instantiateViewController(withIdentifier: chartIdentifier) as! ChartViewController
+    private let monthVC = UIStoryboard(name: MonthlyViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: MonthlyViewController.identifier) as! MonthlyViewController
+    private let chartVC = UIStoryboard(name: ChartViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: ChartViewController.identifier) as! ChartViewController
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         //CoredataService.shared.addDummyDataToCoreData()
-//        userDefault.set("zh-Hant", forKey: "Language")
+        //userDefault.set("zh-Hant", forKey: "Language")
         //userDefault.set("en", forKey: "Language")
         configureUI()
     }
@@ -29,9 +27,6 @@ class TabBarViewController: UITabBarController {
     //MARK: - Helpers
     fileprivate func configureUI() {
         view.backgroundColor = #colorLiteral(red: 0.9782040715, green: 0.9782040715, blue: 0.9782039523, alpha: 1)
-//        weekVC.title = "Home"
-//        monthVC.title = "Calendar"
-//        chartVC.title = "Chart"
         viewControllers = [weekVC, monthVC, chartVC]
         
         guard let items = self.tabBar.items else { return }

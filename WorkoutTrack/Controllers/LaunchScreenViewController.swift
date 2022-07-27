@@ -26,11 +26,11 @@ class LaunchScreenViewController: UIViewController {
                                   width: width, height: height)
         view.addSubview(imageView2)
         imageView2.animationDuration = launchGif!.duration
-        print("DEBUG: Animation duration \(launchGif!.duration)")
+        Log.info("DEBUG: Animation duration \(launchGif!.duration)")
         imageView2.animationRepeatCount = 1
         imageView2.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + launchGif!.duration) {
-            print("DEBUG: Stop animation")
+            Log.info("DEBUG: Stop animation")
             imageView2.image = nil
             imageView2.image = UIImage(named: "launchLastScreen")
         }

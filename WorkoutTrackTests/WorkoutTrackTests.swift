@@ -12,7 +12,10 @@ import CoreData
 class WorkoutTrackTests: XCTestCase {
         
     func test_translation() {
-        let exercise = "機械式坐姿卷腹"
-        XCTAssertEqual(exercise, "Machine Crunch".localizeString(string: "zh-Hant"))
+        XCTAssertEqual("機械式坐姿卷腹", "Machine Crunch".localizeString(string: "zh-Hant"))
+    }
+    
+    func test_whenInDebugState_ShouldReturnDebugEnvironment() {
+        XCTAssertEqual(AppConfig.getTarget(), Environment.debug)
     }
 }

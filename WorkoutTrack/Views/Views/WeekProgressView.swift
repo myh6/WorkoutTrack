@@ -123,7 +123,7 @@ extension WeekProgressView: WeekdayButtonDelegate {
     func WeekDayButtonTapped(_ sender: WeekdayButton) {
         let thisWeek = calendar.startOfWeek(for: date)
         dateFormatter.dateFormat = "yyyy/"
-        print("DEBUG: WeekDayButtonTapped: \(dateFormatter.string(from: thisWeek!) + sender.dateLabel.text!)")
+        Log.info("DEBUG: WeekDayButtonTapped: \(dateFormatter.string(from: thisWeek!) + sender.dateLabel.text!)")
         CoredataService.shared.getDataInSpecificDateFromCoredata(date: dateFormatter.string(from: thisWeek!) + sender.dateLabel.text!) { actions, error in
             guard error == nil else { return }
             self.delegate?.sendDataToViewController(date: self.dateFormatter.string(from: thisWeek!) + sender.dateLabel.text!, actions: actions)

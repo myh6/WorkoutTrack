@@ -7,7 +7,6 @@
 
 import UIKit
 
-private let identifier = "langCell"
 class LanguageOverlayView: UIViewController {
         
     //MARK: - Properties
@@ -22,7 +21,7 @@ class LanguageOverlayView: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(LanguageCell.self, forCellReuseIdentifier: identifier)
+        tableView.register(LanguageCell.self, forCellReuseIdentifier: LanguageCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -69,11 +68,7 @@ extension LanguageOverlayView: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if langList[row] == "English" {
-            userDefault.setValue("en", forKey: "Language")
-        } else {
-            userDefault.set("zh-Hant", forKey: "Language")
-        }
+        userDefault.setValue(langList[row] == "English" ? "en" : "zh-Hant", forKey: "Language")
         //Change Language
         NotificationCenter.default.post(name: .updateLang, object: nil)
     }
@@ -87,17 +82,13 @@ extension LanguageOverlayView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! LanguageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: LanguageCell.identifier, for: indexPath) as! LanguageCell
         cell.title.text = langList[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if langList[indexPath.row] == "English" {
-            userDefault.setValue("en", forKey: "Language")
-        } else {
-            userDefault.set("zh-Hant", forKey: "Language")
-        }
+        userDefault.setValue(langList[indexPath.row] == "English" ? "en" : "zh-Hant", forKey: "Language")
         //Change Language
         NotificationCenter.default.post(name: .updateLang, object: nil)
         self.dismiss(animated: true)
@@ -107,6 +98,7 @@ extension LanguageOverlayView: UITableViewDelegate, UITableViewDataSource {
         return 50
     }
 }
+
 //MARK: - Extension: Notification.Name
 extension Notification.Name {
     static let updateLang = NSNotification.Name("updateLang")

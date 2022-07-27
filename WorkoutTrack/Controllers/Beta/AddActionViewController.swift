@@ -72,25 +72,25 @@ class AddActionViewController: UIViewController {
         dateView.superViewCompletion = {
             UIView.animate(withDuration: 0.3) {
                 self.dateView.layoutSubviews()
-                print("DEBUG: dateView")
+                Log.info("DEBUG: dateView")
             }
         }
         bodyView.superViewCompletion = {
             UIView.animate(withDuration: 0.3) {
                 self.bodyView.layoutSubviews()
-                print("DEBUG: dateView")
+                Log.info("DEBUG: dateView")
             }
         }
         exerciseView.superViewCompletion = {
             UIView.animate(withDuration: 0.3) {
                 self.exerciseView.layoutSubviews()
-                print("DEBUG: dateView")
+                Log.info("DEBUG: dateView")
             }
         }
         setView.superViewCompletion = {
             UIView.animate(withDuration: 0.3) {
                 self.setView.layoutSubviews()
-                print("DEBUG: dateView")
+                Log.info("DEBUG: dateView")
             }
         }
         

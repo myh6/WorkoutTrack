@@ -22,7 +22,7 @@ class ChooseCell: UITableViewCell {
         iv.tintColor = .black
         return iv
     }()
-    var title: UILabel = {
+    var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .init(name: "Futura", size: 20)
         label.textColor = .black
@@ -46,9 +46,13 @@ class ChooseCell: UITableViewCell {
         leftImage.centerY(inView: self)
         leftImage.setDimensions(height: 30, width: 30)
         
-        addSubview(title)
-        title.anchor(left: leftImage.rightAnchor, paddingLeft: 20)
-        title.centerY(inView: self)
+        addSubview(titleLabel)
+        titleLabel.anchor(left: leftImage.rightAnchor, paddingLeft: 20)
+        titleLabel.centerY(inView: self)
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
+        selectedBackgroundView = backgroundView
     }
     
     func getThisWeekDateToButton(i: Int) -> String {
@@ -59,5 +63,17 @@ class ChooseCell: UITableViewCell {
             thisWeekDate.append(dateFormatter.string(from: thisWeek[i]))
         }
         return thisWeekDate[i]
+    }
+    
+    func configure(day: Int) {
+        titleLabel.text = getThisWeekDateToButton(i: day)
+        leftImage.image = UIImage(systemName: dayImage[day])?.withRenderingMode(.alwaysTemplate)
+    }
+    
+    func configureToBodyCell(with title: String, and imageName: String) {
+        leftImage.image = UIImage(named: imageName) ?? #imageLiteral(resourceName: "dumbbell").withRenderingMode(.alwaysTemplate)
+        leftImage.contentMode = .scaleAspectFit
+        leftImage.layer.cornerRadius = 10
+        titleLabel.text = title
     }
 }

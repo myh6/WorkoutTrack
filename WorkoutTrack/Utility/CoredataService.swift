@@ -44,9 +44,9 @@ final class CoredataService {
         firstAction.details = NSSet.init(object: firstDetail)
         do {
             try context.save()
-            print("DEBUG: Successfully save data to Coredata")
+            Log.info("DEBUG: Successfully save data to Coredata")
         } catch {
-            print("DEBUG: Error saving data to Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: Error saving data to Coredata", error)
         }
         
     }
@@ -73,10 +73,10 @@ final class CoredataService {
         action.details = NSSet.init(object: detail)
         do {
             try context.save()
-            print("DEBUG: Successfully save data to Coredata")
+            Log.info("DEBUG: Successfully save data to Coredata")
             completion(nil)
         } catch {
-            print("DEBUG: Error saving data to Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: Error saving data to Coredata", error)
             completion(error)
         }
     }
@@ -90,10 +90,10 @@ final class CoredataService {
         customAction.actionName = action
         do {
             try context.save()
-            print("DEBUG: Successfully save custom action to Core Data")
+            Log.info("DEBUG: Successfully save custom action to Core Data")
             completion(nil)
         } catch {
-            print("DEBUG: Error saving custom action")
+            Log.error("DEBUG: Error saving custom action")
             completion(error)
         }
     }
@@ -110,7 +110,7 @@ final class CoredataService {
             details = try context.fetch(request)
             completion(details, nil)
         } catch {
-            print("DEBUG: Error fetching data from Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: Error fetching data from Coredata", error)
             completion(nil, error)
         }
     }
@@ -153,9 +153,7 @@ final class CoredataService {
             details = try context.fetch(request)
             
             for detail in details {
-                
-                //print("DEBUG: getTodayActionFromCoredata - \(detail)")
-                
+                                
                 /***/
                 if output.isEmpty {
                     
@@ -181,7 +179,7 @@ final class CoredataService {
             
             completion(output, nil)
         } catch {
-            print("DEBUG: Error fetching today data from Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: Error fetching today data from Coredata", error)
             completion(nil, error)
         }
         
@@ -203,7 +201,7 @@ final class CoredataService {
             
             for detail in details {
                 
-                print("DEBUG: get \(date) data from Coredata - \(detail)")
+                Log.info("DEBUG: get \(date) data from Coredata - \(detail)")
                 
                 /***/
                 if output.isEmpty {
@@ -230,7 +228,7 @@ final class CoredataService {
             
             completion(output, nil)
         } catch {
-            print("DEBUG: Error fetching today data from Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: Error fetching today data from Coredata", error)
             completion(nil, error)
         }
     }
@@ -253,7 +251,7 @@ final class CoredataService {
             
             for detail in details {
                 
-                print("DEBUG: get \(date) data from Coredata - \(detail)")
+                Log.info("DEBUG: get \(date) data from Coredata - \(detail)")
                 
                 /***/
                 if output.isEmpty {
@@ -280,7 +278,7 @@ final class CoredataService {
             
             completion(output, nil)
         } catch {
-            print("DEBUG: Error fetching today data from Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: Error fetching today data from Coredata", error)
             completion(nil, error)
         }
     }
@@ -322,7 +320,7 @@ final class CoredataService {
             }
             completion(output, nil)
         } catch {
-            print("DEBUG: getHistoryDataOfSpecificExercise Error fetching data \(error.localizedDescription)")
+            Log.error("DEBUG: getHistoryDataOfSpecificExercise Error fetching data", error)
             completion(nil, error)
         }
     }
@@ -345,7 +343,7 @@ final class CoredataService {
             }
             return outputDate?.uniqued()
         } catch {
-            print("DEBUG: Error retriving data allDatehaveData \(error.localizedDescription)")
+            Log.error("DEBUG: Error retriving data allDatehaveData", error)
         }
         return outputDate
     }
@@ -363,7 +361,7 @@ final class CoredataService {
             let details = try context.fetch(request)
             return details.isEmpty ? false : true
         } catch {
-            print("DEBUG: checkDateHaveData Error retriving data.")
+            Log.error("DEBUG: checkDateHaveData Error retriving data.")
             return nil
         }
     }
@@ -384,7 +382,7 @@ final class CoredataService {
                 }
             }
         }
-        print("DEBUG: \(weeks)")
+        Log.info("DEBUG: \(weeks)")
         guard weeks.count == 7 else { return nil }
         let startDate = weeks.first
         let endDate = weeks.last
@@ -397,10 +395,9 @@ final class CoredataService {
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2, predicate3, predicate4])
         do {
             let details = try context.fetch(request)
-            print(details.count)
             return details.count
         } catch {
-            print("DEBUG: Error retriving data in getNumberOfsetinThisWeek from CoreData \(error.localizedDescription)")
+            Log.error("DEBUG: Error retriving data in getNumberOfsetinThisWeek from CoreData", error)
             return nil
         }
 
@@ -423,7 +420,7 @@ final class CoredataService {
             let detail = try context.fetch(request).first
             completion(detail)
         } catch {
-            print("DEBUG: getMaxWeight Error retriving data from Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: getMaxWeight Error retriving data from Coredata", error)
         }
     }
     
@@ -444,7 +441,7 @@ final class CoredataService {
             let detail = try context.fetch(request).first
             completion(detail)
         } catch {
-            print("DEBUG: getMaxWeight Error retriving data from Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: getMaxWeight Error retriving data from Coredata", error)
         }
     }
     
@@ -465,7 +462,6 @@ final class CoredataService {
         do {
             let detail = try context.fetch(request)
             for detail in detail {
-//                print("DEBUG: got detail back from getMaxWeightInHistory -> Date: \(detail.time), Weight:\(detail.weight)")
                 if output.isEmpty {
                     output.append(detail)
                 } else {
@@ -486,7 +482,7 @@ final class CoredataService {
             }
             completion(output)
         } catch {
-            print("DEBUG: Error getMaxWeightInHistory Error retriving data from CoreData \(error.localizedDescription)")
+            Log.error("DEBUG: Error getMaxWeightInHistory Error retriving data from CoreData", error)
         }
     }
     //MARK: - Update isDone property
@@ -504,10 +500,10 @@ final class CoredataService {
             do {
                 try context.save()
             } catch {
-                print("DEBUG: Error updating check status \(error.localizedDescription)")
+                Log.error("DEBUG: Error updating check status", error)
             }
         } catch {
-            print("DEBUG: UpdateCheckProperty Error retriving data from coredata \(error.localizedDescription)")
+            Log.error("DEBUG: UpdateCheckProperty Error retriving data from coredata", error)
         }
     }
     
@@ -535,10 +531,10 @@ final class CoredataService {
             do {
                 try context.save()
             } catch {
-                print("DEBUG: Error updating isOpen proeprty \(error.localizedDescription)")
+                Log.error("DEBUG: Error updating isOpen proeprty", error)
             }
         } catch {
-            print("DEBUG: Error retriving data from CoreData \(error.localizedDescription)")
+            Log.error("DEBUG: Error retriving data from CoreData", error)
         }
     }
     
@@ -561,10 +557,10 @@ final class CoredataService {
             do {
                 try context.save()
             } catch {
-                print("DEBUG: Error updating data \(error.localizedDescription)")
+                Log.error("DEBUG: Error updating data", error)
             }
         } catch {
-            print("DEBUG: Error retriving data \(error.localizedDescription)")
+            Log.error("DEBUG: Error retriving data", error)
         }
     }
     //MARK: - Delete All data from CoreData
@@ -583,16 +579,16 @@ final class CoredataService {
             
             let testRequest1: NSFetchRequest<Detail> = Detail.fetchRequest()
             let details = try? context.fetch(testRequest1)
-            print("DEBUG: Detail from CoreData after delete \(details ?? [])")
+            Log.info("DEBUG: Detail from CoreData after delete \(details ?? [])")
             
             do {
                 try context.save()
             } catch {
-                print("DEBUG: Error saving delete data to CoreData \(error.localizedDescription)")
+                Log.error("DEBUG: Error saving delete data to CoreData", error)
             }
             
         } catch {
-            print("DEUBG: Error fetching data from Coredata \(error.localizedDescription)")
+            Log.error("DEUBG: Error fetching data from Coredata", error)
         }
     }
     
@@ -609,7 +605,7 @@ final class CoredataService {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         do {
             let data = try context.fetch(request)
-            print("DEBUG: Successfully fetch \(action) from Coredata \(data.count)")
+            Log.info("DEBUG: Successfully fetch \(action) from Coredata \(data.count)")
 //            let deleteD = data.filter({$0.time! == time})
             for data in data {
                 context.delete(data)
@@ -617,10 +613,10 @@ final class CoredataService {
             do {
                 try context.save()
             } catch {
-                print("DEBUG: Error saving data after delete \(action)")
+                Log.error("DEBUG: Error saving data after delete exercise")
             }
         } catch {
-            print("DEBUG: Error fetching \(action) from Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: Error fetching data from Coredata", error)
         }
     }
     
@@ -635,17 +631,17 @@ final class CoredataService {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         do {
             let data = try context.fetch(request)
-            print("DEBUG: Should delete \(data)")
+            Log.info("DEBUG: Should delete \(data)")
             for data in data {
                 context.delete(data)
             }
             do {
                 try context.save()
             } catch {
-                print("DEBUG: Error saving data after delete")
+                Log.error("DEBUG: Error saving data after delete")
             }
         } catch {
-            print("DEBUG: Error fetching \(id) of data from Coredata \(error.localizedDescription)")
+            Log.error("DEBUG: Error fetching data from Coredata", error)
         }
         
     }
@@ -653,7 +649,7 @@ final class CoredataService {
     //MARK: - Delete uncheck expired exercise to save disk space
     /**Delete**/
     func deletExpiredData() {
-        print("DEBUG: delete epired data")
+        Log.info("DEBUG: delete epired data")
         let week = getThisWeekDate()
         let donePredicate = NSPredicate(format: "isDone == %@", NSNumber(value: false))
         var compoundPredicates: [NSPredicate] = [donePredicate]
@@ -671,11 +667,11 @@ final class CoredataService {
                 do {
                     try context.save()
                 } catch {
-                    print("DEBUG: Error saving data")
+                    Log.error("DEBUG: Error saving data")
                 }
             }
         } catch {
-            print("DEBUG: Error fetching data")
+            Log.error("DEBUG: Error fetching data")
         }
         
     }
@@ -713,11 +709,11 @@ final class CoredataService {
                 try context.save()
                 completion(nil)
             } catch {
-                print("DEBUG: Error saving data after delete \(error)")
+                Log.error("DEBUG: Error saving data after delete", error)
                 completion(error)
             }
         } catch {
-            print("DEBUG: Error fetching data \(error)")
+            Log.error("DEBUG: Error fetching data", error)
             completion(error)
         }
         

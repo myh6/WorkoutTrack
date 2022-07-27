@@ -123,17 +123,13 @@ class MonthlyViewController: UIViewController {
 extension MonthlyViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let dateString = dateFormmatter.string(from: date)
-        print("DEBUG: Calendar dataString \(dateString)")
-        guard haveDataDate != nil else {return 0}
-        if self.haveDataDate!.contains(dateString) {
-            return 1
-        } else {
-            return 0
-        }
+        Log.info("DEBUG: Calendar dataString \(dateString)")
+        guard haveDataDate != nil else { return 0 }
+        return self.haveDataDate!.contains(dateString) ? 1 : 0
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("DEBUG: Select \(dateFormmatter.string(from: date)) from calenda")
+        Log.info("DEBUG: Select \(dateFormmatter.string(from: date)) from calenda")
         self.todayLabel.text = dateFormmatter.string(from: date)
         checkDateHaveDataStatus(dateFormmatter.string(from: date))
     }
@@ -142,11 +138,7 @@ extension MonthlyViewController: FSCalendarDelegate, FSCalendarDataSource {
 extension MonthlyViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 60
-        } else {
-            return 50
-        }
+        return indexPath.row == 0 ? 60 : 50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,34 +146,17 @@ extension MonthlyViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = action[section]
-        if section.isOpen {
-            return section.detail.count + 1
-        } else {
-            return 1
-        }
+        return action[section].isOpen ? action[section].detail.count + 1 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sectionCell", for: indexPath) as! SectionsCell
-            cell.isOpen = action[indexPath.section].isOpen
-            cell.sectinoImage.image = UIImage(named: "\(action[indexPath.section].ofType)") ?? #imageLiteral(resourceName: "dumbbell").withRenderingMode(.alwaysTemplate)
-            cell.title.text = action[indexPath.section].moveName.localizeString(string: userDefault.value(forKey: "Language") as! String)
-            cell.sectinoImage.tintColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 0.8470588235)
-            cell.expandButton.tintColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 0.8470588235)
-            cell.backgroundColor = #colorLiteral(red: 0.9782040715, green: 0.9782040715, blue: 0.9782039523, alpha: 1)
-            cell.finishLabel.isHidden = true
-            cell.totalLabel.isHidden = true
-            cell.separatorLablel.isHidden = true
+            cell.configureForMonthlyView(with: action[indexPath.section])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "expandCell", for: indexPath) as! ExpandCell
-            cell.backgroundColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 0.8470588235)
-            cell.title.text = action[indexPath.section].detail[indexPath.row - 1].setName
-            cell.checkButton.isHidden = true
-            cell.textField.text = String(action[indexPath.section].detail[indexPath.row - 1].weight) + " kg"
-            cell.repsLable.text = "x" + String(action[indexPath.section].detail[indexPath.row - 1].reps)
+            cell.configureForMontlyView(with: action[indexPath.section].detail[indexPath.row - 1])
             return cell
         }
     }

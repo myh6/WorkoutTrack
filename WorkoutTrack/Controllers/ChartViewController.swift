@@ -10,9 +10,6 @@ import DropDown
 import Charts
 import GoogleMobileAds
 
-private let chart1ID = "chart1ID"
-private let chart2ID = "chart2ID"
-private let chart3ID = "chart3ID"
 class ChartViewController: UIViewController {
     
     //MARK: - Properties
@@ -23,9 +20,9 @@ class ChartViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tv = UITableView()
-        tv.register(Chart1Cell.self, forCellReuseIdentifier: chart1ID)
-        tv.register(Chart2Cell.self, forCellReuseIdentifier: chart2ID)
-        tv.register(Chart3Cell.self, forCellReuseIdentifier: chart3ID)
+        tv.register(Chart1Cell.self, forCellReuseIdentifier: Chart1Cell.identifier)
+        tv.register(Chart2Cell.self, forCellReuseIdentifier: Chart2Cell.identifier)
+        tv.register(Chart3Cell.self, forCellReuseIdentifier: Chart3Cell.identifier)
         return tv
     }()
     private var tempType: String?
@@ -60,7 +57,6 @@ class ChartViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("DEBUG: viewWillDisappear")
         ddtBody.text = ""
         ddtExercise.text = ""
         ddtReps.text = ""
@@ -98,25 +94,6 @@ class ChartViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
-    /**Converting line data to data set to pass in to charts**/
-    fileprivate func convertLineDataToSet(_ linechart: [ChartDataEntry]?) -> LineChartData? {
-        guard linechart != nil else {return nil}
-        let set = LineChartDataSet(entries: linechart!)
-        set.colors = [#colorLiteral(red: 0.01568627451, green: 0.5843137255, blue: 0.6666666667, alpha: 0.8470588235)]
-        set.setCircleColor(#colorLiteral(red: 0.01568627451, green: 0.5843137255, blue: 0.6666666667, alpha: 0.8470588235))
-        set.circleHoleColor = UIColor.white
-        set.circleRadius = 5.0
-        set.circleHoleRadius = 3.0
-        set.lineWidth = 2.0
-        let gradientColors = [#colorLiteral(red: 0.01568627451, green: 0.5843137255, blue: 0.6666666667, alpha: 0.8470588235).cgColor, #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1).cgColor, #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor]
-        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: [0.7, 0.1, 0])!
-        set.fillAlpha = 1
-        set.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
-        set.mode = .horizontalBezier
-        set.drawFilledEnabled = true
-        print("DEBUG: convertLineDataToSet: \(set)")
-        return LineChartData(dataSet: set)
-    }
     /**Update Charts**/
     fileprivate func updateCharts() {
         self.setsInWeek = CoredataService.shared.getNumberOfSetsInThisWeek(of_: translation(self.tempType!)!,
@@ -160,7 +137,7 @@ class ChartViewController: UIViewController {
 //MARK: - Extension: DropDownTestFieldDelegate
 extension ChartViewController: DropDownTextFieldDelegate {
     func dropDownTextDidChange(_ dropDownTextField: DropDownTextField, text: String) {
-        print("DEBUG: ChartVC dropDownTextDidChange")
+        Log.info("DEBUG: ChartVC dropDownTextDidChange")
         var outputArray = [String]()
         switch dropDownTextField.tag {
         case DDTid.body.rawValue:
@@ -200,7 +177,7 @@ extension ChartViewController: DropDownTextFieldDelegate {
                                     "7", "8", "9", "10","11","12"])
             self.tempExercise = text
             ChartsSelectionModel.exercise = text
-            print("DEBUG: selected exercise text \(text)")
+            Log.info("DEBUG: selected exercise text \(text)")
             guard self.tempType != nil else {return}
             guard self.tempExercise != nil else {return}
             self.setsInWeek = CoredataService.shared.getNumberOfSetsInThisWeek(of_: translation(self.tempType!)!, action: translation(self.tempExercise!)!) ?? 0
@@ -238,7 +215,7 @@ extension ChartViewController: DropDownTextFieldDelegate {
                 }
                 for i in 0 ..< details!.count {
                     let graphiableDateDouble = Double(self.dateFormatter.date(from: details![i].time!)!.timeIntervalSince1970)
-                    print("DEBUG: \(i) origin \(String(describing: details![i].time)) \(details![i].weight)kg graphiableDateDouble \(graphiableDateDouble)")
+                    Log.info("DEBUG: \(i) origin \(String(describing: details![i].time)) \(details![i].weight)kg graphiableDateDouble \(graphiableDateDouble)")
                     let yValue = Double(details![i].weight)
 //                    if !self.lineChartData!.contains(where: {$0.y == yValue}) {
 //                        self.lineChartData?.append(ChartDataEntry(x: graphiableDateDouble, y: yValue))
@@ -268,26 +245,17 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: chart1ID, for: indexPath) as! Chart1Cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Chart1Cell.identifier, for: indexPath) as! Chart1Cell
             cell.contentLabel.text = "You've done \(self.setsInWeek) set(s) of \( translation(self.tempExercise ?? "") ?? "exercise") in this week so far"
             return cell
         } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: chart2ID, for: indexPath) as! Chart2Cell
-            cell.maxWeightNumber.text = self.maxWeightText[0]
-            cell.weigthHistoryLabel.text = self.maxWeightText[1]
-            cell.maxRepsNumber.text = self.maxRepsText[0]
-            cell.repsHistoryLabel.text = self.maxRepsText[1]
+            let cell = tableView.dequeueReusableCell(withIdentifier: Chart2Cell.identifier, for: indexPath) as! Chart2Cell
+            cell.configure(with: self.maxWeightText, and: self.maxRepsText)
             return cell
         } else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: chart3ID, for: indexPath) as! Chart3Cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Chart3Cell.identifier, for: indexPath) as! Chart3Cell
             cell.lineChart.delegate = self
-            cell.lineChart.data = convertLineDataToSet(self.lineChartData)
-            cell.lineChart.xAxis.valueFormatter = XAxisNameFormater()
-            print("DEBUG: yAxis should have value \(cell.lineChart.leftAxis.entries) count \(cell.lineChart.leftAxis.entryCount)")
-            print("DEBUG: xAxis \(cell.lineChart.xAxis)")
-            cell.lineChart.data?.setValueFont(UIFont.init(name: "Futura", size: 5) ?? .systemFont(ofSize: 5))
-            cell.lineChart.animate(xAxisDuration: 0.5)
-            cell.lineChart.setNeedsDisplay()
+            cell.configure(with: self.lineChartData)
             return cell
         } else {
             return UITableViewCell()
@@ -295,25 +263,20 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 80
-        } else if indexPath.row == 1 {
-            return 170
-        } else if indexPath.row == 2 {
-            return self.tableView.frame.height - 270
-        } else {
-            return 0
+        switch indexPath.row {
+        case 0: return 80
+        case 1: return 170
+        case 2: return self.tableView.frame.height - 270
+        default: return 0
         }
     }
     
-    
 }
-
 
 //MARK: - Extension: ChartsDelegate
 extension ChartViewController: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("DEBUG: chartValueSelected entry:\(entry) highlight:\(highlight)")
+        Log.info("DEBUG: chartValueSelected entry:\(entry) highlight:\(highlight)")
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         Chart3Cell.dateLabel.text = formatter.string(from: Date(timeIntervalSince1970: entry.x))

@@ -126,4 +126,11 @@ class Chart2Cell: UITableViewCell {
                                 paddingTop: 10, paddingLeft: 20, paddingBottom: 10, paddingRight: 20)
         
     }
+    
+    func configure(with weight: [String], and reps: [String]) {
+        maxWeightNumber.text = weight[0]
+        weigthHistoryLabel.text = weight[1]
+        maxRepsNumber.text = reps[0]
+        repsHistoryLabel.text = reps[1]
+    }
 }

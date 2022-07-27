@@ -59,25 +59,14 @@ extension WeekDateChooseTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChooseCell.identifier, for: indexPath) as! ChooseCell
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
-        cell.selectedBackgroundView = backgroundView
         cell.configure(day: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         NewExercise.time = dateFormatter.date(from: getThisWeekDateToButton(i: indexPath.row)) ?? date
-//        print("DEBUG: Choose date \(NewExercise.time?.description(with: .current))")
+        Log.info("DEBUG: Choose date \(NewExercise.time?.description(with: .current))")
         chooseDelegate?.chooseDate()
     }
     
 }
-
-extension ChooseCell {
-    func configure(day: Int) {
-        title.text = getThisWeekDateToButton(i: day)
-        leftImage.image = UIImage(systemName: dayImage[day])?.withRenderingMode(.alwaysTemplate)
-    }
-}
-

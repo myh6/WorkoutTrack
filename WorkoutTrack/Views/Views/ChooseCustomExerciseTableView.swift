@@ -83,13 +83,4 @@ extension ChooseCustomExerciseTableView: CustomExerciseCellDelegate {
     
 }
 
-//MARK: - Extension CustomExerciseCell
-extension CustomExerciseCell {
-    func configure(index: Int) {
-        title.text = ChooseCustomExerciseTableView.data[index]
-        title.font = UIFont.init(name: "Futura", size: 20)
-        deleteButton.tag = index
-    }
-}
-
 

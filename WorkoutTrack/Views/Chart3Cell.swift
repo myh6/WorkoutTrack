@@ -92,6 +92,36 @@ class Chart3Cell: UITableViewCell {
                          right: customBackgrund.rightAnchor,
                          paddingTop: 50)
     }
+    
+    /**Converting line data to data set to pass in to charts**/
+    private func convertLineDataToSet(_ linechart: [ChartDataEntry]?) -> LineChartData? {
+        guard linechart != nil else {return nil}
+        let set = LineChartDataSet(entries: linechart!)
+        set.colors = [#colorLiteral(red: 0.01568627451, green: 0.5843137255, blue: 0.6666666667, alpha: 0.8470588235)]
+        set.setCircleColor(#colorLiteral(red: 0.01568627451, green: 0.5843137255, blue: 0.6666666667, alpha: 0.8470588235))
+        set.circleHoleColor = UIColor.white
+        set.circleRadius = 5.0
+        set.circleHoleRadius = 3.0
+        set.lineWidth = 2.0
+        let gradientColors = [#colorLiteral(red: 0.01568627451, green: 0.5843137255, blue: 0.6666666667, alpha: 0.8470588235).cgColor, #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1).cgColor, #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: [0.7, 0.1, 0])!
+        set.fillAlpha = 1
+        set.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+        set.mode = .horizontalBezier
+        set.drawFilledEnabled = true
+        Log.info("DEBUG: convertLineDataToSet: \(set)")
+        return LineChartData(dataSet: set)
+    }
+    
+    func configure(with data: [ChartDataEntry]?) {
+        lineChart.data = convertLineDataToSet(data)
+        lineChart.xAxis.valueFormatter = XAxisNameFormater()
+        Log.info("DEBUG: yAxis should have value \(lineChart.leftAxis.entries) count \(lineChart.leftAxis.entryCount)")
+        Log.info("DEBUG: xAxis \(lineChart.xAxis)")
+        lineChart.data?.setValueFont(UIFont.init(name: "Futura", size: 5) ?? .systemFont(ofSize: 5))
+        lineChart.animate(xAxisDuration: 0.5)
+        lineChart.setNeedsDisplay()
+    }
 }
 
 //MARK: - Extension: ChartViewDelegate

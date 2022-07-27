@@ -51,13 +51,10 @@ extension ChooseBodyTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChooseCell.identifier, for: indexPath) as! ChooseCell
-        cell.leftImage.image = UIImage(named: "\(bodysImage[indexPath.row])") ?? #imageLiteral(resourceName: "dumbbell").withRenderingMode(.alwaysTemplate)
-        cell.leftImage.contentMode = .scaleAspectFit
-        cell.leftImage.layer.cornerRadius = 10
-        cell.title.text = bodys[indexPath.row]
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = #colorLiteral(red: 0.537254902, green: 0.8, blue: 0.7725490196, alpha: 1)
-        cell.selectedBackgroundView = backgroundView
+        let title = bodys[indexPath.row]
+        let imageName = bodysImage[indexPath.row]
+        cell.configureToBodyCell(with: title, and: imageName)
+
         return cell
     }
     
@@ -67,12 +64,4 @@ extension ChooseBodyTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-}
-
-extension ChooseCell {
-    func configureToBodyCell(indexPath: Int) {
-        leftImage.contentMode = .scaleAspectFit
-        leftImage.layer.cornerRadius = 10
-        
-    }
 }

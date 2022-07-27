@@ -42,7 +42,7 @@ class DropDownTextField: UITextField {
     }
     //MARK: - Actions
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        print("DEBUG: tap working")
+        Log.info("DEBUG: tap working")
         resignFirstResponder()
         dropDown.show()
         
@@ -93,7 +93,7 @@ class DropDownTextField: UITextField {
         dropDown.bottomOffset = CGPoint(x: 0, y: self.bounds.height)
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             superview!.endEditing(true)
-            print("DEBUG: Select \(item) at index \(index)")
+            Log.info("DEBUG: Select \(item) at index \(index)")
             text = arrayList[index]
             dropDownTextFieldDelegate?.dropDownTextDidChange(self, text: text ?? "")
         }

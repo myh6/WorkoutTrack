@@ -92,7 +92,7 @@ class WeeklyViewController: UIViewController {
             guard error == nil else { return }
             guard let safeActions = action else { return }
             self.action = safeActions
-            //print("DEBUG: Today data from Coredata \(self.action)")
+            Log.info("DEBUG: Today data from Coredata \(self.action)")
             DispatchQueue.main.async {
                 self.todayLabel.text = "TODAY"
                 self.tableView.reloadData()
@@ -107,7 +107,7 @@ class WeeklyViewController: UIViewController {
             guard error == nil else { return }
             guard let safeActions = action else { return }
             self.action = safeActions
-            //print("DEBUG: Today data from Coredata \(self.action)")
+            Log.info("DEBUG: Today data from Coredata \(self.action)")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -214,13 +214,8 @@ class WeeklyViewController: UIViewController {
     }
     
     fileprivate func checkActionStatus() {
-        if self.action.isEmpty {
-            self.blankView.isHidden = false
-            self.tableView.isHidden = true
-        } else {
-            self.blankView.isHidden = true
-            self.tableView.isHidden = false
-        }
+        self.blankView.isHidden = self.action.isEmpty ? false : true
+        self.tableView.isHidden = self.action.isEmpty ? true : false
     }
     
 }
@@ -231,14 +226,10 @@ extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         if indexPath.row == 0 {
-            print("DEBUG: You want to delete an action \(action[indexPath.section].moveName)")
+            Log.info("DEBUG: You want to delete an action \(action[indexPath.section].moveName)")
             let delete = UIContextualAction(style: .destructive, title: "Delete") { _, view, completionHandler in
                 //Delete Data in action and CoreData here.
-                if self.todayLabel.text == "TODAY" {
-                    self.deleteDate = self.dateFormatter.string(from: Date())
-                } else {
-                    self.deleteDate = self.todayLabel.text
-                }
+                self.deleteDate = self.todayLabel.text == "TODAY" ? self.dateFormatter.string(from: Date()) : self.todayLabel.text
                 CoredataService.shared.deleteSpecificActionFromCoredata(action: self.action[indexPath.section].moveName,
                                                                         time: self.deleteDate!)
                 DispatchQueue.main.async {
@@ -292,7 +283,7 @@ extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 let cancel = UIAlertAction(title: "Cancel", style: .cancel)
                 let update = UIAlertAction(title: "Update", style: .default) { _ in
-                    print("Update weight reps for set")
+                    Log.info("Update weight reps for set")
                     //Update Data
                     guard editAlert.textFields![0].hasText else {return}
                     guard editAlert.textFields![1].hasText else {return}
@@ -359,11 +350,7 @@ extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 60
-        } else {
-            return 50
-        }
+        return indexPath.row == 0 ? 60 : 50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -371,36 +358,17 @@ extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = action[section]
-        if section.isOpen {
-            return section.detail.count + 1
-        } else {
-            return 1
-        }
+        return action[section].isOpen ? action[section].detail.count + 1 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            var isFinished = 0
             let cell = tableView.dequeueReusableCell(withIdentifier: SectionsCell.identifier, for: indexPath) as! SectionsCell
-            cell.isOpen = action[indexPath.section].isOpen
-            cell.title.text = action[indexPath.section].moveName.localizeString(string: userDefault.value(forKey: "Language") as! String)
-            cell.backgroundColor = .white
-            cell.sectinoImage.image = UIImage(named: "\(action[indexPath.section].ofType)") ?? #imageLiteral(resourceName: "dumbbell").withRenderingMode(.alwaysTemplate)
-            cell.totalLabel.text = String(action[indexPath.section].detail.count)
-            for i in 0 ..< action[indexPath.section].detail.count {
-                if action[indexPath.section].detail[i].isDone == true {
-                    isFinished += 1
-                }
-            }
-            cell.finishLabel.text = String(isFinished)
+            cell.configure(model: action[indexPath.section])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ExpandCell.identifier, for: indexPath) as! ExpandCell
-            cell.title.text = action[indexPath.section].detail[indexPath.row - 1].setName
-            cell.checkButton.configuration?.image = action[indexPath.section].detail[indexPath.row - 1].isDone ? UIImage(systemName: checkMark)?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
-            cell.textField.text = String(action[indexPath.section].detail[indexPath.row - 1].weight) + " kg"
-            cell.repsLable.text = "x" + String(action[indexPath.section].detail[indexPath.row - 1].reps)
+            cell.configure(model: action[indexPath.section].detail[indexPath.row - 1])
             return cell
         }
     }
@@ -410,21 +378,19 @@ extension WeeklyViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             action[indexPath.section].isOpen = !action[indexPath.section].isOpen
             tableView.reloadSections([indexPath.section], with: .none)
-            /**Update CoreData**/
             CoredataService.shared.updateisOpen(type: action[indexPath.section].ofType, actionName: action[indexPath.section].moveName, date: &(self.todayLabel.text)!)
         } else {
-            print("DEBUG: Expand Cell got tapped")
+            Log.info("DEBUG: Expand Cell got tapped")
             let cell = tableView.cellForRow(at: indexPath) as! ExpandCell
-            action[indexPath.section].detail[indexPath.row - 1].isDone = !action[indexPath.section].detail[indexPath.row - 1].isDone
-            cell.checkButton.configuration?.image = action[indexPath.section].detail[indexPath.row - 1].isDone ? UIImage(systemName: checkMark)?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
-            //Update CoreData
-            CoredataService.shared.updateCheckPropertytoCoreData(id: action[indexPath.section].detail[indexPath.row - 1].id)
+            var selectedCell = action[indexPath.section].detail[indexPath.row - 1]
+            selectedCell.isDone = !selectedCell.isDone
+            cell.checkButton.configuration?.image = selectedCell.isDone ? UIImage(systemName: checkMark)?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
+            CoredataService.shared.updateCheckPropertytoCoreData(id: selectedCell.id)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
-    
     
 }
 

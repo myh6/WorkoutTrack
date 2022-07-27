@@ -23,16 +23,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("adViewDidReceiveAd")
+        Log.info("adViewDidReceiveAd")
+        
         if let responseInfo = bannerView.responseInfo {
-          print(responseInfo)
-          NSLog("DEBUG: adViewDidReceiveAd", responseInfo)
+            Log.info("DEBUG: adViewDidReceiveAd")
+            NSLog("DEBUG: adViewDidReceiveAd", responseInfo)
         }
     }
 
     func adView(_ bannerView: GADBannerView,
         didFailToReceiveAdWithError error: Error) {
-        print("DEBUG: didFailToReceiveAdWithError: \(error.localizedDescription)")
+        Log.error("DEBUG: didFailToReceiveAdWithError:", error)
         NSLog("DEBUG: didFailToReceiveAdWithError", error.localizedDescription)
     }
     

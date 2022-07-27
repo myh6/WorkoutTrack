@@ -110,4 +110,15 @@ class SetWeightRepsCell: UITableViewCell {
                      paddingLeft: 10, paddingRight: 10)
         stack.centerY(inView: self)
     }
+    
+    func configure(index: Int, weight: Float, reps: Int) {
+        contentView.isUserInteractionEnabled = true
+        setTextField.tag = index
+        weightTextField.tag = index
+        repsTextField.tag = index
+        numberLabel.text = "\(index + 1)"
+        deleteButton.tag = index
+        weightTextField.text = weight == 0.0 ? .none : String(weight)
+        repsTextField.text = reps == 0 ? .none : String(reps)
+    }
 }

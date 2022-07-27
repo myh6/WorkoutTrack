@@ -89,4 +89,31 @@ class SectionsCell: UITableViewCell {
         
     }
     
+    func configure(model: AddActionModel) {
+        var isFinished = 0
+        isOpen = model.isOpen
+        title.text = model.moveName.localizeString(string: userDefault.value(forKey: "Language") as! String)
+        backgroundColor = .white
+        sectinoImage.image = UIImage(named: "\(model.ofType)") ?? #imageLiteral(resourceName: "dumbbell").withRenderingMode(.alwaysTemplate)
+        totalLabel.text = String(model.detail.count)
+        for i in 0 ..< model.detail.count {
+            if model.detail[i].isDone == true {
+                isFinished += 1
+            }
+        }
+        finishLabel.text = String(isFinished)
+    }
+    
+    func configureForMonthlyView(with model: AddActionModel) {
+        isOpen = model.isOpen
+        sectinoImage.image = UIImage(named: "\(model.ofType)") ?? #imageLiteral(resourceName: "dumbbell").withRenderingMode(.alwaysTemplate)
+        title.text = model.moveName.localizeString(string: userDefault.value(forKey: "Language") as! String)
+        sectinoImage.tintColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 0.8470588235)
+        expandButton.tintColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 0.8470588235)
+        backgroundColor = #colorLiteral(red: 0.9782040715, green: 0.9782040715, blue: 0.9782039523, alpha: 1)
+        finishLabel.isHidden = true
+        totalLabel.isHidden = true
+        separatorLablel.isHidden = true
+    }
+    
 }

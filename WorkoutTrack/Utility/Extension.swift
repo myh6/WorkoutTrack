@@ -200,6 +200,10 @@ extension UIImageView{
 //MARK: - UIViewController
 extension UIViewController {
     
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
     func configureGradientLayer() {
         let topColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         let bottomColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)

@@ -104,7 +104,7 @@ class NewActionViewController: UIViewController {
     private let histroyTableView = HistoryTableView()
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
-        print("DEBUG: NewActionVC viewWillAppear")
+        Log.info("DEBUG: NewActionVC viewWillAppear")
         self.bodyTableView.reloadData()
         Moves.shared.getDBMenu { moves in
             guard moves != nil else {return}
@@ -142,7 +142,7 @@ class NewActionViewController: UIViewController {
     }
     deinit {
         /**Must be triggered**/
-        print("DEBUG: NewActionViewController got deinit")
+        Log.info("DEBUG: NewActionViewController got deinit")
     }
     //MARK: - Actions
     @objc func handleBack() {
@@ -410,7 +410,7 @@ extension NewActionViewController: ChooseBodyTableViewDelegate {
             self.showAlert(title: "Please choose a body type first.")
             return
         }
-        print("DEBUG: Choose body \(body)")
+        Log.info("DEBUG: Choose body \(body)")
         Moves.shared.getDBMenu { moves in
             guard moves != nil else {return}
             switch translation(body) {
@@ -479,7 +479,7 @@ extension NewActionViewController: ChooseCustomExerciseTableViewDelegate {
     }
     
     func chooseCustomExercise(exercise: String) {
-        print("DEBUG: exercise choose \(exercise)")
+        Log.info("DEBUG: exercise choose \(exercise)")
         self.chooseSetLabel.text = exercise
         self.scrollView.setContentOffset(CGPoint(x: 3 * self.containerView.frame.size.width,
                                                  y: 0), animated: true)
@@ -489,7 +489,7 @@ extension NewActionViewController: ChooseCustomExerciseTableViewDelegate {
 //MARK: - Extension: ChooseExerciseTableViewDelegate
 extension NewActionViewController: ChooseExerciseTableViewDelegate {
     func chooseExercise(_ exercise: String) {
-        print("DEBUG: exercise choose \(exercise)")
+        Log.info("DEBUG: exercise choose \(exercise)")
         self.chooseSetLabel.text = exercise
         self.scrollView.setContentOffset(CGPoint(x: 3 * self.containerView.frame.size.width,
                                                  y: 0), animated: true)
@@ -499,9 +499,9 @@ extension NewActionViewController: ChooseExerciseTableViewDelegate {
 //MARK: - Extension: SetWeightRepsTableViewDelegate
 extension NewActionViewController: SetWeightRepsTableViewDelegate {
     func sendSaveDataToVC(_ output: [Detailed]) {
-        print("DEBUG: got data back from setWeightRepsTableView \(output)")
+        Log.info("DEBUG: got data back from setWeightRepsTableView \(output)")
         for i in 0 ..< (output.count) {
-            print("DEBUG: NewActionViewController handleSave: Adding \(output[i]) to Coredata (\(i) time")
+            Log.info("DEBUG: NewActionViewController handleSave: Adding \(output[i]) to Coredata (\(i) time")
             CoredataService.shared.addDataToCoreData(output[i], completion: { error in
                 guard error == nil else {
                     self.showAlert(title: "error \(error?.localizedDescription ?? "")")

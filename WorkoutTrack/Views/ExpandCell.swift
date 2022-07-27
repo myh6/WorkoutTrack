@@ -13,15 +13,6 @@ public let uncheck = "square"
 class ExpandCell: UITableViewCell {
     
     //MARK: - Properties
-    //  var isDone: Bool = false {
-    //    didSet {
-    //      if isDone {
-    //        self.checkButton.configuration?.image = UIImage(systemName: checkMark)?.withRenderingMode(.alwaysTemplate)
-    //      } else {
-    //        self.checkButton.configuration?.image = UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
-    //      }
-    //    }
-    //  }
     var title = UILabel()
     var textField = UITextField(backgroundColor: .clear)
     lazy var checkButton: UIButton = {
@@ -47,14 +38,6 @@ class ExpandCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
         
     }
-    
-    //MARK: - Actions
-    //  @objc func handleCheckButton() {
-    //    print("DEBUG: checkButton got pressed")
-    ////    isDone = !isDone
-    //    print("DEBUG: is it done? \(isDone)")
-    ////    checkButton.configuration?.image = isDone ? UIImage(systemName: checkMark)?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
-    //  }
     
     //MARK: - Helpers
     fileprivate func configureUI() {
@@ -93,4 +76,18 @@ class ExpandCell: UITableViewCell {
         self.checkButton.configuration?.image = UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
     }
     
+    func configure(model: Detailed) {
+        title.text = model.setName
+        checkButton.configuration?.image = model.isDone ? UIImage(systemName: checkMark)?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: uncheck)?.withRenderingMode(.alwaysTemplate)
+        textField.text = String(model.weight) + " kg"
+        repsLable.text = "x" + String(model.reps)
+    }
+    
+    func configureForMontlyView(with model: Detailed) {
+        backgroundColor = #colorLiteral(red: 0.9139711261, green: 0.6553987265, blue: 0.6171647906, alpha: 0.8470588235)
+        title.text = model.setName
+        checkButton.isHidden = true
+        textField.text = String(model.weight) + " kg"
+        repsLable.text = "x" + String(model.reps)
+    }
 }
