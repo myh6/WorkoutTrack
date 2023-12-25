@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import GoogleMobileAds
+//import GoogleMobileAds
 
 class WeeklyViewController: UIViewController {
     
@@ -79,13 +79,13 @@ class WeeklyViewController: UIViewController {
     private var todayDetails = [AddActionModel]()
     private var deleteDate: String?
     
-    private let banner: GADBannerView = {
-        let banner = GADBannerView()
-        banner.adUnitID = AdmobID.testID
-        banner.backgroundColor = .secondarySystemBackground
-        banner.load(GADRequest())
-        return banner
-    }()
+//    private let banner: GADBannerView = {
+//        let banner = GADBannerView()
+//        banner.adUnitID = AdmobID.testID
+//        banner.backgroundColor = .secondarySystemBackground
+//        banner.load(GADRequest())
+//        return banner
+//    }()
     //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         CoredataService.shared.getTodayActionFromCoredata { action, error in
@@ -187,16 +187,16 @@ class WeeklyViewController: UIViewController {
                           left: view.leftAnchor,
                           right: view.rightAnchor, paddingTop: 10, paddingLeft: 20)
         
-        view.addSubview(banner)
-        banner.rootViewController = self
-        banner.anchor(left: view.leftAnchor,
-                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                      right: view.rightAnchor, width: view.frame.size.width, height: 0)
+//        view.addSubview(banner)
+//        banner.rootViewController = self
+//        banner.anchor(left: view.leftAnchor,
+//                      bottom: view.safeAreaLayoutGuide.bottomAnchor,
+//                      right: view.rightAnchor, width: view.frame.size.width, height: 0)
         
         view.addSubview(blankView)
         blankView.anchor(top: todayLabel.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: banner.topAnchor,
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
                          right: view.rightAnchor)
         blankView.addSubview(noDataLabel)
         noDataLabel.centerInSuperview()
@@ -206,7 +206,7 @@ class WeeklyViewController: UIViewController {
         tableView.dataSource = self
         tableView.anchor(top: todayLabel.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: banner.topAnchor,
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
                          right: view.rightAnchor)
         tableView.isHidden = action.isEmpty ? true : false
         blankView.isHidden = action.isEmpty ? false : true

@@ -12,6 +12,7 @@
 		0F0FD99728166FCC001ACCDB /* SectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99628166FCC001ACCDB /* SectionsCell.swift */; };
 		0F0FD99928167440001ACCDB /* ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99828167440001ACCDB /* ExpandCell.swift */; };
 		0F0FD99C2816A84C001ACCDB /* AddActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99B2816A84C001ACCDB /* AddActionModel.swift */; };
+		0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CDD802B35836C0080C5F5 /* launchScreen.gif */; };
 		0F361F33288A3474004B322E /* AdmobID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F32288A3474004B322E /* AdmobID.swift */; };
 		0F361F35288A3532004B322E /* DropDownTextFieldID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F34288A3532004B322E /* DropDownTextFieldID.swift */; };
 		0F361F46288E6706004B322E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F45288E6706004B322E /* Log.swift */; };
@@ -60,7 +61,6 @@
 		0FE107762828B78700D9D110 /* HistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE107752828B78700D9D110 /* HistoryLabel.swift */; };
 		0FE401D32842532E006386CF /* CustomActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE401D22842532E006386CF /* CustomActionModel.swift */; };
 		0FE401D52842637C006386CF /* ChooseCustomExerciseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE401D42842637C006386CF /* ChooseCustomExerciseTableView.swift */; };
-		0FE4021728453AF3006386CF /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0FE4021628453AF3006386CF /* launchScreen.gif */; };
 		0FE402192845A87B006386CF /* CustomExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE402182845A87B006386CF /* CustomExerciseCell.swift */; };
 		0FE98DCC28313DC5008EB8CD /* ChartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FE98DCB28313DC5008EB8CD /* ChartViewController.storyboard */; };
 		0FE98DCE283150E2008EB8CD /* DropDownTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE98DCD283150E2008EB8CD /* DropDownTextField.swift */; };
@@ -94,6 +94,7 @@
 		0F0FD99628166FCC001ACCDB /* SectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCell.swift; sourceTree = "<group>"; };
 		0F0FD99828167440001ACCDB /* ExpandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCell.swift; sourceTree = "<group>"; };
 		0F0FD99B2816A84C001ACCDB /* AddActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionModel.swift; sourceTree = "<group>"; };
+		0F1CDD802B35836C0080C5F5 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
 		0F361F32288A3474004B322E /* AdmobID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobID.swift; sourceTree = "<group>"; };
 		0F361F34288A3532004B322E /* DropDownTextFieldID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextFieldID.swift; sourceTree = "<group>"; };
 		0F361F45288E6706004B322E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -148,7 +149,6 @@
 		0FE107752828B78700D9D110 /* HistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLabel.swift; sourceTree = "<group>"; };
 		0FE401D22842532E006386CF /* CustomActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionModel.swift; sourceTree = "<group>"; };
 		0FE401D42842637C006386CF /* ChooseCustomExerciseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCustomExerciseTableView.swift; sourceTree = "<group>"; };
-		0FE4021628453AF3006386CF /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = launchScreen.gif; path = ../../Downloads/GYMHackMats/launchScreen.gif; sourceTree = "<group>"; };
 		0FE402182845A87B006386CF /* CustomExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExerciseCell.swift; sourceTree = "<group>"; };
 		0FE98DCB28313DC5008EB8CD /* ChartViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChartViewController.storyboard; sourceTree = "<group>"; };
 		0FE98DCD283150E2008EB8CD /* DropDownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextField.swift; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 				0F99CC5328144F0100994329 /* Utility */,
 				0F99CC2328144BAB00994329 /* Main.storyboard */,
 				0F99CC2928144BAB00994329 /* Assets.xcassets */,
-				0FE4021628453AF3006386CF /* launchScreen.gif */,
+				0F1CDD802B35836C0080C5F5 /* launchScreen.gif */,
 				0F62EC56282D03D5004952F4 /* AppIcon.appiconset */,
 				0F99CC2B28144BAB00994329 /* LaunchScreen.storyboard */,
 				0F99CC2E28144BAB00994329 /* Info.plist */,
@@ -509,7 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F99CC2D28144BAB00994329 /* LaunchScreen.storyboard in Resources */,
-				0FE4021728453AF3006386CF /* launchScreen.gif in Resources */,
+				0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */,
 				0FE98DCC28313DC5008EB8CD /* ChartViewController.storyboard in Resources */,
 				0F99CC2A28144BAB00994329 /* Assets.xcassets in Resources */,
 				0F99CC2528144BAB00994329 /* Main.storyboard in Resources */,
