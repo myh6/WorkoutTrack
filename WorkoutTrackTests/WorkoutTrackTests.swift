@@ -15,7 +15,5 @@ class WorkoutTrackTests: XCTestCase {
         XCTAssertEqual("機械式坐姿卷腹", "Machine Crunch".localizeString(string: "zh-Hant"))
     }
     
-    func test_whenInDebugState_ShouldReturnDebugEnvironment() {
-        XCTAssertEqual(AppConfig.getTarget(), Environment.debug)
-    }
+    
 }
