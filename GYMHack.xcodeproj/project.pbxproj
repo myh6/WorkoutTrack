@@ -228,7 +228,7 @@
 			name = TableViewCells;
 			sourceTree = "<group>";
 		};
-		0F345A372B6B5E4A007528BD /* CoreDataService */ = {
+		0F345A372B6B5E4A007528BD /* CoreDataImplementation */ = {
 			isa = PBXGroup;
 			children = (
 				0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */,
@@ -236,7 +236,7 @@
 				0F345A3C2B6B5F3F007528BD /* CoreDataUpdatingService.swift */,
 				0F345A3E2B6B6139007528BD /* CoreDataDeletionService.swift */,
 			);
-			path = CoreDataService;
+			path = CoreDataImplementation;
 			sourceTree = "<group>";
 		};
 		0F65307928910A7000F55F88 /* ViewModels */ = {
@@ -320,7 +320,7 @@
 		0F99CC5328144F0100994329 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				0F345A372B6B5E4A007528BD /* CoreDataService */,
+				0F345A372B6B5E4A007528BD /* CoreDataImplementation */,
 				0F368C572817BD660098667E /* CoredataService.swift */,
 				0F99CC5028144BC000994329 /* Extension.swift */,
 				0FE98DE42835E9AF008EB8CD /* XAxisNameFormater.swift */,

@@ -9,9 +9,7 @@ import Foundation
 import CoreData
 import UIKit
 
-final class CoreDataUpdatingService {
-    static let shared = CoreDataUpdatingService()
-    
+final class CoreDataUpdatingService {    
     func updateCheckPropertytoCoreData(id: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let context = appDelegate.persistentContainer.viewContext

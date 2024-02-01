@@ -10,7 +10,6 @@ import CoreData
 import UIKit
 
 final class CoreDataDeletionService {
-    static let shared = CoreDataDeletionService()
     fileprivate let now = Date()
     fileprivate let calendar = NSCalendar.current
     fileprivate let dateFormatter = DateFormatter()

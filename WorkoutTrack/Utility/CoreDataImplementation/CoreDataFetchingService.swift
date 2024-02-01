@@ -8,9 +8,7 @@ import CoreData
 import Foundation
 import UIKit
 
-final class CoreDataFetchingService {
-    static let shared = CoreDataFetchingService()
-    
+final class CoreDataFetchingService {    
     // Get all data from CoreData
     func getAllDataFromCoredata(completion: @escaping ([Detail]?, Error?) -> Void) {
         var details = [Detail]()

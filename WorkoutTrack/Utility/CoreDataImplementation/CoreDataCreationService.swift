@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-final class CoreDataCreationService {
-    static let shared = CoreDataCreationService()
-    
+final class CoreDataCreationService {    
     // Add Dummy Data To CoreData
     func addDummyDataToCoreData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
