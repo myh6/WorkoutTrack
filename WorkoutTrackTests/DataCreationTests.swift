@@ -20,26 +20,59 @@ class LocalFeedLoader {
     func save(detail: Detailed, completion: @escaping (Error?) -> Void) {
         store.addData(detail: detail, completion: completion)
     }
+    
+    func save(action: String, ofType: String, completion: @escaping (Error?) -> Void) {
+        store.addAction(actionName: action, ofType: ofType, completion: completion)
+    }
 }
 
 class LocalFeedStore {
     private let contextProvider: ContextProviding
     private var addCompletion = [(Error?) -> Void]()
+    private var addActionCompletion = [(Error?) -> Void]()
     
     init(contextProvider: ContextProviding = MockContextProvider()) {
         self.contextProvider = contextProvider
     }
     
     func addData(detail: Detailed, completion: @escaping (Error?) -> Void) {
-        receivedMessage.append(detail)
+        receivedMessage.append(.addData(detail))
         addCompletion.append(completion)
+    }
+    
+    func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
+        receivedMessage.append(.addAction((actionName, ofType)))
+        addActionCompletion.append(completion)
     }
     
     func completeAddSuccessfully(at index: Int = 0) {
         addCompletion[index](nil)
     }
     
-    var receivedMessage = [Detailed]()
+    func completeAddActionSuccessfully(at index: Int = 0) {
+        addActionCompletion[index](nil)
+    }
+    
+    enum ReceiveMessage: Equatable {
+        static func == (lhs: LocalFeedStore.ReceiveMessage, rhs: LocalFeedStore.ReceiveMessage) -> Bool {
+            switch (lhs, rhs) {
+            case let (addData(ldata), addData(rdata)):
+                return ldata == rdata
+            case let (.addAction((la, lt)), .addAction((ra, rt))):
+                return la == ra && lt == rt
+            default:
+                return false
+            }
+        }
+        
+        case addData(Detailed)
+        case addAction((actionName, ofType))
+
+        typealias actionName = String
+        typealias ofType = String
+    }
+    
+    var receivedMessage = [ReceiveMessage]()
 }
 
 class MockContextProvider: ContextProviding {
@@ -66,7 +99,18 @@ final class DataCreationTests: XCTestCase {
         sut.save(detail: detail) { _ in }
         store.completeAddSuccessfully()
         
-        XCTAssertEqual(store.receivedMessage, [detail])
+        XCTAssertEqual(store.receivedMessage, [.addData(detail)])
+    }
+    
+    func test_saveAction_callsOnAddActionOnStore() {
+        let (sut, store) = makeSUT()
+        let anyAction = "any action"
+        let anyType = "any type"
+        
+        sut.save(action: anyAction, ofType: anyType) { _ in }
+        store.completeAddActionSuccessfully()
+        
+        XCTAssertEqual(store.receivedMessage, [.addAction((anyAction, anyType))])
     }
     
     //MARK: - Helpers
