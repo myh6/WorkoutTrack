@@ -6,8 +6,7 @@
 //
 import Foundation
 import XCTest
-@testable import GYMHack
-import CoreData
+import GYMHack
 
 class WorkoutTrackTests: XCTestCase {
         
