@@ -54,15 +54,13 @@ class MockContext: NSManagedObjectContext {}
 final class DataCreationTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
-        let store = LocalFeedStore()
-        _ = LocalFeedLoader(store: store)
+        let (_, store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
-    func test_save_callsOnAddDataOnStore() {
-        let store = LocalFeedStore()
-        let sut = LocalFeedLoader(store: store)
+    func test_saveDetail_callsOnAddDataOnStore() {
+        let (sut, store) = makeSUT()
         let detail = Detailed(uid: UUID(), setName: "any set", weight: 10.0, isDone: true, reps: 10, id: "any id")
         
         sut.save(detail: detail) { _ in }
@@ -72,4 +70,11 @@ final class DataCreationTests: XCTestCase {
     }
     
     //MARK: - Helpers
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: LocalFeedStore) {
+        let store = LocalFeedStore()
+        let sut = LocalFeedLoader(store: store)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(store, file: file, line: line)
+        return (sut, store)
+    }
 }
