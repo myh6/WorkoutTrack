@@ -10,7 +10,7 @@ import GYMHack
 import CoreData
 import UIKit
 
-final class DataCreationTests: XCTestCase {
+final class LocalFeedLoaderTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
