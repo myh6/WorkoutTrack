@@ -98,7 +98,7 @@ final class DataCreationTests: XCTestCase {
     
     func test_saveDetail_callsOnAddDataOnStore() {
         let (sut, store) = makeSUT()
-        let detail = Detailed(uid: UUID(), setName: "any set", weight: 10.0, isDone: true, reps: 10, id: "any id")
+        let detail = anyDetailed()
         
         sut.save(detail: detail) { _ in }
         store.completeAddSuccessfully()
@@ -109,10 +109,9 @@ final class DataCreationTests: XCTestCase {
     func test_saveDetail_failsOnAddingDataError() {
         let (sut, store) = makeSUT()
         let anyError = NSError(domain: "any error", code: 0)
-        let anyDetail = Detailed(uid: UUID(), setName: "any set", weight: 10.0, isDone: false, reps: 10, id: "any id")
         
         let exp = expectation(description: "Wait for completion")
-        sut.save(detail: anyDetail) { receivedError in
+        sut.save(detail: anyDetailed()) { receivedError in
             XCTAssertEqual(receivedError as? NSError, anyError)
             exp.fulfill()
         }
@@ -138,5 +137,9 @@ final class DataCreationTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func anyDetailed() -> Detailed {
+        return Detailed(uid: UUID(), setName: "any set", weight: 10.0, isDone: true, reps: 0, id: "any id")
     }
 }
