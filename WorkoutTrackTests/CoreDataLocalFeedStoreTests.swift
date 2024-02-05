@@ -8,7 +8,7 @@
 import XCTest
 
 class CoreDataManager {}
-
+// TODO: Postphone it when we finished all the LocalFeedStore setup
 final class CoreDataLocalFeedStoreTests: XCTestCase {
 
     func test_inti() {
