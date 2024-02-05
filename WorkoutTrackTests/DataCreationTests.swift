@@ -10,91 +10,6 @@ import GYMHack
 import CoreData
 import UIKit
 
-class LocalFeedLoader {
-    let store: LocalFeedStore
-    
-    public typealias DetailResult = Error?
-    public typealias ActionResult = Error?
-    
-    init(store: LocalFeedStore) {
-        self.store = store
-    }
-    
-    func save(detail: Detailed, completion: @escaping (DetailResult) -> Void) {
-        store.addData(detail: detail) { [weak self] error in
-            guard self != nil else { return }
-            completion(error)
-        }
-    }
-    
-    func save(action: String, ofType: String, completion: @escaping (ActionResult) -> Void) {
-        store.addAction(actionName: action, ofType: ofType) { [weak self] error in
-            guard self != nil else { return }
-            completion(error)
-        }
-    }
-}
-
-class LocalFeedStore {
-    private let contextProvider: ContextProviding
-    typealias DetailCompletion = (Error?) -> Void
-    typealias ActionCompletion = (Error?) -> Void
-    
-    private var addDetailCompletion = [DetailCompletion]()
-    private var addActionCompletion = [ActionCompletion]()
-    
-    init(contextProvider: ContextProviding = MockContextProvider()) {
-        self.contextProvider = contextProvider
-    }
-    
-    func addData(detail: Detailed, completion: @escaping (Error?) -> Void) {
-        receivedMessage.append(.addData(detail))
-        addDetailCompletion.append(completion)
-    }
-    
-    func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
-        receivedMessage.append(.addAction((actionName, ofType)))
-        addActionCompletion.append(completion)
-    }
-    
-    func completeAddDetailSuccessfully(at index: Int = 0) {
-        addDetailCompletion[index](nil)
-    }
-    
-    func completeAddActionSuccessfully(at index: Int = 0) {
-        addActionCompletion[index](nil)
-    }
-    
-    func completeAddDetail(with error: NSError, at index: Int = 0) {
-        addDetailCompletion[index](error)
-    }
-    
-    func completeAddAction(with error: NSError, at index: Int = 0) {
-        addActionCompletion[index](error)
-    }
-    
-    enum ReceiveMessage: Equatable {
-        static func == (lhs: LocalFeedStore.ReceiveMessage, rhs: LocalFeedStore.ReceiveMessage) -> Bool {
-            switch (lhs, rhs) {
-            case let (addData(ldata), addData(rdata)):
-                return ldata == rdata
-            case let (.addAction((la, lt)), .addAction((ra, rt))):
-                return la == ra && lt == rt
-            default:
-                return false
-            }
-        }
-        
-        case addData(Detailed)
-        case addAction((actionName, ofType))
-
-        typealias actionName = String
-        typealias ofType = String
-    }
-    
-    var receivedMessage = [ReceiveMessage]()
-}
-
 class MockContextProvider: ContextProviding {
     var context: NSManagedObjectContext {
         return MockContext()
@@ -162,7 +77,7 @@ final class DataCreationTests: XCTestCase {
     }
     
     func test_saveDtail_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
-        let store = LocalFeedStore()
+        let store = LocalFeedStoreSpy()
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store)
         
         var receivedResult = [LocalFeedLoader.DetailResult]()
@@ -175,7 +90,7 @@ final class DataCreationTests: XCTestCase {
     }
     
     func test_saveAction_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallcoaed() {
-        let store = LocalFeedStore()
+        let store = LocalFeedStoreSpy()
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store)
         
         var receivedResult = [LocalFeedLoader.ActionResult]()
@@ -188,8 +103,8 @@ final class DataCreationTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: LocalFeedStore) {
-        let store = LocalFeedStore()
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: LocalFeedStoreSpy) {
+        let store = LocalFeedStoreSpy()
         let sut = LocalFeedLoader(store: store)
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
@@ -210,5 +125,63 @@ final class DataCreationTests: XCTestCase {
     
     private func anyType() -> String {
         return "any type"
+    }
+    
+    class LocalFeedStoreSpy: LocalFeedStore {
+        private let contextProvider: ContextProviding
+        
+        private var addDetailCompletion = [DetailCompletion]()
+        private var addActionCompletion = [ActionCompletion]()
+        
+        init(contextProvider: ContextProviding = MockContextProvider()) {
+            self.contextProvider = contextProvider
+        }
+        
+        func addData(detail: Detailed, completion: @escaping (Error?) -> Void) {
+            receivedMessage.append(.addData(detail))
+            addDetailCompletion.append(completion)
+        }
+        
+        func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
+            receivedMessage.append(.addAction((actionName, ofType)))
+            addActionCompletion.append(completion)
+        }
+        
+        func completeAddDetailSuccessfully(at index: Int = 0) {
+            addDetailCompletion[index](nil)
+        }
+        
+        func completeAddActionSuccessfully(at index: Int = 0) {
+            addActionCompletion[index](nil)
+        }
+        
+        func completeAddDetail(with error: NSError, at index: Int = 0) {
+            addDetailCompletion[index](error)
+        }
+        
+        func completeAddAction(with error: NSError, at index: Int = 0) {
+            addActionCompletion[index](error)
+        }
+        
+        enum ReceiveMessage: Equatable {
+            static func == (lhs: LocalFeedStoreSpy.ReceiveMessage, rhs: LocalFeedStoreSpy.ReceiveMessage) -> Bool {
+                switch (lhs, rhs) {
+                case let (addData(ldata), addData(rdata)):
+                    return ldata == rdata
+                case let (.addAction((la, lt)), .addAction((ra, rt))):
+                    return la == ra && lt == rt
+                default:
+                    return false
+                }
+            }
+            
+            case addData(Detailed)
+            case addAction((actionName, ofType))
+
+            typealias actionName = String
+            typealias ofType = String
+        }
+        
+        var receivedMessage = [ReceiveMessage]()
     }
 }
