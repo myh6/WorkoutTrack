@@ -28,8 +28,11 @@ class LocalFeedLoader {
 
 class LocalFeedStore {
     private let contextProvider: ContextProviding
-    private var addDetailCompletion = [(Error?) -> Void]()
-    private var addActionCompletion = [(Error?) -> Void]()
+    typealias DetailCompletion = (Error?) -> Void
+    typealias ActionCompletion = (Error?) -> Void
+    
+    private var addDetailCompletion = [DetailCompletion]()
+    private var addActionCompletion = [ActionCompletion]()
     
     init(contextProvider: ContextProviding = MockContextProvider()) {
         self.contextProvider = contextProvider
@@ -112,7 +115,7 @@ final class DataCreationTests: XCTestCase {
     
     func test_saveDetail_failsOnAddingDataError() {
         let (sut, store) = makeSUT()
-        let anyError = NSError(domain: "any error", code: 0)
+        let anyError = anyError()
         
         let exp = expectation(description: "Wait for completion")
         sut.save(detail: anyDetailed()) { receivedError in
@@ -125,8 +128,8 @@ final class DataCreationTests: XCTestCase {
     
     func test_saveAction_callsOnAddActionOnStore() {
         let (sut, store) = makeSUT()
-        let anyAction = "any action"
-        let anyType = "any type"
+        let anyAction = anyAction()
+        let anyType = anyType()
         
         sut.save(action: anyAction, ofType: anyType) { _ in }
         store.completeAddActionSuccessfully()
@@ -136,9 +139,9 @@ final class DataCreationTests: XCTestCase {
     
     func test_saveAction_failsOnAddingError() {
         let (sut, store) = makeSUT()
-        let anyError = NSError(domain: "any error", code: 0)
-        let action = "any action"
-        let type = "any type"
+        let anyError = anyError()
+        let action = anyAction()
+        let type = anyType()
         
         let exp = expectation(description: "Wait for completion")
         sut.save(action: action, ofType: type) { receivedError in
@@ -160,5 +163,17 @@ final class DataCreationTests: XCTestCase {
     
     private func anyDetailed() -> Detailed {
         return Detailed(uid: UUID(), setName: "any set", weight: 10.0, isDone: true, reps: 0, id: "any id")
+    }
+    
+    private func anyError() -> NSError {
+        return NSError(domain: "any error", code: 0)
+    }
+    
+    private func anyAction() -> String {
+        return "any Action"
+    }
+    
+    private func anyType() -> String {
+        return "any type"
     }
 }
