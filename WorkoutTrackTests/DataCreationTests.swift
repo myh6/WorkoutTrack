@@ -53,6 +53,10 @@ class LocalFeedStore {
         addActionCompletion[index](nil)
     }
     
+    func completeAddDetail(with error: NSError, at index: Int = 0) {
+        addCompletion[index](error)
+    }
+    
     enum ReceiveMessage: Equatable {
         static func == (lhs: LocalFeedStore.ReceiveMessage, rhs: LocalFeedStore.ReceiveMessage) -> Bool {
             switch (lhs, rhs) {
@@ -100,6 +104,20 @@ final class DataCreationTests: XCTestCase {
         store.completeAddSuccessfully()
         
         XCTAssertEqual(store.receivedMessage, [.addData(detail)])
+    }
+    
+    func test_saveDetail_failsOnAddingDataError() {
+        let (sut, store) = makeSUT()
+        let anyError = NSError(domain: "any error", code: 0)
+        let anyDetail = Detailed(uid: UUID(), setName: "any set", weight: 10.0, isDone: false, reps: 10, id: "any id")
+        
+        let exp = expectation(description: "Wait for completion")
+        sut.save(detail: anyDetail) { receivedError in
+            XCTAssertEqual(receivedError as? NSError, anyError)
+            exp.fulfill()
+        }
+        store.completeAddDetail(with: anyError)
+        wait(for: [exp], timeout: 1.0)
     }
     
     func test_saveAction_callsOnAddActionOnStore() {
