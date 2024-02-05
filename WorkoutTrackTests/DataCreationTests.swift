@@ -28,7 +28,7 @@ class LocalFeedLoader {
 
 class LocalFeedStore {
     private let contextProvider: ContextProviding
-    private var addCompletion = [(Error?) -> Void]()
+    private var addDetailCompletion = [(Error?) -> Void]()
     private var addActionCompletion = [(Error?) -> Void]()
     
     init(contextProvider: ContextProviding = MockContextProvider()) {
@@ -37,7 +37,7 @@ class LocalFeedStore {
     
     func addData(detail: Detailed, completion: @escaping (Error?) -> Void) {
         receivedMessage.append(.addData(detail))
-        addCompletion.append(completion)
+        addDetailCompletion.append(completion)
     }
     
     func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
@@ -45,8 +45,8 @@ class LocalFeedStore {
         addActionCompletion.append(completion)
     }
     
-    func completeAddSuccessfully(at index: Int = 0) {
-        addCompletion[index](nil)
+    func completeAddDetailSuccessfully(at index: Int = 0) {
+        addDetailCompletion[index](nil)
     }
     
     func completeAddActionSuccessfully(at index: Int = 0) {
@@ -54,7 +54,7 @@ class LocalFeedStore {
     }
     
     func completeAddDetail(with error: NSError, at index: Int = 0) {
-        addCompletion[index](error)
+        addDetailCompletion[index](error)
     }
     
     enum ReceiveMessage: Equatable {
@@ -101,7 +101,7 @@ final class DataCreationTests: XCTestCase {
         let detail = anyDetailed()
         
         sut.save(detail: detail) { _ in }
-        store.completeAddSuccessfully()
+        store.completeAddDetailSuccessfully()
         
         XCTAssertEqual(store.receivedMessage, [.addData(detail)])
     }
