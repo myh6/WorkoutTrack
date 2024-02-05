@@ -32,6 +32,8 @@
 		0F71DA192B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA182B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift */; };
 		0F71DA1B2B707B860044C999 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1A2B707B860044C999 /* LocalFeedLoader.swift */; };
 		0F71DA1E2B707BAD0044C999 /* LocalFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1D2B707BAD0044C999 /* LocalFeedStore.swift */; };
+		0F71DA202B707D100044C999 /* CoreDataLocalFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */; };
+		0F71DA232B707EB20044C999 /* DetailedDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA222B707EB20044C999 /* DetailedDTO.swift */; };
 		0F910A852855B2C700461016 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F910A842855B2C700461016 /* AppConfig.swift */; };
 		0F99CC1E28144BAB00994329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC1D28144BAB00994329 /* AppDelegate.swift */; };
 		0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC1F28144BAB00994329 /* SceneDelegate.swift */; };
@@ -126,6 +128,8 @@
 		0F71DA182B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MemoryLeaksTracking.swift"; sourceTree = "<group>"; };
 		0F71DA1A2B707B860044C999 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		0F71DA1D2B707BAD0044C999 /* LocalFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedStore.swift; sourceTree = "<group>"; };
+		0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataLocalFeedStoreTests.swift; sourceTree = "<group>"; };
+		0F71DA222B707EB20044C999 /* DetailedDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDTO.swift; sourceTree = "<group>"; };
 		0F910A842855B2C700461016 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		0F99CC1A28144BAB00994329 /* GYMHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYMHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F99CC1D28144BAB00994329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -236,17 +240,15 @@
 			name = TableViewCells;
 			sourceTree = "<group>";
 		};
-		0F345A372B6B5E4A007528BD /* CoreDataImplementation */ = {
+		0F345A372B6B5E4A007528BD /* Loader */ = {
 			isa = PBXGroup;
 			children = (
-				0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */,
-				0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */,
-				0F345A3C2B6B5F3F007528BD /* CoreDataUpdatingService.swift */,
-				0F345A3E2B6B6139007528BD /* CoreDataDeletionService.swift */,
+				0F71DA212B707E9B0044C999 /* Implementations */,
 				0F71DA1A2B707B860044C999 /* LocalFeedLoader.swift */,
 				0F71DA1D2B707BAD0044C999 /* LocalFeedStore.swift */,
+				0F71DA222B707EB20044C999 /* DetailedDTO.swift */,
 			);
-			path = CoreDataImplementation;
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		0F65307928910A7000F55F88 /* ViewModels */ = {
@@ -263,6 +265,17 @@
 				0F71DA182B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0F71DA212B707E9B0044C999 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */,
+				0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */,
+				0F345A3C2B6B5F3F007528BD /* CoreDataUpdatingService.swift */,
+				0F345A3E2B6B6139007528BD /* CoreDataDeletionService.swift */,
+			);
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 		0F99CC1128144BAB00994329 = {
@@ -313,6 +326,7 @@
 				0F71DA122B70416B0044C999 /* Helpers */,
 				0F99CC3728144BAC00994329 /* WorkoutTrackTests.swift */,
 				0F345A422B6B675B007528BD /* DataCreationTests.swift */,
+				0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */,
 			);
 			path = WorkoutTrackTests;
 			sourceTree = "<group>";
@@ -339,7 +353,7 @@
 		0F99CC5328144F0100994329 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				0F345A372B6B5E4A007528BD /* CoreDataImplementation */,
+				0F345A372B6B5E4A007528BD /* Loader */,
 				0F368C572817BD660098667E /* CoredataService.swift */,
 				0F99CC5028144BC000994329 /* Extension.swift */,
 				0FE98DE42835E9AF008EB8CD /* XAxisNameFormater.swift */,
@@ -681,6 +695,7 @@
 				0F0FD99C2816A84C001ACCDB /* AddActionModel.swift in Sources */,
 				0F345A3F2B6B6139007528BD /* CoreDataDeletionService.swift in Sources */,
 				0FE1076828221F0000D9D110 /* SetWeightRepsCell.swift in Sources */,
+				0F71DA232B707EB20044C999 /* DetailedDTO.swift in Sources */,
 				0F99CC56281450E200994329 /* SFSymbolButton.swift in Sources */,
 				0F99CC2828144BAB00994329 /* WorkoutTrack.xcdatamodeld in Sources */,
 				0FE106FE281E4E7F00D9D110 /* AddActionViewController.swift in Sources */,
@@ -715,6 +730,7 @@
 			files = (
 				0F99CC3828144BAC00994329 /* WorkoutTrackTests.swift in Sources */,
 				0F71DA192B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift in Sources */,
+				0F71DA202B707D100044C999 /* CoreDataLocalFeedStoreTests.swift in Sources */,
 				0F345A432B6B675B007528BD /* DataCreationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
