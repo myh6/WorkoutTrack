@@ -10,15 +10,6 @@ import GYMHack
 import CoreData
 import UIKit
 
-class MockContextProvider: ContextProviding {
-    var context: NSManagedObjectContext {
-        return MockContext()
-    }
-}
-
-class MockContext: NSManagedObjectContext {}
-
-
 final class DataCreationTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
@@ -128,14 +119,8 @@ final class DataCreationTests: XCTestCase {
     }
     
     class LocalFeedStoreSpy: LocalFeedStore {
-        private let contextProvider: ContextProviding
-        
         private var addDetailCompletion = [DetailCompletion]()
         private var addActionCompletion = [ActionCompletion]()
-        
-        init(contextProvider: ContextProviding = MockContextProvider()) {
-            self.contextProvider = contextProvider
-        }
         
         func addData(detail: Detailed, completion: @escaping (Error?) -> Void) {
             receivedMessage.append(.addData(detail))
