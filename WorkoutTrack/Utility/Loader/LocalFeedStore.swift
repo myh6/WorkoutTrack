@@ -10,6 +10,6 @@ public protocol LocalFeedStore {
     typealias DetailCompletion = (Error?) -> Void
     typealias ActionCompletion = (Error?) -> Void
     
-    func addData(detail: Detailed, completion: @escaping DetailCompletion)
+    func addData(details: [DetailedDTO], completion: @escaping DetailCompletion)
     func addAction(actionName: String, ofType: String, completion: @escaping ActionCompletion)
 }

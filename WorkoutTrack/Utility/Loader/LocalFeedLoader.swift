@@ -15,8 +15,8 @@ public class LocalFeedLoader {
         self.store = store
     }
     
-    public func save(detail: Detailed, completion: @escaping (DetailResult) -> Void) {
-        store.addData(detail: detail) { [weak self] error in
+    public func save(details: [Detailed], completion: @escaping (DetailResult) -> Void) {
+        store.addData(details: details.toLocal()) { [weak self] error in
             guard self != nil else { return }
             completion(error)
         }

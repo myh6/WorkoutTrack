@@ -20,12 +20,12 @@ final class DataCreationTests: XCTestCase {
     
     func test_saveDetail_callsOnAddDataOnStore() {
         let (sut, store) = makeSUT()
-        let detail = anyDetailed()
+        let details = anyDetails().model
         
-        sut.save(detail: detail) { _ in }
+        sut.save(details: details) { _ in }
         store.completeAddDetailSuccessfully()
         
-        XCTAssertEqual(store.receivedMessage, [.addData(detail)])
+        XCTAssertEqual(store.receivedMessage, [.addData(details.toLocal())])
     }
     
     func test_saveDetail_failsOnAddingDataError() {
@@ -33,7 +33,7 @@ final class DataCreationTests: XCTestCase {
         let anyError = anyError()
         
         let exp = expectation(description: "Wait for completion")
-        sut.save(detail: anyDetailed()) { receivedError in
+        sut.save(details: anyDetails().model) { receivedError in
             XCTAssertEqual(receivedError as? NSError, anyError)
             exp.fulfill()
         }
@@ -72,7 +72,7 @@ final class DataCreationTests: XCTestCase {
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store)
         
         var receivedResult = [LocalFeedLoader.DetailResult]()
-        sut?.save(detail: anyDetailed()) { receivedResult.append($0) }
+        sut?.save(details: anyDetails().model) { receivedResult.append($0) }
         
         sut = nil
         store.completeAddDetail(with: anyError())
@@ -102,8 +102,14 @@ final class DataCreationTests: XCTestCase {
         return (sut, store)
     }
     
-    private func anyDetailed() -> Detailed {
-        return Detailed(uid: UUID(), setName: "any set", weight: 10.0, isDone: true, reps: 0, id: "any id")
+    private func anyDetail() -> Detailed {
+        let model = Detailed(uid: UUID(), setName: "any set", weight: 10, isDone: true, reps: 10, id: "any id")
+        return (model)
+    }
+    
+    private func anyDetails() -> (model: [Detailed], local: [DetailedDTO]) {
+        let model = [anyDetail(), anyDetail(), anyDetail()]
+        return (model, model.toLocal())
     }
     
     private func anyError() -> NSError {
@@ -122,8 +128,8 @@ final class DataCreationTests: XCTestCase {
         private var addDetailCompletion = [DetailCompletion]()
         private var addActionCompletion = [ActionCompletion]()
         
-        func addData(detail: Detailed, completion: @escaping (Error?) -> Void) {
-            receivedMessage.append(.addData(detail))
+        func addData(details: [DetailedDTO], completion: @escaping (Error?) -> Void) {
+            receivedMessage.append(.addData(details))
             addDetailCompletion.append(completion)
         }
         
@@ -160,7 +166,7 @@ final class DataCreationTests: XCTestCase {
                 }
             }
             
-            case addData(Detailed)
+            case addData([DetailedDTO])
             case addAction((actionName, ofType))
 
             typealias actionName = String
