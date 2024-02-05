@@ -13,12 +13,17 @@ import UIKit
 class LocalFeedLoader {
     let store: LocalFeedStore
     
+    public typealias DetailResult = Error?
+    
     init(store: LocalFeedStore) {
         self.store = store
     }
     
-    func save(detail: Detailed, completion: @escaping (Error?) -> Void) {
-        store.addData(detail: detail, completion: completion)
+    func save(detail: Detailed, completion: @escaping (DetailResult) -> Void) {
+        store.addData(detail: detail) { [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
     }
     
     func save(action: String, ofType: String, completion: @escaping (Error?) -> Void) {
@@ -150,6 +155,19 @@ final class DataCreationTests: XCTestCase {
         }
         store.completeAddAction(with: anyError)
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_saveDtail_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
+        let store = LocalFeedStore()
+        var sut: LocalFeedLoader? = LocalFeedLoader(store: store)
+        
+        var receivedResult = [LocalFeedLoader.DetailResult]()
+        sut?.save(detail: anyDetailed()) { receivedResult.append($0) }
+        
+        sut = nil
+        store.completeAddDetail(with: anyError())
+        
+        XCTAssertTrue(receivedResult.isEmpty)
     }
     
     //MARK: - Helpers
