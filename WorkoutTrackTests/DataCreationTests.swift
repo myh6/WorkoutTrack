@@ -14,6 +14,7 @@ class LocalFeedLoader {
     let store: LocalFeedStore
     
     public typealias DetailResult = Error?
+    public typealias ActionResult = Error?
     
     init(store: LocalFeedStore) {
         self.store = store
@@ -26,8 +27,11 @@ class LocalFeedLoader {
         }
     }
     
-    func save(action: String, ofType: String, completion: @escaping (Error?) -> Void) {
-        store.addAction(actionName: action, ofType: ofType, completion: completion)
+    func save(action: String, ofType: String, completion: @escaping (ActionResult) -> Void) {
+        store.addAction(actionName: action, ofType: ofType) { [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
     }
 }
 
@@ -166,6 +170,19 @@ final class DataCreationTests: XCTestCase {
         
         sut = nil
         store.completeAddDetail(with: anyError())
+        
+        XCTAssertTrue(receivedResult.isEmpty)
+    }
+    
+    func test_saveAction_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallcoaed() {
+        let store = LocalFeedStore()
+        var sut: LocalFeedLoader? = LocalFeedLoader(store: store)
+        
+        var receivedResult = [LocalFeedLoader.ActionResult]()
+        sut?.save(action: anyAction(), ofType: anyType()) { receivedResult.append($0) }
+        
+        sut = nil
+        store.completeAddAction(with: anyError())
         
         XCTAssertTrue(receivedResult.isEmpty)
     }
