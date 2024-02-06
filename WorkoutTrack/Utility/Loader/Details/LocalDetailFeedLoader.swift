@@ -5,7 +5,11 @@
 //  Created by Min-Yang Huang on 2024/2/4.
 //
 
-public class LocalDetailFeedLoader {
+// TODO: - Better naming option: DetailedDataSaver, DetailedDataRepository
+// This class should comform to a protocol to keep business domain agnostic
+// FeedLoader --> Business Domain ( So that Business Domain wouldn't know where the data is from)
+
+ public class LocalDetailFeedLoader {
     let store: LocalDetailFeedStore
     
     public typealias SaveDetailResult = Error?
