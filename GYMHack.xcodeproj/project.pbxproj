@@ -250,11 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				0F71DA212B707E9B0044C999 /* Implementations */,
-				0F71DA1A2B707B860044C999 /* LocalDetailFeedLoader.swift */,
-				0F71DA262B71D3750044C999 /* LocalActionFeedLoader.swift */,
-				0F71DA1D2B707BAD0044C999 /* LocalDetailFeedStore.swift */,
-				0F71DA242B71D30D0044C999 /* LocalActionFeedStore.swift */,
-				0F71DA222B707EB20044C999 /* DetailedDTO.swift */,
+				0F71DA2A2B71E0090044C999 /* Details */,
+				0F71DA2B2B71E0150044C999 /* Action */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -284,6 +281,25 @@
 				0F345A3E2B6B6139007528BD /* CoreDataDeletionService.swift */,
 			);
 			path = Implementations;
+			sourceTree = "<group>";
+		};
+		0F71DA2A2B71E0090044C999 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				0F71DA222B707EB20044C999 /* DetailedDTO.swift */,
+				0F71DA1A2B707B860044C999 /* LocalDetailFeedLoader.swift */,
+				0F71DA1D2B707BAD0044C999 /* LocalDetailFeedStore.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		0F71DA2B2B71E0150044C999 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				0F71DA262B71D3750044C999 /* LocalActionFeedLoader.swift */,
+				0F71DA242B71D30D0044C999 /* LocalActionFeedStore.swift */,
+			);
+			path = Action;
 			sourceTree = "<group>";
 		};
 		0F99CC1128144BAB00994329 = {
