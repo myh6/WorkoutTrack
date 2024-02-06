@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class LocalActionFeedLoader {
+public class LocalActionFeedSaver {
     let store: LocalActionFeedStore
     
     public typealias SaveActionResult = Error?

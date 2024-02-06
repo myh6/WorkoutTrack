@@ -10,7 +10,7 @@ import GYMHack
 import CoreData
 import UIKit
 
-final class LocalDetailFeedLoaderTests: XCTestCase {
+final class LocalDetailFeedSaverTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
@@ -43,9 +43,9 @@ final class LocalDetailFeedLoaderTests: XCTestCase {
     
     func test_saveDtail_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = LocalDetailFeedStoreSpy()
-        var sut: LocalDetailFeedLoader? = LocalDetailFeedLoader(store: store)
+        var sut: LocalDetailFeedSaver? = LocalDetailFeedSaver(store: store)
         
-        var receivedResult = [LocalDetailFeedLoader.SaveDetailResult]()
+        var receivedResult = [LocalDetailFeedSaver.SaveDetailResult]()
         sut?.save(details: anyDetails().model) { receivedResult.append($0) }
         
         sut = nil
@@ -55,9 +55,9 @@ final class LocalDetailFeedLoaderTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalDetailFeedLoader, store: LocalDetailFeedStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalDetailFeedSaver, store: LocalDetailFeedStoreSpy) {
         let store = LocalDetailFeedStoreSpy()
-        let sut = LocalDetailFeedLoader(store: store)
+        let sut = LocalDetailFeedSaver(store: store)
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
