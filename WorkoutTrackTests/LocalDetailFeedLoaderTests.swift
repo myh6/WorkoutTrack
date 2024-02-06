@@ -45,7 +45,7 @@ final class LocalDetailFeedLoaderTests: XCTestCase {
         let store = LocalDetailFeedStoreSpy()
         var sut: LocalDetailFeedLoader? = LocalDetailFeedLoader(store: store)
         
-        var receivedResult = [LocalDetailFeedLoader.DetailResult]()
+        var receivedResult = [LocalDetailFeedLoader.SaveDetailResult]()
         sut?.save(details: anyDetails().model) { receivedResult.append($0) }
         
         sut = nil
@@ -78,7 +78,7 @@ final class LocalDetailFeedLoaderTests: XCTestCase {
     }
     
     class LocalDetailFeedStoreSpy: LocalDetailFeedStore {
-        private var addDetailCompletion = [DetailCompletion]()
+        private var addDetailCompletion = [AddDataCompletion]()
         
         func addData(details: [DetailedDTO], completion: @escaping (Error?) -> Void) {
             receivedMessage.append(.addData(details))

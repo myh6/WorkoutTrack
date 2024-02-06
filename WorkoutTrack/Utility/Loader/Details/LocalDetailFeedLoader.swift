@@ -8,13 +8,13 @@
 public class LocalDetailFeedLoader {
     let store: LocalDetailFeedStore
     
-    public typealias DetailResult = Error?
+    public typealias SaveDetailResult = Error?
     
     public init(store: LocalDetailFeedStore) {
         self.store = store
     }
     
-    public func save(details: [Detailed], completion: @escaping (DetailResult) -> Void) {
+    public func save(details: [Detailed], completion: @escaping (SaveDetailResult) -> Void) {
         store.addData(details: details.toLocal()) { [weak self] error in
             guard self != nil else { return }
             completion(error)

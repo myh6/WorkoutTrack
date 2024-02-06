@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Data Transfer Object
+// MARK: - Data Transfer Object
 public struct DetailedDTO: Equatable {
     
     var uuid: UUID

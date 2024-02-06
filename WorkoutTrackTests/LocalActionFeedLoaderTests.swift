@@ -46,7 +46,7 @@ final class LocalActionFeedLoaderTests: XCTestCase {
         let store = LocalActionFeedStoreSpy()
         var sut: LocalActionFeedLoader? = LocalActionFeedLoader(store: store)
         
-        var receivedResult = [LocalActionFeedLoader.ActionResult]()
+        var receivedResult = [LocalActionFeedLoader.SaveActionResult]()
         sut?.save(action: anyAction(), ofType: anyType()) { receivedResult.append($0) }
         
         sut = nil
@@ -77,7 +77,7 @@ final class LocalActionFeedLoaderTests: XCTestCase {
     }
     
     class LocalActionFeedStoreSpy: LocalActionFeedStore {
-        private var addActionCompletion = [ActionCompletion]()
+        private var addActionCompletion = [AddActionCompletion]()
         
         func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
             receivedMessage.append(.addAction((actionName, ofType)))
