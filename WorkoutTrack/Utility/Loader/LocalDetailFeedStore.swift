@@ -6,10 +6,8 @@
 //
 
 // Should be the blueprint of all the CoreData implementation
-public protocol LocalFeedStore {
+public protocol LocalDetailFeedStore {
     typealias DetailCompletion = (Error?) -> Void
-    typealias ActionCompletion = (Error?) -> Void
     
     func addData(details: [DetailedDTO], completion: @escaping DetailCompletion)
-    func addAction(actionName: String, ofType: String, completion: @escaping ActionCompletion)
 }

@@ -17,7 +17,7 @@
 		0F345A3B2B6B5EA5007528BD /* CoreDataFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */; };
 		0F345A3D2B6B5F3F007528BD /* CoreDataUpdatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3C2B6B5F3F007528BD /* CoreDataUpdatingService.swift */; };
 		0F345A3F2B6B6139007528BD /* CoreDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3E2B6B6139007528BD /* CoreDataDeletionService.swift */; };
-		0F345A432B6B675B007528BD /* LocalFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A422B6B675B007528BD /* LocalFeedLoaderTests.swift */; };
+		0F345A432B6B675B007528BD /* LocalDetailFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A422B6B675B007528BD /* LocalDetailFeedLoaderTests.swift */; };
 		0F361F33288A3474004B322E /* AdmobID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F32288A3474004B322E /* AdmobID.swift */; };
 		0F361F35288A3532004B322E /* DropDownTextFieldID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F34288A3532004B322E /* DropDownTextFieldID.swift */; };
 		0F361F46288E6706004B322E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F45288E6706004B322E /* Log.swift */; };
@@ -30,10 +30,13 @@
 		0F65307B28910A9000F55F88 /* WeeklyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65307A28910A9000F55F88 /* WeeklyViewModel.swift */; };
 		0F71DA112B702A3A0044C999 /* ContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA102B702A3A0044C999 /* ContextProvider.swift */; };
 		0F71DA192B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA182B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift */; };
-		0F71DA1B2B707B860044C999 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1A2B707B860044C999 /* LocalFeedLoader.swift */; };
-		0F71DA1E2B707BAD0044C999 /* LocalFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1D2B707BAD0044C999 /* LocalFeedStore.swift */; };
+		0F71DA1B2B707B860044C999 /* LocalDetailFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1A2B707B860044C999 /* LocalDetailFeedLoader.swift */; };
+		0F71DA1E2B707BAD0044C999 /* LocalDetailFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1D2B707BAD0044C999 /* LocalDetailFeedStore.swift */; };
 		0F71DA202B707D100044C999 /* CoreDataLocalFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */; };
 		0F71DA232B707EB20044C999 /* DetailedDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA222B707EB20044C999 /* DetailedDTO.swift */; };
+		0F71DA252B71D30D0044C999 /* LocalActionFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA242B71D30D0044C999 /* LocalActionFeedStore.swift */; };
+		0F71DA272B71D3750044C999 /* LocalActionFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA262B71D3750044C999 /* LocalActionFeedLoader.swift */; };
+		0F71DA292B71D3E00044C999 /* LocalActionFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA282B71D3E00044C999 /* LocalActionFeedLoaderTests.swift */; };
 		0F910A852855B2C700461016 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F910A842855B2C700461016 /* AppConfig.swift */; };
 		0F99CC1E28144BAB00994329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC1D28144BAB00994329 /* AppDelegate.swift */; };
 		0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC1F28144BAB00994329 /* SceneDelegate.swift */; };
@@ -110,7 +113,7 @@
 		0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchingService.swift; sourceTree = "<group>"; };
 		0F345A3C2B6B5F3F007528BD /* CoreDataUpdatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUpdatingService.swift; sourceTree = "<group>"; };
 		0F345A3E2B6B6139007528BD /* CoreDataDeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDeletionService.swift; sourceTree = "<group>"; };
-		0F345A422B6B675B007528BD /* LocalFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoaderTests.swift; sourceTree = "<group>"; };
+		0F345A422B6B675B007528BD /* LocalDetailFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDetailFeedLoaderTests.swift; sourceTree = "<group>"; };
 		0F361F32288A3474004B322E /* AdmobID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobID.swift; sourceTree = "<group>"; };
 		0F361F34288A3532004B322E /* DropDownTextFieldID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextFieldID.swift; sourceTree = "<group>"; };
 		0F361F45288E6706004B322E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -126,10 +129,13 @@
 		0F65307A28910A9000F55F88 /* WeeklyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewModel.swift; sourceTree = "<group>"; };
 		0F71DA102B702A3A0044C999 /* ContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvider.swift; sourceTree = "<group>"; };
 		0F71DA182B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MemoryLeaksTracking.swift"; sourceTree = "<group>"; };
-		0F71DA1A2B707B860044C999 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
-		0F71DA1D2B707BAD0044C999 /* LocalFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedStore.swift; sourceTree = "<group>"; };
+		0F71DA1A2B707B860044C999 /* LocalDetailFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDetailFeedLoader.swift; sourceTree = "<group>"; };
+		0F71DA1D2B707BAD0044C999 /* LocalDetailFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDetailFeedStore.swift; sourceTree = "<group>"; };
 		0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataLocalFeedStoreTests.swift; sourceTree = "<group>"; };
 		0F71DA222B707EB20044C999 /* DetailedDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDTO.swift; sourceTree = "<group>"; };
+		0F71DA242B71D30D0044C999 /* LocalActionFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalActionFeedStore.swift; sourceTree = "<group>"; };
+		0F71DA262B71D3750044C999 /* LocalActionFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalActionFeedLoader.swift; sourceTree = "<group>"; };
+		0F71DA282B71D3E00044C999 /* LocalActionFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalActionFeedLoaderTests.swift; sourceTree = "<group>"; };
 		0F910A842855B2C700461016 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		0F99CC1A28144BAB00994329 /* GYMHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYMHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F99CC1D28144BAB00994329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,8 +250,10 @@
 			isa = PBXGroup;
 			children = (
 				0F71DA212B707E9B0044C999 /* Implementations */,
-				0F71DA1A2B707B860044C999 /* LocalFeedLoader.swift */,
-				0F71DA1D2B707BAD0044C999 /* LocalFeedStore.swift */,
+				0F71DA1A2B707B860044C999 /* LocalDetailFeedLoader.swift */,
+				0F71DA262B71D3750044C999 /* LocalActionFeedLoader.swift */,
+				0F71DA1D2B707BAD0044C999 /* LocalDetailFeedStore.swift */,
+				0F71DA242B71D30D0044C999 /* LocalActionFeedStore.swift */,
 				0F71DA222B707EB20044C999 /* DetailedDTO.swift */,
 			);
 			path = Loader;
@@ -325,7 +333,8 @@
 			children = (
 				0F71DA122B70416B0044C999 /* Helpers */,
 				0F99CC3728144BAC00994329 /* WorkoutTrackTests.swift */,
-				0F345A422B6B675B007528BD /* LocalFeedLoaderTests.swift */,
+				0F345A422B6B675B007528BD /* LocalDetailFeedLoaderTests.swift */,
+				0F71DA282B71D3E00044C999 /* LocalActionFeedLoaderTests.swift */,
 				0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */,
 			);
 			path = WorkoutTrackTests;
@@ -658,6 +667,7 @@
 			files = (
 				0FE10758281FD9DD00D9D110 /* NewExercise.swift in Sources */,
 				0F0FD99528164C35001ACCDB /* Sections.swift in Sources */,
+				0F71DA272B71D3750044C999 /* LocalActionFeedLoader.swift in Sources */,
 				0FE98DD02831DDD8008EB8CD /* LaunchScreenViewController.swift in Sources */,
 				0F99CC63281595C000994329 /* DateLabel.swift in Sources */,
 				0FE10712281EA3DF00D9D110 /* CollapsibleView.swift in Sources */,
@@ -672,9 +682,10 @@
 				0F99CC5F2815730500994329 /* WeekdayButton.swift in Sources */,
 				0FE107702823CD6C00D9D110 /* HistoryTableView.swift in Sources */,
 				0F361F35288A3532004B322E /* DropDownTextFieldID.swift in Sources */,
-				0F71DA1B2B707B860044C999 /* LocalFeedLoader.swift in Sources */,
+				0F71DA1B2B707B860044C999 /* LocalDetailFeedLoader.swift in Sources */,
 				0FE98DDF28322232008EB8CD /* Chart2Cell.swift in Sources */,
 				0F910A852855B2C700461016 /* AppConfig.swift in Sources */,
+				0F71DA252B71D30D0044C999 /* LocalActionFeedStore.swift in Sources */,
 				0FE1076A282221DB00D9D110 /* SetWeightRepsTableView.swift in Sources */,
 				0F345A392B6B5E57007528BD /* CoreDataCreationService.swift in Sources */,
 				0FE1075C2820D0AA00D9D110 /* ChooseCell.swift in Sources */,
@@ -683,7 +694,7 @@
 				0F99CC2228144BAB00994329 /* WeeklyViewController.swift in Sources */,
 				0F65307B28910A9000F55F88 /* WeeklyViewModel.swift in Sources */,
 				0F0FD99728166FCC001ACCDB /* SectionsCell.swift in Sources */,
-				0F71DA1E2B707BAD0044C999 /* LocalFeedStore.swift in Sources */,
+				0F71DA1E2B707BAD0044C999 /* LocalDetailFeedStore.swift in Sources */,
 				0FE1071A281FA74900D9D110 /* NewActionViewController.swift in Sources */,
 				0F44BA502828F17B001AD835 /* MonthlyViewController.swift in Sources */,
 				0F345A3D2B6B5F3F007528BD /* CoreDataUpdatingService.swift in Sources */,
@@ -730,8 +741,9 @@
 			files = (
 				0F99CC3828144BAC00994329 /* WorkoutTrackTests.swift in Sources */,
 				0F71DA192B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift in Sources */,
+				0F71DA292B71D3E00044C999 /* LocalActionFeedLoaderTests.swift in Sources */,
 				0F71DA202B707D100044C999 /* CoreDataLocalFeedStoreTests.swift in Sources */,
-				0F345A432B6B675B007528BD /* LocalFeedLoaderTests.swift in Sources */,
+				0F345A432B6B675B007528BD /* LocalDetailFeedLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
