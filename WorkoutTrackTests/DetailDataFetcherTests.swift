@@ -8,19 +8,17 @@
 import XCTest
 import GYMHack
 
-protocol DetailLoaderStore {
-    func retrieve()
-}
-
 class DetailDataFetcher {
-    private let store: DetailLoaderStore
+    private let store: DetailFeedStoreSpy
     
-    init(store: DetailLoaderStore) {
+    init(store: DetailFeedStoreSpy) {
         self.store = store
     }
     
-    func load() {
-        store.retrieve()
+    func load(completion: @escaping (Error?) -> Void) {
+        store.retrieve { error in
+            completion(error)
+        }
     }
 }
 
@@ -35,9 +33,25 @@ final class DetailDataFetcherTests: XCTestCase {
     func test_load_requestDataRetrieval() {
         let (sut, store) = makeSUT()
         
-        sut.load()
+        sut.load { _ in }
         
         XCTAssertEqual(store.receivedMessage, [.retrieve])
+    }
+    
+    func test_load_failsOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        let retrievalError = anyError()
+        
+        let exp = expectation(description: "Wait for load completion")
+        var capturedError: Error?
+        sut.load { receivedError in
+            capturedError = receivedError
+            exp.fulfill()
+        }
+        store.completeRetrieval(with: retrievalError)
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(capturedError as? NSError, retrievalError)
     }
     
     //MARK: - Helper
@@ -47,5 +61,9 @@ final class DetailDataFetcherTests: XCTestCase {
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func anyError() -> NSError {
+        return NSError(domain: "any error", code: 0)
     }
 }

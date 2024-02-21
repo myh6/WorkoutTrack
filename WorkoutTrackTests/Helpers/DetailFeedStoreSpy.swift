@@ -8,16 +8,18 @@
 import XCTest
 import GYMHack
 
-class DetailFeedStoreSpy: DetailAdditionStore, DetailLoaderStore {
+class DetailFeedStoreSpy: DetailAdditionStore {
     private var addDetailCompletion = [AddDataCompletion]()
+    private var retrievalCompletion = [(Error?) -> Void]()
     
     func addData(details: [DetailedDTO], completion: @escaping (Error?) -> Void) {
         receivedMessage.append(.addData(details))
         addDetailCompletion.append(completion)
     }
     
-    func retrieve() {
+    func retrieve(completion: @escaping (Error?) -> Void) {
         receivedMessage.append(.retrieve)
+        retrievalCompletion.append(completion)
     }
     
     func completeAddDetailSuccessfully(at index: Int = 0) {
@@ -26,6 +28,10 @@ class DetailFeedStoreSpy: DetailAdditionStore, DetailLoaderStore {
     
     func completeAddDetail(with error: NSError, at index: Int = 0) {
         addDetailCompletion[index](error)
+    }
+    
+    func completeRetrieval(with error: NSError, at index: Int = 0) {
+        retrievalCompletion[index](error)
     }
     
     enum ReceiveMessage: Equatable {
