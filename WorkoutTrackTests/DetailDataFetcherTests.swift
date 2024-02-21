@@ -27,15 +27,13 @@ class DetailDataFetcher {
 final class DetailDataFetcherTests: XCTestCase {
 
     func test_init_doesNotMessageStore() {
-        let store = DetailFeedStoreSpy()
-        let sut = DetailDataFetcher(store: store)
+        let (_, store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
     func test_load_requestDataRetrieval() {
-        let store = DetailFeedStoreSpy()
-        let sut = DetailDataFetcher(store: store)
+        let (sut, store) = makeSUT()
         
         sut.load()
         
@@ -43,5 +41,11 @@ final class DetailDataFetcherTests: XCTestCase {
     }
     
     //MARK: - Helper
-
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataFetcher, store: DetailFeedStoreSpy) {
+        let store = DetailFeedStoreSpy()
+        let sut = DetailDataFetcher(store: store)
+        trackForMemoryLeaks(store, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, store)
+    }
 }
