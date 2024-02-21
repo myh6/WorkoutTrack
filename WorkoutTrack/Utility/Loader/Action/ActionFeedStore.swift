@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol LocalActionFeedStore {
+public protocol ActionFeedStore {
     typealias AddActionCompletion = (Error?) -> Void
     
     func addAction(actionName: String, ofType: String, completion: @escaping AddActionCompletion)

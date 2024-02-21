@@ -10,7 +10,7 @@ import GYMHack
 import CoreData
 import UIKit
 
-final class LocalDetailFeedSaverTests: XCTestCase {
+final class DetailFeedSaverTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
@@ -42,10 +42,10 @@ final class LocalDetailFeedSaverTests: XCTestCase {
     }
     
     func test_saveDtail_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
-        let store = LocalDetailFeedStoreSpy()
-        var sut: LocalDetailFeedSaver? = LocalDetailFeedSaver(store: store)
+        let store = DetailFeedStoreSpy()
+        var sut: DetailDataSaver? = DetailDataSaver(store: store)
         
-        var receivedResult = [LocalDetailFeedSaver.SaveDetailResult]()
+        var receivedResult = [DetailDataSaver.SaveDetailResult]()
         sut?.save(details: anyDetails().model) { receivedResult.append($0) }
         
         sut = nil
@@ -55,9 +55,9 @@ final class LocalDetailFeedSaverTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalDetailFeedSaver, store: LocalDetailFeedStoreSpy) {
-        let store = LocalDetailFeedStoreSpy()
-        let sut = LocalDetailFeedSaver(store: store)
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataSaver, store: DetailFeedStoreSpy) {
+        let store = DetailFeedStoreSpy()
+        let sut = DetailDataSaver(store: store)
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
@@ -77,7 +77,7 @@ final class LocalDetailFeedSaverTests: XCTestCase {
         return NSError(domain: "any error", code: 0)
     }
     
-    class LocalDetailFeedStoreSpy: LocalDetailFeedStore {
+    class DetailFeedStoreSpy: DetailAdditionStore {
         private var addDetailCompletion = [AddDataCompletion]()
         
         func addData(details: [DetailedDTO], completion: @escaping (Error?) -> Void) {

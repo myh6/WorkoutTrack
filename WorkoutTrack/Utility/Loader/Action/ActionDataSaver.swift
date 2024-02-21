@@ -7,12 +7,12 @@
 
 import Foundation
 
-public class LocalActionFeedSaver {
-    let store: LocalActionFeedStore
+public class ActionDataSaver {
+    let store: ActionFeedStore
     
     public typealias SaveActionResult = Error?
     
-    public init(store: LocalActionFeedStore) {
+    public init(store: ActionFeedStore) {
         self.store = store
     }
     

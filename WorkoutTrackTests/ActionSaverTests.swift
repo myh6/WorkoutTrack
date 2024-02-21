@@ -8,7 +8,7 @@
 import XCTest
 import GYMHack
 
-final class LocalActionFeedSaverTests: XCTestCase {
+final class ActionSaverTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
@@ -44,9 +44,9 @@ final class LocalActionFeedSaverTests: XCTestCase {
     
     func test_saveAction_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallcoaed() {
         let store = LocalActionFeedStoreSpy()
-        var sut: LocalActionFeedSaver? = LocalActionFeedSaver(store: store)
+        var sut: ActionDataSaver? = ActionDataSaver(store: store)
         
-        var receivedResult = [LocalActionFeedSaver.SaveActionResult]()
+        var receivedResult = [ActionDataSaver.SaveActionResult]()
         sut?.save(action: anyAction(), ofType: anyType()) { receivedResult.append($0) }
         
         sut = nil
@@ -56,9 +56,9 @@ final class LocalActionFeedSaverTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalActionFeedSaver, store: LocalActionFeedStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionDataSaver, store: LocalActionFeedStoreSpy) {
         let store = LocalActionFeedStoreSpy()
-        let sut = LocalActionFeedSaver(store: store)
+        let sut = ActionDataSaver(store: store)
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
@@ -76,7 +76,7 @@ final class LocalActionFeedSaverTests: XCTestCase {
         return "any type"
     }
     
-    class LocalActionFeedStoreSpy: LocalActionFeedStore {
+    class LocalActionFeedStoreSpy: ActionFeedStore {
         private var addActionCompletion = [AddActionCompletion]()
         
         func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
@@ -93,7 +93,7 @@ final class LocalActionFeedSaverTests: XCTestCase {
         }
         
         enum ReceiveMessage: Equatable {
-            static func == (lhs: LocalActionFeedSaverTests.LocalActionFeedStoreSpy.ReceiveMessage, rhs: LocalActionFeedSaverTests.LocalActionFeedStoreSpy.ReceiveMessage) -> Bool {
+            static func == (lhs: ActionSaverTests.LocalActionFeedStoreSpy.ReceiveMessage, rhs: ActionSaverTests.LocalActionFeedStoreSpy.ReceiveMessage) -> Bool {
                 switch (lhs, rhs) {
                 case let (.addAction((la, lt)), .addAction((ra, rt))):
                     return la == ra && lt == rt

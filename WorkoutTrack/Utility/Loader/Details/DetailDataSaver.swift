@@ -9,12 +9,12 @@
 // This class should comform to a protocol to keep business domain agnostic
 // FeedLoader --> Business Domain ( So that Business Domain wouldn't know where the data is from)
 
- public class LocalDetailFeedSaver {
-    let store: LocalDetailFeedStore
+ public class DetailDataSaver {
+    let store: DetailAdditionStore
     
     public typealias SaveDetailResult = Error?
     
-    public init(store: LocalDetailFeedStore) {
+    public init(store: DetailAdditionStore) {
         self.store = store
     }
     
