@@ -8,42 +8,40 @@
 import XCTest
 import GYMHack
 
+protocol DetailLoaderStore {
+    func retrieve()
+}
+
 class DetailDataFetcher {
+    private let store: DetailLoaderStore
     
+    init(store: DetailLoaderStore) {
+        self.store = store
+    }
+    
+    func load() {
+        store.retrieve()
+    }
 }
 
 final class DetailDataFetcherTests: XCTestCase {
 
     func test_init_doesNotMessageStore() {
-        let sut = DetailDataFetcher()
         let store = DetailFeedStoreSpy()
+        let sut = DetailDataFetcher(store: store)
         
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
-    //MARK: - Helper
-    
-    class DetailFeedStoreSpy: DetailAdditionStore {
-        private var addDetailCompletion = [AddDataCompletion]()
+    func test_load_requestDataRetrieval() {
+        let store = DetailFeedStoreSpy()
+        let sut = DetailDataFetcher(store: store)
         
-        func addData(details: [DetailedDTO], completion: @escaping (Error?) -> Void) {
-            receivedMessage.append(.addData(details))
-            addDetailCompletion.append(completion)
-        }
+        sut.load()
         
-        func completeAddDetailSuccessfully(at index: Int = 0) {
-            addDetailCompletion[index](nil)
-        }
-        
-        func completeAddDetail(with error: NSError, at index: Int = 0) {
-            addDetailCompletion[index](error)
-        }
-        
-        enum ReceiveMessage: Equatable {
-            case addData([DetailedDTO])
-        }
-        
-        var receivedMessage = [ReceiveMessage]()
+        XCTAssertEqual(store.receivedMessage, [.retrieve])
     }
+    
+    //MARK: - Helper
 
 }

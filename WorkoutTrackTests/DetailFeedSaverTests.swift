@@ -76,27 +76,4 @@ final class DetailFeedSaverTests: XCTestCase {
     private func anyError() -> NSError {
         return NSError(domain: "any error", code: 0)
     }
-    
-    class DetailFeedStoreSpy: DetailAdditionStore {
-        private var addDetailCompletion = [AddDataCompletion]()
-        
-        func addData(details: [DetailedDTO], completion: @escaping (Error?) -> Void) {
-            receivedMessage.append(.addData(details))
-            addDetailCompletion.append(completion)
-        }
-        
-        func completeAddDetailSuccessfully(at index: Int = 0) {
-            addDetailCompletion[index](nil)
-        }
-        
-        func completeAddDetail(with error: NSError, at index: Int = 0) {
-            addDetailCompletion[index](error)
-        }
-        
-        enum ReceiveMessage: Equatable {
-            case addData([DetailedDTO])
-        }
-        
-        var receivedMessage = [ReceiveMessage]()
-    }
 }
