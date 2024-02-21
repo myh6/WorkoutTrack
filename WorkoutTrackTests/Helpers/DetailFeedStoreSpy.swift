@@ -12,7 +12,7 @@ class DetailFeedStoreSpy: DetailAdditionStore {
     private var addDetailCompletion = [AddDataCompletion]()
     private var retrievalCompletion = [(Error?) -> Void]()
     
-    func addData(details: [DetailedDTO], completion: @escaping (Error?) -> Void) {
+    func addData(details: [DetailedDTO], completion: @escaping AddDataCompletion) {
         receivedMessage.append(.addData(details))
         addDetailCompletion.append(completion)
     }
