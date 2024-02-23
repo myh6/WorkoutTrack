@@ -20,7 +20,8 @@ class DetailDataLoader {
     }
     
     func load(completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { result in
+        store.retrieve { [weak self] result in
+            guard self != nil else { return }
             switch result {
             case let .failure(error):
                 completion(.failure(error))
@@ -99,6 +100,19 @@ final class DetailDataLoaderTests: XCTestCase {
         store.completeRetrievalWithEmptyData()
         
         XCTAssertEqual(store.receivedMessage, [.retrieve])
+    }
+    
+    func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let store = DetailFeedStoreSpy()
+        var sut: DetailDataLoader? = DetailDataLoader(store: store)
+        
+        var receivedReuslt = [LoadResult]()
+        sut?.load { receivedReuslt.append($0) }
+        
+        sut = nil
+        store.completeRetrievalWithEmptyData()
+        
+        XCTAssertTrue(receivedReuslt.isEmpty)
     }
     
     //MARK: - Helper
