@@ -161,7 +161,7 @@ public func translation(_ zh: String) -> String? {
 }
 
 //MARK: - String
-extension String {
+public extension String {
     func localizeString(string: String) -> String {
         let path = Bundle.main.path(forResource: string, ofType: "lproj")
         let bundle = Bundle(path: path!)

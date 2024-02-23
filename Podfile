@@ -12,11 +12,8 @@ target 'GYMHack' do
     # Pods for testing
   end
 
-  target 'GYMHackUITests' do
-    # Pods for testing
-  end
 	pod 'FSCalendar'
   pod 'DropDown'
-  pod 'Charts', '~> 3.6.0'
-  pod 'Google-Mobile-Ads-SDK'
+  #pod 'Charts'
+  #pod 'Google-Mobile-Ads-SDK'
 end

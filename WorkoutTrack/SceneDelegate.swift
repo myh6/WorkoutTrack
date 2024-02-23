@@ -19,10 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let scene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: scene)
     window?.makeKeyAndVisible()
-    window?.rootViewController = LaunchScreenViewController()
-      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.8) {
-          self.window?.rootViewController = TabBarViewController()
-      }
+    window?.rootViewController = TabBarViewController()
+//      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.8) {
+//          self.window?.rootViewController = TabBarViewController()
+//      }
     
   }
 

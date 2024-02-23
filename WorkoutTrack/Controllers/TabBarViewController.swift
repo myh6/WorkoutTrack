@@ -13,7 +13,7 @@ class TabBarViewController: UITabBarController {
     //MARK: - Properties
     private let weekVC = WeeklyViewController()
     private let monthVC = UIStoryboard(name: MonthlyViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: MonthlyViewController.identifier) as! MonthlyViewController
-    private let chartVC = UIStoryboard(name: ChartViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: ChartViewController.identifier) as! ChartViewController
+//    private let chartVC = UIStoryboard(name: ChartViewController.identifier, bundle: nil).instantiateViewController(withIdentifier: ChartViewController.identifier) as! ChartViewController
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -27,13 +27,13 @@ class TabBarViewController: UITabBarController {
     //MARK: - Helpers
     fileprivate func configureUI() {
         view.backgroundColor = #colorLiteral(red: 0.9782040715, green: 0.9782040715, blue: 0.9782039523, alpha: 1)
-        viewControllers = [weekVC, monthVC, chartVC]
+        viewControllers = [weekVC, monthVC]
         
         guard let items = self.tabBar.items else { return }
-        let images = ["house", "calendar.circle", "chart.pie"]
-        let selectedImages = ["house.fill", "calendar.circle.fill", "chart.pie.fill"]
+        let images = ["house", "calendar.circle"]
+        let selectedImages = ["house.fill", "calendar.circle.fill"]
         let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium)
-        for i in 0 ... 2 {
+        for i in 0 ... 1 {
             items[i].image = UIImage(systemName: images[i])?.applyingSymbolConfiguration(config)
             items[i].selectedImage = UIImage(systemName: selectedImages[i])
         }
