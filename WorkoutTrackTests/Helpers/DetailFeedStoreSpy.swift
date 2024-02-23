@@ -8,16 +8,21 @@
 import XCTest
 import GYMHack
 
+enum RetrievalResult {
+    case empty
+    case failure(Error)
+}
+
 class DetailFeedStoreSpy: DetailAdditionStore {
     private var addDetailCompletion = [AddDataCompletion]()
-    private var retrievalCompletion = [([DetailedDTO]?, Error?) -> Void]()
+    private var retrievalCompletion = [(RetrievalResult) -> Void]()
     
     func addData(details: [DetailedDTO], completion: @escaping AddDataCompletion) {
         receivedMessage.append(.addData(details))
         addDetailCompletion.append(completion)
     }
     
-    func retrieve(completion: @escaping ([DetailedDTO]?, Error?) -> Void) {
+    func retrieve(completion: @escaping (RetrievalResult) -> Void) {
         receivedMessage.append(.retrieve)
         retrievalCompletion.append(completion)
     }
@@ -31,11 +36,11 @@ class DetailFeedStoreSpy: DetailAdditionStore {
     }
     
     func completeRetrieval(with error: NSError, at index: Int = 0) {
-        retrievalCompletion[index](nil, error)
+        retrievalCompletion[index](.failure(error))
     }
     
-    func completeRetrieval(with details: [DetailedDTO]?, at index: Int = 0) {
-        retrievalCompletion[index](details, nil)
+    func completeRetrievalWithEmptyData(at index: Int = 0) {
+        retrievalCompletion[index](.empty)
     }
     
     enum ReceiveMessage: Equatable {

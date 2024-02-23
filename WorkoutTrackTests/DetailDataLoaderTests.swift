@@ -8,6 +8,10 @@
 import XCTest
 import GYMHack
 
+enum LoadResult {
+    case success([Detailed])
+    case failure(Error)
+}
 class DetailDataLoader {
     private let store: DetailFeedStoreSpy
     
@@ -15,13 +19,15 @@ class DetailDataLoader {
         self.store = store
     }
     
-    func load(completion: @escaping ([Detailed]?, Error?) -> Void) {
-        store.retrieve { data, error in
-            guard error == nil else {
-                completion(nil, error)
-                return
+    func load(completion: @escaping (LoadResult) -> Void) {
+        store.retrieve { result in
+            switch result {
+            case let .failure(error):
+                completion(.failure(error))
+                
+            case .empty:
+                completion(.success([]))
             }
-            completion(data?.toModels(), nil)
         }
     }
 }
@@ -43,7 +49,7 @@ final class DetailDataLoaderTests: XCTestCase {
     func test_load_requestDataRetrieval() {
         let (sut, store) = makeSUT()
         
-        sut.load { _, _ in }
+        sut.load { _ in }
         
         XCTAssertEqual(store.receivedMessage, [.retrieve])
     }
@@ -53,27 +59,32 @@ final class DetailDataLoaderTests: XCTestCase {
         let retrievalError = anyError()
         
         let exp = expectation(description: "Wait for load completion")
-        var capturedError: Error?
-        sut.load { _, receivedError in
-            capturedError = receivedError
+        sut.load { receivedResult in
+            if case let .failure(receivedError) = receivedResult {
+                XCTAssertEqual(receivedError as NSError, retrievalError)
+            } else {
+                XCTFail("Expected to fails on retrieval error, got \(receivedResult) instead.")
+            }
             exp.fulfill()
         }
         store.completeRetrieval(with: retrievalError)
         wait(for: [exp], timeout: 1.0)
-        
-        XCTAssertEqual(capturedError as? NSError, retrievalError)
     }
     
     func test_load_deliversNoDataOnEmptyDatabase() {
         let (sut, store) = makeSUT()
         
         let exp = expectation(description: "Wait for load completion")
-        sut.load { data, error in
-            XCTAssertTrue(data?.isEmpty ?? false)
+        sut.load { receivedResult in
+            if case let .success(data) = receivedResult {
+                XCTAssertTrue(data.isEmpty)
+            } else {
+                XCTFail("Expected to delivers no data from empty database, got \(receivedResult) instead.")
+            }
             exp.fulfill()
         }
         
-        store.completeRetrieval(with: [])
+        store.completeRetrievalWithEmptyData()
         wait(for: [exp], timeout: 1.0)
     }
     
