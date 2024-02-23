@@ -27,6 +27,9 @@ class DetailDataLoader {
                 
             case .empty:
                 completion(.success([]))
+                
+            case let .found(detailsDTO):
+                completion(.success(detailsDTO.toModels()))
             }
         }
     }
@@ -71,6 +74,15 @@ final class DetailDataLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_deliversDataOnNonEmptyDatabase() {
+        let (sut, store) = makeSUT()
+        let details = anyDetails()
+        
+        expect(sut, toCompleteWith: .success(details.model)) {
+            store.completeRetrieval(with: details.local)
+        }
+    }
+    
     //MARK: - Helper
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataLoader, store: DetailFeedStoreSpy) {
         let store = DetailFeedStoreSpy()
@@ -99,6 +111,16 @@ final class DetailDataLoaderTests: XCTestCase {
         
         action()
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func anyDetail() -> Detailed {
+        let model = Detailed(uid: UUID(), setName: "any set", weight: 10, isDone: true, reps: 10, id: "any id")
+        return (model)
+    }
+    
+    private func anyDetails() -> (model: [Detailed], local: [DetailedDTO]) {
+        let model = [anyDetail(), anyDetail(), anyDetail()]
+        return (model, model.toLocal())
     }
     
     private func anyError() -> NSError {

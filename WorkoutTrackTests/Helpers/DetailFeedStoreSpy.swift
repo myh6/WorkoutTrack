@@ -10,6 +10,7 @@ import GYMHack
 
 enum RetrievalResult {
     case empty
+    case found([DetailedDTO])
     case failure(Error)
 }
 
@@ -41,6 +42,10 @@ class DetailFeedStoreSpy: DetailAdditionStore {
     
     func completeRetrievalWithEmptyData(at index: Int = 0) {
         retrievalCompletion[index](.empty)
+    }
+    
+    func completeRetrieval(with details: [DetailedDTO], at index: Int = 0) {
+        retrievalCompletion[index](.found(details))
     }
     
     enum ReceiveMessage: Equatable {
