@@ -24,7 +24,7 @@ public struct DetailedDTO: Equatable {
         self.reps = reps
     }
     
-    func toDomain() -> Detailed {
+    public func toDomain() -> Detailed {
         return Detailed(uid: uuid, setName: setName, weight: weight, isDone: isDone, reps: reps, id: uuid.uuidString)
     }
 }

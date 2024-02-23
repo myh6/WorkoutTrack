@@ -10,14 +10,14 @@ import GYMHack
 
 class DetailFeedStoreSpy: DetailAdditionStore {
     private var addDetailCompletion = [AddDataCompletion]()
-    private var retrievalCompletion = [(Error?) -> Void]()
+    private var retrievalCompletion = [([DetailedDTO]?, Error?) -> Void]()
     
     func addData(details: [DetailedDTO], completion: @escaping AddDataCompletion) {
         receivedMessage.append(.addData(details))
         addDetailCompletion.append(completion)
     }
     
-    func retrieve(completion: @escaping (Error?) -> Void) {
+    func retrieve(completion: @escaping ([DetailedDTO]?, Error?) -> Void) {
         receivedMessage.append(.retrieve)
         retrievalCompletion.append(completion)
     }
@@ -31,7 +31,11 @@ class DetailFeedStoreSpy: DetailAdditionStore {
     }
     
     func completeRetrieval(with error: NSError, at index: Int = 0) {
-        retrievalCompletion[index](error)
+        retrievalCompletion[index](nil, error)
+    }
+    
+    func completeRetrieval(with details: [DetailedDTO]?, at index: Int = 0) {
+        retrievalCompletion[index](details, nil)
     }
     
     enum ReceiveMessage: Equatable {

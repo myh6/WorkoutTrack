@@ -8,21 +8,31 @@
 import XCTest
 import GYMHack
 
-class DetailDataFetcher {
+class DetailDataLoader {
     private let store: DetailFeedStoreSpy
     
     init(store: DetailFeedStoreSpy) {
         self.store = store
     }
     
-    func load(completion: @escaping (Error?) -> Void) {
-        store.retrieve { error in
-            completion(error)
+    func load(completion: @escaping ([Detailed]?, Error?) -> Void) {
+        store.retrieve { data, error in
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            completion(data?.toModels(), nil)
         }
     }
 }
 
-final class DetailDataFetcherTests: XCTestCase {
+extension Array where Element == DetailedDTO {
+    func toModels() -> [Detailed] {
+        map { $0.toDomain() }
+    }
+}
+
+final class DetailDataLoaderTests: XCTestCase {
 
     func test_init_doesNotMessageStore() {
         let (_, store) = makeSUT()
@@ -33,7 +43,7 @@ final class DetailDataFetcherTests: XCTestCase {
     func test_load_requestDataRetrieval() {
         let (sut, store) = makeSUT()
         
-        sut.load { _ in }
+        sut.load { _, _ in }
         
         XCTAssertEqual(store.receivedMessage, [.retrieve])
     }
@@ -44,7 +54,7 @@ final class DetailDataFetcherTests: XCTestCase {
         
         let exp = expectation(description: "Wait for load completion")
         var capturedError: Error?
-        sut.load { receivedError in
+        sut.load { _, receivedError in
             capturedError = receivedError
             exp.fulfill()
         }
@@ -54,10 +64,23 @@ final class DetailDataFetcherTests: XCTestCase {
         XCTAssertEqual(capturedError as? NSError, retrievalError)
     }
     
+    func test_load_deliversNoDataOnEmptyDatabase() {
+        let (sut, store) = makeSUT()
+        
+        let exp = expectation(description: "Wait for load completion")
+        sut.load { data, error in
+            XCTAssertTrue(data?.isEmpty ?? false)
+            exp.fulfill()
+        }
+        
+        store.completeRetrieval(with: [])
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     //MARK: - Helper
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataFetcher, store: DetailFeedStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataLoader, store: DetailFeedStoreSpy) {
         let store = DetailFeedStoreSpy()
-        let sut = DetailDataFetcher(store: store)
+        let sut = DetailDataLoader(store: store)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
