@@ -83,6 +83,15 @@ final class DetailDataLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_hasNoSideEffectsOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        
+        sut.load { _ in }
+        store.completeRetrieval(with: anyError())
+        
+        XCTAssertEqual(store.receivedMessage, [.retrieve])
+    }
+    
     //MARK: - Helper
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataLoader, store: DetailFeedStoreSpy) {
         let store = DetailFeedStoreSpy()
