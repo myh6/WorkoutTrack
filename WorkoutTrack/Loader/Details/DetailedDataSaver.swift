@@ -19,8 +19,3 @@ public class DetailedDataSaver: DetailedSaver {
         }
     }
 }
-
-public protocol DetailedSaver {
-    typealias SaveDetailResult = Error?
-    func save(details: [Detailed], completion: @escaping (SaveDetailResult) -> Void)
-}

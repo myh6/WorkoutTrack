@@ -26,6 +26,7 @@
 		0F3894BA2B89B65F000FED69 /* DetailedDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894B82B89B655000FED69 /* DetailedDataLoader.swift */; };
 		0F3894BD2B89B765000FED69 /* DetailedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */; };
 		0F3894C02B89B7D1000FED69 /* DetailRetrievalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894BE2B89B7C4000FED69 /* DetailRetrievalStore.swift */; };
+		0F3894C32B89BD5F000FED69 /* DetailedSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894C12B89BD58000FED69 /* DetailedSaver.swift */; };
 		0F44BA4E2828F098001AD835 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4D2828F098001AD835 /* TabBarViewController.swift */; };
 		0F44BA502828F17B001AD835 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */; };
 		0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA512828F1A3001AD835 /* ChartViewController.swift */; };
@@ -131,6 +132,7 @@
 		0F3894B82B89B655000FED69 /* DetailedDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataLoader.swift; sourceTree = "<group>"; };
 		0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedLoader.swift; sourceTree = "<group>"; };
 		0F3894BE2B89B7C4000FED69 /* DetailRetrievalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRetrievalStore.swift; sourceTree = "<group>"; };
+		0F3894C12B89BD58000FED69 /* DetailedSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSaver.swift; sourceTree = "<group>"; };
 		0F44BA4D2828F098001AD835 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyViewController.swift; sourceTree = "<group>"; };
 		0F44BA512828F1A3001AD835 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				0F71DA2A2B71E0090044C999 /* Details */,
 				0F71DA2B2B71E0150044C999 /* Action */,
 				0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */,
+				0F3894C12B89BD58000FED69 /* DetailedSaver.swift */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				0FE98DDD2832203F008EB8CD /* Chart1Cell.swift in Sources */,
 				0FE98DE128322F39008EB8CD /* Chart3Cell.swift in Sources */,
 				0FE402192845A87B006386CF /* CustomExerciseCell.swift in Sources */,
+				0F3894C32B89BD5F000FED69 /* DetailedSaver.swift in Sources */,
 				0FE10716281ECD9D00D9D110 /* CollapsibleExerciseView.swift in Sources */,
 				0F3894BA2B89B65F000FED69 /* DetailedDataLoader.swift in Sources */,
 				0FE10718281ECDCB00D9D110 /* CollapsibleSetView.swift in Sources */,
