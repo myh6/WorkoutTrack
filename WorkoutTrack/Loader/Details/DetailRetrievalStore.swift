@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol DetailRetrievalStore {
-    func retrieve(completion: @escaping (RetrievalResult) -> Void)
+    func retrieve(predicate: NSPredicate?, completion: @escaping (RetrievalResult) -> Void)
 }
 
 public enum RetrievalResult {

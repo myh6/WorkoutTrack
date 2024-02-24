@@ -7,15 +7,15 @@
 
 import Foundation
 
-public class DetailedDataLoader {
+public class DetailedDataLoader: DetailedLoader {
     private let store: DetailRetrievalStore
     
     public init(store: DetailRetrievalStore) {
         self.store = store
     }
     
-    public func load(completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { [weak self] result in
+    public func load(with predicate: NSPredicate?, completion: @escaping (LoadResult) -> Void) {
+        store.retrieve(predicate: predicate) { [weak self] result in
             guard self != nil else { return }
             switch result {
             case let .failure(error):

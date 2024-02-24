@@ -16,12 +16,14 @@ final class DetailedLoaderTests: XCTestCase {
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
-    func test_load_requestDataRetrieval() {
+    func test_load_requestDataRetrievalWithPredicate() {
         let (sut, store) = makeSUT()
+        let anyFormat = "id == %@"
+        let predicate = NSPredicate(format: anyFormat, "testing")
         
-        sut.load { _ in }
+        sut.load(with: predicate) { _ in}
         
-        XCTAssertEqual(store.receivedMessage, [.retrieve])
+        XCTAssertEqual(store.receivedMessage, [.retrieve(predicate)])
     }
     
     func test_load_failsOnRetrievalError() {
@@ -56,7 +58,7 @@ final class DetailedLoaderTests: XCTestCase {
         sut.load { _ in }
         store.completeRetrieval(with: anyNSError())
         
-        XCTAssertEqual(store.receivedMessage, [.retrieve])
+        XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
     }
     
     func test_load_hasNoSideEffectsOnEmptyDatabase() {
@@ -65,7 +67,7 @@ final class DetailedLoaderTests: XCTestCase {
         sut.load { _ in }
         store.completeRetrievalWithEmptyData()
         
-        XCTAssertEqual(store.receivedMessage, [.retrieve])
+        XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
     }
     
     func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
@@ -82,7 +84,7 @@ final class DetailedLoaderTests: XCTestCase {
     }
     
     //MARK: - Helper
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDataLoader, store: DetailedDTOStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedLoader, store: DetailedDTOStoreSpy) {
         let store = DetailedDTOStoreSpy()
         let sut = DetailedDataLoader(store: store)
         trackForMemoryLeaks(store, file: file, line: line)
@@ -90,7 +92,7 @@ final class DetailedLoaderTests: XCTestCase {
         return (sut, store)
     }
     
-    private func expect(_ sut: DetailedDataLoader, toCompleteWith expectedResult: LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: DetailedLoader, toCompleteWith expectedResult: LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         
         let exp = expectation(description: "Wait for load completion")
         sut.load { receivedResult in

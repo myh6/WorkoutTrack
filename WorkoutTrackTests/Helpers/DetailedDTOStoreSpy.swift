@@ -17,8 +17,8 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
         addDetailCompletion.append(completion)
     }
     
-    func retrieve(completion: @escaping (RetrievalResult) -> Void) {
-        receivedMessage.append(.retrieve)
+    func retrieve(predicate: NSPredicate?, completion: @escaping (RetrievalResult) -> Void) {
+        receivedMessage.append(.retrieve(predicate))
         retrievalCompletion.append(completion)
     }
     
@@ -44,7 +44,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
     
     enum ReceiveMessage: Equatable {
         case addData([DetailedDTO])
-        case retrieve
+        case retrieve(NSPredicate?)
     }
     
     var receivedMessage = [ReceiveMessage]()
