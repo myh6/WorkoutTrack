@@ -15,8 +15,8 @@ class ActionLoader {
         self.store = store
     }
     
-    func loadAction(with predicate: NSPredicate?) {
-        store.retrieve(predicate: predicate)
+    func loadAction(with predicate: NSPredicate? = nil, completion: @escaping (Error?) -> Void = { _ in }) {
+        store.retrieve(predicate: predicate, completion: completion)
     }
 }
 
@@ -35,6 +35,20 @@ final class ActionLoaderTests: XCTestCase {
         sut.loadAction(with: predicate)
         
         XCTAssertEqual(store.receivedMessage, [.retrieve(predicate)])
+    }
+    
+    func test_loadAction_failsOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        let retrievalError = anyNSError()
+        
+        let exp = expectation(description: "Wait for load completion")
+        sut.loadAction { receivedError in
+            XCTAssertEqual(retrievalError, receivedError as? NSError)
+            exp.fulfill()
+        }
+        
+        store.completeRetrieval(with: retrievalError)
+        wait(for: [exp], timeout: 1.0)
     }
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionLoader, store: ActionFeedStoreSpy) {
