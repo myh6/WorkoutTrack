@@ -8,8 +8,13 @@
 import Foundation
 import GYMHack
 
+enum ActionRetrievalResult {
+    case empty
+    case failure(Error)
+}
+
 class ActionFeedStoreSpy: ActionFeedStore {
-    typealias RetrievalCompletion = (String?, Error?) -> Void
+    typealias RetrievalCompletion = (ActionRetrievalResult) -> Void
     private var addActionCompletion = [AddActionCompletion]()
     private var retrievalCompletion = [RetrievalCompletion]()
     
@@ -18,7 +23,7 @@ class ActionFeedStoreSpy: ActionFeedStore {
         addActionCompletion.append(completion)
     }
     
-    func retrieve(predicate: NSPredicate?, completion: @escaping (String?, Error?) -> Void) {
+    func retrieve(predicate: NSPredicate?, completion: @escaping (ActionRetrievalResult) -> Void) {
         receivedMessage.append(.retrieve(predicate))
         retrievalCompletion.append(completion)
     }
@@ -32,11 +37,11 @@ class ActionFeedStoreSpy: ActionFeedStore {
     }
     
     func completeRetrieval(with error: NSError, at index: Int = 0) {
-        retrievalCompletion[index](nil, error)
+        retrievalCompletion[index](.failure(error))
     }
     
     func completeRetrievalWithEmptyData(at index: Int = 0) {
-        retrievalCompletion[index](nil, nil)
+        retrievalCompletion[index](.empty)
     }
     
     enum ReceiveMessage: Equatable {

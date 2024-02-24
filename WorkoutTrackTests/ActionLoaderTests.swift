@@ -15,7 +15,7 @@ class ActionLoader {
         self.store = store
     }
     
-    func loadAction(with predicate: NSPredicate? = nil, completion: @escaping (String?, Error?) -> Void) {
+    func loadAction(with predicate: NSPredicate? = nil, completion: @escaping (ActionRetrievalResult) -> Void) {
         store.retrieve(predicate: predicate, completion: completion)
     }
 }
@@ -32,7 +32,7 @@ final class ActionLoaderTests: XCTestCase {
         let (sut, store) = makeSUT()
         let anyFormat = "id == %@"
         let predicate = NSPredicate(format: anyFormat, "testing")
-        sut.loadAction(with: predicate) { _, _ in }
+        sut.loadAction(with: predicate) { _ in }
         
         XCTAssertEqual(store.receivedMessage, [.retrieve(predicate)])
     }
@@ -42,8 +42,13 @@ final class ActionLoaderTests: XCTestCase {
         let retrievalError = anyNSError()
         
         let exp = expectation(description: "Wait for load completion")
-        sut.loadAction { _, receivedError in
-            XCTAssertEqual(retrievalError, receivedError as? NSError)
+        sut.loadAction { receivedResult in
+            switch receivedResult {
+            case let .failure(receivedError):
+                XCTAssertEqual(retrievalError, receivedError as NSError)
+            default:
+                XCTFail("Expected to fails on retrieval error, got \(receivedResult) instead")
+            }
             exp.fulfill()
         }
         
@@ -55,8 +60,13 @@ final class ActionLoaderTests: XCTestCase {
         let (sut, store) = makeSUT()
         
         let exp = expectation(description: "Wait for load completion")
-        sut.loadAction { receivedAction, _ in
-            XCTAssertNil(receivedAction)
+        sut.loadAction { receivedResult in
+            switch receivedResult {
+            case .empty:
+                break
+            default:
+                XCTFail("Expected to deliver no data on empty database, got \(receivedResult) instead.")
+            }
             exp.fulfill()
         }
         store.completeRetrievalWithEmptyData()
