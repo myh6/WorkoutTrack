@@ -9,15 +9,16 @@ import Foundation
 import GYMHack
 
 class ActionFeedStoreSpy: ActionFeedStore {
+    typealias RetrievalCompletion = (String?, Error?) -> Void
     private var addActionCompletion = [AddActionCompletion]()
-    private var retrievalCompletion = [(Error?) -> Void]()
+    private var retrievalCompletion = [RetrievalCompletion]()
     
     func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
         receivedMessage.append(.addAction((actionName, ofType)))
         addActionCompletion.append(completion)
     }
     
-    func retrieve(predicate: NSPredicate?, completion: @escaping (Error?) -> Void) {
+    func retrieve(predicate: NSPredicate?, completion: @escaping (String?, Error?) -> Void) {
         receivedMessage.append(.retrieve(predicate))
         retrievalCompletion.append(completion)
     }
@@ -31,7 +32,11 @@ class ActionFeedStoreSpy: ActionFeedStore {
     }
     
     func completeRetrieval(with error: NSError, at index: Int = 0) {
-        retrievalCompletion[index](error)
+        retrievalCompletion[index](nil, error)
+    }
+    
+    func completeRetrievalWithEmptyData(at index: Int = 0) {
+        retrievalCompletion[index](nil, nil)
     }
     
     enum ReceiveMessage: Equatable {
