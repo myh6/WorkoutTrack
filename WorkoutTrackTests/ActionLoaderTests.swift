@@ -99,14 +99,14 @@ final class ActionLoaderTests: XCTestCase {
         sut.loadAction { receivedResult in
             switch (expectedResult, receivedResult) {
             case let (.failure(expectedError), .failure(receivedError)):
-                XCTAssertEqual(expectedError as NSError, receivedError as NSError)
+                XCTAssertEqual(expectedError as NSError, receivedError as NSError, file: file, line: line)
             case (.empty, .empty):
                 break
             
             case let (.found(expectedAction), .found(receivedAction)):
-                XCTAssertEqual(expectedAction, receivedAction)
+                XCTAssertEqual(expectedAction, receivedAction, file: file, line: line)
             default:
-                XCTFail("Expected to get \(expectedResult), got \(receivedResult) instead.")
+                XCTFail("Expected to get \(expectedResult), got \(receivedResult) instead.", file: file, line: line)
             }
             exp.fulfill()
         }
