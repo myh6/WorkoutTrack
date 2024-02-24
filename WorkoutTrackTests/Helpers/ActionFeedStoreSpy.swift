@@ -16,6 +16,10 @@ class ActionFeedStoreSpy: ActionFeedStore {
         addActionCompletion.append(completion)
     }
     
+    func retrieve(predicate: NSPredicate?) {
+        receivedMessage.append(.retrieve(predicate))
+    }
+    
     func completeAddActionSuccessfully(at index: Int = 0) {
         addActionCompletion[index](nil)
     }
@@ -29,10 +33,15 @@ class ActionFeedStoreSpy: ActionFeedStore {
             switch (lhs, rhs) {
             case let (.addAction((la, lt)), .addAction((ra, rt))):
                 return la == ra && lt == rt
+            case let (.retrieve(lp), .retrieve(rp)):
+                return lp == rp
+            default:
+                return false
             }
         }
         
         case addAction((actionName, ofType))
+        case retrieve(NSPredicate?)
 
         typealias actionName = String
         typealias ofType = String
