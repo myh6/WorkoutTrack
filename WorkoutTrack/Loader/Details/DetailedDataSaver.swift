@@ -13,7 +13,7 @@ public class DetailedDataSaver: DetailedSaver {
     }
     
     public func save(details: [Detailed], completion: @escaping (SaveDetailResult) -> Void) {
-        store.addData(details: details.toLocal()) { [weak self] error in
+        store.add(details: details.toLocal()) { [weak self] error in
             guard self != nil else { return }
             completion(error)
         }

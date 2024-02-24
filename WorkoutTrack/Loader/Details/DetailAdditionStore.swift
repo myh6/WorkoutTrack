@@ -7,7 +7,7 @@
 
 /// Blueprint for future implementation. Can used by different framework without coupling implenmentation details with Domain Details.
 public protocol DetailAdditionStore {
-    typealias AddDataCompletion = (Error?) -> Void
+    typealias AddDetailedDTOCompletion = (Error?) -> Void
     
-    func addData(details: [DetailedDTO], completion: @escaping AddDataCompletion)
+    func add(details: [DetailedDTO], completion: @escaping AddDetailedDTOCompletion)
 }
