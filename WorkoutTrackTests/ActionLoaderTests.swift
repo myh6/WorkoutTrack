@@ -54,6 +54,17 @@ final class ActionLoaderTests: XCTestCase {
         }
     }
     
+    func test_loadAction_deliversDataOnNonEmptyDatabase() {
+        let (sut, store) = makeSUT()
+        let action = anyAction()
+        let type = anyType()
+        let actionFeed = ActionRetrievalResult.ActionFeed(actionName: action, typeName: type)
+        
+        expect(sut, toCompleteWith: .found(actionFeed)) {
+            store.completeRetrievalWith(action: action, type: type)
+        }
+    }
+    
     func test_loadAction_hasNoSideEffectsOnRetrievalError() {
         let (sut, store) = makeSUT()
         
@@ -91,6 +102,9 @@ final class ActionLoaderTests: XCTestCase {
                 XCTAssertEqual(expectedError as NSError, receivedError as NSError)
             case (.empty, .empty):
                 break
+            
+            case let (.found(expectedAction), .found(receivedAction)):
+                XCTAssertEqual(expectedAction, receivedAction)
             default:
                 XCTFail("Expected to get \(expectedResult), got \(receivedResult) instead.")
             }
@@ -99,5 +113,13 @@ final class ActionLoaderTests: XCTestCase {
         
         action()
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func anyAction() -> String {
+        return "any Action"
+    }
+    
+    private func anyType() -> String {
+        return "any type"
     }
 }

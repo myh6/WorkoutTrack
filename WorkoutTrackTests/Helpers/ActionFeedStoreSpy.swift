@@ -9,8 +9,14 @@ import Foundation
 import GYMHack
 
 enum ActionRetrievalResult {
+    struct ActionFeed: Equatable {
+        let actionName: String
+        let typeName: String
+    }
+    
     case empty
     case failure(Error)
+    case found(ActionFeed)
 }
 
 class ActionFeedStoreSpy: ActionFeedStore {
@@ -42,6 +48,10 @@ class ActionFeedStoreSpy: ActionFeedStore {
     
     func completeRetrievalWithEmptyData(at index: Int = 0) {
         retrievalCompletion[index](.empty)
+    }
+    
+    func completeRetrievalWith(action: String, type: String, at index: Int = 0) {
+        retrievalCompletion[index](.found(ActionRetrievalResult.ActionFeed(actionName: action, typeName: type)))
     }
     
     enum ReceiveMessage: Equatable {
