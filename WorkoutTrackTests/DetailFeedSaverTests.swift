@@ -30,7 +30,7 @@ final class DetailFeedSaverTests: XCTestCase {
     
     func test_saveDetail_failsOnAddingDataError() {
         let (sut, store) = makeSUT()
-        let anyError = anyError()
+        let anyError = anyNSError()
         
         let exp = expectation(description: "Wait for completion")
         sut.save(details: anyDetails().model) { receivedError in
@@ -49,7 +49,7 @@ final class DetailFeedSaverTests: XCTestCase {
         sut?.save(details: anyDetails().model) { receivedResult.append($0) }
         
         sut = nil
-        store.completeAddDetail(with: anyError())
+        store.completeAddDetail(with: anyNSError())
         
         XCTAssertTrue(receivedResult.isEmpty)
     }
@@ -61,19 +61,5 @@ final class DetailFeedSaverTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
-    }
-    
-    private func anyDetail() -> Detailed {
-        let model = Detailed(uid: UUID(), setName: "any set", weight: 10, isDone: true, reps: 10, id: "any id")
-        return (model)
-    }
-    
-    private func anyDetails() -> (model: [Detailed], local: [DetailedDTO]) {
-        let model = [anyDetail(), anyDetail(), anyDetail()]
-        return (model, model.toLocal())
-    }
-    
-    private func anyError() -> NSError {
-        return NSError(domain: "any error", code: 0)
     }
 }

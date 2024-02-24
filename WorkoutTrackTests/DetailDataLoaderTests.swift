@@ -60,7 +60,7 @@ final class DetailDataLoaderTests: XCTestCase {
     
     func test_load_failsOnRetrievalError() {
         let (sut, store) = makeSUT()
-        let retrievalError = anyError()
+        let retrievalError = anyNSError()
         
         expect(sut, toCompleteWith: .failure(retrievalError)) {
             store.completeRetrieval(with: retrievalError)
@@ -88,7 +88,7 @@ final class DetailDataLoaderTests: XCTestCase {
         let (sut, store) = makeSUT()
         
         sut.load { _ in }
-        store.completeRetrieval(with: anyError())
+        store.completeRetrieval(with: anyNSError())
         
         XCTAssertEqual(store.receivedMessage, [.retrieve])
     }
@@ -143,19 +143,5 @@ final class DetailDataLoaderTests: XCTestCase {
         
         action()
         wait(for: [exp], timeout: 1.0)
-    }
-    
-    private func anyDetail() -> Detailed {
-        let model = Detailed(uid: UUID(), setName: "any set", weight: 10, isDone: true, reps: 10, id: "any id")
-        return (model)
-    }
-    
-    private func anyDetails() -> (model: [Detailed], local: [DetailedDTO]) {
-        let model = [anyDetail(), anyDetail(), anyDetail()]
-        return (model, model.toLocal())
-    }
-    
-    private func anyError() -> NSError {
-        return NSError(domain: "any error", code: 0)
     }
 }
