@@ -7,6 +7,7 @@
 
 import Foundation
 
+// While having predicate param in load method violate single responsbility principle, I feel like this is the trade off given that our project doesn't need that much complexity and the risk of tightly coupled dependencies. We can change it to another class just for filter in the future, just to make sure that it conform to another protocol so that we could use dependency inversion technique.
 public class DetailedDataLoader: DetailedLoader {
     private let store: DetailRetrievalStore
     
