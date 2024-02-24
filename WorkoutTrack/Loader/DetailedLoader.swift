@@ -7,17 +7,17 @@
 
 import Foundation
 
-public enum LoadResult {
+public enum LoadDetailedResult {
     case success([Detailed])
     case failure(Error)
 }
 
 public protocol DetailedLoader {
-    func load(with predicate: NSPredicate?, completion: @escaping (LoadResult) -> Void)
+    func loadDetailed(with predicate: NSPredicate?, completion: @escaping (LoadDetailedResult) -> Void)
 }
 
 public extension DetailedLoader {
-    func load(completion: @escaping (LoadResult) -> Void) {
-        load(with: nil, completion: completion)
+    func loadDetailed(completion: @escaping (LoadDetailedResult) -> Void) {
+        loadDetailed(with: nil, completion: completion)
     }
 }

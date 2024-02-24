@@ -21,7 +21,7 @@ final class DetailedLoaderTests: XCTestCase {
         let anyFormat = "id == %@"
         let predicate = NSPredicate(format: anyFormat, "testing")
         
-        sut.load(with: predicate) { _ in}
+        sut.loadDetailed(with: predicate) { _ in}
         
         XCTAssertEqual(store.receivedMessage, [.retrieve(predicate)])
     }
@@ -55,7 +55,7 @@ final class DetailedLoaderTests: XCTestCase {
     func test_load_hasNoSideEffectsOnRetrievalError() {
         let (sut, store) = makeSUT()
         
-        sut.load { _ in }
+        sut.loadDetailed { _ in }
         store.completeRetrieval(with: anyNSError())
         
         XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
@@ -64,7 +64,7 @@ final class DetailedLoaderTests: XCTestCase {
     func test_load_hasNoSideEffectsOnEmptyDatabase() {
         let (sut, store) = makeSUT()
         
-        sut.load { _ in }
+        sut.loadDetailed { _ in }
         store.completeRetrievalWithEmptyData()
         
         XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
@@ -74,8 +74,8 @@ final class DetailedLoaderTests: XCTestCase {
         let store = DetailedDTOStoreSpy()
         var sut: DetailedDataLoader? = DetailedDataLoader(store: store)
         
-        var receivedReuslt = [LoadResult]()
-        sut?.load { receivedReuslt.append($0) }
+        var receivedReuslt = [LoadDetailedResult]()
+        sut?.loadDetailed { receivedReuslt.append($0) }
         
         sut = nil
         store.completeRetrievalWithEmptyData()
@@ -92,10 +92,10 @@ final class DetailedLoaderTests: XCTestCase {
         return (sut, store)
     }
     
-    private func expect(_ sut: DetailedLoader, toCompleteWith expectedResult: LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: DetailedLoader, toCompleteWith expectedResult: LoadDetailedResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         
         let exp = expectation(description: "Wait for load completion")
-        sut.load { receivedResult in
+        sut.loadDetailed { receivedResult in
             switch (expectedResult, receivedResult) {
             case let (.failure(expectedError), .failure(receivedError)):
                 XCTAssertEqual(expectedError as NSError, receivedError as NSError, file: file, line: line)

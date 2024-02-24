@@ -15,7 +15,7 @@ public class DetailedDataLoader: DetailedLoader {
         self.store = store
     }
     
-    public func load(with predicate: NSPredicate?, completion: @escaping (LoadResult) -> Void) {
+    public func loadDetailed(with predicate: NSPredicate?, completion: @escaping (LoadDetailedResult) -> Void) {
         store.retrieve(predicate: predicate) { [weak self] result in
             guard self != nil else { return }
             switch result {
