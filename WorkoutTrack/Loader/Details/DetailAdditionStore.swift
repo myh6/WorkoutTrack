@@ -5,7 +5,7 @@
 //  Created by Min-Yang Huang on 2024/2/4.
 //
 
-// Should be the blueprint of all the CoreData implementation
+/// Blueprint for future implementation. Can used by different framework without coupling implenmentation details with Domain Details.
 public protocol DetailAdditionStore {
     typealias AddDataCompletion = (Error?) -> Void
     
