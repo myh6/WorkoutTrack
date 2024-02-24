@@ -41,37 +41,17 @@ final class ActionLoaderTests: XCTestCase {
         let (sut, store) = makeSUT()
         let retrievalError = anyNSError()
         
-        let exp = expectation(description: "Wait for load completion")
-        sut.loadAction { receivedResult in
-            switch receivedResult {
-            case let .failure(receivedError):
-                XCTAssertEqual(retrievalError, receivedError as NSError)
-            default:
-                XCTFail("Expected to fails on retrieval error, got \(receivedResult) instead")
-            }
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(retrievalError)) {
+            store.completeRetrieval(with: retrievalError)
         }
-        
-        store.completeRetrieval(with: retrievalError)
-        wait(for: [exp], timeout: 1.0)
     }
     
     func test_loadAction_deliversNoDataOnEmptyDatabase() {
         let (sut, store) = makeSUT()
         
-        let exp = expectation(description: "Wait for load completion")
-        sut.loadAction { receivedResult in
-            switch receivedResult {
-            case .empty:
-                break
-            default:
-                XCTFail("Expected to deliver no data on empty database, got \(receivedResult) instead.")
-            }
-            exp.fulfill()
+        expect(sut, toCompleteWith: .empty) {
+            store.completeRetrievalWithEmptyData()
         }
-        store.completeRetrievalWithEmptyData()
-        
-        wait(for: [exp], timeout: 1.0)
     }
     
     func test_loadAction_hasNoSideEffectsOnRetrievalError() {
@@ -100,5 +80,24 @@ final class ActionLoaderTests: XCTestCase {
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func expect(_ sut: ActionLoader, toCompleteWith expectedResult: ActionRetrievalResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        
+        let exp = expectation(description: "Wait for load completion")
+        sut.loadAction { receivedResult in
+            switch (expectedResult, receivedResult) {
+            case let (.failure(expectedError), .failure(receivedError)):
+                XCTAssertEqual(expectedError as NSError, receivedError as NSError)
+            case (.empty, .empty):
+                break
+            default:
+                XCTFail("Expected to get \(expectedResult), got \(receivedResult) instead.")
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
 }
