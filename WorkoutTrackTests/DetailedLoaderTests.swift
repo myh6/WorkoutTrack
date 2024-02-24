@@ -114,7 +114,7 @@ final class DetailedLoaderTests: XCTestCase {
     }
     
     func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
-        let store = DetailFeedStoreSpy()
+        let store = DetailedDTOStoreSpy()
         var sut: DetailedLoader? = DetailedLoader(store: store)
         
         var receivedReuslt = [LoadResult]()
@@ -127,8 +127,8 @@ final class DetailedLoaderTests: XCTestCase {
     }
     
     //MARK: - Helper
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedLoader, store: DetailFeedStoreSpy) {
-        let store = DetailFeedStoreSpy()
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedLoader, store: DetailedDTOStoreSpy) {
+        let store = DetailedDTOStoreSpy()
         let sut = DetailedLoader(store: store)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)

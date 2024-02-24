@@ -42,7 +42,7 @@ final class DetailFeedSaverTests: XCTestCase {
     }
     
     func test_saveDtail_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
-        let store = DetailFeedStoreSpy()
+        let store = DetailedDTOStoreSpy()
         var sut: DetailDataSaver? = DetailDataSaver(store: store)
         
         var receivedResult = [DetailDataSaver.SaveDetailResult]()
@@ -55,8 +55,8 @@ final class DetailFeedSaverTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataSaver, store: DetailFeedStoreSpy) {
-        let store = DetailFeedStoreSpy()
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataSaver, store: DetailedDTOStoreSpy) {
+        let store = DetailedDTOStoreSpy()
         let sut = DetailDataSaver(store: store)
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)

@@ -39,7 +39,7 @@
 		0F71DA272B71D3750044C999 /* ActionDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA262B71D3750044C999 /* ActionDataSaver.swift */; };
 		0F71DA292B71D3E00044C999 /* ActionSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA282B71D3E00044C999 /* ActionSaverTests.swift */; };
 		0F71DA392B7FDE420044C999 /* DetailedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA382B7FDE420044C999 /* DetailedLoaderTests.swift */; };
-		0F71DA482B8684B20044C999 /* DetailFeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA472B8684B20044C999 /* DetailFeedStoreSpy.swift */; };
+		0F71DA482B8684B20044C999 /* DetailedDTOStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA472B8684B20044C999 /* DetailedDTOStoreSpy.swift */; };
 		0F910A852855B2C700461016 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F910A842855B2C700461016 /* AppConfig.swift */; };
 		0F99CC1E28144BAB00994329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC1D28144BAB00994329 /* AppDelegate.swift */; };
 		0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC1F28144BAB00994329 /* SceneDelegate.swift */; };
@@ -141,7 +141,7 @@
 		0F71DA262B71D3750044C999 /* ActionDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataSaver.swift; sourceTree = "<group>"; };
 		0F71DA282B71D3E00044C999 /* ActionSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSaverTests.swift; sourceTree = "<group>"; };
 		0F71DA382B7FDE420044C999 /* DetailedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedLoaderTests.swift; sourceTree = "<group>"; };
-		0F71DA472B8684B20044C999 /* DetailFeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFeedStoreSpy.swift; sourceTree = "<group>"; };
+		0F71DA472B8684B20044C999 /* DetailedDTOStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDTOStoreSpy.swift; sourceTree = "<group>"; };
 		0F910A842855B2C700461016 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		0F99CC1A28144BAB00994329 /* GYMHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYMHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F99CC1D28144BAB00994329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				0F71DA182B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift */,
-				0F71DA472B8684B20044C999 /* DetailFeedStoreSpy.swift */,
+				0F71DA472B8684B20044C999 /* DetailedDTOStoreSpy.swift */,
 				0F3894B62B89A1FC000FED69 /* DetailedTestHelpers.swift */,
 			);
 			path = Helpers;
@@ -770,7 +770,7 @@
 				0F3894B72B89A1FC000FED69 /* DetailedTestHelpers.swift in Sources */,
 				0F71DA392B7FDE420044C999 /* DetailedLoaderTests.swift in Sources */,
 				0F71DA202B707D100044C999 /* CoreDataLocalFeedStoreTests.swift in Sources */,
-				0F71DA482B8684B20044C999 /* DetailFeedStoreSpy.swift in Sources */,
+				0F71DA482B8684B20044C999 /* DetailedDTOStoreSpy.swift in Sources */,
 				0F345A432B6B675B007528BD /* DetailFeedSaverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

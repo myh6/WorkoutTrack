@@ -8,7 +8,7 @@
 import XCTest
 import GYMHack
 
-class DetailFeedStoreSpy: DetailAdditionStore, DetailRetrievalStore {
+class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
     private var addDetailCompletion = [AddDataCompletion]()
     private var retrievalCompletion = [(RetrievalResult) -> Void]()
     
