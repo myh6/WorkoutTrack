@@ -12,7 +12,7 @@ enum LoadResult {
     case success([Detailed])
     case failure(Error)
 }
-class DetailDataLoader {
+class DetailedLoader {
     private let store: DetailFeedStoreSpy
     
     init(store: DetailFeedStoreSpy) {
@@ -42,7 +42,7 @@ extension Array where Element == DetailedDTO {
     }
 }
 
-final class DetailDataLoaderTests: XCTestCase {
+final class DetailedLoaderTests: XCTestCase {
 
     func test_init_doesNotMessageStore() {
         let (_, store) = makeSUT()
@@ -104,7 +104,7 @@ final class DetailDataLoaderTests: XCTestCase {
     
     func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
         let store = DetailFeedStoreSpy()
-        var sut: DetailDataLoader? = DetailDataLoader(store: store)
+        var sut: DetailedLoader? = DetailedLoader(store: store)
         
         var receivedReuslt = [LoadResult]()
         sut?.load { receivedReuslt.append($0) }
@@ -116,15 +116,15 @@ final class DetailDataLoaderTests: XCTestCase {
     }
     
     //MARK: - Helper
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailDataLoader, store: DetailFeedStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedLoader, store: DetailFeedStoreSpy) {
         let store = DetailFeedStoreSpy()
-        let sut = DetailDataLoader(store: store)
+        let sut = DetailedLoader(store: store)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
     }
     
-    private func expect(_ sut: DetailDataLoader, toCompleteWith expectedResult: LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: DetailedLoader, toCompleteWith expectedResult: LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         
         let exp = expectation(description: "Wait for load completion")
         sut.load { receivedResult in
