@@ -10,7 +10,7 @@
 // FeedLoader --> Business Domain ( So that Business Domain wouldn't know where the data is from)
 
 #warning("Should conform to a protocol that has save method so that we can use dependency inversion")
- public class DetailDataSaver {
+ public class DetailedDataSaver {
     let store: DetailAdditionStore
     
     public typealias SaveDetailResult = Error?
