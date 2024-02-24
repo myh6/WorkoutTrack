@@ -23,19 +23,25 @@ class ActionLoader {
 final class ActionLoaderTests: XCTestCase {
     
     func test_init_doesNoMessageStore() {
-        let store = ActionFeedStoreSpy()
-        let _ = ActionLoader(store: store)
+        let (_ , store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
     func test_load_requestActionDataRetrievalWithPredicate() {
-        let store = ActionFeedStoreSpy()
-        let sut = ActionLoader(store: store)
+        let (sut, store) = makeSUT()
         let anyFormat = "id == %@"
         let predicate = NSPredicate(format: anyFormat, "testing")
         sut.loadAction(with: predicate)
         
         XCTAssertEqual(store.receivedMessage, [.retrieve(predicate)])
+    }
+    
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionLoader, store: ActionFeedStoreSpy) {
+        let store = ActionFeedStoreSpy()
+        let sut = ActionLoader(store: store)
+        trackForMemoryLeaks(store, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, store)
     }
 }
