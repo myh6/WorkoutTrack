@@ -336,6 +336,7 @@
 			children = (
 				0F99CC1D28144BAB00994329 /* AppDelegate.swift */,
 				0F99CC1F28144BAB00994329 /* SceneDelegate.swift */,
+				0F345A372B6B5E4A007528BD /* Loader */,
 				0F65307928910A7000F55F88 /* ViewModels */,
 				0F99CC572814575E00994329 /* Models */,
 				0F99CC54281450D100994329 /* Views */,
@@ -387,7 +388,6 @@
 		0F99CC5328144F0100994329 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				0F345A372B6B5E4A007528BD /* Loader */,
 				0F368C572817BD660098667E /* CoredataService.swift */,
 				0F99CC5028144BC000994329 /* Extension.swift */,
 				0FE98DE42835E9AF008EB8CD /* XAxisNameFormater.swift */,
