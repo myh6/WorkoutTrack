@@ -8,51 +8,6 @@
 import XCTest
 import GYMHack
 
-enum LoadResult {
-    case success([Detailed])
-    case failure(Error)
-}
-
-protocol DetailRetrievalStore {
-    func retrieve(completion: @escaping (RetrievalResult) -> Void)
-}
-
-enum RetrievalResult {
-    case empty
-    case found([DetailedDTO])
-    case failure(Error)
-}
-
-class DetailedLoader {
-    private let store: DetailRetrievalStore
-    
-    init(store: DetailRetrievalStore) {
-        self.store = store
-    }
-    
-    func load(completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { [weak self] result in
-            guard self != nil else { return }
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-                
-            case .empty:
-                completion(.success([]))
-                
-            case let .found(detailsDTO):
-                completion(.success(detailsDTO.toModels()))
-            }
-        }
-    }
-}
-
-extension Array where Element == DetailedDTO {
-    func toModels() -> [Detailed] {
-        map { $0.toDomain() }
-    }
-}
-
 final class DetailedLoaderTests: XCTestCase {
 
     func test_init_doesNotMessageStore() {
@@ -115,7 +70,7 @@ final class DetailedLoaderTests: XCTestCase {
     
     func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
         let store = DetailedDTOStoreSpy()
-        var sut: DetailedLoader? = DetailedLoader(store: store)
+        var sut: DetailedDataLoader? = DetailedDataLoader(store: store)
         
         var receivedReuslt = [LoadResult]()
         sut?.load { receivedReuslt.append($0) }
@@ -127,15 +82,15 @@ final class DetailedLoaderTests: XCTestCase {
     }
     
     //MARK: - Helper
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedLoader, store: DetailedDTOStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDataLoader, store: DetailedDTOStoreSpy) {
         let store = DetailedDTOStoreSpy()
-        let sut = DetailedLoader(store: store)
+        let sut = DetailedDataLoader(store: store)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
     }
     
-    private func expect(_ sut: DetailedLoader, toCompleteWith expectedResult: LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: DetailedDataLoader, toCompleteWith expectedResult: LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         
         let exp = expectation(description: "Wait for load completion")
         sut.load { receivedResult in
