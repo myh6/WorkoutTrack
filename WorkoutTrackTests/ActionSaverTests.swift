@@ -43,7 +43,7 @@ final class ActionSaverTests: XCTestCase {
     }
     
     func test_saveAction_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallcoaed() {
-        let store = LocalActionFeedStoreSpy()
+        let store = ActionFeedStoreSpy()
         var sut: ActionDataSaver? = ActionDataSaver(store: store)
         
         var receivedResult = [ActionDataSaver.SaveActionResult]()
@@ -56,8 +56,8 @@ final class ActionSaverTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionDataSaver, store: LocalActionFeedStoreSpy) {
-        let store = LocalActionFeedStoreSpy()
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionDataSaver, store: ActionFeedStoreSpy) {
+        let store = ActionFeedStoreSpy()
         let sut = ActionDataSaver(store: store)
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
@@ -74,39 +74,6 @@ final class ActionSaverTests: XCTestCase {
     
     private func anyType() -> String {
         return "any type"
-    }
-    
-    class LocalActionFeedStoreSpy: ActionFeedStore {
-        private var addActionCompletion = [AddActionCompletion]()
-        
-        func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
-            receivedMessage.append(.addAction((actionName, ofType)))
-            addActionCompletion.append(completion)
-        }
-        
-        func completeAddActionSuccessfully(at index: Int = 0) {
-            addActionCompletion[index](nil)
-        }
-        
-        func completeAddAction(with error: NSError, at index: Int = 0) {
-            addActionCompletion[index](error)
-        }
-        
-        enum ReceiveMessage: Equatable {
-            static func == (lhs: ActionSaverTests.LocalActionFeedStoreSpy.ReceiveMessage, rhs: ActionSaverTests.LocalActionFeedStoreSpy.ReceiveMessage) -> Bool {
-                switch (lhs, rhs) {
-                case let (.addAction((la, lt)), .addAction((ra, rt))):
-                    return la == ra && lt == rt
-                }
-            }
-            
-            case addAction((actionName, ofType))
-
-            typealias actionName = String
-            typealias ofType = String
-        }
-        
-        var receivedMessage = [ReceiveMessage]()
     }
 }
 
