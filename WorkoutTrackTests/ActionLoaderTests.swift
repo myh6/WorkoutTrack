@@ -83,6 +83,15 @@ final class ActionLoaderTests: XCTestCase {
         XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
     }
     
+    func test_loadAction_hasNoSideEffectOnEmptyDatabase() {
+        let (sut, store) = makeSUT()
+        
+        sut.loadAction { _ in }
+        store.completeRetrievalWithEmptyData()
+        
+        XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionLoader, store: ActionFeedStoreSpy) {
