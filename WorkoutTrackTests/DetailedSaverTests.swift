@@ -10,7 +10,7 @@ import GYMHack
 import CoreData
 import UIKit
 
-final class DetailFeedSaverTests: XCTestCase {
+final class DetailedSaverTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
@@ -55,7 +55,7 @@ final class DetailFeedSaverTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDataSaver, store: DetailedDTOStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedSaver, store: DetailedDTOStoreSpy) {
         let store = DetailedDTOStoreSpy()
         let sut = DetailedDataSaver(store: store)
         trackForMemoryLeaks(sut, file: file, line: line)

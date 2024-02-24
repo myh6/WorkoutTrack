@@ -17,7 +17,7 @@
 		0F345A3B2B6B5EA5007528BD /* CoreDataFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */; };
 		0F345A3D2B6B5F3F007528BD /* CoreDataUpdatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3C2B6B5F3F007528BD /* CoreDataUpdatingService.swift */; };
 		0F345A3F2B6B6139007528BD /* CoreDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3E2B6B6139007528BD /* CoreDataDeletionService.swift */; };
-		0F345A432B6B675B007528BD /* DetailFeedSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A422B6B675B007528BD /* DetailFeedSaverTests.swift */; };
+		0F345A432B6B675B007528BD /* DetailedSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A422B6B675B007528BD /* DetailedSaverTests.swift */; };
 		0F361F33288A3474004B322E /* AdmobID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F32288A3474004B322E /* AdmobID.swift */; };
 		0F361F35288A3532004B322E /* DropDownTextFieldID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F34288A3532004B322E /* DropDownTextFieldID.swift */; };
 		0F361F46288E6706004B322E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F361F45288E6706004B322E /* Log.swift */; };
@@ -119,7 +119,7 @@
 		0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchingService.swift; sourceTree = "<group>"; };
 		0F345A3C2B6B5F3F007528BD /* CoreDataUpdatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUpdatingService.swift; sourceTree = "<group>"; };
 		0F345A3E2B6B6139007528BD /* CoreDataDeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDeletionService.swift; sourceTree = "<group>"; };
-		0F345A422B6B675B007528BD /* DetailFeedSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFeedSaverTests.swift; sourceTree = "<group>"; };
+		0F345A422B6B675B007528BD /* DetailedSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSaverTests.swift; sourceTree = "<group>"; };
 		0F361F32288A3474004B322E /* AdmobID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobID.swift; sourceTree = "<group>"; };
 		0F361F34288A3532004B322E /* DropDownTextFieldID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextFieldID.swift; sourceTree = "<group>"; };
 		0F361F45288E6706004B322E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 			children = (
 				0F71DA122B70416B0044C999 /* Helpers */,
 				0F99CC3728144BAC00994329 /* WorkoutTrackTests.swift */,
-				0F345A422B6B675B007528BD /* DetailFeedSaverTests.swift */,
+				0F345A422B6B675B007528BD /* DetailedSaverTests.swift */,
 				0F71DA282B71D3E00044C999 /* ActionSaverTests.swift */,
 				0F71DA382B7FDE420044C999 /* DetailedLoaderTests.swift */,
 				0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */,
@@ -783,7 +783,7 @@
 				0F71DA392B7FDE420044C999 /* DetailedLoaderTests.swift in Sources */,
 				0F71DA202B707D100044C999 /* CoreDataLocalFeedStoreTests.swift in Sources */,
 				0F71DA482B8684B20044C999 /* DetailedDTOStoreSpy.swift in Sources */,
-				0F345A432B6B675B007528BD /* DetailFeedSaverTests.swift in Sources */,
+				0F345A432B6B675B007528BD /* DetailedSaverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
