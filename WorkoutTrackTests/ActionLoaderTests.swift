@@ -74,6 +74,15 @@ final class ActionLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_loadAction_hasNoSideEffectsOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        
+        sut.loadAction { _ in }
+        store.completeRetrieval(with: anyNSError())
+        
+        XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionLoader, store: ActionFeedStoreSpy) {
