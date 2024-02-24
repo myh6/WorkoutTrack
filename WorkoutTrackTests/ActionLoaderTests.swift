@@ -28,7 +28,7 @@ final class ActionLoaderTests: XCTestCase {
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
-    func test_load_requestActionDataRetrievalWithPredicate() {
+    func test_loadAction_requestActionDataRetrievalWithPredicate() {
         let (sut, store) = makeSUT()
         let anyFormat = "id == %@"
         let predicate = NSPredicate(format: anyFormat, "testing")

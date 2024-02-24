@@ -16,7 +16,7 @@ final class DetailedLoaderTests: XCTestCase {
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
-    func test_load_requestDataRetrievalWithPredicate() {
+    func test_loadDetailed_requestDataRetrievalWithPredicate() {
         let (sut, store) = makeSUT()
         let anyFormat = "id == %@"
         let predicate = NSPredicate(format: anyFormat, "testing")
@@ -26,7 +26,7 @@ final class DetailedLoaderTests: XCTestCase {
         XCTAssertEqual(store.receivedMessage, [.retrieve(predicate)])
     }
     
-    func test_load_failsOnRetrievalError() {
+    func test_loadDetailed_failsOnRetrievalError() {
         let (sut, store) = makeSUT()
         let retrievalError = anyNSError()
         
@@ -35,7 +35,7 @@ final class DetailedLoaderTests: XCTestCase {
         }
     }
     
-    func test_load_deliversNoDataOnEmptyDatabase() {
+    func test_loadDetailed_deliversNoDataOnEmptyDatabase() {
         let (sut, store) = makeSUT()
         
         expect(sut, toCompleteWith: .success([])) {
@@ -43,7 +43,7 @@ final class DetailedLoaderTests: XCTestCase {
         }
     }
     
-    func test_load_deliversDataOnNonEmptyDatabase() {
+    func test_loadDetailed_deliversDataOnNonEmptyDatabase() {
         let (sut, store) = makeSUT()
         let details = anyDetails()
         
@@ -52,7 +52,7 @@ final class DetailedLoaderTests: XCTestCase {
         }
     }
     
-    func test_load_hasNoSideEffectsOnRetrievalError() {
+    func test_loadDetailed_hasNoSideEffectsOnRetrievalError() {
         let (sut, store) = makeSUT()
         
         sut.loadDetailed { _ in }
@@ -61,7 +61,7 @@ final class DetailedLoaderTests: XCTestCase {
         XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
     }
     
-    func test_load_hasNoSideEffectsOnEmptyDatabase() {
+    func test_loadDetailed_hasNoSideEffectsOnEmptyDatabase() {
         let (sut, store) = makeSUT()
         
         sut.loadDetailed { _ in }
@@ -70,7 +70,7 @@ final class DetailedLoaderTests: XCTestCase {
         XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
     }
     
-    func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+    func test_loadDetailed_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
         let store = DetailedDTOStoreSpy()
         var sut: DetailedDataLoader? = DetailedDataLoader(store: store)
         
