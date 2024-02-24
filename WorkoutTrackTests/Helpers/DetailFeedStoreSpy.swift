@@ -8,13 +8,7 @@
 import XCTest
 import GYMHack
 
-enum RetrievalResult {
-    case empty
-    case found([DetailedDTO])
-    case failure(Error)
-}
-
-class DetailFeedStoreSpy: DetailAdditionStore {
+class DetailFeedStoreSpy: DetailAdditionStore, DetailRetrievalStore {
     private var addDetailCompletion = [AddDataCompletion]()
     private var retrievalCompletion = [(RetrievalResult) -> Void]()
     

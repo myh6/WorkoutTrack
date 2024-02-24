@@ -12,10 +12,21 @@ enum LoadResult {
     case success([Detailed])
     case failure(Error)
 }
+
+protocol DetailRetrievalStore {
+    func retrieve(completion: @escaping (RetrievalResult) -> Void)
+}
+
+enum RetrievalResult {
+    case empty
+    case found([DetailedDTO])
+    case failure(Error)
+}
+
 class DetailedLoader {
-    private let store: DetailFeedStoreSpy
+    private let store: DetailRetrievalStore
     
-    init(store: DetailFeedStoreSpy) {
+    init(store: DetailRetrievalStore) {
         self.store = store
     }
     
