@@ -15,7 +15,7 @@ class ActionLoader {
 final class ActionLoaderTests: XCTestCase {
     
     func test_init_doesNoMessageStore() {
-        let sut = ActionLoader()
+        let _ = ActionLoader()
         let store = ActionFeedStoreSpy()
         
         XCTAssertTrue(store.receivedMessage.isEmpty)
