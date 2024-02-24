@@ -29,7 +29,7 @@ final class ActionSaverTests: XCTestCase {
     
     func test_saveAction_failsOnAddingError() {
         let (sut, store) = makeSUT()
-        let anyError = anyError()
+        let anyError = anyNSError()
         let action = anyAction()
         let type = anyType()
         
@@ -50,7 +50,7 @@ final class ActionSaverTests: XCTestCase {
         sut?.save(action: anyAction(), ofType: anyType()) { receivedResult.append($0) }
         
         sut = nil
-        store.completeAddAction(with: anyError())
+        store.completeAddAction(with: anyNSError())
         
         XCTAssertTrue(receivedResult.isEmpty)
     }
@@ -62,10 +62,6 @@ final class ActionSaverTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
-    }
-    
-    private func anyError() -> NSError {
-        return NSError(domain: "any error", code: 0)
     }
     
     private func anyAction() -> String {
