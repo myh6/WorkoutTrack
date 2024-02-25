@@ -101,12 +101,4 @@ final class ActionLoaderTests: XCTestCase {
         action()
         wait(for: [exp], timeout: 1.0)
     }
-    
-    private func anyAction() -> String {
-        return "any Action"
-    }
-    
-    private func anyType() -> String {
-        return "any type"
-    }
 }

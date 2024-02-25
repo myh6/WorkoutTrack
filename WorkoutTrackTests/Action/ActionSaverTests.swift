@@ -63,13 +63,5 @@ final class ActionSaverTests: XCTestCase {
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
     }
-    
-    private func anyAction() -> String {
-        return "any Action"
-    }
-    
-    private func anyType() -> String {
-        return "any type"
-    }
 }
 
