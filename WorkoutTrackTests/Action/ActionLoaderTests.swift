@@ -8,18 +8,6 @@
 import XCTest
 import GYMHack
 
-class ActionLoader {
-    private let store: ActionFeedStoreSpy
-    
-    init(store: ActionFeedStoreSpy) {
-        self.store = store
-    }
-    
-    func loadAction(with predicate: NSPredicate? = nil, completion: @escaping (ActionRetrievalResult) -> Void) {
-        store.retrieve(predicate: predicate, completion: completion)
-    }
-}
-
 final class ActionLoaderTests: XCTestCase {
     
     func test_init_doesNoMessageStore() {

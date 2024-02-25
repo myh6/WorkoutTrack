@@ -30,6 +30,8 @@
 		0F3894C52B8A6494000FED69 /* ActionLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894C42B8A6494000FED69 /* ActionLoaderTests.swift */; };
 		0F3894C72B8A65E5000FED69 /* ActionFeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894C62B8A65E5000FED69 /* ActionFeedStoreSpy.swift */; };
 		0F3894CD2B8BDF9F000FED69 /* XCTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894CC2B8BDF9F000FED69 /* XCTestHelpers.swift */; };
+		0F3894D02B8BE5A7000FED69 /* ActionRetrievalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */; };
+		0F3894D32B8BE61D000FED69 /* ActionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */; };
 		0F44BA4E2828F098001AD835 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4D2828F098001AD835 /* TabBarViewController.swift */; };
 		0F44BA502828F17B001AD835 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */; };
 		0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA512828F1A3001AD835 /* ChartViewController.swift */; };
@@ -139,6 +141,8 @@
 		0F3894C42B8A6494000FED69 /* ActionLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLoaderTests.swift; sourceTree = "<group>"; };
 		0F3894C62B8A65E5000FED69 /* ActionFeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFeedStoreSpy.swift; sourceTree = "<group>"; };
 		0F3894CC2B8BDF9F000FED69 /* XCTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestHelpers.swift; sourceTree = "<group>"; };
+		0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRetrievalStore.swift; sourceTree = "<group>"; };
+		0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLoader.swift; sourceTree = "<group>"; };
 		0F44BA4D2828F098001AD835 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyViewController.swift; sourceTree = "<group>"; };
 		0F44BA512828F1A3001AD835 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 				0F71DA2B2B71E0150044C999 /* Action */,
 				0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */,
 				0F3894C12B89BD58000FED69 /* DetailedSaver.swift */,
+				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 			children = (
 				0F71DA262B71D3750044C999 /* ActionDataSaver.swift */,
 				0F71DA242B71D30D0044C999 /* ActionFeedStore.swift */,
+				0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -813,7 +819,9 @@
 				0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */,
 				0FE98DE32833491E008EB8CD /* ChartsSelectionModel.swift in Sources */,
 				0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */,
+				0F3894D02B8BE5A7000FED69 /* ActionRetrievalStore.swift in Sources */,
 				0F0FD99928167440001ACCDB /* ExpandCell.swift in Sources */,
+				0F3894D32B8BE61D000FED69 /* ActionLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
