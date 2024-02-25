@@ -11,7 +11,7 @@ class DetailedDataUpdater {
     
 }
 
-final class DetailedUpdatedTests: XCTestCase {
+final class DetailedUpdaterTests: XCTestCase {
 
     func test_init_doesNotMessageStore() {
         let store = DetailedDTOStoreSpy()
