@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ActionDataLoader {
+public class ActionDataLoader: ActionLoader {
     private let store: ActionRetrievalStore
     
     public init(store: ActionRetrievalStore) {
