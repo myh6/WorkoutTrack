@@ -22,6 +22,10 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
         retrievalCompletion.append(completion)
     }
     
+    func update(with id: String) {
+        receivedMessage.append(.update(id))
+    }
+    
     func completeAddDetailSuccessfully(at index: Int = 0) {
         addDetailCompletion[index](nil)
     }
@@ -45,6 +49,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
     enum ReceiveMessage: Equatable {
         case addData([DetailedDTO])
         case retrieve(NSPredicate?)
+        case update(String)
     }
     
     var receivedMessage = [ReceiveMessage]()
