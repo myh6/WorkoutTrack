@@ -17,7 +17,3 @@ func anyDetails() -> (model: [Detailed], local: [DetailedDTO]) {
     let model = [anyDetail(), anyDetail(), anyDetail()]
     return (model, model.toLocal())
 }
-
-func anyNSError() -> NSError {
-    return NSError(domain: "any error", code: 0)
-}
