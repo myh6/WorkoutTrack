@@ -31,8 +31,8 @@
 		0F3894C72B8A65E5000FED69 /* ActionFeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894C62B8A65E5000FED69 /* ActionFeedStoreSpy.swift */; };
 		0F3894CD2B8BDF9F000FED69 /* XCTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894CC2B8BDF9F000FED69 /* XCTestHelpers.swift */; };
 		0F3894D02B8BE5A7000FED69 /* ActionRetrievalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */; };
-		0F3894D32B8BE61D000FED69 /* ActionDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894D12B8BE5CA000FED69 /* ActionDataLoader.swift */; };
-		0F3894D52B8BE705000FED69 /* ActionDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894D42B8BE705000FED69 /* ActionDataLoader.swift */; };
+		0F3894D32B8BE61D000FED69 /* ActionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */; };
+		0F3894D72B8BEA42000FED69 /* ActionDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894D42B8BE705000FED69 /* ActionDataLoader.swift */; };
 		0F44BA4E2828F098001AD835 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4D2828F098001AD835 /* TabBarViewController.swift */; };
 		0F44BA502828F17B001AD835 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */; };
 		0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA512828F1A3001AD835 /* ChartViewController.swift */; };
@@ -143,7 +143,7 @@
 		0F3894C62B8A65E5000FED69 /* ActionFeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFeedStoreSpy.swift; sourceTree = "<group>"; };
 		0F3894CC2B8BDF9F000FED69 /* XCTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestHelpers.swift; sourceTree = "<group>"; };
 		0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRetrievalStore.swift; sourceTree = "<group>"; };
-		0F3894D12B8BE5CA000FED69 /* ActionDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataLoader.swift; sourceTree = "<group>"; };
+		0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLoader.swift; sourceTree = "<group>"; };
 		0F3894D42B8BE705000FED69 /* ActionDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataLoader.swift; sourceTree = "<group>"; };
 		0F44BA4D2828F098001AD835 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyViewController.swift; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 				0F71DA2B2B71E0150044C999 /* Action */,
 				0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */,
 				0F3894C12B89BD58000FED69 /* DetailedSaver.swift */,
-				0F3894D12B8BE5CA000FED69 /* ActionDataLoader.swift */,
+				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -792,7 +792,7 @@
 				0F99CC5B28145E5C00994329 /* Moves.swift in Sources */,
 				0FE107762828B78700D9D110 /* HistoryLabel.swift in Sources */,
 				0F0FD99C2816A84C001ACCDB /* AddActionModel.swift in Sources */,
-				0F3894D52B8BE705000FED69 /* ActionDataLoader.swift in Sources */,
+				0F3894D72B8BEA42000FED69 /* ActionDataLoader.swift in Sources */,
 				0F345A3F2B6B6139007528BD /* CoreDataDeletionService.swift in Sources */,
 				0FE1076828221F0000D9D110 /* SetWeightRepsCell.swift in Sources */,
 				0F71DA232B707EB20044C999 /* DetailedDTO.swift in Sources */,
@@ -825,7 +825,7 @@
 				0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */,
 				0F3894D02B8BE5A7000FED69 /* ActionRetrievalStore.swift in Sources */,
 				0F0FD99928167440001ACCDB /* ExpandCell.swift in Sources */,
-				0F3894D32B8BE61D000FED69 /* ActionDataLoader.swift in Sources */,
+				0F3894D32B8BE61D000FED69 /* ActionLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
