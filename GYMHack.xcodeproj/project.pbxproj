@@ -31,7 +31,8 @@
 		0F3894C72B8A65E5000FED69 /* ActionFeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894C62B8A65E5000FED69 /* ActionFeedStoreSpy.swift */; };
 		0F3894CD2B8BDF9F000FED69 /* XCTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894CC2B8BDF9F000FED69 /* XCTestHelpers.swift */; };
 		0F3894D02B8BE5A7000FED69 /* ActionRetrievalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */; };
-		0F3894D32B8BE61D000FED69 /* ActionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */; };
+		0F3894D32B8BE61D000FED69 /* ActionDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894D12B8BE5CA000FED69 /* ActionDataLoader.swift */; };
+		0F3894D52B8BE705000FED69 /* ActionDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3894D42B8BE705000FED69 /* ActionDataLoader.swift */; };
 		0F44BA4E2828F098001AD835 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4D2828F098001AD835 /* TabBarViewController.swift */; };
 		0F44BA502828F17B001AD835 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */; };
 		0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA512828F1A3001AD835 /* ChartViewController.swift */; };
@@ -44,7 +45,7 @@
 		0F71DA1E2B707BAD0044C999 /* DetailAdditionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1D2B707BAD0044C999 /* DetailAdditionStore.swift */; };
 		0F71DA202B707D100044C999 /* CoreDataLocalFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */; };
 		0F71DA232B707EB20044C999 /* DetailedDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA222B707EB20044C999 /* DetailedDTO.swift */; };
-		0F71DA252B71D30D0044C999 /* ActionFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA242B71D30D0044C999 /* ActionFeedStore.swift */; };
+		0F71DA252B71D30D0044C999 /* ActionAdditionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA242B71D30D0044C999 /* ActionAdditionStore.swift */; };
 		0F71DA272B71D3750044C999 /* ActionDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA262B71D3750044C999 /* ActionDataSaver.swift */; };
 		0F71DA292B71D3E00044C999 /* ActionSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA282B71D3E00044C999 /* ActionSaverTests.swift */; };
 		0F71DA392B7FDE420044C999 /* DetailedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA382B7FDE420044C999 /* DetailedLoaderTests.swift */; };
@@ -142,7 +143,8 @@
 		0F3894C62B8A65E5000FED69 /* ActionFeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFeedStoreSpy.swift; sourceTree = "<group>"; };
 		0F3894CC2B8BDF9F000FED69 /* XCTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestHelpers.swift; sourceTree = "<group>"; };
 		0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRetrievalStore.swift; sourceTree = "<group>"; };
-		0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLoader.swift; sourceTree = "<group>"; };
+		0F3894D12B8BE5CA000FED69 /* ActionDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataLoader.swift; sourceTree = "<group>"; };
+		0F3894D42B8BE705000FED69 /* ActionDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataLoader.swift; sourceTree = "<group>"; };
 		0F44BA4D2828F098001AD835 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0F44BA4F2828F17B001AD835 /* MonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyViewController.swift; sourceTree = "<group>"; };
 		0F44BA512828F1A3001AD835 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +157,7 @@
 		0F71DA1D2B707BAD0044C999 /* DetailAdditionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAdditionStore.swift; sourceTree = "<group>"; };
 		0F71DA1F2B707D100044C999 /* CoreDataLocalFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataLocalFeedStoreTests.swift; sourceTree = "<group>"; };
 		0F71DA222B707EB20044C999 /* DetailedDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDTO.swift; sourceTree = "<group>"; };
-		0F71DA242B71D30D0044C999 /* ActionFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFeedStore.swift; sourceTree = "<group>"; };
+		0F71DA242B71D30D0044C999 /* ActionAdditionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionAdditionStore.swift; sourceTree = "<group>"; };
 		0F71DA262B71D3750044C999 /* ActionDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataSaver.swift; sourceTree = "<group>"; };
 		0F71DA282B71D3E00044C999 /* ActionSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSaverTests.swift; sourceTree = "<group>"; };
 		0F71DA382B7FDE420044C999 /* DetailedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedLoaderTests.swift; sourceTree = "<group>"; };
@@ -278,7 +280,7 @@
 				0F71DA2B2B71E0150044C999 /* Action */,
 				0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */,
 				0F3894C12B89BD58000FED69 /* DetailedSaver.swift */,
-				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
+				0F3894D12B8BE5CA000FED69 /* ActionDataLoader.swift */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -364,8 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				0F71DA262B71D3750044C999 /* ActionDataSaver.swift */,
-				0F71DA242B71D30D0044C999 /* ActionFeedStore.swift */,
+				0F71DA242B71D30D0044C999 /* ActionAdditionStore.swift */,
 				0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */,
+				0F3894D42B8BE705000FED69 /* ActionDataLoader.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -769,7 +772,7 @@
 				0F71DA1B2B707B860044C999 /* DetailedDataSaver.swift in Sources */,
 				0FE98DDF28322232008EB8CD /* Chart2Cell.swift in Sources */,
 				0F910A852855B2C700461016 /* AppConfig.swift in Sources */,
-				0F71DA252B71D30D0044C999 /* ActionFeedStore.swift in Sources */,
+				0F71DA252B71D30D0044C999 /* ActionAdditionStore.swift in Sources */,
 				0FE1076A282221DB00D9D110 /* SetWeightRepsTableView.swift in Sources */,
 				0F345A392B6B5E57007528BD /* CoreDataCreationService.swift in Sources */,
 				0FE1075C2820D0AA00D9D110 /* ChooseCell.swift in Sources */,
@@ -789,6 +792,7 @@
 				0F99CC5B28145E5C00994329 /* Moves.swift in Sources */,
 				0FE107762828B78700D9D110 /* HistoryLabel.swift in Sources */,
 				0F0FD99C2816A84C001ACCDB /* AddActionModel.swift in Sources */,
+				0F3894D52B8BE705000FED69 /* ActionDataLoader.swift in Sources */,
 				0F345A3F2B6B6139007528BD /* CoreDataDeletionService.swift in Sources */,
 				0FE1076828221F0000D9D110 /* SetWeightRepsCell.swift in Sources */,
 				0F71DA232B707EB20044C999 /* DetailedDTO.swift in Sources */,
@@ -821,7 +825,7 @@
 				0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */,
 				0F3894D02B8BE5A7000FED69 /* ActionRetrievalStore.swift in Sources */,
 				0F0FD99928167440001ACCDB /* ExpandCell.swift in Sources */,
-				0F3894D32B8BE61D000FED69 /* ActionLoader.swift in Sources */,
+				0F3894D32B8BE61D000FED69 /* ActionDataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

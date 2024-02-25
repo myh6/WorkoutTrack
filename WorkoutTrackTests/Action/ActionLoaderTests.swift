@@ -73,15 +73,15 @@ final class ActionLoaderTests: XCTestCase {
     
     //MARK: - Helpers
     
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionLoader, store: ActionFeedStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionDataLoader, store: ActionFeedStoreSpy) {
         let store = ActionFeedStoreSpy()
-        let sut = ActionLoader(store: store)
+        let sut = ActionDataLoader(store: store)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
     }
     
-    private func expect(_ sut: ActionLoader, toCompleteWith expectedResult: ActionRetrievalResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: ActionDataLoader, toCompleteWith expectedResult: ActionRetrievalResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         
         let exp = expectation(description: "Wait for load completion")
         sut.loadAction { receivedResult in

@@ -7,18 +7,6 @@
 
 import Foundation
 
-public class ActionLoader {
-    private let store: ActionRetrievalStore
-    
-    public init(store: ActionRetrievalStore) {
-        self.store = store
-    }
-    
-    public func loadAction(with predicate: NSPredicate? = nil, completion: @escaping (ActionRetrievalResult) -> Void) {
-        store.retrieve(predicate: predicate, completion: completion)
-    }
-}
-
 public enum ActionRetrievalResult {
     public struct ActionFeed: Equatable {
         let actionName: String

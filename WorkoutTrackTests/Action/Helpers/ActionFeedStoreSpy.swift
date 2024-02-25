@@ -8,7 +8,7 @@
 import Foundation
 import GYMHack
 
-class ActionFeedStoreSpy: ActionFeedStore, ActionRetrievalStore {
+class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore {
     private var addActionCompletion = [AddActionCompletion]()
     private var retrievalCompletion = [RetrievalCompletion]()
     

@@ -8,11 +8,11 @@
 import Foundation
 
 public class ActionDataSaver {
-    let store: ActionFeedStore
+    let store: ActionAdditionStore
     
     public typealias SaveActionResult = Error?
     
-    public init(store: ActionFeedStore) {
+    public init(store: ActionAdditionStore) {
         self.store = store
     }
     
