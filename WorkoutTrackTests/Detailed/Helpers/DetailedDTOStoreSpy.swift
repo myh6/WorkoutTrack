@@ -12,6 +12,9 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
     private var addDetailCompletion = [AddDetailedDTOCompletion]()
     private var retrievalCompletion = [(RetrievalResult) -> Void]()
     
+    typealias UpdateResult = Error?
+    private var updateCompletion = [(UpdateResult) -> Void]()
+    
     func add(details: [DetailedDTO], completion: @escaping AddDetailedDTOCompletion) {
         receivedMessage.append(.addData(details))
         addDetailCompletion.append(completion)
@@ -22,8 +25,9 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
         retrievalCompletion.append(completion)
     }
     
-    func update(with id: String) {
+    func update(with id: String, completion: @escaping (UpdateResult) -> Void) {
         receivedMessage.append(.update(id))
+        updateCompletion.append(completion)
     }
     
     func completeAddDetailSuccessfully(at index: Int = 0) {
@@ -44,6 +48,10 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
     
     func completeRetrieval(with details: [DetailedDTO], at index: Int = 0) {
         retrievalCompletion[index](.found(details))
+    }
+    
+    func completeUpdate(with error: NSError, at index: Int = 0) {
+        updateCompletion[index](error)
     }
     
     enum ReceiveMessage: Equatable {

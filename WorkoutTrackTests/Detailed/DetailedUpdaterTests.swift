@@ -14,8 +14,8 @@ class DetailedDataUpdater {
         self.store = store
     }
     
-    func updateDetailed(with id: String) {
-        store.update(with: id)
+    func updateDetailed(with id: String, completion: @escaping (Error?) -> Void) {
+        store.update(with: id, completion: completion)
     }
 }
 
@@ -31,9 +31,24 @@ final class DetailedUpdaterTests: XCTestCase {
         let (sut, store) = makeSUT()
         let anyID = UUID().uuidString
         
-        sut.updateDetailed(with: anyID)
+        sut.updateDetailed(with: anyID) { _ in }
         
         XCTAssertEqual(store.receivedMessage, [.update(anyID)])
+    }
+    
+    func test_updateDetailed_failsOnUpdateError() {
+        let (sut, store) = makeSUT()
+        let anyID = UUID().uuidString
+        let updateError = anyNSError()
+        
+        let exp = expectation(description: "Wait for update completion")
+        sut.updateDetailed(with: anyID) { receivedError in
+            XCTAssertEqual(updateError, receivedError as? NSError)
+            exp.fulfill()
+        }
+        
+        store.completeUpdate(with: updateError)
+        wait(for: [exp], timeout: 1.0)
     }
     
     //MARK: - Helpers
