@@ -72,7 +72,7 @@ final class DetailedLoaderTests: XCTestCase {
     
     func test_loadDetailed_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
         let store = DetailedDTOStoreSpy()
-        var sut: DetailedDataLoader? = DetailedDataLoader(store: store)
+        var sut: DetailedLoader? = DetailedDataLoader(store: store)
         
         var receivedReuslt = [LoadDetailedResult]()
         sut?.loadDetailed { receivedReuslt.append($0) }
