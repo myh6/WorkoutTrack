@@ -41,9 +41,9 @@ final class DetailedSaverTests: XCTestCase {
     
     func test_saveDtail_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = DetailedDTOStoreSpy()
-        var sut: DetailedDataSaver? = DetailedDataSaver(store: store)
+        var sut: DetailedSaver? = DetailedDataSaver(store: store)
         
-        var receivedResult = [DetailedDataSaver.SaveDetailResult]()
+        var receivedResult = [DetailedSaver.SaveDetailResult]()
         sut?.save(details: anyDetails().model) { receivedResult.append($0) }
         
         sut = nil
