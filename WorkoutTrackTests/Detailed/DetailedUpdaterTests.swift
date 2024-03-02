@@ -67,7 +67,7 @@ final class DetailedUpdaterTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDataUpdater, store: DetailedDTOStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedUpdater, store: DetailedDTOStoreSpy) {
         let store = DetailedDTOStoreSpy()
         let sut = DetailedDataUpdater(store: store)
         trackForMemoryLeaks(sut)
