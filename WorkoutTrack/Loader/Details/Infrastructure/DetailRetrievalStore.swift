@@ -9,8 +9,8 @@ import Foundation
 
 /// Blueprint for future implementation. Can used by different framework without coupling implenmentation details with Domain Details.
 public protocol DetailRetrievalStore {
-    typealias RetrievalCompletion = (RetrievalResult) -> Void
-    func retrieve(predicate: NSPredicate?, completion: @escaping RetrievalCompletion)
+    typealias RetrievalDetailedDTOCompletion = (RetrievalResult) -> Void
+    func retrieve(predicate: NSPredicate?, completion: @escaping RetrievalDetailedDTOCompletion)
 }
 
 public enum RetrievalResult {

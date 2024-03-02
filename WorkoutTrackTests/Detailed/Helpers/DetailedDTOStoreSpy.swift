@@ -10,8 +10,7 @@ import GYMHack
 
 class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpdateStore {
     private var addDetailCompletion = [AddDetailedDTOCompletion]()
-    #warning("Rename to retrievalDetailedDTOCompletion")
-    private var retrievalCompletion = [RetrievalCompletion]()
+    private var retrievalCompletion = [RetrievalDetailedDTOCompletion]()
     private var updateCompletion = [UpdateDetailedDTOCompletion]()
     private var removalCompletion = [RemovalDetailedDTOCompletion]()
     typealias RemovalDetailedDTOCompletion = (Error?) -> Void
@@ -21,7 +20,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
         addDetailCompletion.append(completion)
     }
     
-    func retrieve(predicate: NSPredicate?, completion: @escaping RetrievalCompletion) {
+    func retrieve(predicate: NSPredicate?, completion: @escaping RetrievalDetailedDTOCompletion) {
         receivedMessage.append(.retrieve(predicate))
         retrievalCompletion.append(completion)
     }
