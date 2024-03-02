@@ -16,7 +16,10 @@ class DetailedDataDeleter {
     }
     
     func delete(details: [Detailed], completion: @escaping (Error?) -> Void = { _ in }) {
-        store.remove(details: details.toLocal(), completion: completion)
+        store.remove(details: details.toLocal()) { [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
     }
 }
 
@@ -59,6 +62,18 @@ final class DetailedDeleterTests: XCTestCase {
         store.completeRemoval(with: removalError)
         
         XCTAssertEqual(store.receivedMessage, [.remove(details.local)])
+    }
+    
+    func test_deleteDetails_doesNotDeliversErrorAfterSUTInstanceHasBeenDeallocated() {
+        let store = DetailedDTOStoreSpy()
+        var sut: DetailedDataDeleter? = DetailedDataDeleter(store: store)
+        var receivedResult = [Error?]()
+        sut?.delete(details: anyDetails().model) { receivedResult.append($0) }
+        
+        sut = nil
+        store.completeRemoval(with: anyNSError())
+        
+        XCTAssertTrue(receivedResult.isEmpty)
     }
     
     //MARK: - Helpers
