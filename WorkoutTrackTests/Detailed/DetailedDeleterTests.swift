@@ -50,6 +50,17 @@ final class DetailedDeleterTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_deleteDetails_hasNoSideEffectsOnRemovalError() {
+        let (sut, store) = makeSUT()
+        let details = anyDetails()
+        let removalError = anyNSError()
+        
+        sut.delete(details: details.model) { _ in }
+        store.completeRemoval(with: removalError)
+        
+        XCTAssertEqual(store.receivedMessage, [.remove(details.local)])
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDataDeleter, store: DetailedDTOStoreSpy) {
         let store = DetailedDTOStoreSpy()
