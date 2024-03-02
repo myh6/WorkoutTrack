@@ -71,6 +71,19 @@ final class ActionLoaderTests: XCTestCase {
         XCTAssertEqual(store.receivedMessage, [.retrieve(nil)])
     }
     
+    func test_loadAction_doesNotDeliversReusltAfterSUTInstanceHasBeenDeallocated() {
+        let store = ActionFeedStoreSpy()
+        var sut: ActionLoader? = ActionDataLoader(store: store)
+        var receivedResult = [ActionRetrievalResult]()
+        
+        sut?.loadAction { receivedResult.append($0) }
+        
+        sut = nil
+        store.completeRetrievalWithEmptyData()
+        
+        XCTAssertTrue(receivedResult.isEmpty)
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionLoader, store: ActionFeedStoreSpy) {
         let store = ActionFeedStoreSpy()

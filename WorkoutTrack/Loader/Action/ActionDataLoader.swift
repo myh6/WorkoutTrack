@@ -15,6 +15,9 @@ public class ActionDataLoader: ActionLoader {
     }
     
     public func loadAction(with predicate: NSPredicate? = nil, completion: @escaping (ActionRetrievalResult) -> Void) {
-        store.retrieve(predicate: predicate, completion: completion)
+        store.retrieve(predicate: predicate) { [weak self] result in
+            guard self != nil else { return }
+            completion(result)
+        }
     }
 }
