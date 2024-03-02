@@ -7,8 +7,6 @@
 
 import XCTest
 import GYMHack
-import CoreData
-import UIKit
 
 final class DetailedSaverTests: XCTestCase {
     
