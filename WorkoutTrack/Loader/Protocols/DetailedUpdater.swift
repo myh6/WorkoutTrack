@@ -8,5 +8,6 @@
 import Foundation
 
 public protocol DetailedUpdater {
-    func updateDetailed(_ detail: Detailed, completion: @escaping (Error?) -> Void)
+    typealias UpdateDetailedResult = Error?
+    func updateDetailed(_ detail: Detailed, completion: @escaping (UpdateDetailedResult) -> Void)
 }

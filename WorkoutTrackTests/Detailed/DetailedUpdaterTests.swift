@@ -53,8 +53,8 @@ final class DetailedUpdaterTests: XCTestCase {
     
     func test_updateDetailed_doesNotDeliverResultAfterSUTInstanceHasBeenDeallcoated() {
         let store = DetailedDTOStoreSpy()
-        var sut: DetailedDataUpdater? = DetailedDataUpdater(store: store)
-        var receivedResult = [Error?]()
+        var sut: DetailedUpdater? = DetailedDataUpdater(store: store)
+        var receivedResult = [DetailedUpdater.UpdateDetailedResult]()
         
         sut?.updateDetailed(anyDetail().model) {
             receivedResult.append($0)
