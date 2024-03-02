@@ -44,9 +44,9 @@ final class ActionSaverTests: XCTestCase {
     
     func test_saveAction_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallcoaed() {
         let store = ActionFeedStoreSpy()
-        var sut: ActionDataSaver? = ActionDataSaver(store: store)
+        var sut: ActionSaver? = ActionDataSaver(store: store)
         
-        var receivedResult = [ActionDataSaver.SaveActionResult]()
+        var receivedResult = [ActionSaver.SaveActionResult]()
         sut?.save(action: anyAction(), ofType: anyType()) { receivedResult.append($0) }
         
         sut = nil
