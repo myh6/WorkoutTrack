@@ -16,7 +16,10 @@ class DetailedDataUpdater {
     }
     
     func updateDetailed(_ detail: Detailed, completion: @escaping (Error?) -> Void) {
-        store.update(detail: detail.toLocal(), completion: completion)
+        store.update(detail: detail.toLocal()) { [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
     }
 }
 
@@ -61,6 +64,21 @@ final class DetailedUpdaterTests: XCTestCase {
         store.completeUpdate(with: updateError)
         
         XCTAssertEqual(store.receivedMessage, [.update(anyDetail.local.id)])
+    }
+    
+    func test_updateDetailed_doesNotDeliverResultAfterSUTInstanceHasBeenDeallcoated() {
+        let store = DetailedDTOStoreSpy()
+        var sut: DetailedDataUpdater? = DetailedDataUpdater(store: store)
+        var receivedResult = [Error?]()
+        
+        sut?.updateDetailed(anyDetail().model) {
+            receivedResult.append($0)
+        }
+        
+        sut = nil
+        store.completeUpdate(with: anyNSError())
+        
+        XCTAssertTrue(receivedResult.isEmpty)
     }
     
     //MARK: - Helpers
