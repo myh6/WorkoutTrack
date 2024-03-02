@@ -288,10 +288,7 @@
 				0F71DA212B707E9B0044C999 /* Implementations */,
 				0F71DA2A2B71E0090044C999 /* Details */,
 				0F71DA2B2B71E0150044C999 /* Action */,
-				0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */,
-				0F3894C12B89BD58000FED69 /* DetailedSaver.swift */,
-				0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */,
-				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
+				0F6AF0C12B92CCEB0027D15C /* Protocols */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -343,6 +340,37 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		0F6AF0BF2B92CC960027D15C /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				0F71DA222B707EB20044C999 /* DetailedDTO.swift */,
+				0F71DA1D2B707BAD0044C999 /* DetailAdditionStore.swift */,
+				0F3894BE2B89B7C4000FED69 /* DetailRetrievalStore.swift */,
+				0F6AF0BD2B92CBC60027D15C /* DetailUpdateStore.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		0F6AF0C02B92CCAB0027D15C /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				0F71DA242B71D30D0044C999 /* ActionAdditionStore.swift */,
+				0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		0F6AF0C12B92CCEB0027D15C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */,
+				0F3894C12B89BD58000FED69 /* DetailedSaver.swift */,
+				0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */,
+				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		0F71DA122B70416B0044C999 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,13 +394,10 @@
 		0F71DA2A2B71E0090044C999 /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				0F71DA222B707EB20044C999 /* DetailedDTO.swift */,
+				0F6AF0BF2B92CC960027D15C /* Infrastructure */,
 				0F71DA1A2B707B860044C999 /* DetailedDataSaver.swift */,
-				0F71DA1D2B707BAD0044C999 /* DetailAdditionStore.swift */,
 				0F3894B82B89B655000FED69 /* DetailedDataLoader.swift */,
-				0F3894BE2B89B7C4000FED69 /* DetailRetrievalStore.swift */,
 				0F6AF0BB2B92CB260027D15C /* DetailedDataUpdater.swift */,
-				0F6AF0BD2B92CBC60027D15C /* DetailUpdateStore.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -380,9 +405,8 @@
 		0F71DA2B2B71E0150044C999 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				0F6AF0C02B92CCAB0027D15C /* Infrastructure */,
 				0F71DA262B71D3750044C999 /* ActionDataSaver.swift */,
-				0F71DA242B71D30D0044C999 /* ActionAdditionStore.swift */,
-				0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */,
 				0F3894D42B8BE705000FED69 /* ActionDataLoader.swift */,
 			);
 			path = Action;
