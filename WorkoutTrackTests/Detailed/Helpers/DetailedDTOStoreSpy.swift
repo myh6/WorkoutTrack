@@ -10,8 +10,11 @@ import GYMHack
 
 class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpdateStore {
     private var addDetailCompletion = [AddDetailedDTOCompletion]()
+    #warning("Rename to retrievalDetailedDTOCompletion")
     private var retrievalCompletion = [RetrievalCompletion]()
     private var updateCompletion = [UpdateDetailedDTOCompletion]()
+    private var removalCompletion = [RemovalDetailedDTOCompletion]()
+    typealias RemovalDetailedDTOCompletion = (Error?) -> Void
     
     func add(details: [DetailedDTO], completion: @escaping AddDetailedDTOCompletion) {
         receivedMessage.append(.addData(details))
@@ -28,8 +31,9 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
         updateCompletion.append(completion)
     }
     
-    func remove(details: [DetailedDTO]) {
+    func remove(details: [DetailedDTO], completion: @escaping RemovalDetailedDTOCompletion) {
         receivedMessage.append(.remove(details))
+        removalCompletion.append(completion)
     }
     
     func completeAddDetailSuccessfully(at index: Int = 0) {
@@ -54,6 +58,10 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
     
     func completeUpdate(with error: NSError, at index: Int = 0) {
         updateCompletion[index](error)
+    }
+    
+    func completeRemoval(with error: NSError, at index: Int = 0) {
+        removalCompletion[index](error)
     }
     
     enum ReceiveMessage: Equatable {

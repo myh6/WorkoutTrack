@@ -15,8 +15,8 @@ class DetailedDataDeleter {
         self.store = store
     }
     
-    func delete(details: [Detailed]) {
-        store.remove(details: details.toLocal())
+    func delete(details: [Detailed], completion: @escaping (Error?) -> Void = { _ in }) {
+        store.remove(details: details.toLocal(), completion: completion)
     }
 }
 
@@ -36,6 +36,21 @@ final class DetailedDeleterTests: XCTestCase {
         
         sut.delete(details: details)
         XCTAssertEqual(store.receivedMessage, [.remove(details.toLocal())])
+    }
+    
+    func test_deleteDetails_failsOnRemovalError() {
+        let store = DetailedDTOStoreSpy()
+        let sut = DetailedDataDeleter(store: store)
+        let removalError = anyNSError()
+        
+        let exp = expectation(description: "Wait for deletion")
+        sut.delete(details: anyDetails().model) { receivedError in
+            XCTAssertEqual(removalError, receivedError as? NSError)
+            exp.fulfill()
+        }
+        
+        store.completeRemoval(with: removalError)
+        wait(for: [exp], timeout: 1.0)
     }
 
 }
