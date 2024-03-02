@@ -23,15 +23,13 @@ class DetailedDataDeleter {
 final class DetailedDeleterTests: XCTestCase {
 
     func test_init_doesNotMessageStoreUponCreation() {
-        let store = DetailedDTOStoreSpy()
-        _ = DetailedDataDeleter(store: store)
+        let (_, store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
     func test_deleteDetails_callsOnRemovalOnStore() {
-        let store = DetailedDTOStoreSpy()
-        let sut = DetailedDataDeleter(store: store)
+        let (sut, store) = makeSUT()
         let details = anyDetails().model
         
         sut.delete(details: details)
@@ -39,8 +37,7 @@ final class DetailedDeleterTests: XCTestCase {
     }
     
     func test_deleteDetails_failsOnRemovalError() {
-        let store = DetailedDTOStoreSpy()
-        let sut = DetailedDataDeleter(store: store)
+        let (sut, store) = makeSUT()
         let removalError = anyNSError()
         
         let exp = expectation(description: "Wait for deletion")
@@ -51,6 +48,15 @@ final class DetailedDeleterTests: XCTestCase {
         
         store.completeRemoval(with: removalError)
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    //MARK: - Helpers
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDataDeleter, store: DetailedDTOStoreSpy) {
+        let store = DetailedDTOStoreSpy()
+        let sut = DetailedDataDeleter(store: store)
+        trackForMemoryLeaks(store, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, store)
     }
 
 }
