@@ -56,7 +56,7 @@ final class ActionSaverTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionDataSaver, store: ActionFeedStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionSaver, store: ActionFeedStoreSpy) {
         let store = ActionFeedStoreSpy()
         let sut = ActionDataSaver(store: store)
         trackForMemoryLeaks(sut, file: file, line: line)
