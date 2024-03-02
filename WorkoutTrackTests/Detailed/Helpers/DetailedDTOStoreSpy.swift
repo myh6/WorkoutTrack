@@ -25,8 +25,8 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore {
         retrievalCompletion.append(completion)
     }
     
-    func update(with id: String, completion: @escaping (UpdateResult) -> Void) {
-        receivedMessage.append(.update(id))
+    func update(detail: DetailedDTO, completion: @escaping (UpdateResult) -> Void) {
+        receivedMessage.append(.update(detail.id))
         updateCompletion.append(completion)
     }
     

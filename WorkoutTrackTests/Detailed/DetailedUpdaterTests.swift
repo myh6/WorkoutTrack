@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import GYMHack
 
 class DetailedDataUpdater {
     private let store: DetailedDTOStoreSpy
@@ -14,8 +15,8 @@ class DetailedDataUpdater {
         self.store = store
     }
     
-    func updateDetailed(with id: String, completion: @escaping (Error?) -> Void) {
-        store.update(with: id, completion: completion)
+    func updateDetailed(_ detail: Detailed, completion: @escaping (Error?) -> Void) {
+        store.update(detail: detail.toLocal(), completion: completion)
     }
 }
 
@@ -29,20 +30,20 @@ final class DetailedUpdaterTests: XCTestCase {
     
     func test_updateDetailed_requestDataUpdateWithID() {
         let (sut, store) = makeSUT()
-        let anyID = UUID().uuidString
+        let detail = anyDetail()
         
-        sut.updateDetailed(with: anyID) { _ in }
+        sut.updateDetailed(detail.model) { _ in }
         
-        XCTAssertEqual(store.receivedMessage, [.update(anyID)])
+        XCTAssertEqual(store.receivedMessage, [.update(detail.local.id)])
     }
     
     func test_updateDetailed_failsOnUpdateError() {
         let (sut, store) = makeSUT()
-        let anyID = UUID().uuidString
+        let detail = anyDetail()
         let updateError = anyNSError()
         
         let exp = expectation(description: "Wait for update completion")
-        sut.updateDetailed(with: anyID) { receivedError in
+        sut.updateDetailed(detail.model) { receivedError in
             XCTAssertEqual(updateError, receivedError as? NSError)
             exp.fulfill()
         }

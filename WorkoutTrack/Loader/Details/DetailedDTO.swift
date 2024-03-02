@@ -10,12 +10,12 @@ import Foundation
 // MARK: - Data Transfer Object
 public struct DetailedDTO: Equatable {
     
-    var uuid: UUID
-    var setName: String
-    var weight: Float
-    var isDone: Bool
-    var reps: Int
-    var id: String
+    public var uuid: UUID
+    public var setName: String
+    public var weight: Float
+    public var isDone: Bool
+    public var reps: Int
+    public var id: String
     
     public init(uuid: UUID, setName: String, weight: Float, isDone: Bool, reps: Int, id: String) {
         self.uuid = uuid

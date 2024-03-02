@@ -35,3 +35,9 @@ public struct Detailed: Equatable {
     }
     
 }
+
+public extension Detailed {
+    func toLocal() -> DetailedDTO {
+        return DetailedDTO(uuid: uid, setName: setName, weight: weight, isDone: isDone, reps: reps, id: id)
+    }
+}
