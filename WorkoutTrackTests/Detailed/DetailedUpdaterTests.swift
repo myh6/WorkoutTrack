@@ -52,6 +52,17 @@ final class DetailedUpdaterTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_updateDetailed_hasNoSideEffectsOnUpdateError() {
+        let (sut, store) = makeSUT()
+        let updateError = anyNSError()
+        let anyDetail = anyDetail()
+        
+        sut.updateDetailed(anyDetail.model) { _ in }
+        store.completeUpdate(with: updateError)
+        
+        XCTAssertEqual(store.receivedMessage, [.update(anyDetail.local.id)])
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDataUpdater, store: DetailedDTOStoreSpy) {
         let store = DetailedDTOStoreSpy()
