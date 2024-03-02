@@ -8,30 +8,6 @@
 import XCTest
 import GYMHack
 
-public protocol DetailedUpdater {
-    func updateDetailed(_ detail: Detailed, completion: @escaping (Error?) -> Void)
-}
-
-public protocol DetailUpdateStore {
-    typealias UpdateDetailedDTOCompletion = (Error?) -> Void
-    func update(detail: DetailedDTO, completion: @escaping UpdateDetailedDTOCompletion)
-}
-
-class DetailedDataUpdater: DetailedUpdater {
-    private let store: DetailedDTOStoreSpy
-    
-    init(store: DetailedDTOStoreSpy) {
-        self.store = store
-    }
-    
-    func updateDetailed(_ detail: Detailed, completion: @escaping (Error?) -> Void) {
-        store.update(detail: detail.toLocal()) { [weak self] error in
-            guard self != nil else { return }
-            completion(error)
-        }
-    }
-}
-
 final class DetailedUpdaterTests: XCTestCase {
 
     func test_init_doesNotMessageStore() {

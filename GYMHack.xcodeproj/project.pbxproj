@@ -39,6 +39,9 @@
 		0F44BA5428290D8D001AD835 /* MonthlyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F44BA5328290D8D001AD835 /* MonthlyViewController.storyboard */; };
 		0F62EC57282D03D5004952F4 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 0F62EC56282D03D5004952F4 /* AppIcon.appiconset */; };
 		0F65307B28910A9000F55F88 /* WeeklyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65307A28910A9000F55F88 /* WeeklyViewModel.swift */; };
+		0F6AF0BA2B92CB0A0027D15C /* DetailedUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */; };
+		0F6AF0BC2B92CB260027D15C /* DetailedDataUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF0BB2B92CB260027D15C /* DetailedDataUpdater.swift */; };
+		0F6AF0BE2B92CBC60027D15C /* DetailUpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF0BD2B92CBC60027D15C /* DetailUpdateStore.swift */; };
 		0F71DA112B702A3A0044C999 /* ContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA102B702A3A0044C999 /* ContextProvider.swift */; };
 		0F71DA192B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA182B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift */; };
 		0F71DA1B2B707B860044C999 /* DetailedDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71DA1A2B707B860044C999 /* DetailedDataSaver.swift */; };
@@ -153,6 +156,9 @@
 		0F44BA5328290D8D001AD835 /* MonthlyViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MonthlyViewController.storyboard; sourceTree = "<group>"; };
 		0F62EC56282D03D5004952F4 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = Assets.xcassets/AppIcon.appiconset; sourceTree = "<group>"; };
 		0F65307A28910A9000F55F88 /* WeeklyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewModel.swift; sourceTree = "<group>"; };
+		0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedUpdater.swift; sourceTree = "<group>"; };
+		0F6AF0BB2B92CB260027D15C /* DetailedDataUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataUpdater.swift; sourceTree = "<group>"; };
+		0F6AF0BD2B92CBC60027D15C /* DetailUpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUpdateStore.swift; sourceTree = "<group>"; };
 		0F71DA102B702A3A0044C999 /* ContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvider.swift; sourceTree = "<group>"; };
 		0F71DA182B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MemoryLeaksTracking.swift"; sourceTree = "<group>"; };
 		0F71DA1A2B707B860044C999 /* DetailedDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataSaver.swift; sourceTree = "<group>"; };
@@ -284,6 +290,7 @@
 				0F71DA2B2B71E0150044C999 /* Action */,
 				0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */,
 				0F3894C12B89BD58000FED69 /* DetailedSaver.swift */,
+				0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */,
 				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
 			);
 			path = Loader;
@@ -364,6 +371,8 @@
 				0F71DA1D2B707BAD0044C999 /* DetailAdditionStore.swift */,
 				0F3894B82B89B655000FED69 /* DetailedDataLoader.swift */,
 				0F3894BE2B89B7C4000FED69 /* DetailRetrievalStore.swift */,
+				0F6AF0BB2B92CB260027D15C /* DetailedDataUpdater.swift */,
+				0F6AF0BD2B92CBC60027D15C /* DetailUpdateStore.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -803,11 +812,13 @@
 				0FE1076828221F0000D9D110 /* SetWeightRepsCell.swift in Sources */,
 				0F71DA232B707EB20044C999 /* DetailedDTO.swift in Sources */,
 				0F99CC56281450E200994329 /* SFSymbolButton.swift in Sources */,
+				0F6AF0BA2B92CB0A0027D15C /* DetailedUpdater.swift in Sources */,
 				0F99CC2828144BAB00994329 /* WorkoutTrack.xcdatamodeld in Sources */,
 				0F3894BD2B89B765000FED69 /* DetailedLoader.swift in Sources */,
 				0FE106FE281E4E7F00D9D110 /* AddActionViewController.swift in Sources */,
 				0FE401D52842637C006386CF /* ChooseCustomExerciseTableView.swift in Sources */,
 				0FE107742828009400D9D110 /* NoHistoryCell.swift in Sources */,
+				0F6AF0BC2B92CB260027D15C /* DetailedDataUpdater.swift in Sources */,
 				0F71DA112B702A3A0044C999 /* ContextProvider.swift in Sources */,
 				0FE1076E28224BF100D9D110 /* AddCell.swift in Sources */,
 				0FEBB59B2839055E005AF29E /* LanguageCell.swift in Sources */,
@@ -819,6 +830,7 @@
 				0FE98DE128322F39008EB8CD /* Chart3Cell.swift in Sources */,
 				0FE402192845A87B006386CF /* CustomExerciseCell.swift in Sources */,
 				0F3894C32B89BD5F000FED69 /* DetailedSaver.swift in Sources */,
+				0F6AF0BE2B92CBC60027D15C /* DetailUpdateStore.swift in Sources */,
 				0FE10716281ECD9D00D9D110 /* CollapsibleExerciseView.swift in Sources */,
 				0F3894BA2B89B65F000FED69 /* DetailedDataLoader.swift in Sources */,
 				0FE10718281ECDCB00D9D110 /* CollapsibleSetView.swift in Sources */,
