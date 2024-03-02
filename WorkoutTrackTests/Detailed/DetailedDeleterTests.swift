@@ -15,7 +15,7 @@ class DetailedDataDeleter {
         self.store = store
     }
     
-    func delete(details: [Detailed], completion: @escaping (Error?) -> Void = { _ in }) {
+    func delete(details: [Detailed], completion: @escaping (Error?) -> Void) {
         store.remove(details: details.toLocal()) { [weak self] error in
             guard self != nil else { return }
             completion(error)
@@ -35,7 +35,7 @@ final class DetailedDeleterTests: XCTestCase {
         let (sut, store) = makeSUT()
         let details = anyDetails().model
         
-        sut.delete(details: details)
+        sut.delete(details: details) { _ in }
         XCTAssertEqual(store.receivedMessage, [.remove(details.toLocal())])
     }
     
