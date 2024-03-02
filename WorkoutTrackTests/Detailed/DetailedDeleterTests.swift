@@ -6,16 +6,36 @@
 //
 
 import XCTest
+import GYMHack
 
-class DetailedDataDeleter {}
+class DetailedDataDeleter {
+    private let store: DetailedDTOStoreSpy
+    
+    init(store: DetailedDTOStoreSpy) {
+        self.store = store
+    }
+    
+    func delete(details: [Detailed]) {
+        store.remove(details: details.toLocal())
+    }
+}
 
 final class DetailedDeleterTests: XCTestCase {
 
     func test_init_doesNotMessageStoreUponCreation() {
-        _ = DetailedDataDeleter()
         let store = DetailedDTOStoreSpy()
+        _ = DetailedDataDeleter(store: store)
         
         XCTAssertTrue(store.receivedMessage.isEmpty)
+    }
+    
+    func test_deleteDetails_callsOnRemovalOnStore() {
+        let store = DetailedDTOStoreSpy()
+        let sut = DetailedDataDeleter(store: store)
+        let details = anyDetails().model
+        
+        sut.delete(details: details)
+        XCTAssertEqual(store.receivedMessage, [.remove(details.toLocal())])
     }
 
 }

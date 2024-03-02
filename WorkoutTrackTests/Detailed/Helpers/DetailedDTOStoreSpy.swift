@@ -28,6 +28,10 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
         updateCompletion.append(completion)
     }
     
+    func remove(details: [DetailedDTO]) {
+        receivedMessage.append(.remove(details))
+    }
+    
     func completeAddDetailSuccessfully(at index: Int = 0) {
         addDetailCompletion[index](nil)
     }
@@ -56,6 +60,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
         case addData([DetailedDTO])
         case retrieve(NSPredicate?)
         case update(String)
+        case remove([DetailedDTO])
     }
     
     var receivedMessage = [ReceiveMessage]()
