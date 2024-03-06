@@ -38,7 +38,6 @@
 		0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44BA512828F1A3001AD835 /* ChartViewController.swift */; };
 		0F44BA5428290D8D001AD835 /* MonthlyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F44BA5328290D8D001AD835 /* MonthlyViewController.storyboard */; };
 		0F62EC57282D03D5004952F4 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 0F62EC56282D03D5004952F4 /* AppIcon.appiconset */; };
-		0F65307B28910A9000F55F88 /* WeeklyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F65307A28910A9000F55F88 /* WeeklyViewModel.swift */; };
 		0F6AF0BA2B92CB0A0027D15C /* DetailedUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */; };
 		0F6AF0BC2B92CB260027D15C /* DetailedDataUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF0BB2B92CB260027D15C /* DetailedDataUpdater.swift */; };
 		0F6AF0BE2B92CBC60027D15C /* DetailUpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AF0BD2B92CBC60027D15C /* DetailUpdateStore.swift */; };
@@ -156,7 +155,6 @@
 		0F44BA512828F1A3001AD835 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		0F44BA5328290D8D001AD835 /* MonthlyViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MonthlyViewController.storyboard; sourceTree = "<group>"; };
 		0F62EC56282D03D5004952F4 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = Assets.xcassets/AppIcon.appiconset; sourceTree = "<group>"; };
-		0F65307A28910A9000F55F88 /* WeeklyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewModel.swift; sourceTree = "<group>"; };
 		0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedUpdater.swift; sourceTree = "<group>"; };
 		0F6AF0BB2B92CB260027D15C /* DetailedDataUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataUpdater.swift; sourceTree = "<group>"; };
 		0F6AF0BD2B92CBC60027D15C /* DetailUpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUpdateStore.swift; sourceTree = "<group>"; };
@@ -335,14 +333,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		0F65307928910A7000F55F88 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				0F65307A28910A9000F55F88 /* WeeklyViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		0F6AF0BF2B92CC960027D15C /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,7 +432,6 @@
 				0F99CC1D28144BAB00994329 /* AppDelegate.swift */,
 				0F99CC1F28144BAB00994329 /* SceneDelegate.swift */,
 				0F345A372B6B5E4A007528BD /* Loader */,
-				0F65307928910A7000F55F88 /* ViewModels */,
 				0F99CC572814575E00994329 /* Models */,
 				0F99CC54281450D100994329 /* Views */,
 				0F99CC5228144BF300994329 /* Controllers */,
@@ -821,7 +810,6 @@
 				0FE1075A2820CB0A00D9D110 /* WeekDateChooseTableView.swift in Sources */,
 				0FE10764282107AF00D9D110 /* ChooseExerciseTableView.swift in Sources */,
 				0F99CC2228144BAB00994329 /* WeeklyViewController.swift in Sources */,
-				0F65307B28910A9000F55F88 /* WeeklyViewModel.swift in Sources */,
 				0F0FD99728166FCC001ACCDB /* SectionsCell.swift in Sources */,
 				0F71DA1E2B707BAD0044C999 /* DetailAdditionStore.swift in Sources */,
 				0FE1071A281FA74900D9D110 /* NewActionViewController.swift in Sources */,
