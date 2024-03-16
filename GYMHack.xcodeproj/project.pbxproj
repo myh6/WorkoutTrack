@@ -12,6 +12,8 @@
 		0F0FD99728166FCC001ACCDB /* SectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99628166FCC001ACCDB /* SectionsCell.swift */; };
 		0F0FD99928167440001ACCDB /* ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99828167440001ACCDB /* ExpandCell.swift */; };
 		0F0FD99C2816A84C001ACCDB /* AddActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99B2816A84C001ACCDB /* AddActionModel.swift */; };
+		0F1543012BA60EB300AF81B1 /* DetailRemovalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543002BA60EB300AF81B1 /* DetailRemovalStore.swift */; };
+		0F1543032BA60F0400AF81B1 /* DetailedDataDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */; };
 		0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CDD802B35836C0080C5F5 /* launchScreen.gif */; };
 		0F345A392B6B5E57007528BD /* CoreDataCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */; };
 		0F345A3B2B6B5EA5007528BD /* CoreDataFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */; };
@@ -126,6 +128,8 @@
 		0F0FD99628166FCC001ACCDB /* SectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCell.swift; sourceTree = "<group>"; };
 		0F0FD99828167440001ACCDB /* ExpandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCell.swift; sourceTree = "<group>"; };
 		0F0FD99B2816A84C001ACCDB /* AddActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionModel.swift; sourceTree = "<group>"; };
+		0F1543002BA60EB300AF81B1 /* DetailRemovalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRemovalStore.swift; sourceTree = "<group>"; };
+		0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataDeleter.swift; sourceTree = "<group>"; };
 		0F1CDD802B35836C0080C5F5 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
 		0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCreationService.swift; sourceTree = "<group>"; };
 		0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchingService.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 				0F71DA1D2B707BAD0044C999 /* DetailAdditionStore.swift */,
 				0F3894BE2B89B7C4000FED69 /* DetailRetrievalStore.swift */,
 				0F6AF0BD2B92CBC60027D15C /* DetailUpdateStore.swift */,
+				0F1543002BA60EB300AF81B1 /* DetailRemovalStore.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 				0F71DA1A2B707B860044C999 /* DetailedDataSaver.swift */,
 				0F3894B82B89B655000FED69 /* DetailedDataLoader.swift */,
 				0F6AF0BB2B92CB260027D15C /* DetailedDataUpdater.swift */,
+				0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -792,6 +798,7 @@
 				0FE98E4B2838EF05008EB8CD /* PresentationController.swift in Sources */,
 				0F44BA4E2828F098001AD835 /* TabBarViewController.swift in Sources */,
 				0FE107722827D9DA00D9D110 /* HistoryActionModel.swift in Sources */,
+				0F1543012BA60EB300AF81B1 /* DetailRemovalStore.swift in Sources */,
 				0FE98DE52835E9AF008EB8CD /* XAxisNameFormater.swift in Sources */,
 				0FE98DCE283150E2008EB8CD /* DropDownTextField.swift in Sources */,
 				0F361F33288A3474004B322E /* AdmobID.swift in Sources */,
@@ -829,6 +836,7 @@
 				0F99CC56281450E200994329 /* SFSymbolButton.swift in Sources */,
 				0F6AF0BA2B92CB0A0027D15C /* DetailedUpdater.swift in Sources */,
 				0F99CC2828144BAB00994329 /* WorkoutTrack.xcdatamodeld in Sources */,
+				0F1543032BA60F0400AF81B1 /* DetailedDataDeleter.swift in Sources */,
 				0F3894BD2B89B765000FED69 /* DetailedLoader.swift in Sources */,
 				0FE106FE281E4E7F00D9D110 /* AddActionViewController.swift in Sources */,
 				0FE401D52842637C006386CF /* ChooseCustomExerciseTableView.swift in Sources */,

@@ -8,27 +8,6 @@
 import XCTest
 import GYMHack
 
-protocol DetailRemovalStore {
-    typealias RemovalDetailedDTOCompletion = (Error?) -> Void
-    
-    func remove(details: [DetailedDTO], completion: @escaping RemovalDetailedDTOCompletion)
-}
-
-class DetailedDataDeleter {
-    private let store: DetailRemovalStore
-    
-    init(store: DetailRemovalStore) {
-        self.store = store
-    }
-    
-    func delete(details: [Detailed], completion: @escaping (Error?) -> Void) {
-        store.remove(details: details.toLocal()) { [weak self] error in
-            guard self != nil else { return }
-            completion(error)
-        }
-    }
-}
-
 final class DetailedDeleterTests: XCTestCase {
 
     func test_init_doesNotMessageStoreUponCreation() {
