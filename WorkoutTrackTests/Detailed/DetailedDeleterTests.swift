@@ -62,7 +62,7 @@ final class DetailedDeleterTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDataDeleter, store: DetailedDTOStoreSpy) {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: DetailedDeleter, store: DetailedDTOStoreSpy) {
         let store = DetailedDTOStoreSpy()
         let sut = DetailedDataDeleter(store: store)
         trackForMemoryLeaks(store, file: file, line: line)

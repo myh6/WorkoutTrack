@@ -14,6 +14,7 @@
 		0F0FD99C2816A84C001ACCDB /* AddActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FD99B2816A84C001ACCDB /* AddActionModel.swift */; };
 		0F1543012BA60EB300AF81B1 /* DetailRemovalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543002BA60EB300AF81B1 /* DetailRemovalStore.swift */; };
 		0F1543032BA60F0400AF81B1 /* DetailedDataDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */; };
+		0F1543052BA6104A00AF81B1 /* DetailedDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */; };
 		0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CDD802B35836C0080C5F5 /* launchScreen.gif */; };
 		0F345A392B6B5E57007528BD /* CoreDataCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */; };
 		0F345A3B2B6B5EA5007528BD /* CoreDataFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */; };
@@ -130,6 +131,7 @@
 		0F0FD99B2816A84C001ACCDB /* AddActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionModel.swift; sourceTree = "<group>"; };
 		0F1543002BA60EB300AF81B1 /* DetailRemovalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRemovalStore.swift; sourceTree = "<group>"; };
 		0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataDeleter.swift; sourceTree = "<group>"; };
+		0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDeleter.swift; sourceTree = "<group>"; };
 		0F1CDD802B35836C0080C5F5 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
 		0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCreationService.swift; sourceTree = "<group>"; };
 		0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchingService.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				0F3894BB2B89B74D000FED69 /* DetailedLoader.swift */,
 				0F3894C12B89BD58000FED69 /* DetailedSaver.swift */,
 				0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */,
+				0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */,
 				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
 			);
 			path = Protocols;
@@ -821,6 +824,7 @@
 				0F71DA1E2B707BAD0044C999 /* DetailAdditionStore.swift in Sources */,
 				0FE1071A281FA74900D9D110 /* NewActionViewController.swift in Sources */,
 				0F44BA502828F17B001AD835 /* MonthlyViewController.swift in Sources */,
+				0F1543052BA6104A00AF81B1 /* DetailedDeleter.swift in Sources */,
 				0F345A3D2B6B5F3F007528BD /* CoreDataUpdatingService.swift in Sources */,
 				0F3894C02B89B7D1000FED69 /* DetailRetrievalStore.swift in Sources */,
 				0FE1076628211F5100D9D110 /* HistoryCell.swift in Sources */,
