@@ -16,6 +16,7 @@
 		0F1543032BA60F0400AF81B1 /* DetailedDataDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */; };
 		0F1543052BA6104A00AF81B1 /* DetailedDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */; };
 		0F1543072BA610C900AF81B1 /* ActionSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543062BA610C900AF81B1 /* ActionSaver.swift */; };
+		0F1543092BA6113E00AF81B1 /* ActionDeleterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543082BA6113E00AF81B1 /* ActionDeleterTests.swift */; };
 		0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CDD802B35836C0080C5F5 /* launchScreen.gif */; };
 		0F345A392B6B5E57007528BD /* CoreDataCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */; };
 		0F345A3B2B6B5EA5007528BD /* CoreDataFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */; };
@@ -134,6 +135,7 @@
 		0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataDeleter.swift; sourceTree = "<group>"; };
 		0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDeleter.swift; sourceTree = "<group>"; };
 		0F1543062BA610C900AF81B1 /* ActionSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSaver.swift; sourceTree = "<group>"; };
+		0F1543082BA6113E00AF81B1 /* ActionDeleterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDeleterTests.swift; sourceTree = "<group>"; };
 		0F1CDD802B35836C0080C5F5 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
 		0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCreationService.swift; sourceTree = "<group>"; };
 		0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchingService.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				0F3894CA2B8BDF36000FED69 /* Helpers */,
 				0F71DA282B71D3E00044C999 /* ActionSaverTests.swift */,
 				0F3894C42B8A6494000FED69 /* ActionLoaderTests.swift */,
+				0F1543082BA6113E00AF81B1 /* ActionDeleterTests.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -887,6 +890,7 @@
 				0F71DA192B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift in Sources */,
 				0F71DA292B71D3E00044C999 /* ActionSaverTests.swift in Sources */,
 				0F8915892B8BF0DE00D2CFD4 /* ActionTestsHelpers.swift in Sources */,
+				0F1543092BA6113E00AF81B1 /* ActionDeleterTests.swift in Sources */,
 				0F3894B72B89A1FC000FED69 /* DetailedTestHelpers.swift in Sources */,
 				0F71DA392B7FDE420044C999 /* DetailedLoaderTests.swift in Sources */,
 				0F89158B2B8BF15F00D2CFD4 /* DetailedUpdaterTests.swift in Sources */,
