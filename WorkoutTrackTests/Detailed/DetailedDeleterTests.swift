@@ -8,10 +8,16 @@
 import XCTest
 import GYMHack
 
-class DetailedDataDeleter {
-    private let store: DetailedDTOStoreSpy
+protocol DetailRemovalStore {
+    typealias RemovalDetailedDTOCompletion = (Error?) -> Void
     
-    init(store: DetailedDTOStoreSpy) {
+    func remove(details: [DetailedDTO], completion: @escaping RemovalDetailedDTOCompletion)
+}
+
+class DetailedDataDeleter {
+    private let store: DetailRemovalStore
+    
+    init(store: DetailRemovalStore) {
         self.store = store
     }
     

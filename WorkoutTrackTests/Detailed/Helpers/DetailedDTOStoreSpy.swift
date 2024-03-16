@@ -8,12 +8,11 @@
 import XCTest
 import GYMHack
 
-class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpdateStore {
+class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpdateStore, DetailRemovalStore {
     private var addDetailCompletion = [AddDetailedDTOCompletion]()
     private var retrievalCompletion = [RetrievalDetailedDTOCompletion]()
     private var updateCompletion = [UpdateDetailedDTOCompletion]()
     private var removalCompletion = [RemovalDetailedDTOCompletion]()
-    typealias RemovalDetailedDTOCompletion = (Error?) -> Void
     
     func add(details: [DetailedDTO], completion: @escaping AddDetailedDTOCompletion) {
         receivedMessage.append(.addData(details))
