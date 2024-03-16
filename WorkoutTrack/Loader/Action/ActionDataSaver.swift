@@ -7,11 +7,6 @@
 
 import Foundation
 
-public protocol ActionSaver {
-    typealias SaveActionResult = Error?
-    func save(action: String, ofType: String, completion: @escaping (SaveActionResult) -> Void)
-}
-
 public class ActionDataSaver: ActionSaver {
     let store: ActionAdditionStore
     

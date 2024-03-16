@@ -15,6 +15,7 @@
 		0F1543012BA60EB300AF81B1 /* DetailRemovalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543002BA60EB300AF81B1 /* DetailRemovalStore.swift */; };
 		0F1543032BA60F0400AF81B1 /* DetailedDataDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */; };
 		0F1543052BA6104A00AF81B1 /* DetailedDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */; };
+		0F1543072BA610C900AF81B1 /* ActionSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543062BA610C900AF81B1 /* ActionSaver.swift */; };
 		0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CDD802B35836C0080C5F5 /* launchScreen.gif */; };
 		0F345A392B6B5E57007528BD /* CoreDataCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */; };
 		0F345A3B2B6B5EA5007528BD /* CoreDataFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */; };
@@ -132,6 +133,7 @@
 		0F1543002BA60EB300AF81B1 /* DetailRemovalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRemovalStore.swift; sourceTree = "<group>"; };
 		0F1543022BA60F0400AF81B1 /* DetailedDataDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataDeleter.swift; sourceTree = "<group>"; };
 		0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDeleter.swift; sourceTree = "<group>"; };
+		0F1543062BA610C900AF81B1 /* ActionSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSaver.swift; sourceTree = "<group>"; };
 		0F1CDD802B35836C0080C5F5 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
 		0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCreationService.swift; sourceTree = "<group>"; };
 		0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchingService.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				0F6AF0B92B92CB0A0027D15C /* DetailedUpdater.swift */,
 				0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */,
 				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
+				0F1543062BA610C900AF81B1 /* ActionSaver.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				0FEBB59B2839055E005AF29E /* LanguageCell.swift in Sources */,
 				0FE1076C2822242100D9D110 /* SetWeightRepsTableHeaderView.swift in Sources */,
 				0FE98E492838EED2008EB8CD /* LanguageOverlayView.swift in Sources */,
+				0F1543072BA610C900AF81B1 /* ActionSaver.swift in Sources */,
 				0F99CC5D28152E4900994329 /* WeekProgressView.swift in Sources */,
 				0F368C582817BD660098667E /* CoredataService.swift in Sources */,
 				0FE98DDD2832203F008EB8CD /* Chart1Cell.swift in Sources */,
