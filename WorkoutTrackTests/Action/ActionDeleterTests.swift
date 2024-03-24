@@ -51,6 +51,17 @@ final class ActionDeleterTests: XCTestCase {
         wait(for: [exp])
     }
     
+    func test_deleteAction_hasNoSideEffectsOnRemovalError() {
+        let (sut, store) = makeSUT()
+        let removalError = anyNSError()
+        let actionID = anyActionID()
+        
+        sut.delete(action: actionID) { _ in }
+        store.completeRemoval(with: removalError)
+        
+        XCTAssertEqual(store.receivedMessage, [.removal(actionID)])
+    }
+    
     
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionDataDeleter, store: ActionFeedStoreSpy) {
