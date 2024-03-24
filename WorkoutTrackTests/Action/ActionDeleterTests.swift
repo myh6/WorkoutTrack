@@ -23,19 +23,27 @@ class ActionDataDeleter {
 final class ActionDeleterTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
-        let store = ActionFeedStoreSpy()
-        _ = ActionDataDeleter(store: store)
+        let (_, store) = makeSUT()
         
         XCTAssertTrue(store.receivedMessage.isEmpty)
     }
     
     func test_deleteAction_callsOnRemovalOnStore() {
-        let store = ActionFeedStoreSpy()
-        let sut = ActionDataDeleter(store: store)
+        let (sut, store) = makeSUT()
         let actionID = UUID()
         
         sut.delete(action: actionID)
         
         XCTAssertEqual(store.receivedMessage, [.removal(actionID)])
+    }
+    
+    
+    //MARK: - Helpers
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ActionDataDeleter, store: ActionFeedStoreSpy) {
+        let store = ActionFeedStoreSpy()
+        let sut = ActionDataDeleter(store: store)
+        trackForMemoryLeaks(store, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, store)
     }
 }
