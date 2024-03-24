@@ -15,8 +15,8 @@ class ActionDataDeleter {
         self.store = store
     }
     
-    func delete(action: UUID) {
-        store.remove(actionID: action)
+    func delete(action: UUID, completion: @escaping (Error?) -> Void) {
+        store.remove(actionID: action, completion: completion)
     }
 }
 
@@ -32,9 +32,23 @@ final class ActionDeleterTests: XCTestCase {
         let (sut, store) = makeSUT()
         let actionID = UUID()
         
-        sut.delete(action: actionID)
+        sut.delete(action: actionID) { _ in }
         
         XCTAssertEqual(store.receivedMessage, [.removal(actionID)])
+    }
+    
+    func test_deleteAction_failsOnRemovalError() {
+        let (sut, store) = makeSUT()
+        let removalError = anyNSError()
+        
+        let exp = expectation(description: "Wait for deletion completion")
+        sut.delete(action: anyActionID()) { receivedError in
+            XCTAssertEqual(removalError, receivedError as? NSError)
+            exp.fulfill()
+        }
+        store.completeRemoval(with: removalError)
+        
+        wait(for: [exp])
     }
     
     
@@ -45,5 +59,9 @@ final class ActionDeleterTests: XCTestCase {
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func anyActionID() -> UUID {
+        return UUID()
     }
 }

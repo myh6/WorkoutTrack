@@ -12,6 +12,9 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore {
     private var addActionCompletion = [AddActionCompletion]()
     private var retrievalCompletion = [RetrievalCompletion]()
     
+    typealias RemovalCompletion = (Error?) -> Void
+    private var removalCompletion = [RemovalCompletion]()
+    
     func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
         receivedMessage.append(.addAction((actionName, ofType)))
         addActionCompletion.append(completion)
@@ -22,7 +25,8 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore {
         retrievalCompletion.append(completion)
     }
     
-    func remove(actionID: UUID) {
+    func remove(actionID: UUID, completion: @escaping (Error?) -> Void) {
+        removalCompletion.append(completion)
         receivedMessage.append(.removal(actionID))
     }
     
@@ -44,6 +48,10 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore {
     
     func completeRetrievalWith(action: String, type: String, at index: Int = 0) {
         retrievalCompletion[index](.found(ActionRetrievalResult.ActionFeed(actionName: action, typeName: type)))
+    }
+    
+    func completeRemoval(with error: NSError, at index: Int = 0) {
+        removalCompletion[index](error)
     }
     
     enum ReceiveMessage: Equatable {
