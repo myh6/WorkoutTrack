@@ -22,6 +22,10 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore {
         retrievalCompletion.append(completion)
     }
     
+    func remove(actionID: UUID) {
+        receivedMessage.append(.removal(actionID))
+    }
+    
     func completeAddActionSuccessfully(at index: Int = 0) {
         addActionCompletion[index](nil)
     }
@@ -49,6 +53,8 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore {
                 return la == ra && lt == rt
             case let (.retrieve(lp), .retrieve(rp)):
                 return lp == rp
+            case let (.removal(lID), .removal(rID)):
+                return lID == rID
             default:
                 return false
             }
@@ -56,6 +62,7 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore {
         
         case addAction((actionName, ofType))
         case retrieve(NSPredicate?)
+        case removal(UUID)
 
         typealias actionName = String
         typealias ofType = String
