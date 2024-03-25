@@ -7,12 +7,17 @@
 
 import XCTest
 
+protocol ActionRemovalStore {
+    typealias RemovalCompletion = (Error?) -> Void
+    func remove(actionID: UUID, completion: @escaping RemovalCompletion)
+}
+
 class ActionDataDeleter {
     
-    private let store: ActionFeedStoreSpy
+    private let store: ActionRemovalStore
     typealias Result = Error?
     
-    init(store: ActionFeedStoreSpy) {
+    init(store: ActionRemovalStore) {
         self.store = store
     }
     

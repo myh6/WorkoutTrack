@@ -8,11 +8,9 @@
 import Foundation
 import GYMHack
 
-class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore {
+class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemovalStore {
     private var addActionCompletion = [AddActionCompletion]()
     private var retrievalCompletion = [RetrievalCompletion]()
-    
-    typealias RemovalCompletion = (Error?) -> Void
     private var removalCompletion = [RemovalCompletion]()
     
     func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
