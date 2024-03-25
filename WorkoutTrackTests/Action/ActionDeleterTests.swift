@@ -6,32 +6,7 @@
 //
 
 import XCTest
-
-protocol ActionRemovalStore {
-    typealias RemovalCompletion = (Error?) -> Void
-    func remove(actionID: UUID, completion: @escaping RemovalCompletion)
-}
-
-protocol ActionDeleter {
-    typealias Result = Error?
-    func delete(action: UUID, completion: @escaping (Result) -> Void)
-}
-
-class ActionDataDeleter: ActionDeleter {
-    
-    private let store: ActionRemovalStore
-    
-    init(store: ActionRemovalStore) {
-        self.store = store
-    }
-    
-    func delete(action: UUID, completion: @escaping (ActionDeleter.Result) -> Void) {
-        store.remove(actionID: action) { [weak self] error in
-            guard self != nil else { return }
-            completion(error)
-        }
-    }
-}
+import GYMHack
 
 final class ActionDeleterTests: XCTestCase {
     
@@ -77,10 +52,10 @@ final class ActionDeleterTests: XCTestCase {
     
     func test_deleteAction_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = ActionFeedStoreSpy()
-        var sut: ActionDataDeleter? = ActionDataDeleter(store: store)
+        var sut: ActionDeleter? = ActionDataDeleter(store: store)
         let removalError = anyNSError()
         
-        var receivedResult = [ActionDataDeleter.Result]()
+        var receivedResult = [ActionDeleter.Result]()
         sut?.delete(action: anyActionID()) { receivedResult.append($0) }
         
         sut = nil

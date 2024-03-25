@@ -17,6 +17,9 @@
 		0F1543052BA6104A00AF81B1 /* DetailedDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */; };
 		0F1543072BA610C900AF81B1 /* ActionSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543062BA610C900AF81B1 /* ActionSaver.swift */; };
 		0F1543092BA6113E00AF81B1 /* ActionDeleterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543082BA6113E00AF81B1 /* ActionDeleterTests.swift */; };
+		0F15430B2BB0F8C000AF81B1 /* ActionDataDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15430A2BB0F8C000AF81B1 /* ActionDataDeleter.swift */; };
+		0F15430D2BB0F91B00AF81B1 /* ActionDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15430C2BB0F91B00AF81B1 /* ActionDeleter.swift */; };
+		0F15430F2BB0F92E00AF81B1 /* ActionRemovalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15430E2BB0F92E00AF81B1 /* ActionRemovalStore.swift */; };
 		0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CDD802B35836C0080C5F5 /* launchScreen.gif */; };
 		0F345A392B6B5E57007528BD /* CoreDataCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */; };
 		0F345A3B2B6B5EA5007528BD /* CoreDataFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */; };
@@ -136,6 +139,9 @@
 		0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDeleter.swift; sourceTree = "<group>"; };
 		0F1543062BA610C900AF81B1 /* ActionSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSaver.swift; sourceTree = "<group>"; };
 		0F1543082BA6113E00AF81B1 /* ActionDeleterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDeleterTests.swift; sourceTree = "<group>"; };
+		0F15430A2BB0F8C000AF81B1 /* ActionDataDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataDeleter.swift; sourceTree = "<group>"; };
+		0F15430C2BB0F91B00AF81B1 /* ActionDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDeleter.swift; sourceTree = "<group>"; };
+		0F15430E2BB0F92E00AF81B1 /* ActionRemovalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRemovalStore.swift; sourceTree = "<group>"; };
 		0F1CDD802B35836C0080C5F5 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
 		0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCreationService.swift; sourceTree = "<group>"; };
 		0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchingService.swift; sourceTree = "<group>"; };
@@ -361,6 +367,7 @@
 			children = (
 				0F71DA242B71D30D0044C999 /* ActionAdditionStore.swift */,
 				0F3894CE2B8BE5A3000FED69 /* ActionRetrievalStore.swift */,
+				0F15430E2BB0F92E00AF81B1 /* ActionRemovalStore.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -374,6 +381,7 @@
 				0F1543042BA6104A00AF81B1 /* DetailedDeleter.swift */,
 				0F3894D12B8BE5CA000FED69 /* ActionLoader.swift */,
 				0F1543062BA610C900AF81B1 /* ActionSaver.swift */,
+				0F15430C2BB0F91B00AF81B1 /* ActionDeleter.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -416,6 +424,7 @@
 				0F6AF0C02B92CCAB0027D15C /* Infrastructure */,
 				0F71DA262B71D3750044C999 /* ActionDataSaver.swift */,
 				0F3894D42B8BE705000FED69 /* ActionDataLoader.swift */,
+				0F15430A2BB0F8C000AF81B1 /* ActionDataDeleter.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -807,6 +816,7 @@
 				0FE98E4B2838EF05008EB8CD /* PresentationController.swift in Sources */,
 				0F44BA4E2828F098001AD835 /* TabBarViewController.swift in Sources */,
 				0FE107722827D9DA00D9D110 /* HistoryActionModel.swift in Sources */,
+				0F15430F2BB0F92E00AF81B1 /* ActionRemovalStore.swift in Sources */,
 				0F1543012BA60EB300AF81B1 /* DetailRemovalStore.swift in Sources */,
 				0FE98DE52835E9AF008EB8CD /* XAxisNameFormater.swift in Sources */,
 				0FE98DCE283150E2008EB8CD /* DropDownTextField.swift in Sources */,
@@ -829,6 +839,7 @@
 				0F0FD99728166FCC001ACCDB /* SectionsCell.swift in Sources */,
 				0F71DA1E2B707BAD0044C999 /* DetailAdditionStore.swift in Sources */,
 				0FE1071A281FA74900D9D110 /* NewActionViewController.swift in Sources */,
+				0F15430D2BB0F91B00AF81B1 /* ActionDeleter.swift in Sources */,
 				0F44BA502828F17B001AD835 /* MonthlyViewController.swift in Sources */,
 				0F1543052BA6104A00AF81B1 /* DetailedDeleter.swift in Sources */,
 				0F345A3D2B6B5F3F007528BD /* CoreDataUpdatingService.swift in Sources */,
@@ -874,6 +885,7 @@
 				0F361F46288E6706004B322E /* Log.swift in Sources */,
 				0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */,
 				0FE98DE32833491E008EB8CD /* ChartsSelectionModel.swift in Sources */,
+				0F15430B2BB0F8C000AF81B1 /* ActionDataDeleter.swift in Sources */,
 				0F99CC2028144BAB00994329 /* SceneDelegate.swift in Sources */,
 				0F3894D02B8BE5A7000FED69 /* ActionRetrievalStore.swift in Sources */,
 				0F0FD99928167440001ACCDB /* ExpandCell.swift in Sources */,
