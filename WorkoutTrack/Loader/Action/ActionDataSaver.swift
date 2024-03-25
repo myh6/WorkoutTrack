@@ -14,7 +14,7 @@ public class ActionDataSaver: ActionSaver {
         self.store = store
     }
     
-    public func save(action: String, ofType: String, completion: @escaping (SaveActionResult) -> Void) {
+    public func save(action: String, ofType: String, completion: @escaping (ActionSaver.Result) -> Void) {
         store.addAction(actionName: action, ofType: ofType) { [weak self] error in
             guard self != nil else { return }
             completion(error)

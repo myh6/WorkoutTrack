@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol DetailedSaver {
-    typealias SaveDetailResult = Error?
-    func save(details: [Detailed], completion: @escaping (SaveDetailResult) -> Void)
+    typealias Result = Error?
+    func save(details: [Detailed], completion: @escaping (Result) -> Void)
 }

@@ -46,7 +46,7 @@ final class ActionSaverTests: XCTestCase {
         let store = ActionFeedStoreSpy()
         var sut: ActionSaver? = ActionDataSaver(store: store)
         
-        var receivedResult = [ActionSaver.SaveActionResult]()
+        var receivedResult = [ActionSaver.Result]()
         sut?.save(action: anyAction(), ofType: anyType()) { receivedResult.append($0) }
         
         sut = nil

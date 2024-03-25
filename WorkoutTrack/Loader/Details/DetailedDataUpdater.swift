@@ -14,7 +14,7 @@ public class DetailedDataUpdater: DetailedUpdater {
         self.store = store
     }
     
-    public func updateDetailed(_ detail: Detailed, completion: @escaping (Error?) -> Void) {
+    public func updateDetailed(_ detail: Detailed, completion: @escaping (DetailedUpdater.Result) -> Void) {
         store.update(detail: detail.toLocal()) { [weak self] error in
             guard self != nil else { return }
             completion(error)

@@ -14,7 +14,7 @@ public class DetailedDataDeleter: DetailedDeleter {
         self.store = store
     }
     
-    public func delete(details: [Detailed], completion: @escaping (DeleteDetailedResult) -> Void) {
+    public func delete(details: [Detailed], completion: @escaping (DetailedDeleter.Result) -> Void) {
         store.remove(details: details.toLocal()) { [weak self] error in
             guard self != nil else { return }
             completion(error)

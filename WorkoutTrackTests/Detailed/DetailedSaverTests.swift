@@ -43,7 +43,7 @@ final class DetailedSaverTests: XCTestCase {
         let store = DetailedDTOStoreSpy()
         var sut: DetailedSaver? = DetailedDataSaver(store: store)
         
-        var receivedResult = [DetailedSaver.SaveDetailResult]()
+        var receivedResult = [DetailedSaver.Result]()
         sut?.save(details: anyDetails().model) { receivedResult.append($0) }
         
         sut = nil
