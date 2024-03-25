@@ -7,10 +7,7 @@
 
 import Foundation
 
-public enum LoadDetailedResult {
-    case success([Detailed])
-    case failure(Error)
-}
+public typealias LoadDetailedResult = Result<[Detailed], Error>
 
 public protocol DetailedLoader {
     func loadDetailed(with predicate: NSPredicate?, completion: @escaping (LoadDetailedResult) -> Void)
