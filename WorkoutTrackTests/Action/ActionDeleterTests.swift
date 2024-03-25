@@ -12,16 +12,20 @@ protocol ActionRemovalStore {
     func remove(actionID: UUID, completion: @escaping RemovalCompletion)
 }
 
-class ActionDataDeleter {
+protocol ActionDeleter {
+    typealias Result = Error?
+    func delete(action: UUID, completion: @escaping (Result) -> Void)
+}
+
+class ActionDataDeleter: ActionDeleter {
     
     private let store: ActionRemovalStore
-    typealias Result = Error?
     
     init(store: ActionRemovalStore) {
         self.store = store
     }
     
-    func delete(action: UUID, completion: @escaping (Result) -> Void) {
+    func delete(action: UUID, completion: @escaping (ActionDeleter.Result) -> Void) {
         store.remove(actionID: action) { [weak self] error in
             guard self != nil else { return }
             completion(error)
