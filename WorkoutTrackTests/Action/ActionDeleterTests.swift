@@ -10,13 +10,17 @@ import XCTest
 class ActionDataDeleter {
     
     private let store: ActionFeedStoreSpy
+    typealias Result = Error?
     
     init(store: ActionFeedStoreSpy) {
         self.store = store
     }
     
-    func delete(action: UUID, completion: @escaping (Error?) -> Void) {
-        store.remove(actionID: action, completion: completion)
+    func delete(action: UUID, completion: @escaping (Result) -> Void) {
+        store.remove(actionID: action) { [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
     }
 }
 
@@ -60,6 +64,20 @@ final class ActionDeleterTests: XCTestCase {
         store.completeRemoval(with: removalError)
         
         XCTAssertEqual(store.receivedMessage, [.removal(actionID)])
+    }
+    
+    func test_deleteAction_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
+        let store = ActionFeedStoreSpy()
+        var sut: ActionDataDeleter? = ActionDataDeleter(store: store)
+        let removalError = anyNSError()
+        
+        var receivedResult = [ActionDataDeleter.Result]()
+        sut?.delete(action: anyActionID()) { receivedResult.append($0) }
+        
+        sut = nil
+        store.completeRemoval(with: removalError)
+        
+        XCTAssertTrue(receivedResult.isEmpty)
     }
     
     
