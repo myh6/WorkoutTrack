@@ -37,7 +37,7 @@ final class ActionLoaderTests: XCTestCase {
     func test_loadAction_deliversNoDataOnEmptyDatabase() {
         let (sut, store) = makeSUT()
         
-        expect(sut, toCompleteWith: .empty) {
+        expect(sut, toCompleteWith: .success(.none)) {
             store.completeRetrievalWithEmptyData()
         }
     }
@@ -46,9 +46,9 @@ final class ActionLoaderTests: XCTestCase {
         let (sut, store) = makeSUT()
         let action = anyAction()
         let type = anyType()
-        let actionFeed = ActionRetrievalResult.ActionFeed(actionName: action, typeName: type)
+        let actionFeed = ActionFeed(actionName: action, typeName: type)
         
-        expect(sut, toCompleteWith: .found(actionFeed)) {
+        expect(sut, toCompleteWith: .success(actionFeed)) {
             store.completeRetrievalWith(action: action, type: type)
         }
     }
@@ -100,10 +100,8 @@ final class ActionLoaderTests: XCTestCase {
             switch (expectedResult, receivedResult) {
             case let (.failure(expectedError), .failure(receivedError)):
                 XCTAssertEqual(expectedError as NSError, receivedError as NSError, file: file, line: line)
-            case (.empty, .empty):
-                break
             
-            case let (.found(expectedAction), .found(receivedAction)):
+            case let (.success(expectedAction), .success(receivedAction)):
                 XCTAssertEqual(expectedAction, receivedAction, file: file, line: line)
             default:
                 XCTFail("Expected to get \(expectedResult), got \(receivedResult) instead.", file: file, line: line)

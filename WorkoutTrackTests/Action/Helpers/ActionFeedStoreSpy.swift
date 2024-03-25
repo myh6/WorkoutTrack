@@ -41,11 +41,11 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
     }
     
     func completeRetrievalWithEmptyData(at index: Int = 0) {
-        retrievalCompletion[index](.empty)
+        retrievalCompletion[index](.success(.none))
     }
     
     func completeRetrievalWith(action: String, type: String, at index: Int = 0) {
-        retrievalCompletion[index](.found(ActionRetrievalResult.ActionFeed(actionName: action, typeName: type)))
+        retrievalCompletion[index](.success(ActionFeed(actionName: action, typeName: type)))
     }
     
     func completeRemoval(with error: NSError, at index: Int = 0) {

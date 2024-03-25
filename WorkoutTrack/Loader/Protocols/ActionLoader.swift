@@ -17,18 +17,13 @@ public extension ActionLoader {
     }
 }
 
-public enum ActionRetrievalResult {
-    public struct ActionFeed: Equatable {
-        let actionName: String
-        let typeName: String
-        
-        public init(actionName: String, typeName: String) {
-            self.actionName = actionName
-            self.typeName = typeName
-        }
-    }
+public struct ActionFeed: Equatable {
+    let actionName: String
+    let typeName: String
     
-    case empty
-    case failure(Error)
-    case found(ActionFeed)
+    public init(actionName: String, typeName: String) {
+        self.actionName = actionName
+        self.typeName = typeName
+    }
 }
+public typealias ActionRetrievalResult = Result<ActionFeed?, Error>
