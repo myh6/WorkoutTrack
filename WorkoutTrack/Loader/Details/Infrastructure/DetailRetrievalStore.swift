@@ -13,8 +13,4 @@ public protocol DetailRetrievalStore {
     func retrieve(predicate: NSPredicate?, completion: @escaping RetrievalDetailedDTOCompletion)
 }
 
-public enum RetrievalResult {
-    case empty
-    case found([DetailedDTO])
-    case failure(Error)
-}
+public typealias RetrievalResult = Result<[DetailedDTO]?, Error>

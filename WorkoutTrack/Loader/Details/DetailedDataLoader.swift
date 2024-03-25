@@ -21,12 +21,8 @@ public class DetailedDataLoader: DetailedLoader {
             switch result {
             case let .failure(error):
                 completion(.failure(error))
-                
-            case .empty:
-                completion(.success([]))
-                
-            case let .found(detailsDTO):
-                completion(.success(detailsDTO.toModels()))
+            case let .success(detailsDTO):
+                completion(.success(detailsDTO?.toModels() ?? []))
             }
         }
     }
