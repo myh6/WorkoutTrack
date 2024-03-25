@@ -8,7 +8,7 @@
 import Foundation
 
 public class ActionDataSaver: ActionSaver {
-    let store: ActionAdditionStore
+    private let store: ActionAdditionStore
     
     public init(store: ActionAdditionStore) {
         self.store = store
