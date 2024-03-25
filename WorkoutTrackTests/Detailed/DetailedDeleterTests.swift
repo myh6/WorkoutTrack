@@ -51,8 +51,8 @@ final class DetailedDeleterTests: XCTestCase {
     
     func test_deleteDetails_doesNotDeliversErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = DetailedDTOStoreSpy()
-        var sut: DetailedDataDeleter? = DetailedDataDeleter(store: store)
-        var receivedResult = [Error?]()
+        var sut: DetailedDeleter? = DetailedDataDeleter(store: store)
+        var receivedResult = [DetailedDeleter.DeleteDetailedResult]()
         sut?.delete(details: anyDetails().model) { receivedResult.append($0) }
         
         sut = nil
