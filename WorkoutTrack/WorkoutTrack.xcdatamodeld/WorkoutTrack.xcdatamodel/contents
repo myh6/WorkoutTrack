@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Action" representedClassName="Action" syncable="YES" codeGenerationType="class">
         <attribute name="actionName" optional="YES" attributeType="String"/>
         <attribute name="isOpen" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -8,6 +8,7 @@
     </entity>
     <entity name="CustomAction" representedClassName="CustomAction" syncable="YES" codeGenerationType="class">
         <attribute name="actionName" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="ofType" attributeType="String"/>
     </entity>
     <entity name="Detail" representedClassName="Detail" syncable="YES" codeGenerationType="class">
