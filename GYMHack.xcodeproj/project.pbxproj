@@ -21,6 +21,11 @@
 		0F15430D2BB0F91B00AF81B1 /* ActionDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15430C2BB0F91B00AF81B1 /* ActionDeleter.swift */; };
 		0F15430F2BB0F92E00AF81B1 /* ActionRemovalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15430E2BB0F92E00AF81B1 /* ActionRemovalStore.swift */; };
 		0F1543442BB2699700AF81B1 /* WorkoutTrack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543422BB2699700AF81B1 /* WorkoutTrack.xcdatamodeld */; };
+		0F1543472BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543452BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodeld */; };
+		0F15434C2BB26F1500AF81B1 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543492BB26F1400AF81B1 /* CoreDataHelpers.swift */; };
+		0F15434D2BB26F1500AF81B1 /* CoreDataActionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15434A2BB26F1400AF81B1 /* CoreDataActionStore.swift */; };
+		0F15434E2BB26F1500AF81B1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15434B2BB26F1400AF81B1 /* Action.swift */; };
+		0F1543502BB355C000AF81B1 /* CoreDataActionStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15434F2BB355C000AF81B1 /* CoreDataActionStoreTests.swift */; };
 		0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CDD802B35836C0080C5F5 /* launchScreen.gif */; };
 		0F345A392B6B5E57007528BD /* CoreDataCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */; };
 		0F345A3B2B6B5EA5007528BD /* CoreDataFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */; };
@@ -142,6 +147,11 @@
 		0F15430C2BB0F91B00AF81B1 /* ActionDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDeleter.swift; sourceTree = "<group>"; };
 		0F15430E2BB0F92E00AF81B1 /* ActionRemovalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRemovalStore.swift; sourceTree = "<group>"; };
 		0F1543432BB2699700AF81B1 /* WorkoutTrack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutTrack.xcdatamodel; sourceTree = "<group>"; };
+		0F1543462BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutTrack2.xcdatamodel; sourceTree = "<group>"; };
+		0F1543492BB26F1400AF81B1 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		0F15434A2BB26F1400AF81B1 /* CoreDataActionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataActionStore.swift; sourceTree = "<group>"; };
+		0F15434B2BB26F1400AF81B1 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		0F15434F2BB355C000AF81B1 /* CoreDataActionStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataActionStoreTests.swift; sourceTree = "<group>"; };
 		0F1CDD802B35836C0080C5F5 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
 		0F345A382B6B5E57007528BD /* CoreDataCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCreationService.swift; sourceTree = "<group>"; };
 		0F345A3A2B6B5EA5007528BD /* CoreDataFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetchingService.swift; sourceTree = "<group>"; };
@@ -296,6 +306,16 @@
 			name = TableViewCells;
 			sourceTree = "<group>";
 		};
+		0F1543482BB26F1400AF81B1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0F1543492BB26F1400AF81B1 /* CoreDataHelpers.swift */,
+				0F15434A2BB26F1400AF81B1 /* CoreDataActionStore.swift */,
+				0F15434B2BB26F1400AF81B1 /* Action.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		0F345A372B6B5E4A007528BD /* Loader */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +346,7 @@
 				0F71DA282B71D3E00044C999 /* ActionSaverTests.swift */,
 				0F3894C42B8A6494000FED69 /* ActionLoaderTests.swift */,
 				0F1543082BA6113E00AF81B1 /* ActionDeleterTests.swift */,
+				0F15434F2BB355C000AF81B1 /* CoreDataActionStoreTests.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -451,6 +472,7 @@
 		0F99CC1C28144BAB00994329 /* WorkoutTrack */ = {
 			isa = PBXGroup;
 			children = (
+				0F1543482BB26F1400AF81B1 /* CoreData */,
 				0F99CC1D28144BAB00994329 /* AppDelegate.swift */,
 				0F99CC1F28144BAB00994329 /* SceneDelegate.swift */,
 				0F345A372B6B5E4A007528BD /* Loader */,
@@ -465,6 +487,7 @@
 				0F99CC2B28144BAB00994329 /* LaunchScreen.storyboard */,
 				0F99CC2E28144BAB00994329 /* Info.plist */,
 				0F1543422BB2699700AF81B1 /* WorkoutTrack.xcdatamodeld */,
+				0F1543452BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodeld */,
 			);
 			path = WorkoutTrack;
 			sourceTree = "<group>";
@@ -817,6 +840,7 @@
 				0F1543012BA60EB300AF81B1 /* DetailRemovalStore.swift in Sources */,
 				0FE98DE52835E9AF008EB8CD /* XAxisNameFormater.swift in Sources */,
 				0FE98DCE283150E2008EB8CD /* DropDownTextField.swift in Sources */,
+				0F15434E2BB26F1500AF81B1 /* Action.swift in Sources */,
 				0F361F33288A3474004B322E /* AdmobID.swift in Sources */,
 				0F99CC5128144BC000994329 /* Extension.swift in Sources */,
 				0FE401D32842532E006386CF /* CustomActionModel.swift in Sources */,
@@ -852,11 +876,13 @@
 				0F345A3F2B6B6139007528BD /* CoreDataDeletionService.swift in Sources */,
 				0FE1076828221F0000D9D110 /* SetWeightRepsCell.swift in Sources */,
 				0F71DA232B707EB20044C999 /* DetailedDTO.swift in Sources */,
+				0F1543472BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodeld in Sources */,
 				0F99CC56281450E200994329 /* SFSymbolButton.swift in Sources */,
 				0F6AF0BA2B92CB0A0027D15C /* DetailedUpdater.swift in Sources */,
 				0F1543032BA60F0400AF81B1 /* DetailedDataDeleter.swift in Sources */,
 				0F3894BD2B89B765000FED69 /* DetailedLoader.swift in Sources */,
 				0FE106FE281E4E7F00D9D110 /* AddActionViewController.swift in Sources */,
+				0F15434D2BB26F1500AF81B1 /* CoreDataActionStore.swift in Sources */,
 				0FE401D52842637C006386CF /* ChooseCustomExerciseTableView.swift in Sources */,
 				0FE107742828009400D9D110 /* NoHistoryCell.swift in Sources */,
 				0F6AF0BC2B92CB260027D15C /* DetailedDataUpdater.swift in Sources */,
@@ -878,6 +904,7 @@
 				0FE10718281ECDCB00D9D110 /* CollapsibleSetView.swift in Sources */,
 				0FEBB5DB283CBC39005AF29E /* GifHelper.swift in Sources */,
 				0FE107622821038200D9D110 /* ChooseBodyTableView.swift in Sources */,
+				0F15434C2BB26F1500AF81B1 /* CoreDataHelpers.swift in Sources */,
 				0F99CC1E28144BAB00994329 /* AppDelegate.swift in Sources */,
 				0F361F46288E6706004B322E /* Log.swift in Sources */,
 				0F44BA522828F1A3001AD835 /* ChartViewController.swift in Sources */,
@@ -906,6 +933,7 @@
 				0F3894CD2B8BDF9F000FED69 /* XCTestHelpers.swift in Sources */,
 				0F3894C72B8A65E5000FED69 /* ActionFeedStoreSpy.swift in Sources */,
 				0F71DA482B8684B20044C999 /* DetailedDTOStoreSpy.swift in Sources */,
+				0F1543502BB355C000AF81B1 /* CoreDataActionStoreTests.swift in Sources */,
 				0F3894C52B8A6494000FED69 /* ActionLoaderTests.swift in Sources */,
 				0F345A432B6B675B007528BD /* DetailedSaverTests.swift in Sources */,
 			);
@@ -1216,6 +1244,16 @@
 			);
 			currentVersion = 0F1543432BB2699700AF81B1 /* WorkoutTrack.xcdatamodel */;
 			path = WorkoutTrack.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		0F1543452BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0F1543462BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodel */,
+			);
+			currentVersion = 0F1543462BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodel */;
+			path = WorkoutTrack2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

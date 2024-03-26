@@ -37,7 +37,7 @@ final class ActionLoaderTests: XCTestCase {
     func test_loadAction_deliversNoDataOnEmptyDatabase() {
         let (sut, store) = makeSUT()
         
-        expect(sut, toCompleteWith: .success(.none)) {
+        expect(sut, toCompleteWith: .success([])) {
             store.completeRetrievalWithEmptyData()
         }
     }
@@ -48,7 +48,7 @@ final class ActionLoaderTests: XCTestCase {
         let type = anyType()
         let actionFeed = ActionFeed(actionName: action, typeName: type)
         
-        expect(sut, toCompleteWith: .success(actionFeed)) {
+        expect(sut, toCompleteWith: .success([actionFeed])) {
             store.completeRetrievalWith(action: action, type: type)
         }
     }

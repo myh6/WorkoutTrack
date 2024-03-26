@@ -26,4 +26,4 @@ public struct ActionFeed: Equatable {
         self.typeName = typeName
     }
 }
-public typealias ActionRetrievalResult = Result<ActionFeed?, Error>
+public typealias ActionRetrievalResult = Result<[ActionFeed], Error>
