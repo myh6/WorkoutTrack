@@ -9,5 +9,5 @@ import Foundation
 
 public protocol ActionSaver {
     typealias Result = Error?
-    func save(action: String, ofType: String, completion: @escaping (Result) -> Void)
+    func save(action: AddActionModel, completion: @escaping (Result) -> Void)
 }

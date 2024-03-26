@@ -19,8 +19,8 @@ class Action2: NSManagedObject {
 
 extension Action2 {
     
-    var detailSet: Set<Detail> {
-        get { details as? Set<Detail> ?? [] }
+    var detailSet: Set<Detail2> {
+        get { details as? Set<Detail2> ?? [] }
         set { details = NSSet(set: newValue) }
     }
     
@@ -30,9 +30,11 @@ extension Action2 {
         return try context.fetch(request)
     }
     
-    #warning("Wrong model for ActionFeed")
-    public func toDomain() -> ActionFeed {
-        return ActionFeed(actionName: name, typeName: ofType)
+    public func toDomain() -> ActionDTO {
+        let detailsDTO = detailSet.map {
+            DetailedDTO(uuid: $0.id, setName: "", weight: $0.weight, isDone: $0.isDone, reps: Int($0.reps), id: $0.id.uuidString)
+        }
+        return ActionDTO(id: id, actionName: name, typeName: ofType, isOpen: isOpen, details: detailsDTO)
     }
 }
 

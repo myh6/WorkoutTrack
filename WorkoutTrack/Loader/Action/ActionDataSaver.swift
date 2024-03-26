@@ -14,8 +14,8 @@ public class ActionDataSaver: ActionSaver {
         self.store = store
     }
     
-    public func save(action: String, ofType: String, completion: @escaping (ActionSaver.Result) -> Void) {
-        store.addAction(actionName: action, ofType: ofType) { [weak self] error in
+    public func save(action: AddActionModel, completion: @escaping (ActionSaver.Result) -> Void) {
+        store.addAction(action: [action.toLocal()]) { [weak self] error in
             guard self != nil else { return }
             completion(error)
         }

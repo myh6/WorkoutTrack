@@ -17,13 +17,21 @@ public extension ActionLoader {
     }
 }
 
-public struct ActionFeed: Equatable {
+/// DTO of AddActinoModel
+public struct ActionDTO: Equatable {
+    let id: UUID
     let actionName: String
     let typeName: String
+    let isOpen: Bool
     
-    public init(actionName: String, typeName: String) {
+    let details: [DetailedDTO]
+    
+    public init(id: UUID, actionName: String, typeName: String, isOpen: Bool, details: [DetailedDTO]) {
+        self.id = id
         self.actionName = actionName
         self.typeName = typeName
+        self.isOpen = isOpen
+        self.details = details
     }
 }
-public typealias ActionRetrievalResult = Result<[ActionFeed], Error>
+public typealias ActionRetrievalResult = Result<[ActionDTO], Error>

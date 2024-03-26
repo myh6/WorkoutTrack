@@ -13,8 +13,8 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
     private var retrievalCompletion = [RetrievalCompletion]()
     private var removalCompletion = [RemovalCompletion]()
     
-    func addAction(actionName: String, ofType: String, completion: @escaping (Error?) -> Void) {
-        receivedMessage.append(.addAction((actionName, ofType)))
+    func addAction(action: [ActionDTO], completion: @escaping (Error?) -> Void) {
+        receivedMessage.append(.addAction(action))
         addActionCompletion.append(completion)
     }
     
@@ -44,8 +44,8 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
         retrievalCompletion[index](.success([]))
     }
     
-    func completeRetrievalWith(action: String, type: String, at index: Int = 0) {
-        retrievalCompletion[index](.success([ActionFeed(actionName: action, typeName: type)]))
+    func completeRetrievalWith(action: [ActionDTO], at index: Int = 0) {
+        retrievalCompletion[index](.success(action))
     }
     
     func completeRemoval(with error: NSError, at index: Int = 0) {
@@ -55,8 +55,8 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
     enum ReceiveMessage: Equatable {
         static func == (lhs: ActionFeedStoreSpy.ReceiveMessage, rhs: ActionFeedStoreSpy.ReceiveMessage) -> Bool {
             switch (lhs, rhs) {
-            case let (.addAction((la, lt)), .addAction((ra, rt))):
-                return la == ra && lt == rt
+            case let (.addAction(la), .addAction(ra)):
+                return la == ra
             case let (.retrieve(lp), .retrieve(rp)):
                 return lp == rp
             case let (.removal(lID), .removal(rID)):
@@ -66,7 +66,7 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
             }
         }
         
-        case addAction((actionName, ofType))
+        case addAction([ActionDTO])
         case retrieve(NSPredicate?)
         case removal(UUID)
 

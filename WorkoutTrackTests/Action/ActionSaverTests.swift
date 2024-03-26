@@ -19,22 +19,20 @@ final class ActionSaverTests: XCTestCase {
     func test_saveAction_callsOnAddActionOnStore() {
         let (sut, store) = makeSUT()
         let anyAction = anyAction()
-        let anyType = anyType()
         
-        sut.save(action: anyAction, ofType: anyType) { _ in }
+        sut.save(action: anyAction.model) { _ in }
         store.completeAddActionSuccessfully()
         
-        XCTAssertEqual(store.receivedMessage, [.addAction((anyAction, anyType))])
+        XCTAssertEqual(store.receivedMessage, [.addAction([anyAction.local])])
     }
     
     func test_saveAction_failsOnAddingError() {
         let (sut, store) = makeSUT()
         let anyError = anyNSError()
         let action = anyAction()
-        let type = anyType()
         
         let exp = expectation(description: "Wait for completion")
-        sut.save(action: action, ofType: type) { receivedError in
+        sut.save(action: action.model) { receivedError in
             XCTAssertEqual(receivedError as? NSError, anyError)
             exp.fulfill()
         }
@@ -47,7 +45,7 @@ final class ActionSaverTests: XCTestCase {
         var sut: ActionSaver? = ActionDataSaver(store: store)
         
         var receivedResult = [ActionSaver.Result]()
-        sut?.save(action: anyAction(), ofType: anyType()) { receivedResult.append($0) }
+        sut?.save(action: anyAction().model) { receivedResult.append($0) }
         
         sut = nil
         store.completeAddAction(with: anyNSError())

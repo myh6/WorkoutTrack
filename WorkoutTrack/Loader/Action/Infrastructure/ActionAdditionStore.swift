@@ -10,5 +10,5 @@ import Foundation
 public protocol ActionAdditionStore {
     typealias AddActionCompletion = (Error?) -> Void
     
-    func addAction(actionName: String, ofType: String, completion: @escaping AddActionCompletion)
+    func addAction(action: [ActionDTO], completion: @escaping AddActionCompletion)
 }

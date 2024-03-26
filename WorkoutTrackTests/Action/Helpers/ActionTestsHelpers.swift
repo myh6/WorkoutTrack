@@ -6,11 +6,9 @@
 //
 
 import Foundation
+import GYMHack
 
-func anyAction() -> String {
-    return "any Action"
-}
-
-func anyType() -> String {
-    return "any type"
+func anyAction() -> (model: AddActionModel, local: ActionDTO) {
+    let model = AddActionModel(id: UUID(), moveName: "any move", ofType: "any type", detail: [anyDetail().model, anyDetail().model], isOpen: false)
+    return (model, model.toLocal())
 }

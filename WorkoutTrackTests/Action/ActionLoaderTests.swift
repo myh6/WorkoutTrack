@@ -45,11 +45,10 @@ final class ActionLoaderTests: XCTestCase {
     func test_loadAction_deliversDataOnNonEmptyDatabase() {
         let (sut, store) = makeSUT()
         let action = anyAction()
-        let type = anyType()
-        let actionFeed = ActionFeed(actionName: action, typeName: type)
+        let actionFeed = ActionDTO(id: UUID(), actionName: "any action", typeName: "any type", isOpen: false, details: [])
         
         expect(sut, toCompleteWith: .success([actionFeed])) {
-            store.completeRetrievalWith(action: action, type: type)
+            store.completeRetrievalWith(action: [actionFeed])
         }
     }
     

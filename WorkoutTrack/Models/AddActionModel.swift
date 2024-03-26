@@ -7,13 +7,29 @@
 
 import Foundation
 
-struct AddActionModel {
+public struct AddActionModel {
     
+    var id: UUID
     var moveName: String
     var ofType: String
     var detail: [Detailed]
     var isOpen: Bool = true
+    #warning("Give a default ID to make old implementation passed for now")
+    public init(id: UUID = UUID(), moveName: String, ofType: String, detail: [Detailed], isOpen: Bool) {
+        self.id = id
+        self.moveName = moveName
+        self.ofType = ofType
+        self.detail = detail
+        self.isOpen = isOpen
+    }
     
+}
+
+public extension AddActionModel {
+    func toLocal() -> ActionDTO {
+        let detailDTOs = detail.map { $0.toLocal() }
+        return ActionDTO(id: id, actionName: moveName, typeName: ofType, isOpen: isOpen, details: detailDTOs)
+    }
 }
 
 public struct Detailed: Equatable {
