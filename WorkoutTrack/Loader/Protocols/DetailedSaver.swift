@@ -9,5 +9,5 @@ import Foundation
 
 public protocol DetailedSaver {
     typealias Result = Error?
-    func save(details: [Detailed], completion: @escaping (Result) -> Void)
+    func save(details: [Detailed], to action: UUID, completion: @escaping (Result) -> Void)
 }
