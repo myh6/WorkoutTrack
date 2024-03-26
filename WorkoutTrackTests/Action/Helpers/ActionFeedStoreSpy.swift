@@ -9,6 +9,7 @@ import Foundation
 import GYMHack
 
 class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemovalStore {
+    typealias RetrievalCompletion = (ActionRetrievalStore.Result) -> Void
     private var addActionCompletion = [AddActionCompletion]()
     private var retrievalCompletion = [RetrievalCompletion]()
     private var removalCompletion = [RemovalCompletion]()
@@ -18,7 +19,7 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
         addActionCompletion.append(completion)
     }
     
-    func retrieve(predicate: NSPredicate?, completion: @escaping (ActionRetrievalResult) -> Void) {
+    func retrieve(predicate: NSPredicate?, completion: @escaping (ActionRetrievalStore.Result) -> Void) {
         receivedMessage.append(.retrieve(predicate))
         retrievalCompletion.append(completion)
     }

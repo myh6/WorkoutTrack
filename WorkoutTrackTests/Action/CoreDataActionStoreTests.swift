@@ -13,37 +13,14 @@ final class CoreDataActionStoreTests: XCTestCase {
     func test_retrieve_deliversEmptyOnEmptyDatabase() {
         let sut = makeSUT()
         
-        let exp = expectation(description: "Wait for retrieval")
-        sut.retrieve(predicate: nil) { retrievedResult in
-            switch retrievedResult {
-            case let .success(retrievedAction):
-                XCTAssertTrue(retrievedAction.isEmpty)
-            default:
-                XCTFail("Expected sut to retrieve empty on empty database, got \(retrievedResult) instead")
-            }
-            exp.fulfill()
-        }
-        
-        wait(for: [exp])
+        expect(sut, with: nil, toRetrieve: .success([]))
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyDatabase() {
         let sut = makeSUT()
         
-        let exp = expectation(description: "Wait for retrieval completion")
-        sut.retrieve(predicate: nil) { firstRetrievedResult in
-            sut.retrieve(predicate: nil) { secondRetrievedResult in
-                switch (firstRetrievedResult, secondRetrievedResult) {
-                case let (.success(firstRetrievedAction), .success(secondRetrievedAction)):
-                    XCTAssertEqual(firstRetrievedAction, secondRetrievedAction)
-                default:
-                    XCTFail("Expected two retrieval on empty database have no side effect, got \(firstRetrievedResult) and \(secondRetrievedResult) instead.")
-                }
-                exp.fulfill()
-            }
-        }
-        
-        wait(for: [exp])
+        expect(sut, with: nil, toRetrieve: .success([]))
+        expect(sut, with: nil, toRetrieve: .success([]))
     }
     
     //MARK: - Helpers
@@ -53,5 +30,23 @@ final class CoreDataActionStoreTests: XCTestCase {
         let sut = try! CoreDataActionStore(storeURL: storeURL, bundle: storeBundle)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+    
+    private func expect(_ sut: CoreDataActionStore, with predicate: NSPredicate?, toRetrieve expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for retrieval")
+        
+        sut.retrieve(predicate: predicate) { retrievalResult in
+            switch (expectedResult, retrievalResult) {
+            case let (.success(expectedAction), .success(retrievedAction)):
+                XCTAssertEqual(expectedAction, retrievedAction, file: file, line: line)
+            case (.failure, .failure):
+                break
+            default:
+                XCTFail("Expected to complete retrieval with \(expectedResult), but got \(retrievalResult) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
     }
 }

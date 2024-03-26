@@ -17,10 +17,10 @@ public final class CoreDataActionStore: ActionRetrievalStore {
         context = container.newBackgroundContext()
     }
     
-    public func retrieve(predicate: NSPredicate?, completion: @escaping RetrievalCompletion) {
+    public func retrieve(predicate: NSPredicate?, completion: @escaping (ActionRetrievalStore.Result) -> Void) {
         perform { context in
             completion(Result{
-                try Action2.find(in: context, with: predicate).map { return $0.toDomain() }
+                return try Action2.find(in: context, with: predicate).map { $0.toDomain() }
             })
         }
     }

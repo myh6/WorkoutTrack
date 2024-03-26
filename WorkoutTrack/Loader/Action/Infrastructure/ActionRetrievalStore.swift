@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol ActionRetrievalStore {
-    typealias RetrievalCompletion = (ActionRetrievalResult) -> Void
+    typealias Result = ActionRetrievalResult
 
-    func retrieve(predicate: NSPredicate?, completion: @escaping RetrievalCompletion)
+    func retrieve(predicate: NSPredicate?, completion: @escaping (Result) -> Void)
 }
