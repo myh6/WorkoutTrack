@@ -27,6 +27,25 @@ final class CoreDataActionStoreTests: XCTestCase {
         wait(for: [exp])
     }
     
+    func test_retrieve_hasNoSideEffectsOnEmptyDatabase() {
+        let sut = makeSUT()
+        
+        let exp = expectation(description: "Wait for retrieval completion")
+        sut.retrieve(predicate: nil) { firstRetrievedResult in
+            sut.retrieve(predicate: nil) { secondRetrievedResult in
+                switch (firstRetrievedResult, secondRetrievedResult) {
+                case let (.success(firstRetrievedAction), .success(secondRetrievedAction)):
+                    XCTAssertEqual(firstRetrievedAction, secondRetrievedAction)
+                default:
+                    XCTFail("Expected two retrieval on empty database have no side effect, got \(firstRetrievedResult) and \(secondRetrievedResult) instead.")
+                }
+                exp.fulfill()
+            }
+        }
+        
+        wait(for: [exp])
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
