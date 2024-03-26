@@ -19,19 +19,21 @@ final class DetailedSaverTests: XCTestCase {
     func test_saveDetail_callsOnAddDataOnStore() {
         let (sut, store) = makeSUT()
         let details = anyDetails().model
+        let actionID = UUID()
         
-        sut.save(details: details) { _ in }
+        sut.save(details: details, to: actionID) { _ in }
         store.completeAddDetailSuccessfully()
         
-        XCTAssertEqual(store.receivedMessage, [.addData(details.toLocal())])
+        XCTAssertEqual(store.receivedMessage, [.addData(details.toLocal(), toActionWithID: actionID)])
     }
     
     func test_saveDetail_failsOnAddingDataError() {
         let (sut, store) = makeSUT()
         let anyError = anyNSError()
+        let actionID = UUID()
         
         let exp = expectation(description: "Wait for completion")
-        sut.save(details: anyDetails().model) { receivedError in
+        sut.save(details: anyDetails().model, to: actionID) { receivedError in
             XCTAssertEqual(receivedError as? NSError, anyError)
             exp.fulfill()
         }
@@ -42,9 +44,10 @@ final class DetailedSaverTests: XCTestCase {
     func test_saveDtail_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = DetailedDTOStoreSpy()
         var sut: DetailedSaver? = DetailedDataSaver(store: store)
+        let actionID = UUID()
         
         var receivedResult = [DetailedSaver.Result]()
-        sut?.save(details: anyDetails().model) { receivedResult.append($0) }
+        sut?.save(details: anyDetails().model, to: actionID) { receivedResult.append($0) }
         
         sut = nil
         store.completeAddDetail(with: anyNSError())

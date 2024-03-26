@@ -14,8 +14,8 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
     private var updateCompletion = [UpdateDetailedDTOCompletion]()
     private var removalCompletion = [RemovalDetailedDTOCompletion]()
     
-    func add(details: [DetailedDTO], completion: @escaping AddDetailedDTOCompletion) {
-        receivedMessage.append(.addData(details))
+    func add(details: [DetailedDTO], toActionWithID actionID: UUID, completion: @escaping AddDetailedDTOCompletion) {
+        receivedMessage.append(.addData(details, toActionWithID: actionID))
         addDetailCompletion.append(completion)
     }
     
@@ -63,7 +63,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
     }
     
     enum ReceiveMessage: Equatable {
-        case addData([DetailedDTO])
+        case addData([DetailedDTO], toActionWithID: UUID)
         case retrieve(NSPredicate?)
         case update(String)
         case remove([DetailedDTO])
