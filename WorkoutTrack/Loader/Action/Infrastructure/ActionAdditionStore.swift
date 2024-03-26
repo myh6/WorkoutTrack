@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol ActionAdditionStore {
-    typealias AddActionCompletion = (Result<Void, Error>) -> Void
+    typealias Result = Swift.Result<Void, Error>
     
-    func addAction(action: [ActionDTO], completion: @escaping AddActionCompletion)
+    func addAction(action: [ActionDTO], completion: @escaping (Result) -> Void)
 }

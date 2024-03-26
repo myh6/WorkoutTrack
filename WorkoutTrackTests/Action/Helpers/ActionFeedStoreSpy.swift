@@ -10,11 +10,12 @@ import GYMHack
 
 class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemovalStore {
     typealias RetrievalCompletion = (ActionRetrievalStore.Result) -> Void
+    typealias AddActionCompletion = (ActionAdditionStore.Result) -> Void
     private var addActionCompletion = [AddActionCompletion]()
     private var retrievalCompletion = [RetrievalCompletion]()
     private var removalCompletion = [RemovalCompletion]()
     
-    func addAction(action: [ActionDTO], completion: @escaping AddActionCompletion) {
+    func addAction(action: [ActionDTO], completion: @escaping (ActionAdditionStore.Result) -> Void) {
         receivedMessage.append(.addAction(action))
         addActionCompletion.append(completion)
     }
