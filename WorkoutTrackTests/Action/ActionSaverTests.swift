@@ -28,16 +28,12 @@ final class ActionSaverTests: XCTestCase {
     
     func test_saveAction_failsOnAddingError() {
         let (sut, store) = makeSUT()
-        let anyError = anyNSError()
+        let addingError = anyNSError()
         let action = anyAction()
         
-        let exp = expectation(description: "Wait for completion")
-        sut.save(action: action.model) { receivedError in
-            XCTAssertEqual(receivedError as? NSError, anyError)
-            exp.fulfill()
+        expect(sut, save: action.model, toCompleteWith: .failure(addingError)) {
+            store.completeAddAction(with: addingError)
         }
-        store.completeAddAction(with: anyError)
-        wait(for: [exp], timeout: 1.0)
     }
     
     func test_saveAction_doesNotDeliverErrorAfterSUTInstanceHasBeenDeallcoaed() {
@@ -60,6 +56,25 @@ final class ActionSaverTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func expect(_ sut: ActionSaver, save model: AddActionModel, toCompleteWith expectedResult: ActionSaver.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for completion")
+
+        sut.save(action: model) { receivedResult in
+            switch (expectedResult, receivedResult) {
+            case (.success, .success):
+                break
+            case let (.failure(expectedError), .failure(receivedError)):
+                XCTAssertEqual(expectedError as NSError, receivedError as NSError, file: file, line: line)
+            default:
+                XCTFail("Expected to complete with \(expectedResult), but got \(receivedResult) instead")
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
 }
 

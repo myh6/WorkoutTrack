@@ -15,9 +15,9 @@ public class ActionDataSaver: ActionSaver {
     }
     
     public func save(action: AddActionModel, completion: @escaping (ActionSaver.Result) -> Void) {
-        store.addAction(action: [action.toLocal()]) { [weak self] error in
+        store.addAction(action: [action.toLocal()]) { [weak self] result in
             guard self != nil else { return }
-            completion(error)
+            completion(result)
         }
     }
 }

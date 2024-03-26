@@ -14,7 +14,7 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
     private var retrievalCompletion = [RetrievalCompletion]()
     private var removalCompletion = [RemovalCompletion]()
     
-    func addAction(action: [ActionDTO], completion: @escaping (Error?) -> Void) {
+    func addAction(action: [ActionDTO], completion: @escaping AddActionCompletion) {
         receivedMessage.append(.addAction(action))
         addActionCompletion.append(completion)
     }
@@ -30,11 +30,11 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
     }
     
     func completeAddActionSuccessfully(at index: Int = 0) {
-        addActionCompletion[index](nil)
+        addActionCompletion[index](.success(()))
     }
     
     func completeAddAction(with error: NSError, at index: Int = 0) {
-        addActionCompletion[index](error)
+        addActionCompletion[index](.failure(error))
     }
     
     func completeRetrieval(with error: NSError, at index: Int = 0) {

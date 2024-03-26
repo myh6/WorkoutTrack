@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol ActionSaver {
-    typealias Result = Error?
+    typealias Result = Swift.Result<Void, Error>
     func save(action: AddActionModel, completion: @escaping (Result) -> Void)
 }
