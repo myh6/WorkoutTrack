@@ -62,7 +62,7 @@ class Detail2: NSManagedObject {
 }
 
 extension Detail2 {
-    #warning("DetailedDTO still haven't had time property.")
+    #warning("DetailedDTO still haven't had time property. Also, time property should be tested in CoreDataDetailStore in the future")
     static func createDetails(from detailsDTOs: [DetailedDTO], forAction action: Action2, in context: NSManagedObjectContext) -> NSOrderedSet {
         let details = detailsDTOs.map { detailDTO -> Detail2 in
             let detail = Detail2(context: context)
