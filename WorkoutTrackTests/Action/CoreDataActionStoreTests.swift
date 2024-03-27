@@ -32,6 +32,18 @@ final class CoreDataActionStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieve: .success([action.local]))
     }
     
+    func test_retrieve_deliversValuesMatchingPredicateOnID() {
+        let sut = makeSUT()
+        let id1 = UUID()
+        let action1 = anyAction(id: id1)
+        let action2 = anyAction(id: UUID())
+        let predicate = NSPredicate(format: "id == %@", id1 as CVarArg)
+        
+        addAction([action1.local, action2.local], to: sut)
+        
+        expect(sut, with: predicate, toRetrieve: .success([action1.local]))
+    }
+    
     func test_retrieve_deliversValuesMatchingPredicateOnIsOpen() {
         let sut = makeSUT()
         let openAction = anyAction(isOpen: true)
