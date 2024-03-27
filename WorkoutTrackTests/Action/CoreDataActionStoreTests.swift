@@ -32,6 +32,14 @@ final class CoreDataActionStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieve: .success([action.local]))
     }
     
+    func test_retrieve_hasNoSideEffectsOnNonEmptyDatabase() {
+        let sut = makeSUT()
+        let action = anyAction()
+        insert([action.local], to: sut)
+        
+        expect(sut, with: nil, toRetrieveTwice: .success([action.local]))
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
@@ -72,5 +80,10 @@ final class CoreDataActionStoreTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func expect(_ sut: CoreDataActionStore, with predicate: NSPredicate?, toRetrieveTwice expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+        expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
+        expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
     }
 }
