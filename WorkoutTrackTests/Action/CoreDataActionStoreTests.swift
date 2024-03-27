@@ -100,6 +100,16 @@ final class CoreDataActionStoreTests: XCTestCase {
         XCTAssertNil(deletionError)
     }
     
+    func test_remove_deliversNoErrorOnNonEmptyDatabase() {
+        let sut = makeSUT()
+        
+        addAction([anyAction().local], to: sut)
+        
+        let deletionError = addAction([anyAction().local], to: sut)
+        
+        XCTAssertNil(deletionError)
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
