@@ -7,7 +7,8 @@
 
 import CoreData
 
-public final class CoreDataActionStore: ActionRetrievalStore, ActionAdditionStore, ActionRemovalStore {
+public typealias ActionStore = ActionRetrievalStore & ActionAdditionStore & ActionRemovalStore
+public final class CoreDataActionStore: ActionStore {
     
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext

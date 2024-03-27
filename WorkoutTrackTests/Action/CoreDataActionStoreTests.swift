@@ -163,7 +163,7 @@ final class CoreDataActionStoreTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> ActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
         let storeURL = URL(fileURLWithPath: "/dev/null")
         let sut = try! CoreDataActionStore(storeURL: storeURL, bundle: storeBundle)
