@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="Action" representedClassName="Action" syncable="YES" codeGenerationType="class">
         <attribute name="actionName" optional="YES" attributeType="String"/>
         <attribute name="isOpen" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -7,8 +7,8 @@
         <relationship name="details" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Detail" inverseName="ofAction" inverseEntity="Detail"/>
     </entity>
     <entity name="CustomAction" representedClassName="CustomAction" syncable="YES" codeGenerationType="class">
-        <attribute name="actionName" attributeType="String"/>
-        <attribute name="ofType" attributeType="String"/>
+        <attribute name="actionName" optional="YES" attributeType="String"/>
+        <attribute name="ofType" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Detail" representedClassName="Detail" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String"/>
@@ -16,8 +16,7 @@
         <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="setName" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="String"/>
-        <attribute name="uid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="ofAction" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Action" inverseName="details" inverseEntity="Action"/>
+        <relationship name="ofAction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Action" inverseName="details" inverseEntity="Action"/>
     </entity>
 </model>
