@@ -75,6 +75,14 @@ final class CoreDataActionStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieveTwice: .success([action.local]))
     }
     
+    func test_addAction_deliversNoErrorOnEmptyDatabase() {
+        let sut = makeSUT()
+        
+        let insertionError = insert([anyAction().local], to: sut)
+        
+        XCTAssertNil(insertionError)
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
