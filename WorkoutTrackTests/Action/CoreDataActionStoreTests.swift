@@ -26,23 +26,10 @@ final class CoreDataActionStoreTests: XCTestCase {
     func test_retrieve_deliversFoundValueOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
-        let expA = expectation(description: "Wait for addition completion")
-        let expR = expectation(description: "Wait for retrieval completion")
         
-        sut.addAction(action: [action.local]) { _ in
-            expA.fulfill()
-        }
-        sut.retrieve(predicate: nil) { result in
-            switch result {
-            case let .success(receivedAction):
-                XCTAssertEqual([action.local], receivedAction)
-            default:
-                XCTFail("Expected to retrieve saved action, got \(result) instead.")
-            }
-            expR.fulfill()
-        }
+        insert([action.local], to: sut)
         
-        wait(for: [expA, expR], timeout: 1.0)
+        expect(sut, with: nil, toRetrieve: .success([action.local]))
     }
     
     //MARK: - Helpers
@@ -52,6 +39,21 @@ final class CoreDataActionStoreTests: XCTestCase {
         let sut = try! CoreDataActionStore(storeURL: storeURL, bundle: storeBundle)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+    
+    @discardableResult
+    private func insert(_ local: [ActionDTO], to sut: CoreDataActionStore) -> Error? {
+        let exp = expectation(description: "Wait for insertion")
+        var insertionError: Error?
+        sut.addAction(action: local) { result in
+            if case let Result.failure(error) = result {
+                insertionError = error
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        return insertionError
     }
     
     private func expect(_ sut: CoreDataActionStore, with predicate: NSPredicate?, toRetrieve expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {

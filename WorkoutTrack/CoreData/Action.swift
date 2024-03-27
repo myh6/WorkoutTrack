@@ -19,9 +19,9 @@ class Action2: NSManagedObject {
 
 extension Action2 {
     
-    private var detailSet: Set<Detail2> {
-        get { return Set(details?.array as? [Detail2] ?? []) }
-        set { details = NSOrderedSet(array: Array(newValue)) }
+    private var detailSet: NSOrderedSet {
+        get { return details ?? NSOrderedSet() }
+        set { details = newValue }
     }
     
     static func find(in context: NSManagedObjectContext, with predicate: NSPredicate?) throws -> [Action2] {
@@ -37,14 +37,14 @@ extension Action2 {
         newAction.name = actionDTO.actionName
         newAction.ofType = actionDTO.typeName
         
-        let detailsSet = Detail2.createDetails(from: actionDTO.details, forAction: newAction, in: context)
-        newAction.detailSet = detailsSet
+        newAction.detailSet = Detail2.createDetails(from: actionDTO.details, forAction: newAction, in: context)
         return newAction
     }
     
     public func toDomain() -> ActionDTO {
-        let detailsDTO = detailSet.map {
-            DetailedDTO(uuid: $0.id, weight: $0.weight, isDone: $0.isDone, reps: Int($0.reps))
+        let detailsDTO: [DetailedDTO] = detailSet.array.compactMap { detail in
+            guard let detail = detail as? Detail2 else { return nil }
+            return DetailedDTO(uuid: detail.id, weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps))
         }
         return ActionDTO(id: id, actionName: name, typeName: ofType, isOpen: isOpen, details: detailsDTO)
     }
@@ -62,9 +62,9 @@ class Detail2: NSManagedObject {
 }
 
 extension Detail2 {
-    static func createDetails(from details: [DetailedDTO], forAction action: Action2, in context: NSManagedObjectContext) -> Set<Detail2> {
-        var detailsSet = Set<Detail2>()
-        for detailDTO in details {
+    #warning("DetailedDTO still haven't had time property.")
+    static func createDetails(from detailsDTOs: [DetailedDTO], forAction action: Action2, in context: NSManagedObjectContext) -> NSOrderedSet {
+        let details = detailsDTOs.map { detailDTO -> Detail2 in
             let detail = Detail2(context: context)
             detail.id = detailDTO.uuid
             detail.isDone = detailDTO.isDone
@@ -72,9 +72,9 @@ extension Detail2 {
             detail.weight = detailDTO.weight
             detail.time = Date()
             detail.ofAction = action
-            detailsSet.insert(detail)
+            return detail
         }
-        return detailsSet
+        return NSOrderedSet(array: details)
     }
 }
 
