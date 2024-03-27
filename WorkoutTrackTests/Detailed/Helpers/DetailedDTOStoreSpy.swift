@@ -25,7 +25,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
     }
     
     func update(detail: DetailedDTO, completion: @escaping UpdateDetailedDTOCompletion) {
-        receivedMessage.append(.update(detail.id))
+        receivedMessage.append(.update(detail.uuid.uuidString))
         updateCompletion.append(completion)
     }
     

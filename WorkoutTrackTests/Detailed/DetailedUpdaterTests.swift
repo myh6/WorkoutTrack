@@ -22,7 +22,7 @@ final class DetailedUpdaterTests: XCTestCase {
         
         sut.updateDetailed(detail.model) { _ in }
         
-        XCTAssertEqual(store.receivedMessage, [.update(detail.local.id)])
+        XCTAssertEqual(store.receivedMessage, [.update(detail.local.uuid.uuidString)])
     }
     
     func test_updateDetailed_failsOnUpdateError() {
@@ -48,7 +48,7 @@ final class DetailedUpdaterTests: XCTestCase {
         sut.updateDetailed(anyDetail.model) { _ in }
         store.completeUpdate(with: updateError)
         
-        XCTAssertEqual(store.receivedMessage, [.update(anyDetail.local.id)])
+        XCTAssertEqual(store.receivedMessage, [.update(anyDetail.local.uuid.uuidString)])
     }
     
     func test_updateDetailed_doesNotDeliverResultAfterSUTInstanceHasBeenDeallcoated() {

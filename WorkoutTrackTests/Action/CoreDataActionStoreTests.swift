@@ -23,6 +23,28 @@ final class CoreDataActionStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieve: .success([]))
     }
     
+    func test_retrieve_deliversFoundValueOnNonEmptyDatabase() {
+        let sut = makeSUT()
+        let action = anyAction()
+        let expA = expectation(description: "Wait for addition completion")
+        let expR = expectation(description: "Wait for retrieval completion")
+        
+        sut.addAction(action: [action.local]) { _ in
+            expA.fulfill()
+        }
+        sut.retrieve(predicate: nil) { result in
+            switch result {
+            case let .success(receivedAction):
+                XCTAssertEqual([action.local], receivedAction)
+            default:
+                XCTFail("Expected to retrieve saved action, got \(result) instead.")
+            }
+            expR.fulfill()
+        }
+        
+        wait(for: [expA, expR], timeout: 1.0)
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)

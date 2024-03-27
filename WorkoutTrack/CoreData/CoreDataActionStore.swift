@@ -7,7 +7,7 @@
 
 import CoreData
 
-public final class CoreDataActionStore: ActionRetrievalStore {
+public final class CoreDataActionStore: ActionRetrievalStore, ActionAdditionStore {
     
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
@@ -21,6 +21,15 @@ public final class CoreDataActionStore: ActionRetrievalStore {
         perform { context in
             completion(Result{
                 return try Action2.find(in: context, with: predicate).map { $0.toDomain() }
+            })
+        }
+    }
+    
+    public func addAction(action: [ActionDTO], completion: @escaping (ActionAdditionStore.Result) -> Void) {
+        perform { context in
+            completion(Result {
+                _ = action.map { Action2.createNewAction(from: $0, in: context) }
+                try context.save()
             })
         }
     }
