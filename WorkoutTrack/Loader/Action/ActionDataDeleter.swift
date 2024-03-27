@@ -16,9 +16,9 @@ public class ActionDataDeleter: ActionDeleter {
     }
     
     public func delete(action: UUID, completion: @escaping (ActionDeleter.Result) -> Void) {
-        store.remove(actionID: action) { [weak self] error in
+        store.remove(actionID: action) { [weak self] result in
             guard self != nil else { return }
-            completion(error)
+            completion(result)
         }
     }
 }

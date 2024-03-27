@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol ActionRemovalStore {
-    typealias RemovalCompletion = (Error?) -> Void
-    func remove(actionID: UUID, completion: @escaping RemovalCompletion)
+    typealias Result = Swift.Result<Void, Error>
+    func remove(actionID: UUID, completion: @escaping (Result) -> Void)
 }

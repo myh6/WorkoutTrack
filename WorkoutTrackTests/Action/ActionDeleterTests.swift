@@ -29,14 +29,9 @@ final class ActionDeleterTests: XCTestCase {
         let (sut, store) = makeSUT()
         let removalError = anyNSError()
         
-        let exp = expectation(description: "Wait for deletion completion")
-        sut.delete(action: anyActionID()) { receivedError in
-            XCTAssertEqual(removalError, receivedError as? NSError)
-            exp.fulfill()
+        expect(sut, remove: anyActionID(), toCompleteWith: .failure(removalError)) {
+            store.completeRemoval(with: removalError)
         }
-        store.completeRemoval(with: removalError)
-        
-        wait(for: [exp])
     }
     
     func test_deleteAction_hasNoSideEffectsOnRemovalError() {
@@ -76,5 +71,24 @@ final class ActionDeleterTests: XCTestCase {
     
     private func anyActionID() -> UUID {
         return UUID()
+    }
+    
+    private func expect(_ sut: ActionDeleter, remove actionID: UUID, toCompleteWith expectedResult: ActionDeleter.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for removal completion")
+
+        sut.delete(action: actionID) { receivedResult in
+            switch (expectedResult, receivedResult) {
+            case (.success, .success):
+                break
+            case let (.failure(expectedError), .failure(receivedError)):
+                XCTAssertEqual(expectedError as NSError, receivedError as NSError, file: file, line: line)
+            default:
+                XCTFail("Expected to complete with \(expectedResult), but got \(receivedResult) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
 }

@@ -11,6 +11,7 @@ import GYMHack
 class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemovalStore {
     typealias RetrievalCompletion = (ActionRetrievalStore.Result) -> Void
     typealias AddActionCompletion = (ActionAdditionStore.Result) -> Void
+    typealias RemovalCompletion = (ActionRemovalStore.Result) -> Void
     private var addActionCompletion = [AddActionCompletion]()
     private var retrievalCompletion = [RetrievalCompletion]()
     private var removalCompletion = [RemovalCompletion]()
@@ -25,7 +26,7 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
         retrievalCompletion.append(completion)
     }
     
-    func remove(actionID: UUID, completion: @escaping (Error?) -> Void) {
+    func remove(actionID: UUID, completion: @escaping (ActionRemovalStore.Result) -> Void) {
         removalCompletion.append(completion)
         receivedMessage.append(.removal(actionID))
     }
@@ -51,7 +52,7 @@ class ActionFeedStoreSpy: ActionAdditionStore, ActionRetrievalStore, ActionRemov
     }
     
     func completeRemoval(with error: NSError, at index: Int = 0) {
-        removalCompletion[index](error)
+        removalCompletion[index](.failure(error))
     }
     
     enum ReceiveMessage: Equatable {

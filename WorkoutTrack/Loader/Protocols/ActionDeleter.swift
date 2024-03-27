@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol ActionDeleter {
-    typealias Result = Error?
+    typealias Result = Swift.Result<Void, Error>
     func delete(action: UUID, completion: @escaping (Result) -> Void)
 }
