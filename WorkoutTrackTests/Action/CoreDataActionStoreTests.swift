@@ -32,6 +32,17 @@ final class CoreDataActionStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieve: .success([action.local]))
     }
     
+    func test_retrieve_deliversValuesMatchingPredicateOnIsOpen() {
+        let sut = makeSUT()
+        let openAction = anyAction(isOpen: true)
+        let closedAction = anyAction(isOpen: false)
+        let predicate = NSPredicate(format: "isOpen == YES")
+        
+        insert([openAction.local, closedAction.local], to: sut)
+        
+        expect(sut, with: predicate, toRetrieve: .success([openAction.local]))
+    }
+    
     func test_retrieve_hasNoSideEffectsOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
