@@ -35,7 +35,12 @@ public final class CoreDataActionStore: ActionRetrievalStore, ActionAdditionStor
     }
     
     public func remove(actionID: UUID, completion: @escaping (ActionRemovalStore.Result) -> Void) {
-        completion(.success(()))
+        perform { context in
+            completion(Result{
+                let predicate = NSPredicate(format: "id == %@", actionID as CVarArg)
+                _ = try Action2.find(in: context, with: predicate).map(context.delete).map(context.save)
+            })
+        }
     }
     
     private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {

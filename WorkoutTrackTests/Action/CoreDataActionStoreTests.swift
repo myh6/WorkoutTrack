@@ -110,6 +110,17 @@ final class CoreDataActionStoreTests: XCTestCase {
         XCTAssertNil(deletionError)
     }
     
+    func test_remove_deletesPreviouslyAddedDataWithMatchingID() {
+        let sut = makeSUT()
+        let id = UUID()
+        let action = anyAction(id: id)
+        
+        addAction([action.local], to: sut)
+        
+        delete(id: id, from: sut)
+        
+        expect(sut, with: nil, toRetrieve: .success([]))
+    }
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
@@ -134,6 +145,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         return insertionError
     }
     
+    @discardableResult
     private func delete(id: UUID, from sut: ActionRemovalStore, file: StaticString = #file, line: UInt = #line) -> Error? {
         let exp = expectation(description: "Wait for removal completion")
         var receivedError: Error?
