@@ -93,6 +93,13 @@ final class CoreDataActionStoreTests: XCTestCase {
         XCTAssertNil(addingOperationError)
     }
     
+    func test_remove_deliversNoErrorOnEmptyDatabase() {
+        let sut = makeSUT()
+        
+        let deletionError = delete(id: UUID(), from: sut)
+        XCTAssertNil(deletionError)
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
@@ -115,6 +122,20 @@ final class CoreDataActionStoreTests: XCTestCase {
         
         wait(for: [exp], timeout: 1.0)
         return insertionError
+    }
+    
+    private func delete(id: UUID, from sut: CoreDataActionStore, file: StaticString = #file, line: UInt = #line) -> Error? {
+        let exp = expectation(description: "Wait for removal completion")
+        var receivedError: Error?
+        
+        sut.remove(actionID: id) { result in
+            if case let Result.failure(error) = result {
+                receivedError = error
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+        return receivedError
     }
     
     private func expect(_ sut: CoreDataActionStore, with predicate: NSPredicate?, toRetrieve expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {

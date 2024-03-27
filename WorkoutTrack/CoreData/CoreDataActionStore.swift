@@ -7,7 +7,7 @@
 
 import CoreData
 
-public final class CoreDataActionStore: ActionRetrievalStore, ActionAdditionStore {
+public final class CoreDataActionStore: ActionRetrievalStore, ActionAdditionStore, ActionRemovalStore {
     
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
@@ -32,6 +32,10 @@ public final class CoreDataActionStore: ActionRetrievalStore, ActionAdditionStor
                 try context.save()
             })
         }
+    }
+    
+    public func remove(actionID: UUID, completion: @escaping (ActionRemovalStore.Result) -> Void) {
+        completion(.success(()))
     }
     
     private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
