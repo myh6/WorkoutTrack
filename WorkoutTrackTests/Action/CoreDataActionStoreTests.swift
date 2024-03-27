@@ -83,6 +83,16 @@ final class CoreDataActionStoreTests: XCTestCase {
         XCTAssertNil(addingOperationError)
     }
     
+    func test_addAction_deliversNoErrorOnNonEmptyDatabase() {
+        let sut = makeSUT()
+        
+        addAction([anyAction().local], to: sut)
+        
+        let addingOperationError = addAction([anyAction().local], to: sut)
+        
+        XCTAssertNil(addingOperationError)
+    }
+    
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
