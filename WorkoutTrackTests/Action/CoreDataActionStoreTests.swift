@@ -54,6 +54,19 @@ final class CoreDataActionStoreTests: XCTestCase {
         expect(sut, with: predicate, toRetrieve: .success([action1.local]))
     }
     
+    func test_retrieve_deliversValueMatchingPredicateOnCompoundPredicate() {
+        let sut = makeSUT()
+        let action1 = anyAction(type: "Type1", isOpen: false)
+        let action2 = anyAction(type: "Type2", isOpen: true)
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "isOpen == NO"),
+            NSPredicate(format: "ofType == %@", "Type1")
+        ])
+        insert([action1.local, action2.local], to: sut)
+        
+        expect(sut, with: compoundPredicate, toRetrieve: .success([action1.local]))
+    }
+    
     func test_retrieve_hasNoSideEffectsOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
