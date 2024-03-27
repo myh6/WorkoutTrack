@@ -68,7 +68,7 @@ final class ActionSaverTests: XCTestCase {
             case let (.failure(expectedError), .failure(receivedError)):
                 XCTAssertEqual(expectedError as NSError, receivedError as NSError, file: file, line: line)
             default:
-                XCTFail("Expected to complete with \(expectedResult), but got \(receivedResult) instead")
+                XCTFail("Expected to complete with \(expectedResult), but got \(receivedResult) instead", file: file, line: line)
             }
             exp.fulfill()
         }
