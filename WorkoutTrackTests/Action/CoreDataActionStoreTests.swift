@@ -27,7 +27,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         let sut = makeSUT()
         let action = anyAction()
         
-        insert([action.local], to: sut)
+        addAction([action.local], to: sut)
         
         expect(sut, with: nil, toRetrieve: .success([action.local]))
     }
@@ -38,7 +38,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         let closedAction = anyAction(isOpen: false)
         let predicate = NSPredicate(format: "isOpen == YES")
         
-        insert([openAction.local, closedAction.local], to: sut)
+        addAction([openAction.local, closedAction.local], to: sut)
         
         expect(sut, with: predicate, toRetrieve: .success([openAction.local]))
     }
@@ -49,7 +49,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         let action2 = anyAction(type: "Type2")
         let predicate = NSPredicate(format: "ofType == %@", "Type1")
         
-        insert([action1.local, action2.local], to: sut)
+        addAction([action1.local, action2.local], to: sut)
         
         expect(sut, with: predicate, toRetrieve: .success([action1.local]))
     }
@@ -62,7 +62,7 @@ final class CoreDataActionStoreTests: XCTestCase {
             NSPredicate(format: "isOpen == NO"),
             NSPredicate(format: "ofType == %@", "Type1")
         ])
-        insert([action1.local, action2.local], to: sut)
+        addAction([action1.local, action2.local], to: sut)
         
         expect(sut, with: compoundPredicate, toRetrieve: .success([action1.local]))
     }
@@ -70,7 +70,7 @@ final class CoreDataActionStoreTests: XCTestCase {
     func test_retrieve_hasNoSideEffectsOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
-        insert([action.local], to: sut)
+        addAction([action.local], to: sut)
         
         expect(sut, with: nil, toRetrieveTwice: .success([action.local]))
     }
@@ -78,9 +78,9 @@ final class CoreDataActionStoreTests: XCTestCase {
     func test_addAction_deliversNoErrorOnEmptyDatabase() {
         let sut = makeSUT()
         
-        let insertionError = insert([anyAction().local], to: sut)
+        let addingOperationError = addAction([anyAction().local], to: sut)
         
-        XCTAssertNil(insertionError)
+        XCTAssertNil(addingOperationError)
     }
     
     //MARK: - Helpers
@@ -93,7 +93,7 @@ final class CoreDataActionStoreTests: XCTestCase {
     }
     
     @discardableResult
-    private func insert(_ local: [ActionDTO], to sut: CoreDataActionStore) -> Error? {
+    private func addAction(_ local: [ActionDTO], to sut: CoreDataActionStore) -> Error? {
         let exp = expectation(description: "Wait for insertion")
         var insertionError: Error?
         sut.addAction(action: local) { result in
