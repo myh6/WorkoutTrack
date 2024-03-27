@@ -110,7 +110,7 @@ final class CoreDataActionStoreTests: XCTestCase {
     }
     
     @discardableResult
-    private func addAction(_ local: [ActionDTO], to sut: CoreDataActionStore) -> Error? {
+    private func addAction(_ local: [ActionDTO], to sut: ActionAdditionStore) -> Error? {
         let exp = expectation(description: "Wait for insertion")
         var insertionError: Error?
         sut.addAction(action: local) { result in
@@ -124,7 +124,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         return insertionError
     }
     
-    private func delete(id: UUID, from sut: CoreDataActionStore, file: StaticString = #file, line: UInt = #line) -> Error? {
+    private func delete(id: UUID, from sut: ActionRemovalStore, file: StaticString = #file, line: UInt = #line) -> Error? {
         let exp = expectation(description: "Wait for removal completion")
         var receivedError: Error?
         
@@ -138,7 +138,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         return receivedError
     }
     
-    private func expect(_ sut: CoreDataActionStore, with predicate: NSPredicate?, toRetrieve expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: ActionRetrievalStore, with predicate: NSPredicate?, toRetrieve expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for retrieval")
         
         sut.retrieve(predicate: predicate) { retrievalResult in
@@ -156,7 +156,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func expect(_ sut: CoreDataActionStore, with predicate: NSPredicate?, toRetrieveTwice expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: ActionRetrievalStore, with predicate: NSPredicate?, toRetrieveTwice expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
         expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
         expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
     }
