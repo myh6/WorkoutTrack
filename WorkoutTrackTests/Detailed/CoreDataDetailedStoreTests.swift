@@ -15,6 +15,13 @@ final class CoreDataDetailedStoreTests: XCTestCase {
         
         expect(sut, with: nil, toRetrieve: .success([]))
     }
+    
+    func test_retrieve_hasNoSideEffecsOnEmptyDatabase() {
+        let sut = makeSUT()
+        
+        expect(sut, with: nil, toRetrieve: .success([]))
+        expect(sut, with: nil, toRetrieve: .success([]))
+    }
         
     //MARK: - Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataDetailedStore {
