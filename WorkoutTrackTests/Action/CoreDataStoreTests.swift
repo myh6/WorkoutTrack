@@ -16,6 +16,12 @@ final class CoreDataStoreTests: XCTestCase {
         expectAction(sut, with: nil, toRetrieve: .success([]))
     }
     
+    func test_retrieveDetail_deliversEmptyOnEmptyDatabase() {
+        let sut: DetailRetrievalStore = makeSUT()
+        
+        expect(sut, with: nil, toRetrieve: .success([]))
+    }
+    
     func test_retrieveAction_hasNoSideEffectsOnEmptyDatabase() {
         let sut = makeSUT()
         
@@ -223,7 +229,7 @@ final class CoreDataStoreTests: XCTestCase {
         expectAction(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
     }
     
-    private func expectDetail(_ sut: DetailRetrievalStore, with predicate: NSPredicate?, toRetrieve expectedResult: DetailRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: DetailRetrievalStore, with predicate: NSPredicate?, toRetrieve expectedResult: DetailRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for retrieval")
         
         sut.retrieve(predicate: predicate) { retrievalResult in
