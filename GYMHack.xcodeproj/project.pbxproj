@@ -83,6 +83,8 @@
 		0F99CC5D28152E4900994329 /* WeekProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC5C28152E4900994329 /* WeekProgressView.swift */; };
 		0F99CC5F2815730500994329 /* WeekdayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC5E2815730500994329 /* WeekdayButton.swift */; };
 		0F99CC63281595C000994329 /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F99CC62281595C000994329 /* DateLabel.swift */; };
+		0FADBD8A2BB649C900DE5845 /* CoreDataDetailedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADBD892BB649C900DE5845 /* CoreDataDetailedStoreTests.swift */; };
+		0FADBD8D2BB650D200DE5845 /* CoreDataDetailedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADBD8B2BB650CC00DE5845 /* CoreDataDetailedStore.swift */; };
 		0FE106FE281E4E7F00D9D110 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE106FD281E4E7F00D9D110 /* AddActionViewController.swift */; };
 		0FE10712281EA3DF00D9D110 /* CollapsibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE10711281EA3DF00D9D110 /* CollapsibleView.swift */; };
 		0FE10714281ECBB400D9D110 /* CollapsibleBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE10713281ECBB400D9D110 /* CollapsibleBodyView.swift */; };
@@ -215,6 +217,8 @@
 		0F99CC5C28152E4900994329 /* WeekProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekProgressView.swift; sourceTree = "<group>"; };
 		0F99CC5E2815730500994329 /* WeekdayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayButton.swift; sourceTree = "<group>"; };
 		0F99CC62281595C000994329 /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
+		0FADBD892BB649C900DE5845 /* CoreDataDetailedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDetailedStoreTests.swift; sourceTree = "<group>"; };
+		0FADBD8B2BB650CC00DE5845 /* CoreDataDetailedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDetailedStore.swift; sourceTree = "<group>"; };
 		0FE106FD281E4E7F00D9D110 /* AddActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		0FE10711281EA3DF00D9D110 /* CollapsibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleView.swift; sourceTree = "<group>"; };
 		0FE10713281ECBB400D9D110 /* CollapsibleBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleBodyView.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 				0F1543492BB26F1400AF81B1 /* CoreDataHelpers.swift */,
 				0F15434A2BB26F1400AF81B1 /* CoreDataActionStore.swift */,
 				0F15434B2BB26F1400AF81B1 /* Action.swift */,
+				0FADBD8B2BB650CC00DE5845 /* CoreDataDetailedStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 				0F71DA382B7FDE420044C999 /* DetailedLoaderTests.swift */,
 				0F89158A2B8BF15F00D2CFD4 /* DetailedUpdaterTests.swift */,
 				0F6AF0C42B92CDCD0027D15C /* DetailedDeleterTests.swift */,
+				0FADBD892BB649C900DE5845 /* CoreDataDetailedStoreTests.swift */,
 			);
 			path = Detailed;
 			sourceTree = "<group>";
@@ -893,6 +899,7 @@
 				0FE98E492838EED2008EB8CD /* LanguageOverlayView.swift in Sources */,
 				0F1543072BA610C900AF81B1 /* ActionSaver.swift in Sources */,
 				0F99CC5D28152E4900994329 /* WeekProgressView.swift in Sources */,
+				0FADBD8D2BB650D200DE5845 /* CoreDataDetailedStore.swift in Sources */,
 				0F368C582817BD660098667E /* CoredataService.swift in Sources */,
 				0FE98DDD2832203F008EB8CD /* Chart1Cell.swift in Sources */,
 				0FE98DE128322F39008EB8CD /* Chart3Cell.swift in Sources */,
@@ -925,6 +932,7 @@
 				0F6AF0C52B92CDCD0027D15C /* DetailedDeleterTests.swift in Sources */,
 				0F71DA192B7048BE0044C999 /* XCTest+MemoryLeaksTracking.swift in Sources */,
 				0F71DA292B71D3E00044C999 /* ActionSaverTests.swift in Sources */,
+				0FADBD8A2BB649C900DE5845 /* CoreDataDetailedStoreTests.swift in Sources */,
 				0F8915892B8BF0DE00D2CFD4 /* ActionTestsHelpers.swift in Sources */,
 				0F1543092BA6113E00AF81B1 /* ActionDeleterTests.swift in Sources */,
 				0F3894B72B89A1FC000FED69 /* DetailedTestHelpers.swift in Sources */,

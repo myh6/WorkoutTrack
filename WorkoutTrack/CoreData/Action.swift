@@ -76,6 +76,16 @@ extension Detail2 {
         }
         return NSOrderedSet(array: details)
     }
+    
+    static func find(in context: NSManagedObjectContext, with predicate: NSPredicate?) throws -> [Detail2] {
+        let request = NSFetchRequest<Detail2>(entityName: entity().name!)
+        request.predicate = predicate
+        return try context.fetch(request)
+    }
+    
+    public func toDTO() -> DetailedDTO {
+        return DetailedDTO(uuid: id, weight: weight, isDone: isDone, reps: Int(reps))
+    }
 }
 
 @objc(CustomAction2)

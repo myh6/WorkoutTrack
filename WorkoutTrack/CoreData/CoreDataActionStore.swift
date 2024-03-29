@@ -20,7 +20,7 @@ public final class CoreDataActionStore: ActionStore {
     
     public func retrieve(predicate: NSPredicate?, completion: @escaping (ActionRetrievalStore.Result) -> Void) {
         perform { context in
-            completion(Result{
+            completion(Result {
                 return try Action2.find(in: context, with: predicate).map { $0.toDomain() }
             })
         }
