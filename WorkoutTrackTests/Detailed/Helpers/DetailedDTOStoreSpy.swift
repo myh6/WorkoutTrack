@@ -48,7 +48,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
     }
     
     func completeRetrievalWithEmptyData(at index: Int = 0) {
-        retrievalCompletion[index](.success(.none))
+        retrievalCompletion[index](.success([]))
     }
     
     func completeRetrieval(with details: [DetailedDTO], at index: Int = 0) {

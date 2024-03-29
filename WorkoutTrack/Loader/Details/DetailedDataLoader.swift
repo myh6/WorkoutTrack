@@ -22,7 +22,7 @@ public class DetailedDataLoader: DetailedLoader {
             case let .failure(error):
                 completion(.failure(error))
             case let .success(detailsDTO):
-                completion(.success(detailsDTO?.toModels() ?? []))
+                completion(.success(detailsDTO.toModels() ))
             }
         }
     }

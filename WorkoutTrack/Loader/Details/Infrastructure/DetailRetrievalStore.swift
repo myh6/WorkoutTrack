@@ -13,4 +13,4 @@ public protocol DetailRetrievalStore {
     func retrieve(predicate: NSPredicate?, completion: @escaping (Result) -> Void)
 }
 
-public typealias RetrievalResult = Result<[DetailedDTO]?, Error>
+public typealias RetrievalResult = Result<[DetailedDTO], Error>
