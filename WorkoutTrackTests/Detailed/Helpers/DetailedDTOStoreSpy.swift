@@ -9,6 +9,7 @@ import XCTest
 import GYMHack
 
 class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpdateStore, DetailRemovalStore {
+    typealias RetrievalDetailedDTOCompletion = (DetailRetrievalStore.Result) -> Void
     private var addDetailCompletion = [AddDetailedDTOCompletion]()
     private var retrievalCompletion = [RetrievalDetailedDTOCompletion]()
     private var updateCompletion = [UpdateDetailedDTOCompletion]()
@@ -19,7 +20,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
         addDetailCompletion.append(completion)
     }
     
-    func retrieve(predicate: NSPredicate?, completion: @escaping RetrievalDetailedDTOCompletion) {
+    func retrieve(predicate: NSPredicate?, completion: @escaping (DetailRetrievalStore.Result) -> Void) {
         receivedMessage.append(.retrieve(predicate))
         retrievalCompletion.append(completion)
     }
