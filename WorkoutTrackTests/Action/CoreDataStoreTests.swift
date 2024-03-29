@@ -28,6 +28,12 @@ final class CoreDataStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieveTwice: .success([]))
     }
     
+    func test_retrieveDetail_hasNoSideEffectsOnEmptyDatabase() {
+        let sut: DetailRetrievalStore = makeSUT()
+        
+        expect(sut, with: nil, toRetrieveTwice: .success([]))
+    }
+    
     func test_retrieveAction_deliversFoundValueOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
@@ -225,6 +231,11 @@ final class CoreDataStoreTests: XCTestCase {
     }
     
     private func expect(_ sut: ActionRetrievalStore, with predicate: NSPredicate?, toRetrieveTwice expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+        expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
+        expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
+    }
+    
+    private func expect(_ sut: DetailRetrievalStore, with predicate: NSPredicate?, toRetrieveTwice expectedResult: DetailRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
         expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
         expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
     }
