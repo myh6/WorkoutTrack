@@ -33,8 +33,13 @@ final class DetailedSaverTests: XCTestCase {
         let actionID = UUID()
         
         let exp = expectation(description: "Wait for completion")
-        sut.save(details: anyDetails().model, to: actionID) { receivedError in
-            XCTAssertEqual(receivedError as? NSError, anyError)
+        sut.save(details: anyDetails().model, to: actionID) { result in
+            switch result {
+            case let .failure(receivedError):
+                XCTAssertEqual(receivedError as NSError, anyError)
+            default:
+                break
+            }
             exp.fulfill()
         }
         store.completeAddDetail(with: anyError)

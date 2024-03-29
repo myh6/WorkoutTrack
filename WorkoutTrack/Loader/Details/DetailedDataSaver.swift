@@ -15,9 +15,9 @@ public class DetailedDataSaver: DetailedSaver {
     }
     
     public func save(details: [Detailed], to action: UUID, completion: @escaping (DetailedSaver.Result) -> Void) {
-        store.add(details: details.toLocal(), toActionWithID: action) { [weak self] error in
+        store.add(details: details.toLocal(), toActionWithID: action) { [weak self] result in
             guard self != nil else { return }
-            completion(error)
+            completion(result)
         }
     }
 }

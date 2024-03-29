@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol DetailedSaver {
-    typealias Result = Error?
+    typealias Result = Swift.Result<Void, Error>
     func save(details: [Detailed], to action: UUID, completion: @escaping (Result) -> Void)
 }

@@ -8,31 +8,30 @@
 import XCTest
 import GYMHack
 
-final class CoreDataActionStoreTests: XCTestCase {
+final class CoreDataStoreTests: XCTestCase {
     
-    func test_retrieve_deliversEmptyOnEmptyDatabase() {
+    func test_retrieveAction_deliversEmptyOnEmptyDatabase() {
         let sut = makeSUT()
         
-        expect(sut, with: nil, toRetrieve: .success([]))
+        expectAction(sut, with: nil, toRetrieve: .success([]))
     }
     
-    func test_retrieve_hasNoSideEffectsOnEmptyDatabase() {
+    func test_retrieveAction_hasNoSideEffectsOnEmptyDatabase() {
         let sut = makeSUT()
         
-        expect(sut, with: nil, toRetrieve: .success([]))
-        expect(sut, with: nil, toRetrieve: .success([]))
+        expectAction(sut, with: nil, toRetrieveTwice: .success([]))
     }
     
-    func test_retrieve_deliversFoundValueOnNonEmptyDatabase() {
+    func test_retrieveAction_deliversFoundValueOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
         
         addAction([action.local], to: sut)
         
-        expect(sut, with: nil, toRetrieve: .success([action.local]))
+        expectAction(sut, with: nil, toRetrieve: .success([action.local]))
     }
     
-    func test_retrieve_deliversValuesMatchingPredicateOnID() {
+    func test_retrieveAction_deliversValuesMatchingPredicateOnID() {
         let sut = makeSUT()
         let id1 = UUID()
         let action1 = anyAction(id: id1)
@@ -41,10 +40,10 @@ final class CoreDataActionStoreTests: XCTestCase {
         
         addAction([action1.local, action2.local], to: sut)
         
-        expect(sut, with: predicate, toRetrieve: .success([action1.local]))
+        expectAction(sut, with: predicate, toRetrieve: .success([action1.local]))
     }
     
-    func test_retrieve_deliversValuesMatchingPredicateOnIsOpen() {
+    func test_retrieveAction_deliversValuesMatchingPredicateOnIsOpen() {
         let sut = makeSUT()
         let openAction = anyAction(isOpen: true)
         let closedAction = anyAction(isOpen: false)
@@ -52,10 +51,10 @@ final class CoreDataActionStoreTests: XCTestCase {
         
         addAction([openAction.local, closedAction.local], to: sut)
         
-        expect(sut, with: predicate, toRetrieve: .success([openAction.local]))
+        expectAction(sut, with: predicate, toRetrieve: .success([openAction.local]))
     }
     
-    func test_retrieve_deliversValuesMatchingPredicateOnType() {
+    func test_retrieveAction_deliversValuesMatchingPredicateOnType() {
         let sut = makeSUT()
         let action1 = anyAction(type: "Type1")
         let action2 = anyAction(type: "Type2")
@@ -63,10 +62,10 @@ final class CoreDataActionStoreTests: XCTestCase {
         
         addAction([action1.local, action2.local], to: sut)
         
-        expect(sut, with: predicate, toRetrieve: .success([action1.local]))
+        expectAction(sut, with: predicate, toRetrieve: .success([action1.local]))
     }
     
-    func test_retrieve_deliversValueMatchingPredicateOnCompoundPredicate() {
+    func test_retrieveAction_deliversValueMatchingPredicateOnCompoundPredicate() {
         let sut = makeSUT()
         let action1 = anyAction(type: "Type1", isOpen: false)
         let action2 = anyAction(type: "Type2", isOpen: true)
@@ -76,15 +75,15 @@ final class CoreDataActionStoreTests: XCTestCase {
         ])
         addAction([action1.local, action2.local], to: sut)
         
-        expect(sut, with: compoundPredicate, toRetrieve: .success([action1.local]))
+        expectAction(sut, with: compoundPredicate, toRetrieve: .success([action1.local]))
     }
     
-    func test_retrieve_hasNoSideEffectsOnNonEmptyDatabase() {
+    func test_retrieveAction_hasNoSideEffectsOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
         addAction([action.local], to: sut)
         
-        expect(sut, with: nil, toRetrieveTwice: .success([action.local]))
+        expectAction(sut, with: nil, toRetrieveTwice: .success([action.local]))
     }
     
     func test_addAction_deliversNoErrorOnEmptyDatabase() {
@@ -105,14 +104,14 @@ final class CoreDataActionStoreTests: XCTestCase {
         XCTAssertNil(addingOperationError)
     }
     
-    func test_remove_deliversNoErrorOnEmptyDatabase() {
+    func test_removeAction_deliversNoErrorOnEmptyDatabase() {
         let sut = makeSUT()
         
         let deletionError = delete(id: UUID(), from: sut)
         XCTAssertNil(deletionError)
     }
     
-    func test_remove_deliversNoErrorOnNonEmptyDatabase() {
+    func test_removeAction_deliversNoErrorOnNonEmptyDatabase() {
         let sut = makeSUT()
         
         addAction([anyAction().local], to: sut)
@@ -122,7 +121,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         XCTAssertNil(deletionError)
     }
     
-    func test_remove_deletesPreviouslyAddedDataWithMatchingID() {
+    func test_removeAction_deletesPreviouslyAddedDataWithMatchingID() {
         let sut = makeSUT()
         let id = UUID()
         let action = anyAction(id: id)
@@ -131,11 +130,11 @@ final class CoreDataActionStoreTests: XCTestCase {
         
         delete(id: id, from: sut)
         
-        expect(sut, with: nil, toRetrieve: .success([]))
+        expectAction(sut, with: nil, toRetrieve: .success([]))
     }
     
     func test_storeSideEffects_runSerially() {
-        let sut = makeSUT()
+        let sut: ActionStore = makeSUT()
         
         var completedOperationInOrder = [XCTestExpectation]()
         
@@ -163,7 +162,7 @@ final class CoreDataActionStoreTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> ActionStore {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
         let storeBundle = Bundle(for: CoreDataActionStore.self)
         let storeURL = URL(fileURLWithPath: "/dev/null")
         let sut = try! CoreDataActionStore(storeURL: storeURL, bundle: storeBundle)
@@ -201,7 +200,7 @@ final class CoreDataActionStoreTests: XCTestCase {
         return receivedError
     }
     
-    private func expect(_ sut: ActionRetrievalStore, with predicate: NSPredicate?, toRetrieve expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+    private func expectAction(_ sut: ActionRetrievalStore, with predicate: NSPredicate?, toRetrieve expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for retrieval")
         
         sut.retrieve(predicate: predicate) { retrievalResult in
@@ -219,8 +218,25 @@ final class CoreDataActionStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func expect(_ sut: ActionRetrievalStore, with predicate: NSPredicate?, toRetrieveTwice expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
-        expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
-        expect(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
+    private func expectAction(_ sut: ActionRetrievalStore, with predicate: NSPredicate?, toRetrieveTwice expectedResult: ActionRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+        expectAction(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
+        expectAction(sut, with: predicate, toRetrieve: expectedResult, file: file, line: line)
     }
-}
+    
+    private func expectDetail(_ sut: DetailRetrievalStore, with predicate: NSPredicate?, toRetrieve expectedResult: DetailRetrievalStore.Result, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for retrieval")
+        
+        sut.retrieve(predicate: predicate) { retrievalResult in
+            switch (expectedResult, retrievalResult) {
+            case let (.success(expectedAction), .success(retrievedAction)):
+                XCTAssertEqual(expectedAction, retrievedAction, file: file, line: line)
+            case (.failure, .failure):
+                break
+            default:
+                XCTFail("Expected to complete retrieval with \(expectedResult), but got \(retrievalResult) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }}

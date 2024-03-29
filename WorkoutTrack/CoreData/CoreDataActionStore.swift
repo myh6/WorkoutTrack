@@ -50,3 +50,12 @@ public final class CoreDataActionStore: ActionStore {
     }
 }
  
+extension CoreDataActionStore: DetailRetrievalStore {
+    public func retrieve(predicate: NSPredicate?, completion: @escaping (DetailRetrievalStore.Result) -> Void) {
+        perform { context in
+            completion(Result {
+                return try Detail2.find(in: context, with: predicate).map { $0.toDTO() }
+            })
+        }
+    }
+}

@@ -10,12 +10,13 @@ import GYMHack
 
 class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpdateStore, DetailRemovalStore {
     typealias RetrievalDetailedDTOCompletion = (DetailRetrievalStore.Result) -> Void
+    typealias AddDetailedDTOCompletion = (DetailAdditionStore.Result) -> Void
     private var addDetailCompletion = [AddDetailedDTOCompletion]()
     private var retrievalCompletion = [RetrievalDetailedDTOCompletion]()
     private var updateCompletion = [UpdateDetailedDTOCompletion]()
     private var removalCompletion = [RemovalDetailedDTOCompletion]()
     
-    func add(details: [DetailedDTO], toActionWithID actionID: UUID, completion: @escaping AddDetailedDTOCompletion) {
+    func add(details: [DetailedDTO], toActionWithID actionID: UUID, completion: @escaping (DetailAdditionStore.Result) -> Void) {
         receivedMessage.append(.addData(details, toActionWithID: actionID))
         addDetailCompletion.append(completion)
     }
@@ -36,11 +37,11 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
     }
     
     func completeAddDetailSuccessfully(at index: Int = 0) {
-        addDetailCompletion[index](nil)
+        addDetailCompletion[index](.success(()))
     }
     
     func completeAddDetail(with error: NSError, at index: Int = 0) {
-        addDetailCompletion[index](error)
+        addDetailCompletion[index](.failure(error))
     }
     
     func completeRetrieval(with error: NSError, at index: Int = 0) {

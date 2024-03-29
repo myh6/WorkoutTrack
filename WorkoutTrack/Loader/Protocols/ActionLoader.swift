@@ -19,12 +19,12 @@ public extension ActionLoader {
 
 /// DTO of AddActinoModel
 public struct ActionDTO: Equatable {
-    let id: UUID
-    let actionName: String
-    let typeName: String
-    let isOpen: Bool
+    public let id: UUID
+    public let actionName: String
+    public let typeName: String
+    public let isOpen: Bool
     
-    let details: [DetailedDTO]
+    public let details: [DetailedDTO]
     
     public init(id: UUID, actionName: String, typeName: String, isOpen: Bool, details: [DetailedDTO]) {
         self.id = id
