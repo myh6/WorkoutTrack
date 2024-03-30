@@ -120,6 +120,18 @@ final class CoreDataStoreTests: XCTestCase {
         expect(sut, with: predicate, toRetrieve: .success([detail.local]))
     }
     
+    func test_retrieveDetail_deliversValuesMatchingPredicateOnRepsAndWeight() {
+        let sut: ActionAdditionStore & DetailRetrievalStore = makeSUT()
+        let detail = anyDetail(weight: 25, reps: 5)
+        let predicate1 = NSPredicate(format: "weight == 25")
+        let predicate2 = NSPredicate(format: "reps > 5")
+        
+        addActions([anyAction(details: [detail.local]).local], to: sut)
+        
+        expect(sut, with: predicate1, toRetrieve: .success([detail.local]))
+        expect(sut, with: predicate2, toRetrieve: .success([]))
+    }
+    
     func test_retrieveAction_hasNoSideEffectsOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
