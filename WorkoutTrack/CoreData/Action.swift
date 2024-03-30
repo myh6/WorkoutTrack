@@ -44,7 +44,7 @@ extension Action2 {
     public func toDomain() -> ActionDTO {
         let detailsDTO: [DetailedDTO] = detailSet.array.compactMap { detail in
             guard let detail = detail as? Detail2 else { return nil }
-            return DetailedDTO(uuid: detail.id, weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps))
+            return DetailedDTO(uuid: detail.id, weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), time: detail.time)
         }
         return ActionDTO(id: id, actionName: name, typeName: ofType, isOpen: isOpen, details: detailsDTO)
     }
@@ -70,7 +70,7 @@ extension Detail2 {
             detail.isDone = detailDTO.isDone
             detail.reps = Int16(detailDTO.reps)
             detail.weight = detailDTO.weight
-            detail.time = Date()
+            detail.time = detailDTO.time
             detail.ofAction = action
             return detail
         }
@@ -84,7 +84,7 @@ extension Detail2 {
     }
     
     public func toDTO() -> DetailedDTO {
-        return DetailedDTO(uuid: id, weight: weight, isDone: isDone, reps: Int(reps))
+        return DetailedDTO(uuid: id, weight: weight, isDone: isDone, reps: Int(reps), time: time)
     }
 }
 

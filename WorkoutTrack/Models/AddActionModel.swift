@@ -40,20 +40,22 @@ public struct Detailed: Equatable {
     var reps: Int
     var id: String
     var uid: UUID
+    let time: Date
     
-    public init(uid: UUID = UUID(), setName: String, weight: Float, isDone: Bool, reps: Int, id: String) {
+    public init(uid: UUID = UUID(), setName: String, weight: Float, isDone: Bool, reps: Int, id: String, time: Date) {
         self.uid = uid
         self.setName = setName
         self.weight = weight
         self.isDone = isDone
         self.reps = reps
         self.id = id
+        self.time = time
     }
     
 }
 
 public extension Detailed {
     func toLocal() -> DetailedDTO {
-        return DetailedDTO(uuid: uid, weight: weight, isDone: isDone, reps: reps)
+        return DetailedDTO(uuid: uid, weight: weight, isDone: isDone, reps: reps, time: time)
     }
 }

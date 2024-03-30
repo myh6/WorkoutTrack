@@ -63,8 +63,8 @@ final class CoreDataFetchingService {
                                 
                 /***/
                 if output.isEmpty {
-                    
-                    output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "")], isOpen: detail.ofAction?.isOpen ?? false))
+                    #warning("Time property haven't been processed")
+                    output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date())], isOpen: detail.ofAction?.isOpen ?? false))
                     
                 } else {
                     
@@ -72,11 +72,13 @@ final class CoreDataFetchingService {
                     if output.contains(where: {$0.moveName == detail.ofAction?.actionName}) {
                         for index in 0 ..< output.count {
                             if output[index].moveName == detail.ofAction?.actionName {
-                                output[index].detail.append(Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? ""))
+                                #warning("Time property haven't been processed")
+                                output[index].detail.append(Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date()))
                             }
                         }
                     } else {
-                        output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "Set", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "")], isOpen: detail.ofAction?.isOpen ?? false))
+                        #warning("Time property haven't been processed")
+                        output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "Set", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date())], isOpen: detail.ofAction?.isOpen ?? false))
                     }
                     /***/
                 }
@@ -110,7 +112,8 @@ final class CoreDataFetchingService {
                 /***/
                 if output.isEmpty {
                     
-                    output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "")], isOpen: detail.ofAction?.isOpen ?? false))
+                    #warning("Time property haven't been processed")
+                    output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date())], isOpen: detail.ofAction?.isOpen ?? false))
                     
                 } else {
                     
@@ -118,11 +121,13 @@ final class CoreDataFetchingService {
                     if output.contains(where: {$0.moveName == detail.ofAction?.actionName}) {
                         for index in 0 ..< output.count {
                             if output[index].moveName == detail.ofAction?.actionName {
-                                output[index].detail.append(Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? ""))
+                                #warning("Time property haven't been processed")
+                                output[index].detail.append(Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date()))
                             }
                         }
                     } else {
-                        output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "Set", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "")], isOpen: detail.ofAction?.isOpen ?? false))
+                        #warning("Time property haven't been processed")
+                        output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "Set", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date())], isOpen: detail.ofAction?.isOpen ?? false))
                     }
                     /***/
                 }
@@ -158,7 +163,8 @@ final class CoreDataFetchingService {
                 /***/
                 if output.isEmpty {
                     
-                    output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "")], isOpen: detail.ofAction?.isOpen ?? false))
+                    #warning("Time property haven't been processed")
+                    output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date())], isOpen: detail.ofAction?.isOpen ?? false))
                     
                 } else {
                     
@@ -166,11 +172,13 @@ final class CoreDataFetchingService {
                     if output.contains(where: {$0.moveName == detail.ofAction?.actionName}) {
                         for index in 0 ..< output.count {
                             if output[index].moveName == detail.ofAction?.actionName {
-                                output[index].detail.append(Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? ""))
+                                #warning("Time property haven't been processed")
+                                output[index].detail.append(Detailed(setName: detail.setName ?? "", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date()))
                             }
                         }
                     } else {
-                        output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "Set", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "")], isOpen: detail.ofAction?.isOpen ?? false))
+                        #warning("Time property haven't been processed")
+                        output.append(AddActionModel(moveName: detail.ofAction?.actionName ?? "", ofType: detail.ofAction?.ofType ?? "", detail: [Detailed(setName: detail.setName ?? "Set", weight: detail.weight, isDone: detail.isDone, reps: Int(detail.reps), id: detail.id ?? "", time: Date())], isOpen: detail.ofAction?.isOpen ?? false))
                     }
                     /***/
                 }

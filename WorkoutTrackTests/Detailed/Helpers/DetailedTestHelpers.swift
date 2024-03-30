@@ -8,8 +8,8 @@
 import Foundation
 import GYMHack
 
-func anyDetail(id: UUID = UUID()) -> (model: Detailed, local: DetailedDTO) {
-    let model = Detailed(uid: id, setName: "", weight: 10, isDone: true, reps: 10, id: id.uuidString)
+func anyDetail(id: UUID = UUID(), time: Date = Date()) -> (model: Detailed, local: DetailedDTO) {
+    let model = Detailed(uid: id, setName: "", weight: 10, isDone: true, reps: 10, id: id.uuidString, time: time)
     return (model, model.toLocal())
 }
 
