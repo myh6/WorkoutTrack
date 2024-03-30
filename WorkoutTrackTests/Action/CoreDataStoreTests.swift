@@ -132,6 +132,19 @@ final class CoreDataStoreTests: XCTestCase {
         expect(sut, with: predicate2, toRetrieve: .success([]))
     }
     
+    func test_retrieveDetail_deliversValuesMatchingPredicateOnTime() {
+        let sut: ActionAdditionStore & DetailRetrievalStore = makeSUT()
+        let now = Date()
+        let detail = anyDetail(time: now)
+        let predicate1 = NSPredicate(format: "time == %@", now as NSDate)
+        let predicate2 = NSPredicate(format: "time > %@", now as NSDate)
+        
+        addActions([anyAction(details: [detail.local]).local], to: sut)
+        
+        expect(sut, with: predicate1, toRetrieve: .success([detail.local]))
+        expect(sut, with: predicate2, toRetrieve: .success([]))
+    }
+    
     func test_retrieveAction_hasNoSideEffectsOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
