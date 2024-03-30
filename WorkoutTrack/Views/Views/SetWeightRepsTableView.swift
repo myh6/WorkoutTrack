@@ -59,7 +59,8 @@ class SetWeightRepsTableView: UITableView {
         backgroundColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
         outputData = []
         NotificationCenter.default.addObserver(self, selector: #selector(handleSaveTextField), name: .saveData, object: nil)
-        tempStoredModel.append(Detailed(setName: "", weight: 0, isDone: false, reps: 0, id: ""))
+        #warning("Time property haven't been processed")
+        tempStoredModel.append(Detailed(setName: "", weight: 0, isDone: false, reps: 0, id: "", time: Date()))
         Log.info("DEBUG: viewDidLoad tempStoredModel \(tempStoredModel)")
         register(SetWeightRepsCell.self, forCellReuseIdentifier: SetWeightRepsCell.identifier)
         register(AddCell.self, forCellReuseIdentifier: AddCell.identifier)
@@ -121,7 +122,8 @@ extension SetWeightRepsTableView: UITextFieldDelegate {
         let index = NSIndexPath(row: textField.tag, section: 0)
         if let cell = self.cellForRow(at: index as IndexPath) as? SetWeightRepsCell {
             guard !tempStoredModel.isEmpty else {
-                tempStoredModel.append(Detailed(setName: "", weight: 0, isDone: false, reps: 0, id: ""))
+                #warning("Time property haven't been processed")
+                tempStoredModel.append(Detailed(setName: "", weight: 0, isDone: false, reps: 0, id: "", time: Date()))
                 return
             }
             if textField == cell.weightTextField {
@@ -137,7 +139,8 @@ extension SetWeightRepsTableView: UITextFieldDelegate {
 //MARK: - Extension: AddCell Delegate & SetWeightRepsCellDelegate
 extension SetWeightRepsTableView: AddCellDelegate {
     func addOneCellToTable() {
-        self.tempStoredModel.append(Detailed(setName: "", weight: 0, isDone: false, reps: 0, id: ""))
+        #warning("Time property haven't been processed")
+        self.tempStoredModel.append(Detailed(setName: "", weight: 0, isDone: false, reps: 0, id: "", time: Date()))
         Log.info("DEBUG: add one cell \(tempStoredModel)")
         DispatchQueue.main.async {
             self.reloadData()
