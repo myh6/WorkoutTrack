@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Data Transfer Object
-public struct DetailedDTO: Equatable {
+public struct DetailedDTO: Equatable, Hashable {
     
     public var uuid: UUID
     public var weight: Float

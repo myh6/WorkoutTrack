@@ -43,6 +43,15 @@ final class CoreDataStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieve: .success([action.local]))
     }
     
+    func test_retrieveDetail_deliversFoundValueOnNonEmptyDatabase() {
+        let sut: ActionAdditionStore & DetailRetrievalStore = makeSUT()
+        let action = anyAction()
+        
+        addAction([action.local], to: sut)
+        
+        expect(sut, with: nil, toRetrieve: .success(action.local.details))
+    }
+    
     func test_retrieveAction_deliversValuesMatchingPredicateOnID() {
         let sut = makeSUT()
         let id1 = UUID()
@@ -246,7 +255,7 @@ final class CoreDataStoreTests: XCTestCase {
         sut.retrieve(predicate: predicate) { retrievalResult in
             switch (expectedResult, retrievalResult) {
             case let (.success(expectedAction), .success(retrievedAction)):
-                XCTAssertEqual(expectedAction, retrievedAction, file: file, line: line)
+                XCTAssertEqual(Set(expectedAction), Set(retrievedAction), file: file, line: line)
             case (.failure, .failure):
                 break
             default:
@@ -256,4 +265,5 @@ final class CoreDataStoreTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
-    }}
+    }
+}
