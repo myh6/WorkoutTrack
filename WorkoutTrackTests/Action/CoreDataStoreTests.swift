@@ -38,7 +38,7 @@ final class CoreDataStoreTests: XCTestCase {
         let sut = makeSUT()
         let action = anyAction()
         
-        addAction([action.local], to: sut)
+        addActions([action.local], to: sut)
         
         expect(sut, with: nil, toRetrieve: .success([action.local]))
     }
@@ -47,7 +47,7 @@ final class CoreDataStoreTests: XCTestCase {
         let sut: ActionAdditionStore & DetailRetrievalStore = makeSUT()
         let action = anyAction()
         
-        addAction([action.local], to: sut)
+        addActions([action.local], to: sut)
         
         expect(sut, with: nil, toRetrieve: .success(action.local.details))
     }
@@ -59,7 +59,7 @@ final class CoreDataStoreTests: XCTestCase {
         let action2 = anyAction(id: UUID())
         let predicate = NSPredicate(format: "id == %@", id1 as CVarArg)
         
-        addAction([action1.local, action2.local], to: sut)
+        addActions([action1.local, action2.local], to: sut)
         
         expect(sut, with: predicate, toRetrieve: .success([action1.local]))
     }
@@ -70,7 +70,7 @@ final class CoreDataStoreTests: XCTestCase {
         let detail = anyDetail(id: anyID)
         let predicate = NSPredicate(format: "id == %@", anyID as CVarArg)
         
-        addAction([anyAction(details: [detail.local]).local], to: sut)
+        addActions([anyAction(details: [detail.local]).local], to: sut)
         
         expect(sut, with: predicate, toRetrieve: .success([detail.local]))
     }
@@ -81,7 +81,7 @@ final class CoreDataStoreTests: XCTestCase {
         let closedAction = anyAction(isOpen: false)
         let predicate = NSPredicate(format: "isOpen == YES")
         
-        addAction([openAction.local, closedAction.local], to: sut)
+        addActions([openAction.local, closedAction.local], to: sut)
         
         expect(sut, with: predicate, toRetrieve: .success([openAction.local]))
     }
@@ -92,7 +92,7 @@ final class CoreDataStoreTests: XCTestCase {
         let action2 = anyAction(type: "Type2")
         let predicate = NSPredicate(format: "ofType == %@", "Type1")
         
-        addAction([action1.local, action2.local], to: sut)
+        addActions([action1.local, action2.local], to: sut)
         
         expect(sut, with: predicate, toRetrieve: .success([action1.local]))
     }
@@ -105,7 +105,7 @@ final class CoreDataStoreTests: XCTestCase {
             NSPredicate(format: "isOpen == NO"),
             NSPredicate(format: "ofType == %@", "Type1")
         ])
-        addAction([action1.local, action2.local], to: sut)
+        addActions([action1.local, action2.local], to: sut)
         
         expect(sut, with: compoundPredicate, toRetrieve: .success([action1.local]))
     }
@@ -113,7 +113,7 @@ final class CoreDataStoreTests: XCTestCase {
     func test_retrieveAction_hasNoSideEffectsOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
-        addAction([action.local], to: sut)
+        addActions([action.local], to: sut)
         
         expect(sut, with: nil, toRetrieveTwice: .success([action.local]))
     }
@@ -121,7 +121,7 @@ final class CoreDataStoreTests: XCTestCase {
     func test_addAction_deliversNoErrorOnEmptyDatabase() {
         let sut = makeSUT()
         
-        let addingOperationError = addAction([anyAction().local], to: sut)
+        let addingOperationError = addActions([anyAction().local], to: sut)
         
         XCTAssertNil(addingOperationError)
     }
@@ -129,9 +129,9 @@ final class CoreDataStoreTests: XCTestCase {
     func test_addAction_deliversNoErrorOnNonEmptyDatabase() {
         let sut = makeSUT()
         
-        addAction([anyAction().local], to: sut)
+        addActions([anyAction().local], to: sut)
         
-        let addingOperationError = addAction([anyAction().local], to: sut)
+        let addingOperationError = addActions([anyAction().local], to: sut)
         
         XCTAssertNil(addingOperationError)
     }
@@ -146,9 +146,9 @@ final class CoreDataStoreTests: XCTestCase {
     func test_removeAction_deliversNoErrorOnNonEmptyDatabase() {
         let sut = makeSUT()
         
-        addAction([anyAction().local], to: sut)
+        addActions([anyAction().local], to: sut)
         
-        let deletionError = addAction([anyAction().local], to: sut)
+        let deletionError = addActions([anyAction().local], to: sut)
         
         XCTAssertNil(deletionError)
     }
@@ -158,7 +158,7 @@ final class CoreDataStoreTests: XCTestCase {
         let id = UUID()
         let action = anyAction(id: id)
         
-        addAction([action.local], to: sut)
+        addActions([action.local], to: sut)
         
         delete(id: id, from: sut)
         
@@ -203,7 +203,7 @@ final class CoreDataStoreTests: XCTestCase {
     }
     
     @discardableResult
-    private func addAction(_ local: [ActionDTO], to sut: ActionAdditionStore) -> Error? {
+    private func addActions(_ local: [ActionDTO], to sut: ActionAdditionStore) -> Error? {
         let exp = expectation(description: "Wait for insertion")
         var insertionError: Error?
         sut.addAction(action: local) { result in
