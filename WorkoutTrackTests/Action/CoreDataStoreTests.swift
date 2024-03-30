@@ -153,6 +153,14 @@ final class CoreDataStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieveTwice: .success([action.local]))
     }
     
+    func test_retrieveDetail_hasNoSideEffectsOnNonEmptyDatabase() {
+        let sut: ActionAdditionStore & DetailRetrievalStore = makeSUT()
+        let action = anyAction()
+        addActions([action.local], to: sut)
+        
+        expect(sut, with: nil, toRetrieveTwice: .success(action.local.details))
+    }
+    
     func test_addAction_deliversNoErrorOnEmptyDatabase() {
         let sut = makeSUT()
         
