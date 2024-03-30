@@ -110,6 +110,16 @@ final class CoreDataStoreTests: XCTestCase {
         expect(sut, with: compoundPredicate, toRetrieve: .success([action1.local]))
     }
     
+    func test_retrieveDetail_deliversValuesMatchingPredicateOnIsDone() {
+        let sut: ActionAdditionStore & DetailRetrievalStore = makeSUT()
+        let detail = anyDetail(isDone: true)
+        let predicate = NSPredicate(format: "isDone == YES")
+        
+        addActions([anyAction(details: [detail.local]).local], to: sut)
+        
+        expect(sut, with: predicate, toRetrieve: .success([detail.local]))
+    }
+    
     func test_retrieveAction_hasNoSideEffectsOnNonEmptyDatabase() {
         let sut = makeSUT()
         let action = anyAction()
