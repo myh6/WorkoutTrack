@@ -199,6 +199,21 @@ final class CoreDataStoreTests: XCTestCase {
         XCTAssertNil(addingOperationError)
     }
     
+    func test_addDetail_addToSpecificAction() {
+        let sut = makeSUT()
+        
+        let action = anyAction()
+        addActions([action.local], to: sut)
+        
+        let detail1 = anyDetail()
+        let detail2 = anyDetail()
+        
+        addDetail([detail1.local, detail2.local], toActionWithID: action.local.id, to: sut)
+        
+        let expectedActino = ActionDTO(id: action.local.id, actionName: action.local.actionName, typeName: action.local.typeName, isOpen: action.local.isOpen, details: [detail1.local, detail2.local])
+        expect(sut, with: nil, toRetrieve: .success([expectedActino]))
+    }
+    
     func test_removeAction_deliversNoErrorOnEmptyDatabase() {
         let sut = makeSUT()
         
@@ -316,7 +331,11 @@ final class CoreDataStoreTests: XCTestCase {
         sut.retrieve(predicate: predicate) { retrievalResult in
             switch (expectedResult, retrievalResult) {
             case let (.success(expectedAction), .success(retrievedAction)):
-                XCTAssertEqual(expectedAction, retrievedAction, file: file, line: line)
+                XCTAssertEqual(expectedAction.count, retrievedAction.count, file: file, line: line)
+                for (expectedAction, retrievedAction) in zip(expectedAction, retrievedAction) {
+                    XCTAssertEqual(expectedAction, retrievedAction, file: file, line: line)
+                    XCTAssertEqual(Set(expectedAction.details), Set(retrievedAction.details))
+                }
             case (.failure, .failure):
                 break
             default:
