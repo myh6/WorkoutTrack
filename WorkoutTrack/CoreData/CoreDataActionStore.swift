@@ -59,3 +59,22 @@ extension CoreDataActionStore: DetailRetrievalStore {
         }
     }
 }
+#warning("Duplicate details and action??")
+extension CoreDataActionStore: DetailAdditionStore {
+    public func add(details: [DetailedDTO], toActionWithID actionID: UUID, completion: @escaping (DetailAdditionStore.Result) -> Void) {
+        perform { context in
+            completion(Result {
+                let predicate = NSPredicate(format: "id == %@", actionID as CVarArg)
+                let action = try Action2.find(in: context, with: predicate).first
+                if let action = action {
+                    let newDetails = Detail2.createDetails(from: details, forAction: action, in: context)
+                    
+                    let updatedDetails = action.details?.mutableCopy() as? NSMutableOrderedSet
+                    updatedDetails?.union(newDetails)
+                    action.details = updatedDetails
+                    try context.save()
+                }
+            })
+        }
+    }
+}

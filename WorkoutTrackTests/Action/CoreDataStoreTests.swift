@@ -169,6 +169,16 @@ final class CoreDataStoreTests: XCTestCase {
         XCTAssertNil(addingOperationError)
     }
     
+    func test_addDetail_deliversNoErrorOnEmptyDatabase() {
+        let sut: DetailRetrievalStore & DetailAdditionStore = makeSUT()
+        
+        let addingOperationError = addDetail(anyDetails().local, toActionWithID: UUID(), to: sut)
+        
+        XCTAssertNil(addingOperationError)
+        
+        expect(sut, with: nil, toRetrieve: .success([]))
+    }
+    
     func test_addAction_deliversNoErrorOnNonEmptyDatabase() {
         let sut = makeSUT()
         
@@ -250,6 +260,21 @@ final class CoreDataStoreTests: XCTestCase {
         let exp = expectation(description: "Wait for insertion")
         var insertionError: Error?
         sut.addAction(action: local) { result in
+            if case let Result.failure(error) = result {
+                insertionError = error
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        return insertionError
+    }
+    
+    @discardableResult
+    private func addDetail(_ local: [DetailedDTO], toActionWithID id: UUID, to sut: DetailAdditionStore) -> Error? {
+        let exp = expectation(description: "Wait for insertion")
+        var insertionError: Error?
+        sut.add(details: local, toActionWithID: id) { result in
             if case let Result.failure(error) = result {
                 insertionError = error
             }
