@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol DetailRemovalStore {
-    typealias RemovalDetailedDTOCompletion = (Error?) -> Void
+    typealias Result = Swift.Result<Void, Error>
     
-    func remove(details: [DetailedDTO], completion: @escaping RemovalDetailedDTOCompletion)
+    func remove(details: [DetailedDTO], completion: @escaping (Result) -> Void)
 }

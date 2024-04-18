@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol DetailedDeleter {
-    typealias Result = Error?
+    typealias Result = Swift.Result<Void, Error>
     func delete(details: [Detailed], completion: @escaping (Result) -> Void)
 }

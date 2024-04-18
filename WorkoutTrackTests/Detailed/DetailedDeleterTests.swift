@@ -28,14 +28,9 @@ final class DetailedDeleterTests: XCTestCase {
         let (sut, store) = makeSUT()
         let removalError = anyNSError()
         
-        let exp = expectation(description: "Wait for deletion")
-        sut.delete(details: anyDetails().model) { receivedError in
-            XCTAssertEqual(removalError, receivedError as? NSError)
-            exp.fulfill()
+        expect(sut, remove: anyDetails().model, toCompleteWith: .failure(removalError)) {
+            store.completeRemoval(with: removalError)
         }
-        
-        store.completeRemoval(with: removalError)
-        wait(for: [exp], timeout: 1.0)
     }
     
     func test_deleteDetails_hasNoSideEffectsOnRemovalError() {
@@ -68,6 +63,27 @@ final class DetailedDeleterTests: XCTestCase {
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
+    }
+    
+    private func expect(_ sut: DetailedDeleter, remove details: [Detailed], toCompleteWith expectedResult: DetailedDeleter.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for delete completion")
+        
+        sut.delete(details: details) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case (.success, .success):
+                break
+            
+            case let (.failure(receivedError), .failure(expectedError)):
+                XCTAssertEqual(receivedError as NSError, expectedError as NSError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected to completed with \(expectedResult), but got \(receivedResult) instead.", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
 
 }

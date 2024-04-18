@@ -11,6 +11,7 @@ import GYMHack
 class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpdateStore, DetailRemovalStore {
     typealias RetrievalDetailedDTOCompletion = (DetailRetrievalStore.Result) -> Void
     typealias AddDetailedDTOCompletion = (DetailAdditionStore.Result) -> Void
+    typealias RemovalDetailedDTOCompletion = (DetailRemovalStore.Result) -> Void
     private var addDetailCompletion = [AddDetailedDTOCompletion]()
     private var retrievalCompletion = [RetrievalDetailedDTOCompletion]()
     private var updateCompletion = [UpdateDetailedDTOCompletion]()
@@ -61,7 +62,7 @@ class DetailedDTOStoreSpy: DetailAdditionStore, DetailRetrievalStore, DetailUpda
     }
     
     func completeRemoval(with error: NSError, at index: Int = 0) {
-        removalCompletion[index](error)
+        removalCompletion[index](.failure(error))
     }
     
     enum ReceiveMessage: Equatable {
