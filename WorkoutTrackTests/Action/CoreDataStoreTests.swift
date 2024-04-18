@@ -189,6 +189,16 @@ final class CoreDataStoreTests: XCTestCase {
         XCTAssertNil(addingOperationError)
     }
     
+    func test_addDetail_deliversNoErrorsOnNonEmptyDatabase() {
+        let sut = makeSUT()
+        
+        let action = anyAction()
+        
+        let addingOperationError = addDetail(anyDetails().local, toActionWithID: action.local.id, to: sut)
+        
+        XCTAssertNil(addingOperationError)
+    }
+    
     func test_removeAction_deliversNoErrorOnEmptyDatabase() {
         let sut = makeSUT()
         
