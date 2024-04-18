@@ -221,6 +221,13 @@ final class CoreDataStoreTests: XCTestCase {
         XCTAssertNil(deletionError)
     }
     
+    func test_removeDetail_deliversNoErrorOnEmptyDatabase() {
+        let sut = makeSUT()
+        
+        let deletionError = delete(details: anyDetails().local, from: sut)
+        XCTAssertNil(deletionError)
+    }
+    
     func test_removeAction_deliversNoErrorOnNonEmptyDatabase() {
         let sut = makeSUT()
         
@@ -316,6 +323,21 @@ final class CoreDataStoreTests: XCTestCase {
         var receivedError: Error?
         
         sut.remove(actionID: id) { result in
+            if case let Result.failure(error) = result {
+                receivedError = error
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+        return receivedError
+    }
+    
+    @discardableResult
+    private func delete(details: [DetailedDTO], from sut: DetailRemovalStore, file: StaticString = #file, line: UInt = #line) -> Error? {
+        let exp = expectation(description: "Wait for removal completion")
+        var receivedError: Error?
+        
+        sut.remove(details: details) { result in
             if case let Result.failure(error) = result {
                 receivedError = error
             }

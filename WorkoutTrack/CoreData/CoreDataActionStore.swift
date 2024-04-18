@@ -78,3 +78,15 @@ extension CoreDataActionStore: DetailAdditionStore {
         }
     }
 }
+
+extension CoreDataActionStore: DetailRemovalStore {
+    public func remove(details: [DetailedDTO], completion: @escaping (DetailRemovalStore.Result) -> Void) {
+        perform { context in
+            completion(Result{
+                let ids = details.map { $0.uuid } as [UUID]
+                let predicate = NSPredicate(format: "id IN %@", ids as CVarArg)
+                _ = try Detail2.find(in: context, with: predicate).map(context.delete).map(context.save)
+            })
+        }
+    }
+}
