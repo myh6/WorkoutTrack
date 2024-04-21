@@ -238,6 +238,18 @@ final class CoreDataStoreTests: XCTestCase {
         XCTAssertNil(deletionError)
     }
     
+    func test_removeDetail_deliversNoErrorOnNonEmptyDatabase() {
+        let sut = makeSUT()
+        let action = anyAction()
+        let detail = anyDetail()
+        
+        addActions([action.local], to: sut)
+        addDetail([detail.local], toActionWithID: action.local.id, to: sut)
+        
+        let deletionError = delete(details: [detail.local], from: sut)
+        XCTAssertNil(deletionError)
+    }
+    
     func test_removeAction_deletesPreviouslyAddedDataWithMatchingID() {
         let sut: ActionStore = makeSUT()
         let id = UUID()
