@@ -263,6 +263,18 @@ final class CoreDataStoreTests: XCTestCase {
         expect(sut, with: nil, toRetrieve: .success([]))
     }
     
+    func test_removeDetail_deletesPreviouslyAddedData() {
+        let sut = makeSUT()
+        let detail = anyDetail()
+        let action = anyAction(details: [detail.local])
+        
+        addActions([action.local], to: sut)
+        
+        delete(details: [detail.local], from: sut)
+        
+        expect(sut as DetailRetrievalStore, with: nil, toRetrieve: .success([]))
+    }
+    
     func test_storeSideEffects_runSerially() {
         let sut: ActionStore = makeSUT()
         
