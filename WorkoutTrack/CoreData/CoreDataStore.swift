@@ -8,7 +8,7 @@
 import CoreData
 
 public typealias ActionStore = ActionRetrievalStore & ActionAdditionStore & ActionRemovalStore
-public final class CoreDataActionStore: ActionStore {
+public final class CoreDataStore: ActionStore {
     
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
@@ -50,7 +50,7 @@ public final class CoreDataActionStore: ActionStore {
     }
 }
  
-extension CoreDataActionStore: DetailRetrievalStore {
+extension CoreDataStore: DetailRetrievalStore {
     public func retrieve(predicate: NSPredicate?, completion: @escaping (DetailRetrievalStore.Result) -> Void) {
         perform { context in
             completion(Result {
@@ -60,7 +60,7 @@ extension CoreDataActionStore: DetailRetrievalStore {
     }
 }
 #warning("Duplicate details and action??")
-extension CoreDataActionStore: DetailAdditionStore {
+extension CoreDataStore: DetailAdditionStore {
     public func add(details: [DetailedDTO], toActionWithID actionID: UUID, completion: @escaping (DetailAdditionStore.Result) -> Void) {
         perform { context in
             completion(Result {
@@ -79,7 +79,7 @@ extension CoreDataActionStore: DetailAdditionStore {
     }
 }
 
-extension CoreDataActionStore: DetailRemovalStore {
+extension CoreDataStore: DetailRemovalStore {
     public func remove(details: [DetailedDTO], completion: @escaping (DetailRemovalStore.Result) -> Void) {
         perform { context in
             completion(Result{

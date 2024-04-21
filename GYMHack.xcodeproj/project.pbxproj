@@ -23,7 +23,7 @@
 		0F1543442BB2699700AF81B1 /* WorkoutTrack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543422BB2699700AF81B1 /* WorkoutTrack.xcdatamodeld */; };
 		0F1543472BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543452BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodeld */; };
 		0F15434C2BB26F1500AF81B1 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1543492BB26F1400AF81B1 /* CoreDataHelpers.swift */; };
-		0F15434D2BB26F1500AF81B1 /* CoreDataActionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15434A2BB26F1400AF81B1 /* CoreDataActionStore.swift */; };
+		0F15434D2BB26F1500AF81B1 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15434A2BB26F1400AF81B1 /* CoreDataStore.swift */; };
 		0F15434E2BB26F1500AF81B1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15434B2BB26F1400AF81B1 /* Action.swift */; };
 		0F1543502BB355C000AF81B1 /* CoreDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15434F2BB355C000AF81B1 /* CoreDataStoreTests.swift */; };
 		0F1CDD812B35836C0080C5F5 /* launchScreen.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F1CDD802B35836C0080C5F5 /* launchScreen.gif */; };
@@ -149,7 +149,7 @@
 		0F1543432BB2699700AF81B1 /* WorkoutTrack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutTrack.xcdatamodel; sourceTree = "<group>"; };
 		0F1543462BB26CE900AF81B1 /* WorkoutTrack2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutTrack2.xcdatamodel; sourceTree = "<group>"; };
 		0F1543492BB26F1400AF81B1 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
-		0F15434A2BB26F1400AF81B1 /* CoreDataActionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataActionStore.swift; sourceTree = "<group>"; };
+		0F15434A2BB26F1400AF81B1 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		0F15434B2BB26F1400AF81B1 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		0F15434F2BB355C000AF81B1 /* CoreDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTests.swift; sourceTree = "<group>"; };
 		0F1CDD802B35836C0080C5F5 /* launchScreen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen.gif; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				0F1543492BB26F1400AF81B1 /* CoreDataHelpers.swift */,
-				0F15434A2BB26F1400AF81B1 /* CoreDataActionStore.swift */,
+				0F15434A2BB26F1400AF81B1 /* CoreDataStore.swift */,
 				0F15434B2BB26F1400AF81B1 /* Action.swift */,
 			);
 			path = CoreData;
@@ -882,7 +882,7 @@
 				0F1543032BA60F0400AF81B1 /* DetailedDataDeleter.swift in Sources */,
 				0F3894BD2B89B765000FED69 /* DetailedLoader.swift in Sources */,
 				0FE106FE281E4E7F00D9D110 /* AddActionViewController.swift in Sources */,
-				0F15434D2BB26F1500AF81B1 /* CoreDataActionStore.swift in Sources */,
+				0F15434D2BB26F1500AF81B1 /* CoreDataStore.swift in Sources */,
 				0FE401D52842637C006386CF /* ChooseCustomExerciseTableView.swift in Sources */,
 				0FE107742828009400D9D110 /* NoHistoryCell.swift in Sources */,
 				0F6AF0BC2B92CB260027D15C /* DetailedDataUpdater.swift in Sources */,

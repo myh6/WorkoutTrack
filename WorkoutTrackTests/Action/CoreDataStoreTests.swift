@@ -304,10 +304,10 @@ final class CoreDataStoreTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataActionStore {
-        let storeBundle = Bundle(for: CoreDataActionStore.self)
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataStore {
+        let storeBundle = Bundle(for: CoreDataStore.self)
         let storeURL = URL(fileURLWithPath: "/dev/null")
-        let sut = try! CoreDataActionStore(storeURL: storeURL, bundle: storeBundle)
+        let sut = try! CoreDataStore(storeURL: storeURL, bundle: storeBundle)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
