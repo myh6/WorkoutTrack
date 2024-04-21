@@ -231,9 +231,10 @@ final class CoreDataStoreTests: XCTestCase {
     func test_removeAction_deliversNoErrorOnNonEmptyDatabase() {
         let sut = makeSUT()
         
-        addActions([anyAction().local], to: sut)
+        let action = anyAction()
+        addActions([action.local], to: sut)
         
-        let deletionError = addActions([anyAction().local], to: sut)
+        let deletionError = delete(id: action.local.id, from: sut)
         
         XCTAssertNil(deletionError)
     }
